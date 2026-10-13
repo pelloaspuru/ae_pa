@@ -1,12 +1,6 @@
 # Introduction {#sec-intro}
 
-*Content coming soon.*
-
-## Slides
-
-## R code
-
-The code shown on the slides, in the order it appears.
+Find the slides [here](slides/AE_week01_Intro/AE_w01_intro.pdf)
 
 ### Basic R Programming Concepts
 
