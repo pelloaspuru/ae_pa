@@ -12,6 +12,8 @@ Find the slides [here](slides/AE_week01_Intro/AE_w01_intro.pdf)
 number <- 5
 ```
 
+hellooooo
+
 ```r
 # Define the function "square()"
 
