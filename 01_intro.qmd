@@ -2,49 +2,13 @@
 
 Find the slides [here](slides/AE_week01_Intro/AE_w01_intro.pdf)
 
-### Basic R Programming Concepts
+## Comments
 
 ```{r}
 # This is a comment
-
-# Create object "number"
-
-number <- 5
 ```
 
-```{r}
-# Print the object in the console:
-
-number
-```
-
-```r
-# Define the function "square()"
-
-square <- function(x) { return(x^2) }
-
-# Run function on object, store as "result"
-
-result <- square(number)
-
-# Print the result in the console
-
-print(result)
-```
-
-### R Packages
-
-```r
-# Install once (downloads from CRAN)
-install.packages("ggplot2")
-```
-
-```r
-# Load every time you start R
-library(ggplot2)
-```
-
-### Script Set Up
+## Script Set Up
 
 ```r
 # Check current working directory
@@ -60,7 +24,55 @@ getwd()
 dir()
 ```
 
-### R Objects
+## Clean the environment
+
+```{r}
+# List all objects in the environment
+ls()
+
+# Remove all objects from the environment
+rm(list = ls())
+
+# Verify the change
+ls()
+```
+
+
+```{r}
+# Print the object in the console:
+
+number
+```
+
+## Functions
+
+```r
+# Define the function "square()"
+
+square <- function(x) { return(x^2) }
+
+# Run function on object, store as "result"
+
+result <- square(number)
+
+# Print the result in the console
+
+print(result)
+```
+
+## R Packages
+
+```r
+# Install once (downloads from CRAN)
+install.packages("ggplot2")
+```
+
+```r
+# Load every time you start R
+library(ggplot2)
+```
+
+## R Objects
 
 ```r
 # generate objects
@@ -76,7 +88,7 @@ dim(age)
 ls() # List all objects
 ```
 
-### Vectors
+## Vectors
 
 ```r
 # Three vectors with one value per month
@@ -96,7 +108,7 @@ df_air <- data.frame(year, month, passengers)
 dim(df_air)            # 144 rows, 3 columns
 ```
 
-### From Vectors to a Dataframes
+## From Vectors to a Dataframes
 
 ```r
 head(df_air)
@@ -112,7 +124,7 @@ head(df_air)
 6 1949     6        135
 ```
 
-### Multiple Data Frames
+## Multiple Data Frames
 
 ```r
 # longley: US macroeconomic data, one row per year (1947-1962)
@@ -131,7 +143,7 @@ head(longley)
 1952         98.1 346.999      193.2        359.4    113.270 1952   63.639
 ```
 
-### Accessing data - Selecting Observations and Variables
+## Accessing data - Selecting Observations and Variables
 
 ```r
 df$age # Print the age column of df
@@ -149,7 +161,7 @@ df[c(1,25),c(1,3)] # Rows 1 and 25, Columns 1 and 3.
 df_first_fifty_rows <- df[1:50,]
 ```
 
-### Accessing data - Logical Operators
+## Accessing data - Logical Operators
 
 ```r
 # Logical condition vector
@@ -165,7 +177,7 @@ df_old_males <- df[index_old_males, ]
 df_old_males <- df[(df$gender == "Male") & (df$age > 50), ]
 ```
 
-### Transforming variables in a Data Frame
+## Transforming variables in a Data Frame
 
 ```r
 dataframe$var1 <- NULL
@@ -177,7 +189,7 @@ df$log_age <- log(df$age)
 df$is_higly_educated <- df$education %in% c("Master", "PhD")
 ```
 
-### Plotting Data with ggplot2
+## Plotting Data with ggplot2
 
 ```r
 install.packages("ggplot2")
@@ -198,7 +210,7 @@ ggplot(df, aes(x = income, y = age)) +
   labs(x = "Income", y = "Age")
 ```
 
-### Histogram
+## Histogram
 
 ```r
 ggplot(df, aes(x = income)) +
@@ -211,7 +223,7 @@ ggplot(df, aes(x = income)) +
   facet_wrap(~ gender, ncol = 1)
 ```
 
-### Bar Chart
+## Bar Chart
 
 ```r
 ggplot(df, aes(x = education)) +
@@ -224,7 +236,7 @@ ggplot(df, aes(x = education, fill = gender)) +
   theme(legend.position = "bottom")
 ```
 
-### Box Plot
+## Box Plot
 
 ```r
 ggplot(df, aes(x = education, y = income)) +
@@ -238,7 +250,7 @@ ggplot(df, aes(x = education, y = income,
   theme(legend.position = "bottom")
 ```
 
-### Scatter Plot
+## Scatter Plot
 
 ```r
 ggplot(df, aes(x = age, y = income)) +
@@ -252,7 +264,7 @@ ggplot(df, aes(x = age, y = income,
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-### Line Graph
+## Line Graph
 
 ```r
 ggplot(df_ts[df_ts$country == "A", ],
