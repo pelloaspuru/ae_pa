@@ -1,0 +1,88 @@
+# Plotting Data {#sec-plotting}
+
+```r
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+```r
+# Histogram of income
+ggplot(df, aes(x = income)) +
+  geom_histogram(bins = 30) +
+  labs(x = "Income", y = "Frequency")
+```
+
+```r
+# Scatterplot of income against age
+ggplot(df, aes(x = income, y = age)) +
+  geom_point(size  = 2) +
+  labs(x = "Income", y = "Age")
+```
+
+## Histogram
+
+```r
+ggplot(df, aes(x = income)) +
+  geom_histogram(bins = 20)
+```
+
+```r
+ggplot(df, aes(x = income)) +
+  geom_histogram(bins = 20) +
+  facet_wrap(~ gender, ncol = 1)
+```
+
+## Bar Chart
+
+```r
+ggplot(df, aes(x = education)) +
+  geom_bar()
+```
+
+```r
+ggplot(df, aes(x = education, fill = gender)) +
+  geom_bar(position = "dodge") +
+  theme(legend.position = "bottom")
+```
+
+## Box Plot
+
+```r
+ggplot(df, aes(x = education, y = income)) +
+  geom_boxplot()
+```
+
+```r
+ggplot(df, aes(x = education, y = income,
+               fill = gender)) +
+  geom_boxplot() +
+  theme(legend.position = "bottom")
+```
+
+## Scatter Plot
+
+```r
+ggplot(df, aes(x = age, y = income)) +
+  geom_point()
+```
+
+```r
+ggplot(df, aes(x = age, y = income,
+               colour = gender)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## Line Graph
+
+```r
+ggplot(df_ts[df_ts$country == "A", ],
+       aes(x = year, y = unemp)) +
+  geom_line()
+```
+
+```r
+ggplot(df_ts, aes(x = year, y = unemp,
+                  colour = country)) +
+  geom_line()
+```

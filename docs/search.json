@@ -1,0 +1,482 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Applied Economics",
+    "section": "",
+    "text": "Welcome\nThis is the website of the course Applied Economics at the University of Vienna, Winter 2026/2027.\nContent coming soon.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Applied Economics",
+    "section": "Course description",
+    "text": "Course description",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "Applied Economics",
+    "section": "Schedule",
+    "text": "Schedule",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#assessment",
+    "href": "index.html#assessment",
+    "title": "Applied Economics",
+    "section": "Assessment",
+    "text": "Assessment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#software",
+    "href": "index.html#software",
+    "title": "Applied Economics",
+    "section": "Software",
+    "text": "Software",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "Applied Economics",
+    "section": "References",
+    "text": "References",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Applied Economics",
+    "section": "Contact",
+    "text": "Contact",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "01_intro.html",
+    "href": "01_intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Setting up your first .R script\nFind the slides here",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html#setting-up-your-first-.r-script",
+    "href": "01_intro.html#setting-up-your-first-.r-script",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1.1 Comments\n\n# This is a comment\n\n\n\n1.1.2 Header\n# Check current working directory\ngetwd()\n\n# Set a new working directory.\nsetwd(\"C:/Users/YourName/Desktop/AE_2026\")\n\n# Verify the change\ngetwd()\n\n# List files in the working directory\ndir()\n\n\n1.1.3 Clean the environment\n\n# List all objects in the environment\nls()\n\n[1] \"pandoc_dir\"      \"quarto_bin_path\"\n\n# Remove all objects from the environment\nrm(list = ls())\n\n# Verify the change\nls()\n\ncharacter(0)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html#r-objects",
+    "href": "01_intro.html#r-objects",
+    "title": "1  Introduction",
+    "section": "1.2 R Objects",
+    "text": "1.2 R Objects\n\n1.2.1 Scalar objects\n\n# Create object \"n\"\nn &lt;- 100\n\n# Print the object in the console:\nn\n\n[1] 100\n\n\n\n\n1.2.2 Vectors\n\n# generate vector \"age\":\nage &lt;- sample(18:65, n, replace = TRUE)\n\n\n# Visualize\nage # Print object in console\n\n  [1] 26 19 26 65 33 24 33 63 21 37 48 36 52 65 24 59 38 24 37 19 32 47 53 31 63\n [26] 34 28 53 60 39 64 36 24 42 19 63 22 49 55 65 45 42 21 20 23 51 62 35 59 27\n [51] 54 32 19 47 29 29 63 27 54 27 25 46 37 41 31 37 55 58 53 54 28 52 40 38 49\n [76] 21 36 45 47 50 33 44 43 65 40 56 29 48 25 26 37 31 31 22 40 47 40 43 53 23\n\nstr(age) # Object type, size\n\n int [1:100] 26 19 26 65 33 24 33 63 21 37 ...\n\nclass(age) # Object type\n\n[1] \"integer\"\n\ndim(age)\n\nNULL\n\nls() # List all objects\n\n[1] \"age\" \"n\"  \n\n\nAirPassengers is a dataset that comes built into R: the monthly totals of international airline passengers, in thousands, from January 1949 to December 1960. Stores information in three vectors:\n\n# Three vectors with one value per month\npassengers &lt;- as.numeric(AirPassengers)\nyear       &lt;- as.numeric(floor(time(AirPassengers)))\nmonth      &lt;- as.numeric(cycle(AirPassengers))\n\nlength(passengers)     # 144\n\n[1] 144\n\n\n\n# Access elements of a vector\npassengers[1]          # first element: 112\n\n[1] 112\n\npassengers[1:3]        # elements 1 to 3: 112 118 132\n\n[1] 112 118 132\n\npassengers[c(1, 144)]  # first and last: 112 432\n\n[1] 112 432\n\n\n\n\n1.2.3 From Vectors to Dataframes\nA dataframe is a two-dimensional object that stores data as a table, with rows and columns:\n\nEach row is one observation (an individual, a month, a country, …).\nEach column is one variable (income, education, number of passengers, …).\n\n\n\n\n\n\n\n\n\n\nEvery column of a dataframe is a vector, and all columns have the same length. So if we have several vectors of the same length, where position 1 in each vector refers to the same observation, position 2 to the next one, and so on, we can put them side by side as the columns of a dataframe with data.frame(). The three vectors year, month and passengers each have 144 elements, one per month, so together they form a dataframe with 144 rows and 3 columns:\n\n# Create a dataset from the three vectors\ndf_air &lt;- data.frame(year, month, passengers)\ndim(df_air)            # 144 rows, 3 columns\n\n[1] 144   3\n\n\n\nhead(df_air)\n\n  year month passengers\n1 1949     1        112\n2 1949     2        118\n3 1949     3        132\n4 1949     4        129\n5 1949     5        121\n6 1949     6        135",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html#inspecting-dataframes",
+    "href": "01_intro.html#inspecting-dataframes",
+    "title": "1  Introduction",
+    "section": "1.3 Inspecting Dataframes",
+    "text": "1.3 Inspecting Dataframes\n\n# longley: US macroeconomic data, one row per year (1947-1962)\ndata(longley)\nclass(longley)        # \"data.frame\"\n\n[1] \"data.frame\"\n\nhead(longley)\n\n     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed\n1947         83.0 234.289      235.6        159.0    107.608 1947   60.323\n1948         88.5 259.426      232.5        145.6    108.632 1948   61.122\n1949         88.2 258.054      368.2        161.6    109.773 1949   60.171\n1950         89.5 284.599      335.1        165.0    110.929 1950   61.187\n1951         96.2 328.975      209.9        309.9    112.075 1951   63.221\n1952         98.1 346.999      193.2        359.4    113.270 1952   63.639\n\n\n\n1.3.1 Selecting Observations, Variables\ndf$age # Print the age column of df\ndf[[2]] # Same as previous line\n# Accessing data through row/column indexes\ndf[1:3,] # Rows 1 to 3, all columns.\ndf[,c(1,4)] # All rows, Columns 1 and 4.\ndf[c(1,25),c(1,3)] # Rows 1 and 25, Columns 1 and 3.\ndf_first_fifty_rows &lt;- df[1:50,]\n\n\n1.3.2 Logical Operators\n# Logical condition vector\nindex_old_males &lt;- (df$gender == \"Male\") & (df$age &gt; 50)\ntable(index_old_males)\ndf_old_males &lt;- df[index_old_males, ]\ndf_old_males &lt;- df[(df$gender == \"Male\") & (df$age &gt; 50), ]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html#functions",
+    "href": "01_intro.html#functions",
+    "title": "1  Introduction",
+    "section": "1.4 Functions",
+    "text": "1.4 Functions\n# Define the function \"square()\"\n\nsquare &lt;- function(x) { return(x^2) }\n\n# Run function on object, store as \"result\"\n\nresult &lt;- square(number)\n\n# Print the result in the console\n\nprint(result)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html#r-packages",
+    "href": "01_intro.html#r-packages",
+    "title": "1  Introduction",
+    "section": "1.5 R Packages",
+    "text": "1.5 R Packages\n# Install once (downloads from CRAN)\ninstall.packages(\"ggplot2\")\n# Load every time you start R\nlibrary(ggplot2)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html#manipulating-datasets",
+    "href": "01_intro.html#manipulating-datasets",
+    "title": "1  Introduction",
+    "section": "1.6 Manipulating datasets",
+    "text": "1.6 Manipulating datasets\n\n1.6.1 Generating new variables.\ndataframe$var1 &lt;- NULL\n# New variables generation\ndf$log_age &lt;- log(df$age)\ndf$is_higly_educated &lt;- df$education %in% c(\"Master\", \"PhD\")\n\n\n1.6.2 Aggregating data\n\n\n1.6.3 Merging datasets",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro.html#data",
+    "href": "01_intro.html#data",
+    "title": "1  Introduction",
+    "section": "1.7 Data",
+    "text": "1.7 Data",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "02_plotting.html",
+    "href": "02_plotting.html",
+    "title": "2  Plotting Data",
+    "section": "",
+    "text": "2.1 Histogram",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_plotting.html#histogram",
+    "href": "02_plotting.html#histogram",
+    "title": "2  Plotting Data",
+    "section": "",
+    "text": "ggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20)\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20) +\n  facet_wrap(~ gender, ncol = 1)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_plotting.html#bar-chart",
+    "href": "02_plotting.html#bar-chart",
+    "title": "2  Plotting Data",
+    "section": "2.2 Bar Chart",
+    "text": "2.2 Bar Chart\nggplot(df, aes(x = education)) +\n  geom_bar()\nggplot(df, aes(x = education, fill = gender)) +\n  geom_bar(position = \"dodge\") +\n  theme(legend.position = \"bottom\")",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_plotting.html#box-plot",
+    "href": "02_plotting.html#box-plot",
+    "title": "2  Plotting Data",
+    "section": "2.3 Box Plot",
+    "text": "2.3 Box Plot\nggplot(df, aes(x = education, y = income)) +\n  geom_boxplot()\nggplot(df, aes(x = education, y = income,\n               fill = gender)) +\n  geom_boxplot() +\n  theme(legend.position = \"bottom\")",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_plotting.html#scatter-plot",
+    "href": "02_plotting.html#scatter-plot",
+    "title": "2  Plotting Data",
+    "section": "2.4 Scatter Plot",
+    "text": "2.4 Scatter Plot\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nggplot(df, aes(x = age, y = income,\n               colour = gender)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_plotting.html#line-graph",
+    "href": "02_plotting.html#line-graph",
+    "title": "2  Plotting Data",
+    "section": "2.5 Line Graph",
+    "text": "2.5 Line Graph\nggplot(df_ts[df_ts$country == \"A\", ],\n       aes(x = year, y = unemp)) +\n  geom_line()\nggplot(df_ts, aes(x = year, y = unemp,\n                  colour = country)) +\n  geom_line()",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "03_mlr1.html",
+    "href": "03_mlr1.html",
+    "title": "3  Multiple Linear Regression I",
+    "section": "",
+    "text": "3.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
+    ]
+  },
+  {
+    "objectID": "03_mlr1.html#r-code",
+    "href": "03_mlr1.html#r-code",
+    "title": "3  Multiple Linear Regression I",
+    "section": "3.2 R code",
+    "text": "3.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
+    ]
+  },
+  {
+    "objectID": "03_mlr1.html#data",
+    "href": "03_mlr1.html#data",
+    "title": "3  Multiple Linear Regression I",
+    "section": "3.3 Data",
+    "text": "3.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
+    ]
+  },
+  {
+    "objectID": "04_mlr2.html",
+    "href": "04_mlr2.html",
+    "title": "4  Multiple Linear Regression II",
+    "section": "",
+    "text": "4.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+    ]
+  },
+  {
+    "objectID": "04_mlr2.html#r-code",
+    "href": "04_mlr2.html#r-code",
+    "title": "4  Multiple Linear Regression II",
+    "section": "4.2 R code",
+    "text": "4.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+    ]
+  },
+  {
+    "objectID": "04_mlr2.html#data",
+    "href": "04_mlr2.html#data",
+    "title": "4  Multiple Linear Regression II",
+    "section": "4.3 Data",
+    "text": "4.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+    ]
+  },
+  {
+    "objectID": "05_ols-variance.html",
+    "href": "05_ols-variance.html",
+    "title": "5  OLS Variance and Robust Standard Errors",
+    "section": "",
+    "text": "5.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+    ]
+  },
+  {
+    "objectID": "05_ols-variance.html#r-code",
+    "href": "05_ols-variance.html#r-code",
+    "title": "5  OLS Variance and Robust Standard Errors",
+    "section": "5.2 R code",
+    "text": "5.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+    ]
+  },
+  {
+    "objectID": "05_ols-variance.html#data",
+    "href": "05_ols-variance.html#data",
+    "title": "5  OLS Variance and Robust Standard Errors",
+    "section": "5.3 Data",
+    "text": "5.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+    ]
+  },
+  {
+    "objectID": "06_inference.html",
+    "href": "06_inference.html",
+    "title": "6  Statistical Inference",
+    "section": "",
+    "text": "6.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "06_inference.html#r-code",
+    "href": "06_inference.html#r-code",
+    "title": "6  Statistical Inference",
+    "section": "6.2 R code",
+    "text": "6.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "06_inference.html#data",
+    "href": "06_inference.html#data",
+    "title": "6  Statistical Inference",
+    "section": "6.3 Data",
+    "text": "6.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "07_causality.html",
+    "href": "07_causality.html",
+    "title": "7  Causality and Correlation",
+    "section": "",
+    "text": "7.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Causality and Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "07_causality.html#r-code",
+    "href": "07_causality.html#r-code",
+    "title": "7  Causality and Correlation",
+    "section": "7.2 R code",
+    "text": "7.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Causality and Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "07_causality.html#data",
+    "href": "07_causality.html#data",
+    "title": "7  Causality and Correlation",
+    "section": "7.3 Data",
+    "text": "7.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Causality and Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "08_iv.html",
+    "href": "08_iv.html",
+    "title": "8  Instrumental Variables",
+    "section": "",
+    "text": "8.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instrumental Variables</span>"
+    ]
+  },
+  {
+    "objectID": "08_iv.html#r-code",
+    "href": "08_iv.html#r-code",
+    "title": "8  Instrumental Variables",
+    "section": "8.2 R code",
+    "text": "8.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instrumental Variables</span>"
+    ]
+  },
+  {
+    "objectID": "08_iv.html#data",
+    "href": "08_iv.html#data",
+    "title": "8  Instrumental Variables",
+    "section": "8.3 Data",
+    "text": "8.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instrumental Variables</span>"
+    ]
+  },
+  {
+    "objectID": "09_panel.html",
+    "href": "09_panel.html",
+    "title": "9  Panel Data Methods",
+    "section": "",
+    "text": "9.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Panel Data Methods</span>"
+    ]
+  },
+  {
+    "objectID": "09_panel.html#r-code",
+    "href": "09_panel.html#r-code",
+    "title": "9  Panel Data Methods",
+    "section": "9.2 R code",
+    "text": "9.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Panel Data Methods</span>"
+    ]
+  },
+  {
+    "objectID": "09_panel.html#data",
+    "href": "09_panel.html#data",
+    "title": "9  Panel Data Methods",
+    "section": "9.3 Data",
+    "text": "9.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Panel Data Methods</span>"
+    ]
+  },
+  {
+    "objectID": "10_did.html",
+    "href": "10_did.html",
+    "title": "10  Difference-in-Differences",
+    "section": "",
+    "text": "10.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "10_did.html#r-code",
+    "href": "10_did.html#r-code",
+    "title": "10  Difference-in-Differences",
+    "section": "10.2 R code",
+    "text": "10.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "10_did.html#data",
+    "href": "10_did.html#data",
+    "title": "10  Difference-in-Differences",
+    "section": "10.3 Data",
+    "text": "10.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "11_rdd.html",
+    "href": "11_rdd.html",
+    "title": "11  Regression Discontinuity Design",
+    "section": "",
+    "text": "11.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  },
+  {
+    "objectID": "11_rdd.html#r-code",
+    "href": "11_rdd.html#r-code",
+    "title": "11  Regression Discontinuity Design",
+    "section": "11.2 R code",
+    "text": "11.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  },
+  {
+    "objectID": "11_rdd.html#data",
+    "href": "11_rdd.html#data",
+    "title": "11  Regression Discontinuity Design",
+    "section": "11.3 Data",
+    "text": "11.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  }
+]
