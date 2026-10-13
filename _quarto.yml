@@ -14,16 +14,16 @@ book:
   search: true
   chapters:
     - index.qmd
-    - intro.qmd
-    - mlr1.qmd
-    - mlr2.qmd
-    - ols-variance.qmd
-    - inference.qmd
-    - causality.qmd
-    - iv.qmd
-    - panel.qmd
-    - did.qmd
-    - rdd.qmd
+    - 01_intro.qmd
+    - 02_mlr1.qmd
+    - 03_mlr2.qmd
+    - 04_ols-variance.qmd
+    - 05_inference.qmd
+    - 06_causality.qmd
+    - 07_iv.qmd
+    - 08_panel.qmd
+    - 09_did.qmd
+    - 10_rdd.qmd
   page-footer:
     left: "Applied Economics, University of Vienna"
     right: "Built with [Quarto](https://quarto.org/)"
