@@ -10,7 +10,9 @@ Find the slides [here](slides/AE_week01_Intro/AE_w01_intro.pdf)
 # Create object "number"
 
 number <- 5
+```
 
+```r
 # Define the function "square()"
 
 square <- function(x) { return(x^2) }
