@@ -1,0 +1,506 @@
+\documentclass[11pt, aspectratio = 169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\usepackage{hyperref}  
+\usepackage{tikz}  
+\usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
+\tikzset{
+    -Latex,auto,node distance =1 cm and 1 cm,semithick,
+    state/.style ={ellipse, draw, minimum width = 0.7 cm},
+    point/.style = {circle, draw, inner sep=0.04cm,fill,node contents={}},
+    bidirected/.style={Latex-Latex,dashed},
+    el/.style = {inner sep=2pt, align=left, sloped}
+}
+\usepackage{verbatim} 
+\usepackage{listings}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\definecolor{links}{HTML}{1B1B81}
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+
+\title{Applied Economics}
+\subtitle{Panel Data Methods}
+\author{Beate Thies}
+\date{}
+\institute{Winter 2024/25}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=teal}
+
+\let\svdescription\description
+\let\svenddescription\enddescription
+\renewenvironment{description}{%
+  \svdescription%
+  \let\svitem\item%
+  \renewcommand\item[1][]{\svitem[\textcolor{\descriptioncolor}{##1}]}%
+  }{
+  \svenddescription%
+  }
+\newcommand\descriptioncolor{teal}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+\begin{frame}{Plan for this Lecture}
+\begin{enumerate}
+
+\item What is Panel Data?
+
+\item  Within and Between Variation
+
+\item Panel Data Estimators
+\begin{itemize}
+\item Dummy Variable Estimator
+\item First Differences
+\item Within-Estimator 
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Motivation}
+Endogeneity due to OVB is a pervasive issue.
+
+One approach to address it: instrumental variable regressions
+
+Finding suitable instruments is very hard.
+
+Today we consider an alternative approach to address certain forms of omitted variables: 
+\textbf{panel data} allows to control for all \textit{time-invariant} unobservables.
+
+\end{frame}
+
+\section{What is Panel Data?}
+
+\begin{frame}{What is Panel Data?}
+Panel data: same cross-sectional unit is observed over multiple time periods 
+\begin{itemize}
+    \item \textit{cross-sectional unit} can be a person, company, city, state, etc. ($i = 1,…n$) 
+    \item \textit{time period} can be a year, a month, a day, etc. ($t = 1,…,T$)
+\end{itemize}
+
+We denote a sample of panel observations as  $\{Y_{it}, \boldsymbol{X}_{it}\}$,  $i = 1, ... , n$, and $t = 1, ..., T$.
+
+\bigskip
+\pause
+\textbf{Balanced} panel: $\: \: \: \: \{Y_{it}, \boldsymbol{X}_{it}\}$ $i = 1, ..., n; t = 1, . . . , T$  \color{gray}[n x T observations in total] \color{black} \\
+\textbf{Unbalanced} panel: $\{Y_{it}, \boldsymbol{X}_{it}\}$, $i = 1, ..., n; t = \underline{t}_i . . . , \overline{t}_i$,
+where $\underline{t}_i$ and $\overline{t}_i$ may vary across $i$. $\rightarrow$ we do not observe the same number of periods for each $i$.
+
+Unbalancedness is prevalent in practice, but we will abstract from this for the sake of exposition. 
+\end{frame}
+
+\begin{frame}{(Unbalanced) Panel Data: Example}
+\begin{columns}
+    \begin{column}{.7\linewidth}
+        \small \centering
+    \begin{tabular}{l|l|r|r|r|l}
+\toprule
+state & year & fatalities & seatbelt & income & min age\\
+\hline
+\color{blue} AK & 1990 & 0.025 & 0.450 & 21073 & 16 \\
+\color{blue}AK & 1991 & 0.025 & 0.660 & 21496& 16\\
+\color{blue}AK & 1992 & 0.028 & 0.660 & 22073& 16\\
+\color{blue}AK & 1993 & 0.030 & 0.690 & 22711& 16\\
+\color{teal} AL & 1988 & 0.026 & 0.290 & 13288& 18\\
+\color{teal}  AL & 1989 & 0.025 & 0.380 & 14266& 18\\
+\color{teal} AL & 1990 & 0.026 & 0.440 & 15213& 18\\
+\color{teal} AL & 1991 & 0.026 & 0.470 & 15895& 18\\
+\color{teal} AL & 1992 & 0.023 & 0.580 & 16817& 18\\
+\color{teal} AL & 1993 & 0.022 & 0.550 & 17398& 18\\
+AR & 1988 & 0.032 & 0.301 & 12637& 21\\
+AR & 1990 & 0.029 & 0.340 & 14025& 21\\
+AR & 1991 & 0.028 & 0.520 & 14766& 21\\
+&...&...&&\\
+\bottomrule
+\end{tabular}
+    \end{column}
+
+        \begin{column}{.353\linewidth}
+        $i$ = state \\
+        $t$ = year \\
+        $Y_{it}$ = number of fatalities per \hspace*{+.69cm} million traffic miles  \\
+        $X_{1it}$ = seat belt usage rate \\
+         $X_{2it}$ = median income \\
+         $X_{3it}$ = minimum drinking age
+
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{What is Panel Data?}
+Our focus is on large micro-level survey data sets. These are often called “large $n$, small $T$” panels.
+\begin{itemize}
+    \item many cross-sectional units $n$ (which may be randomly sampled) 
+    \item observed for small number of time periods $T$ (which are typically ordered)
+\end{itemize} 
+
+\medskip 
+We usually assume that the cross-sectional units (e.g households, firms) are randomly sampled from a large population $\rightarrow$ i.i.d. across $i = 1, ... , n$.
+
+At the same time, we will not make the i.i.d assumption within a unit $i$ across time (i.e., for a given unit $i$), as it is typically implausible in most settings.
+\vspace{-.3cm}
+\small \begin{itemize}
+    \item example: income of household $i$ in year $t$ and year $t+1$ 
+\end{itemize} 
+
+\end{frame}
+
+\section{Within- and between-Variation}
+
+
+\begin{frame}{Pooled OLS}
+    We can write a linear panel data model  as:
+\begin{align*}
+   Y_{it} = \boldsymbol{X}_{it} \boldsymbol{\beta} + u_{it} , i = 1, ... , n; t = 1, ... , T. 
+\end{align*}
+
+$\boldsymbol{X}_{it}$ includes all regressors. \\
+They might vary only across $i$ (e.g. minimum drinking age), only across $t$ (e.g. year dummies) or across both $i$ and $t$ (seat belt usage rate). 
+
+
+\pause
+
+\color{teal}\textbf{Pooled OLS} \color{black}
+= estimate the parameters of the model by OLS
+
+%When computing the OLS estimator, we just sum over both $i$ and $t$. \\
+\begin{itemize}
+
+\item  treats the cross-section and time series dimensions of the data in the
+same way %, and  $\rightarrow$  
+
+\item exploits $all$ variation in the data, both within and between cross-sectional units.
+
+\item consistent under MLR.1 to MLR.4 \\
+    (MLR.2 implies: observations for different $t$ are sampled independently).
+
+
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{Example: Pooled OLS}
+    \includegraphics[width = .8\linewidth]{plot1.png} 
+\end{frame}
+
+%\section{Within- vs. between-variation}
+
+\begin{frame}{Within- vs. between-variation}
+
+Pooled OLS treats the whole data as one large (pooled) i.i.d. sample.
+\vspace{-0.23cm}
+\begin{itemize}
+    \item often not justified as observations are not independent within units $i$ across $t$.
+    \item moreover, it does not exploit the specific advantages of panel data!
+\end{itemize}
+\bigskip
+    
+In a panel data set, we can decompose the total variation in our variables into
+
+\begin{enumerate}
+    \item \alert{within variation:} changes within each cross-sectional group $i$ over time.
+     \item \alert{between variation:} changes between cross-sectional groups 
+\end{enumerate}
+
+Example: seat belt usage rate varies \textit{between} states, and \textit{within} each state across years. \\
+minimum drinking age only varies between states. It is \alert{time-invariant}.
+\end{frame}
+
+
+\begin{frame}{The Panel Model}
+
+In the same way, unobservable determinants of $Y_{it}$ in the error include 
+
+\begin{itemize}
+    \item time-invariant components: only differ between units $i$ (e.g. geography, population's attitude towards seat belts)  
+    \item and components that vary between units $i$ \textit{and} within unit $i$ over time (e.g. weather conditions)
+\end{itemize}
+
+
+Assuming the error term consists of two components, we can write:
+\begin{align*}
+       Y_{it} = \boldsymbol{X}_{it} \boldsymbol{\beta} + \underbrace{c_i + \epsilon_{it}}_{u_{it}} , i = 1, ... , n; t = 1, ... , T. 
+\end{align*}
+\vspace{-0.3cm}
+\begin{description}
+    \item[$c_i$] unobserved time-invariant characteristics of unit $i$.
+    \item[$\epsilon_{it}$] idiosyncratic error term, varies both across $i$ and $t$.
+\end{description}
+\pause 
+
+with \alert{\textbf{$c_i$ potentially correlated with included regressors:}}  $Cov(\boldsymbol{X}_{it},c_i) \neq 0 \: \Rightarrow E[\epsilon_{it}+c_i|\boldsymbol{X}_{it}] \neq 0 \: \rightarrow$ endogeneity, bias in pooled OLS
+\end{frame}
+
+
+
+\begin{frame}{Within- and between-Variation}
+    \includegraphics[width =.8\linewidth]{plot2.png}
+\end{frame}
+
+
+\begin{frame}{Panel Data and Time-Invariant Unobservables}
+
+$c_i$ (= individual \textbf{fixed effect} or unobserved heterogeneity) is fixed over time.
+
+
+With panel data, we can use \alert{estimators that exploit only the $within-$variation} in the data, thereby eliminating all time-invariant factors!
+
+This can help us address OVB by \alert{controlling for \textit{all time-invariant} error components $c_i$}.
+
+
+Let's look at different ways to estimate the fixed effects model.
+\end{frame}
+
+\section{Panel Data Estimators}
+\begin{frame}{The Dummy Variable Regression}
+
+Option 1) explicitly add $c_i$ to our regression by adding a dummy for each cross-sectional unit $i$. 
+
+Example: Using data at the state$\times$year level, we can “control” for a state-dummy (all time-invariant unobservable characteristics at the state level, e.g. local laws).
+\begin{align*}
+       Y_{it} = \boldsymbol{X}_{it} \boldsymbol{\beta} + \only<1>{ \alpha_1 \mathbbm{1}\{state = i\} + ... + \alpha_n \mathbbm{1}\{state = n\}} 
+       \only<2>{ \color{blue} \underbrace{\alpha_1 \mathbbm{1}\{state = 1\}}_{c_1} + ... + \underbrace{\alpha_n \mathbbm{1}\{state = n\}}_{c_n}}\color{black} 
+       + \, \epsilon_{it} , \: \: i = 1, ... , n; t = 1, ... , T. 
+\end{align*}
+\small Note: we either have to omit one dummy, or the constant.
+
+
+\normalsize
+ \texttt{Keeping controls \alert{and the state fixed}, a change in $X_1$ by 1 unit is associated with...} \\
+ $\rightarrow$  coefficients are estimated from variation for one specific $i$ over time only ($within-$variation):
+\end{frame}
+
+\begin{frame}{The Dummy Variable Estimator}
+We can estimate the model with the cross-sectional-unit-dummies by  OLS to obtain $\hat{\boldsymbol{\beta}}$. \\
+$\rightarrow$ OLS is unbiased if $E[\epsilon_{it}|\boldsymbol{X_{it}}, c_i] = 0$ (MLR.4 for this model).
+
+Because all time-invariant unobservables are eliminated from $\epsilon_{it}$, this is a much less strong assumption than $E[u_{it}|\boldsymbol{X_{it}}] = 0$.
+
+Example: weather conditions much more likely to satisfy conditional mean independence than population's attitude towards seat belts.
+
+When thinking about omitted variables that might be correlated with included regressors, we can ignore all time-invariant unobservables.  Every conceivable time-invariant variable is accounted for in our analyses!
+\end{frame}
+
+\begin{frame}[fragile]{Pooled OLS vs. Dummy Variable Estimator}
+<<include = F>>=
+library(sandwich)
+library(lmtest)
+dat <- read.csv("seatbelts.csv")
+head(dat)
+@
+\footnotesize
+<<>>=
+pooled <- lm(fatality_rate ~ seatbelt_usage, data = dat) 
+coeftest(pooled, vcov. = vcovHC(pooled, "HC1"))
+
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Pooled OLS vs. Dummy Variable Estimator}
+\footnotesize
+<<>>=
+# include state dummies
+dvr <- lm(fatality_rate ~ seatbelt_usage + factor(state), data = dat) 
+coeftest(dvr, vcov. = vcovHC(dvr, "HC1"))
+
+@
+\end{frame}
+
+\begin{frame}{Interpretation}
+    Pooled OLS: \\ Comparing seat belt usage rate and fatality rates \textit{across states and years}, we find that an increase in the seatbelt usage rate by 0.1 (10 percentage points) is associated with an \textit{increase} in the number of fatalities per million miles driven by .00057.  \color{gray} (=2.9\% of the sample mean).
+
+\bigskip
+\color{black}
+
+Dummy variable estimation: \\ Comparing seat belt usage rate and fatality rates \textit{within states over time}, we find that an increase in the seat belt usage rate by .1 is associated with a \textit{decrease} in the number of fatalities per million miles driven by .0017.  \color{gray} (=8.6\% of the sample mean).
+
+    
+\end{frame}
+\begin{frame}{Illustration: Fixed Effects Estimation}
+    \includegraphics[width =.8\linewidth]{plot4.png}
+\end{frame}
+
+
+\begin{frame}{Another Example}
+Climate change literature: how do rising temperatures affect human health and productivity?
+
+Say we are interested in the effect of outdoor temperature ($X_{it}$) on exam performance ($Y_{it}$) among students in Italy.
+
+We have a \textbf{panel} of students $i = 1,...,n$ all across the country for multiple exams taken at dates $t = 1,...,T$.
+
+Just regressing $Y_{it}$ on $X_{it}$ (pooled OLS) might yield biased estimates, e.g. if students in the warmer South study harder because of bad economic prospects in the South. 
+
+$\rightarrow$ $X_{it}$ correlated with $u_{it}$ (e.g. effort)
+\end{frame}
+
+\begin{frame}{Another Example}
+\begin{align*}
+       Y_{it} = \boldsymbol{X}_{it} \boldsymbol{\beta} +  \color{blue} \underbrace{\alpha_1 \mathbbm{1}\{student = 1\}}_{c_1} + ... + \underbrace{\alpha_n \mathbbm{1}\{student = n\}}_{c_n}\color{black}
+       + \epsilon_{it} , i = 1, ... , n; t = 1, ... , T. 
+\end{align*}
+
+Dummy variable regression allows to control for all time-invariant unobservables $c_i$, e.g. overall student effort and ability!
+
+Effect of temperature will be estimated from variation for one specific student over exam dates (within-−student variation). 
+
+\end{frame}
+
+\begin{frame}{First-Differences Estimator}
+
+Option 2) If $T = 2$, an alternative to the dummy variable approach is first-differencing:
+
+Consider the models for the two time periods:
+\begin{align*}
+    Y_{i1}& = \boldsymbol{X}'_{i1}\boldsymbol{\beta} + c_i + \epsilon_{i1}  \text{ and  } \\
+Y_{i2} &= \boldsymbol{X}'_{i2}\boldsymbol{\beta} + c_i + \epsilon_{i2}   
+\end{align*}
+Differencing yields: 
+\begin{align*}
+Y_{i2} – Y_{i1} &= (\boldsymbol{X}'_{i2} - \boldsymbol{X}'_{i1}) \boldsymbol{\beta} + (c_i – c_i) + (\epsilon_{i2} – \epsilon_{i1}) \\
+\text{ or: } \Delta Y_i &= \Delta \boldsymbol{X}_{i} \boldsymbol{\beta} + \Delta\epsilon_i
+\end{align*}
+$\rightarrow$ The unobserved heterogeneity $c_i$ drops out! (and also $\beta_0$)
+
+\pause 
+This is our “estimating equation”. \\
+We can estimate $\boldsymbol{\beta}$ by OLS by regressing $\Delta Y_i$ on $\Delta \boldsymbol{X}_i$. \\
+The estimator is unbiased if $E[\Delta\epsilon_i|\Delta \boldsymbol{X}_{i}] = 0$ (MLR.4 for this model).
+\end{frame}
+
+
+\begin{frame}{Within Transformation}
+Option 3) The most common estimation approach is the \textit{within-transformation}.
+
+\begin{enumerate}
+    \item For all variables in your model, compute the time-mean for each unit $i$: \\
+\hspace{+0.3cm} $\overline{Y_{i}} = \frac{1}{T} \sum_{t=1}^T Y_{it}$, $\overline{X}_{1i} = \frac{1}{T} \sum_{t=1}^T X_{1it}$, ...
+\pause
+    \item For each observation, deduct the time means from the actual values. Obtain the \textit{demeaned} variables $(Y_{it}-\overline{Y_{i}}),  (X_{1it}-\overline{X}_{1i}),...., (X_{kit}−-\overline{X}_{ki})$
+    \pause
+    \item  Regress  $(Y_{it}-\overline{Y_{i}})$ on $(X_{1it}-\overline{X}_{1i})$,..., $(X_{kit}-−\overline{X}_{ki})$
+\end{enumerate}
+
+\textit{Demeaned} Equation:
+\begin{align*}
+Y_{it}-\overline{Y}_{i} & = (\beta_0 -\beta_0) + \beta_1(X_{1it}-\overline{X}_{1i}) + ...+ \beta_k(X_{kit}-\overline{X_{ki}}) + \color{red}(c_i- c_i) +\color{black} (\epsilon_{it} -\overline{\epsilon}_i) \\
+& =\beta_1(X_{1it}-\overline{X}_{1i}) + ...+ \beta_k(X_{kit}-\overline{X}_{ki}) + (\epsilon_{it}-\overline{\epsilon}_i) 
+\end{align*}
+
+$c_i$ drops out because there is no \textit{within-variation} in $c_i$! \\
+Again, we can estimate this “demeaned equation” by OLS.
+\end{frame}
+
+\begin{frame}[fragile]{Within Estimator -- Manual}
+\footnotesize
+<<include = FALSE>>=
+meansx <- as.data.frame(tapply(dat$seatbelt_usage, dat$state, mean)) 
+names(meansx) <- "means_x"
+meansx$state <- rownames(meansx)
+meansx
+dat = merge(dat, meansx)
+dat$fatal_demeaned = dat$fatality_rate - dat$means_x # demean variables
+@
+
+<<>>=
+meansy <- as.data.frame(tapply(dat$fatality_rate, dat$state, mean)) # compute time means
+names(meansy) <- "means_y"
+meansy$state <- rownames(meansy)
+meansy # time mean of dependent variable for each state
+dat = merge(dat, meansy, by = "state")
+dat$fatal_demeaned = dat$fatality_rate - dat$means_y # demean dependend variable
+# same for regressor (computation ommited)
+dat$seatbelt_demeaned = dat$seatbelt_usage -dat$means_x 
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Within Estimator -- Manual}
+\footnotesize
+<<>>=
+mod_within <- lm(fatal_demeaned ~ seatbelt_demeaned, data = dat) 
+coeftest(mod_within, , vcov. = vcovHC(mod_within, "HC1"))
+@
+\small
+We obtain the same slope coefficient estimate with the dummy variable and the within-transformation approaches.
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Within Estimator with \texttt{fixest}}
+We can directly implement the within-estimator in R using the command \alert{\texttt{feols}} from the package \alert{\texttt{fixest}}.
+
+\small \color{gray}
+\texttt{install.packages("fixest") \\
+library(fixest) \\
+fe\_mod <- feols(fatality\_rate $\sim$ seatbelt\_usage | state, data = dat) \\
+summary(fe\_mod)
+}
+
+
+\texttt{
+\begin{tabular}{lcccc}
+Fixed-effects: &state: 4 &&&\\
+Standard-errors: &Clustered (state)&&& \\
+&&& \\
+      &         Estimate Std.& Error & t value &$Pr(>|t|)$    \\
+seatbelt\_usage& -0.016942  & 0.003851 &-4.39955& 0.021769 *  \\   
+ \end{tabular} }
+\normalsize
+\color{black}
+
+Syntax is similar to  \texttt{estimatr::iv\_robust}: here the \textbf{fixed effects come after the $|$}
+
+The command directly provides \textbf{cluster-robust standard errors}: they account for dependence between observations across time within a cross-sectional group (state).
+\end{frame}
+
+
+\begin{frame}{Limitations of Panel Data Estimators}
+Unlike pooled OLS, % estimator: exploits deviations from the overall sample means of $Y$ and $X_j$  \\
+ the within-estimator exploits only \textit{within-}variation for each unit $i$, i.e. deviations from the unit-specific mean. (like the other approaches we considered)
+
+%Important limitation of these approaches: \\
+\alert{\textbf{We cannot include time-invariant regressors}} when using these estimators.   They would drop out, because they are absorbed by the individual fixed effect.
+
+Example: in a wage regression, we cannot estimate the slope coefficient on \textit{gender}. 
+
+%(e.g. gender)
+Even for variables with only little  time-variation, estimating effects might not work well (e.g. education only varies among very young individuals.) 
+\end{frame}
+
+\begin{frame}{Practice}
+We are interested in the effect of union membership on the wage.
+  \small  \begin{enumerate}
+        \item Open the dataset \texttt{unions.csv}, a multi-year panel of workers with person identifier $nr$.
+        
+        \item Pooled OLS: Regress $lwage$ (log wage) on $educ$, $black$, $hisp$, $exper$ and its square, $union$ and all year dummies: $d82$, $d83$,  ...
+        
+        \item What is the effect of union membership according to this model? Why might the coefficient be inconsistent?
+        
+        \item What is the wage gap between white and black workers? How did wages change on average between 1982 and 1985?
+        
+        \item Use \texttt{feols} to take individual fixed effects into account. How does the estimated effect of union membership change?
+
+        \item Why can you not estimate the black-white wage gap with the fixed effect estimator?
+
+        \item  Keep only the years 1983 and 1987. Repeat the feols estimation. Then, add a regressor to estimate how the black-white gender gap $changed$ between these two years.
+
+        \item Compute the first differences estimator. 
+    \end{enumerate}
+\end{frame}
+\end{document}
+
+
+
+
+
+
+

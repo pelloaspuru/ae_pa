@@ -1,0 +1,10 @@
+\frametitle{Within Estimator with \texttt {fixest}}
+We can directly implement the within-estimator in R using the command
+\alert{\texttt{feols}} from the package \alert{\texttt{fixest}}.
+\pause
+\begin{lstlisting}[language=R]
+panel_within_fixest <- feols(fatality_rate ~ seatbelt_usage | state,
+                             data = df)
+coeftest(panel_within_fixest,
+         vcov. = vcovHC(panel_within_fixest, "HC0"))
+\end{lstlisting}

@@ -1,0 +1,606 @@
+\documentclass[11pt, aspectratio = 169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{verbatim} 
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\definecolor{links}{HTML}{1B1B81}
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+
+% listings: To highlight code:
+\usepackage{listings}
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red},
+  frame=single,
+  showstringspaces=false
+}
+\lstset{basicstyle=\ttfamily\footnotesize, frame=single}
+
+% To comment out large sections:
+\usepackage{comment}
+
+\title{Applied Economics}
+\subtitle{Multiple Linear Regression Model}
+\author{Pello Aspuru}
+\date{}
+\institute{Winter 2025/26}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=teal}
+
+\setbeamercovered{transparent}         % default faintness (~15%)
+
+\let\svdescription\description
+\let\svenddescription\enddescription
+\renewenvironment{description}{%
+  \svdescription%
+  \let\svitem\item%
+  \renewcommand\item[1][]{\svitem[\textcolor{\descriptioncolor}{##1}]}%
+  }{
+  \svenddescription%
+  }
+\newcommand\descriptioncolor{teal}
+
+% \usepackage{Sweave}
+\begin{document}
+%\input{AE_w2_MLR-concordance}
+
+\maketitle
+
+\begin{frame}\frametitle{Introduction}
+    \begin{itemize}
+        \item From previous lecture.
+        \begin{itemize}
+            \item A correlation between a ``treatment'' and an ``outcome'' does not neccessarily imply causation, because of \textbf{endogeneity}.
+            \item To adress endogeneity:
+                \begin{itemize}
+                    \item Randomize treatment: randomized control trials, natural experiments.
+                    \item When randomization is not feasible, control for endogeneity using multiple linear regression model (MLR).
+                \end{itemize}
+        \end{itemize}
+        \onslide<2->{
+        \item Plan for today's lecture:
+        \begin{enumerate}
+            %\item Structure and terminology of the MLR
+            \item Motivating the use of the MLR
+            \item Interpreting the Parameters
+            %\item Matrix Notation for MLR.
+            \item Deriving the OLS estimator
+            \item Empirical Example in R
+        \end{enumerate}}
+    \end{itemize}
+\end{frame}
+
+%\section{Structure and Terminology}
+
+\begin{comment}
+\begin{frame}{The Multiple Linear Regression Model}
+
+\begin{itemize}
+    %\item For a dataset with $n$ observations (rows) and $1+k$ variables (columns)
+    \item Assumes a \textbf{linear} relationship between outcome variable $Y$ and  $k$ \textbf{multiple} explanatory variables $X_1, X_2, ..., X_k$.
+    \item Determined by an intercept parameter $\beta_0$ and slope parameters $\beta_1, \beta_2, ..., \beta_k$.
+\end{itemize}
+\begin{align*}
+Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_k X_{ki} + u_i, \: \: \quad i = 1,…,n
+\end{align*}
+
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{0.44\textwidth}
+    \onslide<2->{
+    \textbf{What we observe in the data:}
+    \begin{description}
+      \item[$Y_i$] $i^{\text{th}}$ observation of the dependent variable.\footnotemark[1]
+      \item[$X_{1i},\ldots,X_{ki}$] $i^{\text{th}}$ observation of the regressors.\footnotemark[2]
+    \end{description}}
+  \end{column}
+  \begin{column}{0.56\textwidth}
+    \onslide<3->{
+    \textbf{What we do not observe:}
+    \begin{description}
+      \item[$\beta_0$] intercept/constant parameter.
+      \item[$\beta_{1},\ldots,\beta_{k}$] slope parameters.
+      \item[$u_i$] error term for the $i^{\text{th}}$ observation.
+    \end{description}}
+  \end{column}
+\end{columns}
+\vspace{0.5cm}
+\onslide<2->{
+\footnotetext[1]{also known as explained variable, regressand, outcome}
+\footnotetext[2]{also known as explanatory/independent variables, covariates}}
+\end{frame}
+\end{comment}
+
+
+
+\section{Motivating Example for the use of the MLR in Economics}
+
+\begin{frame}{Underlying Economic Model}
+Economic question: does a higher school budget \alert{cause} better student outcomes?
+\pause
+\begin{align*}
+    Y = \beta_0 + \beta_1 X_1
+\end{align*}
+
+\begin{itemize}
+    \item Outcome variable $Y \in [0,1]$: share of students that pass math exam.\footnotemark[1]
+    \item Regressor $X_1 \in (0,\infty)$: school's per-student budget.\footnotemark[2]
+\end{itemize}
+\pause 
+
+Model assumptions are:
+\begin{enumerate}
+    \item Single, representative school.
+    \item Model \textbf{assumes} a linear functional form between $X_1$ and $Y$.
+    \item Model \textbf{ignores} other factors impacting $Y$, such as student background.
+\end{enumerate}
+\vspace{1cm}
+\footnotetext[1]{also known as explained variable, regressand, outcome}
+\footnotetext[2]{also known as explanatory/independent variables, covariates}
+\end{frame}
+
+\begin{frame}{Causal Effect of Expenditure on Education}
+    Economic question: does school budget $X_1$ \alert{cause} better student outcomes $Y$?
+    \begin{align*}
+        Y = \beta_0 + \beta_1 X_1
+    \end{align*}
+    Let's compare our representative school's math score outcome $Y$ when:
+    \begin{itemize}
+        \onslide<2->{\item School has a baseline budget $X_1=A \in (0,\infty)$.} 
+        \onslide<3->{\item We increase the baseline budget in one unit: $X_1=A\alert{+1}$}
+    \end{itemize}
+    \[
+    \onslide<3->{E[Y \mid X = A \alert{+1}] - }%
+    \onslide<2->{E[Y \mid X = A]}%
+    \onslide<4->{ = \textcolor{teal}{\beta_1}}
+    \]
+    \vspace{-0.5cm}
+    \onslide<5->{
+    \begin{block}{Causal Effect}
+        \vspace{0.3cm}
+        \textcolor{teal}{$\beta_1$} represents how much a \alert{+1} unit increase in the per-student budget causes the school's share of good students to change.
+    \end{block}}
+\end{frame}
+
+\begin{frame}{Equivalent Statistical Model}
+Our aim is to estimate the \textcolor{teal}{$\beta_1$} causal parameter. 
+
+\onslide<2->{Equivalent \alert{statistical} model, for the whole school population $N$:} 
+\[
+   Y = \beta_0 + \beta_1 X_1 \quad \onslide<2->{\rightarrow \quad Y_{\textcolor{teal}{i}} = \beta_0 + \beta_1 X_{1\textcolor{teal}{i}} \alert{+ u_\textcolor{teal}{i}}, \quad \textcolor{teal}{i} = 1,…,N} 
+\]
+\vspace{-0.5cm}
+\begin{enumerate}
+    \onslide<3->{\item Representative schoool $\rightarrow$ Population of $N$ schools, indexed by \textcolor{teal}{$i$}.}
+    \onslide<4->{\item Linear functional form assumption is preserved.}
+    \onslide<5->{\item Error term \alert{$u_i$} encompasses all the variables that affect $Y_i$, other than $X_{1i}$.}
+\end{enumerate}
+%\alert{Error term $u_i$} can be expressed as:
+%$$
+%u_i = Y_i - \beta_1 X_{1i}
+%$$
+\end{frame}
+
+\begin{frame}{Causal Effect in the Statistical Model}    
+\[
+\begin{aligned}
+   Y = \beta_0 + \beta_1 X 
+      & \quad \rightarrow\quad 
+      Y_i = \beta_0 + \beta_1 X_{1i} + u_i
+\end{aligned}
+\]
+\onslide<2->{Original causal effect} \onslide<3->{becomes into \textbf{Average} Causal effect:}
+\[
+\begin{aligned}
+   \onslide<2->{E[Y \mid X = A+1] - E[Y \mid X = A] = \textcolor{teal}{\beta_1}} 
+      \onslide<3->{& \quad \rightarrow\quad 
+      E[Y_i \mid X_{1i} = A+1] - E[Y_i \mid X_{1i} = A]}
+\end{aligned}
+\]
+\onslide<4->{
+\begin{block}{Average Causal Effect}
+    \vspace{0.3cm}
+    Features the original \textcolor{teal}{$\beta_1$} and an \alert{additional term}.
+    $$
+    E[Y_i | X_{1i} = A+1] - E[Y_i | X_{1i} = A] = \textcolor{teal}{\beta_1} + \alert{E[u_i | X_{1i} = A+1] - E[u_i | X_{1i} = A]}
+    $$
+\end{block}}
+\end{frame}
+
+\begin{frame}{Mean independence of $u_i$ from $X_{1i}$}
+For \textcolor{teal}{$\beta_1$} to still represent the average \textbf{causal} effect, we need to assume that the \alert{additional term} is zero.
+$$
+E[Y_i | X_{1i} = A+1] - E[Y_i | X_{1i} = A] = \textcolor{teal}{\beta_1} + \alert{E[u_i | X_{1i} = A+1] - E[u_i | X_{1i} = A]}
+$$
+\pause
+\begin{block}{Mean Independence Assumption}
+\vspace{0.2cm}
+$$E[u_i | X_{1i} = A+1] = E[u_i | X_{1i} = A]$$
+\textit{All the underlying characteristics $u_i$ that determine the outcome $Y_i$ should be the same between the treated and the non-treated units.} 
+\end{block}
+\pause
+Does this assumption make sense in our context? Examples?
+\end{frame}
+
+\begin{frame}{Motivation for Use of MLR}
+
+How can we \textbf{tame} endogeneity, make \textbf{more credible} causal claims?
+\onslide<2->{Enrich our model with $k$ \alert{multiple} regressors.}
+\begin{align*}
+   Y_i = \beta_0 + \beta_1 X_{1i} + u_i 
+   \onslide<2->{\quad \rightarrow \quad 
+   Y_i = \beta_0 + \beta_1 X_{1i} + \alert{\beta_2 X_{2i} + \cdots + \beta_k X_{ki}} + u_i}
+\end{align*}
+\vspace{-0.5cm}
+\begin{itemize}
+    \item Original $u_i$ encompasses all the variables that affect $Y_i$, other than $X_{1i}$.
+    \onslide<2->{\item New $u_i$ encompasses all the variables that affect $Y_i$, other than $X_{1i}, X_{2i}, ..., X_{ki}$.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Causality in MLR}
+    \begin{block}{\onslide<2->{Conditional} Mean Independence Assumption}
+    \begin{align*}
+        E[u_i | X_i = A+1, \onslide<2->{\alert{X_{2i}, ..., X_{ki}}}] = E[u_i | X_i = A, \onslide<2->{\alert{X_{2i}, ..., X_{ki}}}]
+    \end{align*}
+    \textit{To claim causality, all the underlying characteristics $u_i$ that determine the outcome $Y_i$, \onslide<2->{\alert{other than $X_{2i}, ..., X_{ki}$}} should be the same between the treated and the non-treated units.}
+    \begin{itemize}
+        \onslide<3->{
+        \item Weaker assumption than previous Mean Independance. 
+        \item By adding all relevant $K$ covariantes, bias dissappears $\rightarrow$ Can claim causality!}
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\section{Interpreting the Regression Parameters} 
+
+\begin{frame}{Conditional Expectation Function}
+\begin{block}{Conditional Expectation Function (CEF)}
+    Is a function that takes some regressor values $X_{1i}, X_{2i}, ..., X_{ki}$, then returns the corresponding expected value of dependent variable $Y_i$
+    $$
+    CEF(X_{1i}, X_{2i}, ..., X_{ki}) = E[Y_i | X_{1i}, X_{2i}, ..., X_{ki}] = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_k X_{ki}
+    $$
+\end{block}
+\pause
+What does $\beta_j$ mean?
+\begin{enumerate}
+    \item Starting with the CEF for some regressor values $CEF(X_{1i}, ..., X_{ji}, ..., X_{ki})$.
+    \item Increase $X_j$ by one unit: $CEF(X_{1i}, ..., X_{ji}\alert{+1}, ..., X_{ki})$.
+    \item $\beta_j = CEF(X_{1i}, ..., X_{ji}\alert{+1}, ..., X_{ki}) - CEF(X_{1i}, ..., X_{ji}, ..., X_{ki})$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Average Partial Effects}
+
+$$\beta_j = CEF(X_{1i}, ..., X_{ji}\alert{+1}, ..., X_{ki}) - CEF(X_{1i}, ..., X_{ji}, ..., X_{ki})$$
+
+\begin{block}{Average Partial Effect}
+    \begin{itemize}
+    \item $\beta_j$ represents the \alert{average partial effect} that increasing $X_j$ by one unit has on outcome $Y$... 
+    \item all while keeping rest of covariates constant (as in randomized control trials).
+    \item Equivalent to Ceteribus paribus concept.
+    \end{itemize}
+\end{block}
+\pause
+Be cautious with language implying causal relationships. 
+\begin{itemize}
+    \item $\beta_j$ will always represent a \textbf{correlation}... \pause
+    \item but will only represent a partial \textbf{causal} effect if the conditional mean independence assumption holds. 
+\end{itemize}
+\end{frame}
+
+\section{The OLS Estimator}
+
+\begin{frame}{Parameters, Estimates, and Estimators}
+
+So far, we focused on \textbf{population} parameters $\beta$. %more specifically.:
+%\begin{itemize}
+%    \item The conditions under which parameters back \textbf{causal} claims.
+%    \item The economic \textbf{interpretation} of the parameters.
+%\end{itemize}
+\pause    
+Remember! We only observe a $n<N$ iid sample of the population.
+\pause
+\[
+\underbrace{
+\underset{\text{\alert{Parameter}}}{\alert{\beta}} 
+  \xrightarrow{\text{determines}} \substack{\text{Population}}}_{\text{Unobserved}}
+  %
+  \xrightarrow{\text{iid draws}} 
+  %
+  \underbrace{\substack{\text{Dataset}}
+  \xrightarrow{\text{\alert{estimator (OLS)}}} 
+  \underset{\text{\alert{Estimate}}}{\alert{\hat{\beta}}}}_{\text{Observed}}
+\]
+\pause
+\begin{itemize}
+    \item \alert{Parameter ($\beta$)} is an \textbf{unknown, deterministic number} that describes relationships between two variables in the population. \pause
+    \item \alert{Estimate ($b, \hat{\beta}$)} is a \textbf{random variable} that approximates the true parameter based on the observed dataset. \pause
+    \item \alert{Estimator (OLS)} is a \textbf{function} that takes the observed and returns an estimate. Different population draws yields different estimates. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{From Population to Data}
+Statistical model for the unobserved \alert{population}:
+\begin{itemize}
+    \item Outcome, regressors are \textbf{random variables} with joint distribution $(Y, X_1, …, X_k)$. 
+    \item There is a population of size \alert{$N$} we (almost) never get to fully observe.
+    \item Error term $u_i$
+    \begin{align*}
+    Y_i = \textcolor{teal}{\beta_0} + \textcolor{teal}{\beta_1} X_{1i} + \textcolor{teal}{\beta_2} X_{2i} + \cdots + \textcolor{teal}{\beta_k} X_{ki} + u_i \quad i = 1, ..., \alert{N}
+    \end{align*}
+\end{itemize}
+\pause
+Statistical model for the observed \alert{data}:
+\begin{itemize}
+    \item We observe $\alert{n} < N$ iid draws from the joint distribution.
+    \item \alert{Dataset} with $n$ observations (rows) and $k+1$ variables (columns):
+    \item Residual $\hat{u}_i$
+    %$$\{Y_i, X_{1i}, …,X_{ki}\}_{i = 1}^n$$
+    \begin{align*}
+    Y_i = \textcolor{teal}{b_0} + \textcolor{teal}{b_1 }X_{1i} + \textcolor{teal}{b_2} X_{2i} + \cdots + \textcolor{teal}{b_k} X_{ki} + \hat{u}_i \quad i = 1, ..., \alert{n}
+    \end{align*}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Writing the MLR model with vector and matrix notation}
+    \begin{enumerate}
+        \item A dataset with $n$ observations and $k$ covariates can be divided into:
+        \begin{enumerate}
+            \item $\underset{(n \times 1)}{\textbf{Y}}$ vector for grouping the outcome variable of all observations.  
+            \item $\underset{(n \times k\textcolor{teal}{+1})}{\textbf{X}}$ matrix grouping all the covariates and \textcolor{teal}{constant term}, for all observations.
+        \end{enumerate}
+        \pause
+        \item $\underset{(k\textcolor{teal}{+1} \times 1)}{\textbf{b}}$ vector of parameter \textbf{estimates}, \textcolor{teal}{including constant term $b_0$}.
+        \pause
+        \item $\underset{(n \times 1)}{\hat{\mathbf{u}}}$ vector stacking the residuals for all observations.
+    \end{enumerate}
+    \pause
+    As a result, our MLR model for observed data is equivalent to a \textbf{sample} model:
+    \begin{align*}
+    Y_i = b_0 + b_1 X_{1i} + b_2 X_{2i} + \cdots + b_k X_{ki} + \hat{u}_i \quad \rightarrow \quad
+    \textbf{Y} = \textbf{X} \times \textbf{b} + \hat{\mathbf{u}}
+    \end{align*}
+\end{frame}
+
+\begin{frame}{The OLS Estimator}
+\textbf{How can we estimate $\boldsymbol{\beta}$?}
+\\
+\pause
+\begin{enumerate}
+    \item Start with vector of candidate parameter estimates $\underset{(k \times 1)}{\textbf{b}}$
+    \pause
+    \item Compute the vector of \textbf{residuals}: 
+    $$
+    \underset{(n \times 1)}{\hat{\mathbf{u}}} = \underset{(n \times 1)}{\textbf{Y}} - \underset{(n \times k)}{\textbf{X}} ' \times \underset{(k \times 1)}{\textbf{b}}
+    $$ \pause
+    \item \textbf{Sum of Squared Residuals (SSR):} measures the overall discrepancy between the observed and predicted outcome variable:
+    $$
+    \underset{(1 \times 1)}{SSR(b)} = \underset{(1 \times n)}{\hat{\mathbf{u}}} ' \times \underset{(n \times 1)}{\hat{\mathbf{u}}}
+    $$ \pause
+    \item The Ordinary Least Squares (OLS) estimator Finds the vector of parameters $b$ that minimize $SSR(b)$. How?
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{OLS Estimator Formula}
+Rewrite the SSR(b) objective function:
+\begin{align*}
+SSR(b) &= \hat{\mathbf{u}}'\hat{\mathbf{u}} \\
+&=(\mathbf{Y}-\mathbf{X}\boldsymbol{b})'(\mathbf{Y}-\mathbf{X}\boldsymbol{b})\\
+        &= \mathbf{Y}'\mathbf{Y}-\boldsymbol{b}'\mathbf{X}'\mathbf{Y}-\mathbf{Y}'\mathbf{X}\boldsymbol{b}+\boldsymbol{b}'\mathbf{X}'\mathbf{X}\boldsymbol{b}\\
+        &=
+        \mathbf{Y}'\mathbf{Y}-2\boldsymbol{b}'\mathbf{X}'\mathbf{Y}+\boldsymbol{b}'\mathbf{X}'\mathbf{X}\boldsymbol{b}
+\end{align*}
+\pause
+To find the minimum, first-order condition with respect to vector $\boldsymbol{b}$:
+\begin{align*}
+\frac{\partial(\hat{\mathbf{u}}'\hat{\mathbf{u}})}{\partial\boldsymbol{b}}=-2\mathbf{X}'\mathbf{Y}+2(\mathbf{X}'\mathbf{X})\boldsymbol{b}=0
+\end{align*}
+
+
+Solving the first-order condition for $\mathbf{b}$ yields the OLS estimator: 
+\begin{align*}
+    \hat{\boldsymbol{\beta}} =
+    (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y}
+\end{align*}
+\end{frame}
+
+\section{Empirical Example}
+
+\begin{frame}{How does public spending on education affect students' performance?}
+
+For a dataset of $n=$ schools, we observe:
+\begin{description}
+    \item[$Math_i$] Percentage share of fourth graders with satisfactory math performance in school $i$ 
+     \item[$Expenditures_i$] Expenditures per student (in \$1000) in school $i$ 
+\end{description}
+
+\pause
+\skip
+
+We propose the following model to test the effectiveness of eduational spending on student performance:
+\begin{align*}
+    Math_i = \beta_0 + \beta_1 Expenditures_i + u_i
+\end{align*}
+\skip
+Open \alert{w2\_code.R}
+\end{frame}
+
+\begin{frame}[fragile]{Data Preparation}
+    \footnotesize
+    \begin{lstlisting}[language=R]
+    # Open dataset
+    df = read.csv("testscoresMI.csv")
+    # Create expenditures per student variable
+    df$expend_ps = df$expend/df$enroll
+    df$expend_ps_thous = df$expend_ps/1000
+    # Create constant variable
+    df$constant = 1
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}[language=R]
+    # Dataset in matrix notation
+    X <- as.matrix(df[,names(df) %in% c("constant","expend_ps_thous")])
+    Y <- as.matrix(df[,names(df) %in% c("math4")])
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Single Linear Regression in R}
+\footnotesize
+\begin{lstlisting}[language=R]
+# Single linear regression using OLS formula:
+beta_hat_m1 = solve(t(X) %*% X) %*% t(X) %*% Y
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=R]
+# Linear regression using R function lm(), store results as slr_math
+slr_math = lm(math4 ~ expend_ps_thous, data = df)
+# Summarize regression results: 
+summary(slr_math)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Inspecting First Regression Results}
+Why do we find negative coefficient $\beta_1 < 0$ on the spending variable for math (and reading) performance?
+\begin{align*}
+    Math_i = \beta_0 + \beta_1 Expenditures_i + u_i
+\end{align*}
+
+\pause
+
+\alert{Omitted variable bias:} Other relevant factors influencing student performance (in the error term) are likely correlated with expenditures. Which?
+
+\pause
+
+One hypothesis:
+\begin{itemize}
+    \item Government spends more money on schools with a lot of disadvantaged students.
+    \item Disadvantaged students have less means to learn math.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Multiple Linar Regression in R}
+
+To control for the share of disadvantaged students in the school, we add the share of students eligible for free lunch $lunch_ i \in [0,1]$ to the regression:
+\begin{align*}
+    Math_i = \beta_0 + \beta_1 Expenditures_i + \beta_2 lunch_i + u_i
+\end{align*}
+
+\pause
+Implementation in R:
+
+\begin{lstlisting}[language=R]
+    mlr_math = lm(math4 ~ expend_ps_thous + lunch, data = df)
+    summary(mlr_math)
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{Reporting Regression Results: \LaTeX Table}
+\begin{lstlisting}[language=R]
+    install.packages("stargazer") # if not installed
+    library(stargazer)
+    stargazer(slr_math, mlr_math, type = "text")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Reporting Regression Results: \LaTeX Table}
+\begin{table}[!htbp] \centering 
+\resizebox{0.75\textheight}{!}{   % adjust 0.8 -> 0.7 or 0.9
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{math4} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ expend\_ps\_thous & $-$0.570 & 2.083$^{***}$ \\ 
+  & (0.428) & (0.350) \\ 
+  & & \\ 
+ lunch &  & $-$0.471$^{***}$ \\ 
+  &  & (0.014) \\ 
+  & & \\ 
+ Constant & 74.870$^{***}$ & 79.568$^{***}$ \\ 
+  & (2.272) & (1.813) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 1,823 & 1,823 \\ 
+R$^{2}$ & 0.001 & 0.368 \\ 
+%Adjusted R$^{2}$ & 0.0004 & 0.368 \\ 
+%Residual Std. Error & 19.950 (df = 1821) & 15.867 (df = 1820) \\ 
+%F Statistic & 1.773 (df = 1; 1821) & 530.804$^{***}$ (df = 2; 1820) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular}} 
+\end{table} 
+\end{frame}
+
+\begin{frame}[fragile]{Reporting Regression Results: Plot}
+
+\begin{lstlisting}[language=R]
+    install.packages("jtools") # if not installed
+    library(jtools)
+    plot_coefs(slr_math, mlr_math,
+                coefs = c("Expenditures per student (in $1000)" = 
+                            "expend_ps_thous"))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Reporting Regression Results: Plot}
+\begin{figure}
+    \centering
+    \includegraphics[width = .6\linewidth]{"C:/Users/Aspuru Pello/Desktop/2025_AE_PA/AE_week2_MLR/coefs_plot.pdf}
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Recap}
+
+    In an empirical analysis, our goal is often to estimate a causal relationship between an explanatory variable $X_1$ and an outcome $Y$. First attempt:
+
+    $$Y_i = \beta_0 + \beta_1 X_1 + u_i$$
+    \pause
+    \textbf{Extremely common} problem: $X_1$ is correlated with $u_i$ \\
+    $\rightarrow$ as $X_1$ changes, also other determinants of $Y$ change. Thus, subsequent change in $Y$ does not reflect the causal effect of $X_1$.
+    \pause
+    Remember: We say that $X_1$ causes $Y$ when if we were to intervene and change the value of $X_1$ \alert{without changing anything else} then Y would also change as a result.
+
+    $\Rightarrow$ Simple regression model recovers a correlation, but not a causal effect.
+\end{frame}
+
+\begin{frame}{Recap}
+
+    We can use the \alert{multiple} linear regression model to keep everything else (that we can observe) fixed
+
+    $$Y_i = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + .... + \beta_k X_k + u_i$$
+    \pause
+    Now, $\hat{\beta_1}$ reflects the average change in $Y$ given a one unit increase in $X_1$, while holding $X_2$, ..., $X_k$ fixed. 
+    
+    $\rightarrow$ gets us closer to a randomised treatment allocation.
+    \pause
+
+    If there are no factors left in $u_i$ that are correlated with the regressors, i.e. $E[U_i | X_1, ..., X_k] = 0$, then  $\hat{\beta_1}$ estimates the causal impact of $X_1$ on $Y$.
+
+\end{frame}
+\begin{frame}{Recommended Literature}
+
+Heiß Chapter 3 - 3.3
+
+    
+\end{frame}
+\end{document} 

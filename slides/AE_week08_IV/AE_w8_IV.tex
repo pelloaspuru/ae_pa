@@ -1,0 +1,572 @@
+\documentclass[11pt, aspectratio = 169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\usepackage{hyperref}  
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}  
+\usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
+\tikzset{
+    -Latex,auto,node distance =1 cm and 1 cm,semithick,
+    state/.style ={ellipse, draw, minimum width = 0.7 cm},
+    point/.style = {circle, draw, inner sep=0.04cm,fill,node contents={}},
+    bidirected/.style={Latex-Latex,dashed},
+    el/.style = {inner sep=2pt, align=left, sloped}
+}
+\usepackage{verbatim} 
+\usepackage{listings}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\definecolor{links}{HTML}{1B1B81}
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+\title{Applied Economics}
+\subtitle{Instrumental Variables}
+\author{Beate Thies}
+\date{}
+\institute{Winter 2024/25}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=teal}
+
+\let\svdescription\description
+\let\svenddescription\enddescription
+\renewenvironment{description}{%
+  \svdescription%
+  \let\svitem\item%
+  \renewcommand\item[1][]{\svitem[\textcolor{\descriptioncolor}{##1}]}%
+  }{
+  \svenddescription%
+  }
+\newcommand\descriptioncolor{teal}
+
+\usepackage{Sweave}
+\begin{document}
+\input{AE_w8_IV-concordance}
+
+\maketitle
+\sffamily
+
+\begin{frame}{Plan for this Lecture}
+\begin{enumerate}
+
+%\item Homework Assignment 2
+
+\item Simple Case: Bivariate Regression with one instrument
+
+\item Example in R
+
+\item General Case: Multivariate Regression with one or more endogenous regressors
+
+\item Example in R
+
+\end{enumerate}
+\end{frame}
+
+%\section{Homework 2}
+
+%\section{IVs}
+
+\begin{frame}{Motivation}
+We discussed different sources of \alert{endogeneity}, i.e. a violation of MLR.4: $E[u_i | \boldsymbol{X}_i] \neq 0$
+
+Instrumental Variable (IV) estimation is an approach to get a consistent estimator if $u_i$ and $\boldsymbol{X}_i$ are correlated.
+\pause
+
+Terminology: we call a variable endogenous [\color{blue}exogenous\color{black}] if it is correlated [\color{blue}not correlated\color{black}] with the error term.
+
+\pause
+Idea: Find a variable (the instrument) that is \textbf{correlated with the endogenous regressor} (say, $X_{1i}$), \textbf{but uncorrelated with $u_i$} \\
+$\rightarrow$ decompose the variation in $X_{1i}$ into an endogenous and an exogenous part \\
+$\rightarrow$ extract the part that is not correlated with $u_i$, and exploit only that part in the estimation of $\boldsymbol{\beta}$
+\end{frame}
+
+
+\begin{frame}{Illustration: Instrumental Variables (IV) approach}
+
+\begin{columns}
+    \begin{column}{0.3\linewidth}
+    \centering
+        \begin{tikzpicture}
+    % x node set with absolute coordinates
+    \node[state] (x) at (0,0) {$X_i$};
+
+    % y node set relative to x.
+    % Locations can be:
+    % right,left,above,below,
+    % above left,below right, etc
+    \node[state] (y) [right =of x] {$Y_i$};
+    \node[state] (u) [above right =of x] {$u_i$};
+
+    % Directed edge
+    \path (x) edge (y);
+    \path (u) edge (y);
+
+    % Bidirected edge
+   % \path[bidirected] (x) edge[bend left=60] (y);
+\end{tikzpicture}
+
+\small $X_i$ is exogenous
+    \end{column}
+    \begin{column}{0.3\linewidth}
+\centering
+\begin{tikzpicture}
+    % x node set with absolute coordinates
+    \node[state] (x) at (0,0) {$X_i$};
+
+    % y node set relative to x.
+    % Locations can be:
+    % right,left,above,below,
+    % above left,below right, etc
+    \node[state] (y) [right =of x] {$Y_i$};
+    \node[state] (u) [above right =of x] {$u_i$};
+
+    % Directed edge
+    \path (x) edge (y);
+    \path (u) edge (y);
+
+    % Bidirected edge
+    \path[bidirected] (x) edge[bend left=10] (u);    
+\end{tikzpicture}
+
+\small $X_i$ is endogenous
+    \end{column}
+
+
+    \begin{column}{0.4\linewidth}
+\centering
+\begin{tikzpicture}
+    % x node set with absolute coordinates
+    \node[state] (x) at (0,0) {$X_i$};
+
+    % y node set relative to x.
+    % Locations can be:
+    % right,left,above,below,
+    % above left,below right, etc
+    \node[state] (y) [right =of x] {$Y_i$};
+    \node[state] (u) [above right =of x] {$u_i$};
+    \node[state] (z) [left =of x] {$Z_i$};
+
+    % Directed edge
+    \path (x) edge (y);
+    \path (u) edge (y);
+    \path (z) edge (x);
+
+    % Bidirected edge
+    \path[bidirected] (x) edge[bend left=10] (u);
+\end{tikzpicture}
+
+\small Idea IV Estimation
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Regression with one Endogenous Regressor and one Instrument}
+
+\begin{align*}
+    Y_i = \beta_0 + \beta_1 X_i + u_i \: \: \text{ with } E[X_iu_i] \neq 0
+\end{align*}
+
+A variable $Z_i$ is a \alert{suitable IV} for $X_i$ if it satisfies two conditions:
+
+\pause
+\begin{enumerate}
+    \item \alert{\textbf{Relevance}}: $cov(Z_i, X_i ) \neq 0$ \\
+    The IV is correlated with the endogenous explanatory variable \\
+    $\rightarrow$ can be used to extract variation in $X_i$
+\item \alert{\textbf{Exogeneity}}:  $cov(Z_i, u_i ) = 0$ \\
+The IV is uncorrelated with the error term \\
+    $\rightarrow$ using $Z_i$ we extract variation in $X_i$ that is not correlated with $u_i$
+
+\end{enumerate}
+\pause
+Which of the two assumptions can be empirically tested?
+\end{frame}
+
+
+
+\begin{frame}{The IV assumptions}
+    
+Testing for instrument \textbf{relevance}: \\
+\vspace{+0.2cm}
+First Stage Regression Model: \hspace{+0.2cm} $X_i = \pi_0 + \pi_1 Z_i + v_i$ \\
+\vspace{+0.2cm}
+$H_0: \pi_1 = 0  \rightarrow$ test of relevance condition ($\pi_1 = \frac{cov(X_i, Z_i)}{Var(Z_i)}$)
+
+\bigskip
+
+\pause
+\textbf{Exogeneity} of an instrument  is \textit{an untestable assumption} \\
+\begin{itemize}
+    \item needs to be argued for using theory (like MLR.4)
+    \item involves arguing that the IV cannot be related to anything in $u_i$ which is often tricky.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{IV Identification and Estimation}
+
+\begin{align*}
+Cov(Z_i, Y_i) & = Cov(Z_i, \beta_0 + \beta_1 X_i + u_i) \\
+& =\beta_1  \only<1>{Cov(Z_i, X_i)} \only<2->{\color{teal}\underbrace{Cov(Z_i, X_i)}_{\neq 0\text{ given relevance}}} + \only<1>{Cov(Z_i, u_i)} \only<2->{\color{blue}\underbrace{Cov(Z_i, u_i)}_{= 0\text{ given exogeneity}}}\\
+\only<3->{
+\Leftrightarrow \: \beta_1 & = \frac{Cov(Z_i, Y_i)}{Cov(Z_i, X_i)}}
+\end{align*}
+
+\pause \pause
+This identifies the population parameter $\beta_1$.
+
+\pause
+Using the sample analogue yields the \alert{IV Estimator}:
+\begin{align*}
+\hat{\beta}_1^{IV} = \frac{\widehat{Cov}(Z_i, Y_i)}{\widehat{Cov}(Z_i, X_i)}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Two-Stage Least Squares (2SLS)}
+In the case with a single endogenous regressor and a single instrument, the IV estimator is \textbf{equivalent} to the 2SLS estimator.
+
+This estimator illustrates the intuition that IV \textit{extracts} the exogenous variation in the endogenous regressor.
+
+\pause
+
+\color{teal}\textbf{First Stage regression}: \color{black} $X_i = \overbrace{\pi_0 + \pi_1 Z_i}^{\text{uncorrelated with } u_i} + \, v_i$
+
+$\rightarrow$ decomposes variance in $X_i$ into exogenous ($\pi_0 + \pi_1 Z_i$) and endogenous part ($v_i$).
+
+$\rightarrow$ compute fitted values $\hat{X}_i = \hat{\pi}_0 + \hat{\pi}_1 Z_i$.
+
+
+\pause 
+
+\vspace{+0.15cm}\color{teal}
+\textbf{Second Stage regression}: \color{black} $Yi = \beta_0 +  \beta_1 \hat{X}_i + u_i$
+
+
+$\rightarrow$ Replace $X_i$ with fitted values from the first stage in the regression model of interest. 
+
+$\rightarrow$ OLS estimation of the second stage model yields 2SLS estimator $\hat{\beta}^{2SLS}_0, \: \hat{\beta}^{2SLS}_1$
+\end{frame}
+
+
+\begin{frame}{2SLS estimator: Properties}
+Under the assumptions of 
+
+- linearity in parameters (MLR.1), \\
+- an i.i.d. random sample (MLR.2),  \\
+- instrument relevance (instead of MLR.3) and \\
+- instrument exogeneity (instead of MLR.4), 
+
+the 2SLS estimator is \textcolor{teal}{consistent and asymptotically normal}.
+\end{frame}
+\section{Example in R}
+
+\begin{frame}[fragile]{Education and wage again}
+<<include = F>>=
+library(wooldridge)
+library(sandwich)
+library(lmtest)
+library(car)
+
+data("mroz")  # data on education and wages of married women in the US
+mroz <- mroz[!is.na(mroz$lwage), ]
+
+@
+
+Estimate simple regression model by \textbf{OLS}
+\small
+<<>>=
+ols_est <- lm(lwage ~ educ, data = mroz)
+coeftest(ols_est, vcov. = vcovHC(ols_est, "HC1"))  
+@
+
+One additional year of education on average associated with increase in wage by 10.9\%
+
+\end{frame}
+
+\begin{frame}[fragile]{Using maternal education as an IV}
+Is mother's education a suitable instrument?
+
+\pause
+
+\textbf{First Stage} Regression \textcolor{teal}{(Relevance)}
+\small
+<<>>=
+first_st <- lm(educ ~ motheduc, data = mroz)
+coeftest(first_st, vcov. = vcovHC(first_st, "HC1"))   
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Using maternal education as an IV}
+
+What about  \textcolor{teal}{exogeneity}?
+
+\end{frame}
+
+\begin{frame}[fragile]{Using maternal education as an IV}
+\textbf{Second Stage} Regression \textit{(manually)}
+\small
+<<>>=
+mroz$fitted_educ <- first_st$fitted.values # get fitted values from first stage
+second_st <- lm(lwage ~ fitted_educ, data = mroz)
+coeftest(second_st, vcov. = vcovHC(second_st, "HC1"))  
+  
+@
+\vspace{-0.29cm}
+One additional year of education on average increases wage by 3.9\% $\rightarrow$  less than OLS estimate (which is likely biased upward). 
+
+\normalsize
+\alert{When running the two stages separately,  standard errors in the 2. stage are incorrect!}
+\end{frame}
+
+\begin{frame}[fragile]{Using maternal education as an IV}
+\textbf{Using built-in IV estimator} gives correct standard errors
+\small
+
+%\begin{lstlisting}[language=R]
+\texttt{> install.packages("estimatr") \\
+> library(estimatr) \\
+> tsls <- \textcolor{teal}{iv\_robust(}lwage $\sim$ educ | motheduc, data = mroz, 
+         se\_type = "HC1", diagnostics = T\textcolor{teal}{)} \\
+> summary(tsls)}
+%\end{lstlisting}
+
+\begin{tabular}{l|rrrrrrr}
+\hline
+term & estimate & std.error & statistic & p.value & conf.low & conf.high & df \\
+\hline
+(Intercept) & 0.702 & 0.494 & 1.422 & 0.156 & -0.268 & 1.673 & 426 \\
+educ & 0.039 & 0.039 & 0.982 & 0.327 & -0.039 & 0.116 & 426 \\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Practice}
+    Run the First Stage Regression and get the IV estimate with  \texttt{\textcolor{teal}{iv\_robust()}} with $fatheduc$ as instrument.
+    
+    How do the results compare to the case with $motheduc$ as IV?
+\end{frame}
+
+\begin{frame}{Variance of the IV Estimator}
+
+Let's look at the variance of $\hat{\beta}_1^{IV}$ under conditional \emph{homoskedasticity} $E[u_i^2| Z_i] = \sigma_u^2$ \\
+(unrealistic in practice, but helpful to study drivers of the variance.)
+\begin{align*}
+    Var(\hat{\beta}_1^{IV}) = \frac{\sigma_u^2}{n \sigma_X^2 \rho_{x,z}^2}
+\end{align*}
+
+
+It increases in error variance \color{red}$\sigma_u^2$\color{black}, decreases in sample size \color{teal}$n$ \color{black} and in variance of the regressor \color{teal}$\sigma_X^2$\color{black}. Apart from  $\rho_{x,z}^2$ this is identical to the OLS variance. 
+
+
+\color{teal}$\rho_{x,z}$ \color{black} is the population correlation between $X$ and $Z$.
+
+
+Since $\rho_{X, Z} < 1$, the \textbf{\alert{IV variance is larger than the OLS variance}} $Var(\hat{\beta}_1^{OLS})$. \\
+\begin{itemize}
+    \item because we only use a part of the total variation in $X_i$ in the IV estimation
+    \item the stronger the correlation between $X$ and $Z$, the smaller is the increase in the variance (more variation is extracted by $Z_i$ and used in the estimation).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Instrument Relevance and Weak Instruments}
+    If the correlation betw. $Z_i$ and $X_i$ is small, we have a \alert{weak instrument} problem, that yields very imprecise IV estimates
+
+
+    Rule of thumb for sufficiently strong instrument:  F-statistic in the first stage $>$ 10.
+
+    New research suggests that the threshold value for the
+F-test should be chosen much larger in practice, $\approx$ 104.
+    \bigskip
+
+
+\pause 
+Weak instruments are also an issue for consistency if exogeneity is not fully satisfied:
+\begin{align*}
+    plim(\hat{\beta}_1^{OLS}) &= \beta_1 + Cov (X, u)/Var(X)   \\
+plim(\hat{\beta}_1^{IV}) &= \beta_1 + Cov (Z, u)/Cov(Z,X)
+\end{align*}
+
+IV estimator is consistent if exogeneity is satisfied: $Cov(Z, u) = 0$
+
+If exogeneity does not hold, inconsistency of IV is stronger the weaker the correlation of $Z$ and $X$!
+
+%If inconsistency in OLS is not strong (cov(x, u) small) it can be better to use OLS than a weak instrument. 
+
+\end{frame}
+
+\begin{frame}{OLS vs. IV}
+
+If MLR.4 is violated, we can choose between inconsistent, but precise OLS estimator and a consistent, but less precise IV estimator. \\
+$\rightarrow$ \textbf{\alert{Bias–Variance-Tradeoff}}
+
+Best choice depends on the situation.
+
+\begin{itemize}
+    \item Do IV if you think endogeneity is sufficiently important. \\
+    Otherwise, inconsistency of OLS is small, and it might still be close to the true value; whereas IV is correct in infinite samples, but might be pretty far off the true value in finite samples.
+    \item Try to find \textbf{strong} instruments, e.g. in the bivariate case an IV where  $|corr(X_i, Z_i)|$ is large.
+\end{itemize}
+\end{frame}
+
+\section{General Case: Multiple regression model with one or more endogenous regressors}
+
+\begin{frame}{General Case}
+
+General linear model with endogeneity:
+$Y_i = \boldsymbol{X}_i'\boldsymbol{\beta}+ ui, \: \text{ with } E[ \boldsymbol{X}_iu_i] \neq \boldsymbol{0}$
+
+We partition the elements of $\boldsymbol{X}_i$ \color{gray}(k x 1) \color{grey} into
+\begin{itemize} 
+\item endogenous regressors $\boldsymbol{X}_{1i}$ \color{gray}($k_1$ x 1 - vector) \color{grey} which we try to instrument and
+\item exogenous regressors $\boldsymbol{X}_{2i}$ \color{gray}($k_2$ x 1 - vector)\color{grey}
+\end{itemize}
+
+\vspace{+0.15cm}
+The exogenous regressors serve as 'instruments for themselves': \\
+\hspace{+0.25cm } \alert{included instruments} $\boldsymbol{Z}_{2i} = \boldsymbol{X}_{2i}$ \color{gray}($k_2$ x 1 - vector) \color{grey}\\
+For the endogenous regressors, we need variables from outside the model as IVs: \\
+\hspace{+0.25cm } \alert{excluded instruments} $\boldsymbol{Z}_{1i}$ \color{gray}($l_1$ x 1 - vector)$
+
+\vspace{+0.15cm}
+\color{grey}
+We write the \color{gray}($l$ x 1)\color{grey}-vector of instrumental variables: 
+$\boldsymbol{Z}_i = \begin{pmatrix} \boldsymbol{Z}_{1i} \\
+                                    \boldsymbol{Z}_{2i} 
+                    \end{pmatrix}$ 
+
+\end{frame}
+
+\begin{frame}{Multiple Regression Model}
+We \alert{need at least as many excluded instruments as endogenous regressors: $l_1 \geq k_1$} \\
+If {$l_1 = k_1$} (as many IVs as endogenous regressors), the model is called \textit{just-identified}. \\
+If {$l_1  > k_1$} (more IVs than endogenous regressors), the model is called \textit{over-identified}.
+
+\bigskip
+
+\begin{block}{Conditions for suitable IVs}
+\begin{enumerate}
+    \item Exogeneity: uncorrelated with error  $u_i$
+    \item Relevance: \alert{partially} correlated with endogenous explanatory variable
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{First Stage and Relevance}
+
+\textbf{First stage regression(s)}:  For each endogenous regressor, run a first stage regression of that regressor on \alert{\emph{all included and excluded instruments}}:
+\begin{align*}
+X_{ji} = \pi_0 + \underbrace{\pi_1Z_{1i} + ... + \pi_{l_1} Z_{l_1 i}}_{excluded \: IVs} + \underbrace{\boldsymbol{X}'_{2i}\boldsymbol{\gamma} \: \:}_{\substack{exogenous \: regressors/ \\ included \: IVs}} + \:  v_i,\: \: for \: j = 1,..., k_1.
+\end{align*}
+
+Testing Relevance: \\
+$H_0: \pi_1 = \pi_2 = ... = \pi_{L_1} = 0$: \\
+$\rightarrow$ F-Test of joint significance of the excluded IVs for the endog. regressor. 
+
+\bigskip
+
+Estimate the first stage(s) and obtain the fitted values of the endogenous regressor(s): $(\hat{X}_{1i}, ..., \hat{X}_{ki})'$.
+
+\end{frame}
+
+\begin{frame}{Second Stage}
+In the second stage, we regress the dependent variable $Y_i$ on the predicted values of all endogenous regressors, all exogenous variables and an intercept using OLS. 
+\begin{align*}
+Y_{i} = \beta_0 + \beta_1\hat{X}_{1i} + ... + \beta_{k} \hat{X}_{k i} + \boldsymbol{X}'_{2i}\boldsymbol{\beta}_{2} + u_i
+\end{align*}
+
+
+ 
+This gives ($\hat{\beta}^{2SLS}_{0}$,$\hat{\beta}^{2SLS}_{1}$, ... $\hat{\beta}^{2SLS}_{k}$)', the 2SLS estimates of the model coefficients.
+
+$\rightarrow$ All variables in the second stage regression are exogenous because we replaced endogenous regressors by predictions based on only exogenous information.
+\pause 
+
+Under MLR.1–MLR.2, \\
+instrument exogeneity, $E(\boldsymbol{u}|\boldsymbol{Z}) = \boldsymbol{0} \Leftrightarrow E(u_i|Z_{1i}, Z_{2i}, ...., Z_{li}) = 0$, \\
+and instrument relevance, \\
+... the 2SLS estimator is consistent for $\boldsymbol{\beta}$.  
+
+
+\end{frame}
+
+\section{Example in R}
+
+\begin{frame}[fragile]{Multiple Regression with endogenous regressor in R}  
+We are interested in the causal effect of the number of kids on maternal labor supply (in hours per week). 
+\footnotesize
+<<>>=
+data("labsup")   # load dataset on mothers, incl. number of kids and hours worked
+table(labsup$kids) # sample includes women with two or more kids 
+ols_labsup <- lm(hours ~ kids + age + agesq + educ + 
+    black + hispan, data = labsup) # baseline model
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Multiple Regression with endogenous regressor in R}  
+
+\footnotesize
+<<>>=
+coeftest(ols_labsup, vcov. = vcovHC(ols_labsup, "HC1"))
+@
+\normalsize
+\vspace{-0.3cm}
+Why could the OLS estimator of the coefficient on $kids$ be biased?
+  
+\end{frame}
+
+\begin{frame}[fragile]{Multiple Regression with endogenous regressor in R}  
+We want to use $samesex$ as IV, an indicator that takes value 1 if the first two kids of the women have the same sex. Do you think this is a suitable IV?
+\pause
+\scriptsize
+<<message = F>>=
+# First Stage 
+first_labsup <- lm( kids ~ samesex + age + agesq + educ + black + hispan, data = labsup)
+coeftest(first_labsup, vcov. = vcovHC(first_labsup, "HC1"))
+@
+\end{frame}
+
+\begin{frame}[fragile]{IV Relevance}  
+\scriptsize
+<<message = F>>=
+# Relevance Test 
+linearHypothesis(first_labsup, c("samesex = 0"), white.adjust = "hc1")
+@
+\end{frame}
+
+\begin{frame}{2SLS estimation in MLR}  
+\small
+\texttt{> library(estimatr) \\
+> \textcolor{olive}{\# important: include all IVs + exogenous regressors behind the | !} \\
+> tsls\_labsub <- iv\_robust(hours $\sim$ kids  + age + agesq + educ + black + 
+          hispan |   samesex + age + agesq + educ + black + hispan, 
+            data = labsup, se\_type = "HC1", diagnostics = T)
+\\
+> summary(tsls\_labsub)}
+
+\texttt{Coefficients: \\
+\begin{tabular}{lrrrrrrr}
+\hline
+   term & estimate & std.error & statistic & p.value & conf.low & conf.high & df \\
+\hline
+kids & -5.120 & 3.056 & -1.675 & 0.094 & -11.110 & 0.870 & 31850 \\
+ age & 2.129 & 0.483 & 4.410 & 0.000 & 1.183 & 3.075 & 31850 \\
+... &&&&&&&& 
+\hline
+\end{tabular}
+\vspace{+0.3cm}
+Diagnostics: \\\begin{tabular}{lrrrr}
+         &        numdf &dendf & value  &p.value     \\
+Weak instruments   &  1 &31850 &45.763 &1.36e-11 *** \\
+\end{tabular}
+}
+\end{frame}
+\end{document}

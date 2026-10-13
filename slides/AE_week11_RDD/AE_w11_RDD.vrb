@@ -1,0 +1,11 @@
+\frametitle{RDD - Issues}
+Your estimate of the treatment effect depends on all these:
+			\begin{itemize}
+				\item Functional form/line type
+				\item Bandwidth (wide vs. narrow)
+				\item 	Kernel weighting
+			\end{itemize}
+			
+			Luckily there is an R package that chooses optimal bandwidth and kernel based on fancy algorithms: \texttt{rdrobust}.
+			
+			For robustness, check what happens if you double/halve the bandwidth, use different kernels and different functional forms

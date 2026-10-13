@@ -1,0 +1,24 @@
+\frametitle{Line Graph}
+\linespread{1.3}\selectfont
+\textbf{One continuous variable over time.} Points are connected in time order. Categories: one line per category.
+
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\centering
+\graphfig{11}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+ggplot(df_ts[df_ts$country == "A", ],
+       aes(x = year, y = unemp)) +
+  geom_line()
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\graphfig{12}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+ggplot(df_ts, aes(x = year, y = unemp,
+                  colour = country)) +
+  geom_line()
+\end{lstlisting}
+\end{column}
+\end{columns}

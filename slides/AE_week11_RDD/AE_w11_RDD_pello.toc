@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Example: Mortality Effect of Alcohol Consumption}{11}{0}{1}
+\beamer@sectionintoc {2}{Identification and Sources of Bias}{28}{0}{2}
+\beamer@sectionintoc {3}{Functional Form}{40}{0}{3}
+\beamer@sectionintoc {4}{Bandwidth and Kernel}{53}{0}{4}

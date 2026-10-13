@@ -1,0 +1,20 @@
+\frametitle{Diff-in-Diff Estimator: Additional Controls}
+
+\begin{itemize}
+    \item Add controls $\alert{X_i}$ that measure pre-treatment characteristics of the units:
+    \begin{align*}
+    Y_{it}=& \alpha \;+\; \gamma Treat_i \;+\; \delta Post_t \;+\; \beta_{TE} (Post_t \times Treat_i) \;+\; \pi \alert{X_i} \;+\; \varepsilon_i
+    \end{align*}
+    The additional regressors may lead to a more precise estimate of $\beta_{TE}$.
+    \pause
+    \vspace{1cm}
+    \item Add unit-level fixed effects $\alert{FE_i}$ to control for all time-invariant unobservables:
+    \begin{align*}
+    Y_{it}=& \alpha \;+\; \gamma Treat_i \;+\; \delta Post_t \;+\; \beta_{TE} (Post_t \times Treat_i) \;+\; \alert{\sum_i \pi_i \alert{FE_i}} \;+\; \varepsilon_i
+    \end{align*} \pause
+    \begin{lstlisting}[language=R]
+    panel_1 <- feols(emptot ~ time + treated + is_min_wage_up |
+                    sheet, data = df)
+    summary(panel_1, vcov = "hetero")
+    \end{lstlisting}
+\end{itemize}

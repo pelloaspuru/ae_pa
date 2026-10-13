@@ -1,0 +1,1 @@
+\beamer@sectionintoc {1}{General Case: Multiple regression model with one or more endogenous regressors}{36}{0}{1}

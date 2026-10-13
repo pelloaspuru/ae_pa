@@ -1,0 +1,547 @@
+\documentclass[11pt, aspectratio = 169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{verbatim} 
+\usepackage{comment}
+\usepackage{cancel}
+\definecolor{links}{HTML}{1B1B81}
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+
+% listings: To highlight code:
+\usepackage{listings}
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red},
+  frame=single,
+  showstringspaces=false
+}
+\lstset{basicstyle=\ttfamily\footnotesize, frame=single}
+
+\title{Applied Economics}
+\subtitle{Causality and Correlation}
+\author{Pello Aspuru}
+\date{}
+\institute{Winter 2025/26}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=teal}
+\setbeamercovered{transparent} % default faintness (~15%)
+
+\let\svdescription\description
+\let\svenddescription\enddescription
+\renewenvironment{description}{%
+  \svdescription%
+  \let\svitem\item%
+  \renewcommand\item[1][]{\svitem[\textcolor{\descriptioncolor}{##1}]}%
+  }{
+  \svenddescription%
+  }
+\newcommand\descriptioncolor{teal}
+
+%\usepackage{Sweave}
+\begin{document}
+%\input{AE_w7_CC-concordance}
+
+\maketitle
+
+\begin{frame}{Plan for this Lecture}
+\begin{enumerate}
+
+\item Correlation vs. Causality
+\item Endogeneity
+\begin{itemize}
+    \item Reverse Causality
+    \item Measurement Error
+    \item Omitted Variable Bias
+\end{itemize}
+\item Model Specification
+
+\end{enumerate}
+\end{frame}
+
+\section{Correlation vs. Causality}
+
+\begin{frame}{Correlation vs Causation}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+
+\textcolor{teal}{Correlation} is a \textbf{statistical measure} describing the \textbf{relation} between treatment variable $x$ and outcome variable $y$.\\
+    \begin{itemize}
+    \item[] \textit{"Those who have a university degree earn more that those who do not"}
+    \item[] \textit{"When icecream consumption increases, sea drownings increase"}
+    \item[] \textit{"Healthier people are more wealthy"}
+\end{itemize}
+\onslide<2->{
+\textcolor{teal}{Causation} is a \textbf{claim} affirming that treatment $x$ causes outcome $y$.
+\begin{itemize}
+    \item[] \textit{"Having a university degree makes you earn more"} \onslide<5->{Selection Bias}
+    \item[] \textit{"Icecream consumption makes pepole drown in the sea"} \onslide<6->{Ommitted Variable}
+    \item[] \textit{"Better health makes people more wealthy"} \onslide<7->{Reverse Causality}
+\end{itemize}}
+%Causality: $x$ \textbf{causes} $y$  $\Leftrightarrow$ if we were to intervene and change the value of variable $x$ \textit{without changing anything else}, 
+%then $y$ would also change as a result.
+
+\onslide<3->{
+A correlation \textbf{does not necessarily} reflect a causal relationship. Why?}
+\begin{itemize}
+    \onslide<4->{
+    \item[]  Endogeneity: Selection bias, omitted variables, reverse causality\dots}
+\end{itemize}
+%(check \href{https://tylervigen.com/spurious-correlations/}{Spurious Correlations})
+
+\end{frame}
+
+\begin{frame}{Causal Inference}
+
+Causal inference consists on using econometric tools to \textbf{credibly} support causal claims.
+
+\begin{enumerate}
+    \onslide<2-4>{
+    \item First-best: field experiments or \textbf{randomised control trials (RCTs)} 
+    \begin{itemize}
+        \item A ``treatment'' is randomly allocated to find its causal effect on an outcome.
+        \item Compare mean outcome of treatment and control groups to infer causal effect.
+        %\item Example: random allocation of deworming treatment on Kenyan children to study school attendance. Miguel, E., & Kremer, M. (2004).
+        \item Popular in development economics, but often unethical or impractical in other fields.
+    \end{itemize}}
+    \onslide<3->{
+    \item Second-best: quasi-experiments or natural experiments.
+    \begin{itemize}
+        \item Setups where external events, policies, or random conditions created a random allocation of the treatment.
+        %\item Example: compare fast-food restaurants along a US-state frontier, as one state had higher minimum wage than the other. Card, David & Krueger, Alan B, (1994)  
+    \end{itemize}}
+    \onslide<4->{
+    \item Third best: non-experiments, observational data.
+    \begin{itemize}
+        \item Non-random allocation of treatment. Claiming causality becomes tricky.
+        \item Use multiple linear regression (MLR) to reduce endogeneity concerns.
+    \end{itemize}}
+\end{enumerate}
+
+\onslide<5->{This course will focus on MLR and quasi-experimental methods.}
+
+\end{frame}
+
+\begin{frame}[fragile]{Big Picture: Steps in empirical economic analysis}
+    \begin{center}
+        Economic question: does education \alert{cause} an increase in wages?
+    \end{center}
+    \vspace{-3mm}
+\pause
+\vspace{+0.2cm}
+\begin{enumerate}
+    \item Construct an economic model for the \alert{representative agent}.
+        $$wage = \beta_0 + \beta_1 educ + \beta_2 expert + \beta_3 ability $$
+    \vspace{-4mm}
+    \item Turn the economic model into a statistical model for the \alert{population}.
+        $$wage_{i} = \beta_0 + \beta_1 educ_{i} + \beta_2 expert_{i} + \beta_3 ability_{i} + \alert{u_{i}} \quad i=1,...,N$$
+    \pause
+    \vspace{-4mm}
+    \item Turn the statistical model for the \alert{observed sample}.
+        $$wage_{i} = \hat{\beta}_0 + \hat{\beta}_1 educ_{i} + \hat{\beta}_2 expert_{i} + \hat{\beta}_3 ability_{i} + \alert{\hat{u}_{i}} \quad i=1,...,n$$
+    \pause
+    \vspace{-4mm}
+    \begin{lstlisting}[language=R]
+    df_wages <- read.csv("./AE_week7_CC/wage2.csv")
+    mlr <- lm(wage ~ educ + exper +  IQ, data = df_wages)
+    summary(mlr)
+    \end{lstlisting}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Causality}
+We say $X$ \alert{causes} $Y$ if: 
+
+When we change the value of $X$ \textbf{without changing anything else}, then $Y$ would also change as a result.
+\pause
+\\
+An ideal way to identify causal effects are \color{teal}\textbf{Randomized Control Trials} (RCTs)
+\begin{itemize}
+    \item you randomly assign people to a treatment and a control group. \\
+  $\rightarrow$ the treatment assignment is independent of all other potential factors that \hspace*{+0.32cm} have an impact on $Y$. \\
+$\rightarrow$ treatment effects can be estimated by simply comparing means across groups
+\pause
+\item example?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Causal Analysis with Observational Data}
+
+RCT disadvantages
+\begin{itemize}
+    \item Expensive.
+    \item Ethical issues.
+    \item External validity issues: to what extent results from a (small) RCT can be generalized to other contexts (e.g. other countries).
+\end{itemize}
+\pause
+Thus, we often use observational data (as opposed to experimental data).
+\\
+With this type of data, causal inference is usually more difficult.
+
+Coefficients in a (multiple) linear regressions measure \alert{(partial) correlations} between variables.
+\alert{They can, but they don’t have to reflect causal effects!}
+\end{frame}
+
+\begin{comment}
+
+\begin{frame}{Correlation vs. Causality: Example}
+
+Regress height of son ($S_i$) on the height of his father ($F_i$), after standardizing both variables ($\rightarrow$ mean = 0, sd = var = 1): $S_i = \beta_0 + \beta_1F_i + u_i$
+\vspace{-0.15cm}
+\begin{itemize}
+    \item $\beta_1$ might plausibly reflect a causal effect of paternal height on height of the son. 
+    \item $\hat{\beta}_1 = \frac{\widehat{cov}(S_i, F_i)}{\widehat{var}(F_i)} = \widehat{cov}(S_i, F_i) = \widehat{cor}(S_i, F_i) $
+\end{itemize}
+\pause
+We can flip dependent and independent variable: $F_i = \delta_0 + \delta_1S_i + e_i$
+\vspace{-0.15cm}
+
+\begin{itemize}
+    \item $\delta_1$ cannot plausibly reflect a causal effect
+    \item $\hat{\delta}_1 = \frac{\widehat{cov}(F_i, S_i)}{\widehat{var}(S_i)} = \widehat{cov}(F_i, S_i) = \widehat{cor}(F_i, S_i) = \hat{\beta_1}$
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Correlation vs. Causation: Examples}
+\color{teal}\textbf{Take-away:} 
+
+
+\color{black} Neither estimated nor true slope parameters necessarily reflect a causal effect. 
+
+Regressions per se are just tools to analyse (partial)  correlations between variables.
+
+
+Causality is an assumption that we add to it, and that needs to be based on economic theory/common sense.
+\end{frame}
+
+
+\begin{frame}{Correlation vs. Causation: More examples}
+Even if we have a causal model in the background, there are several reasons why correlations in observational data might not reflect the causal effect of interest:
+\begin{itemize}
+    \item the observed correlation between  \alert{\textit{education}} and the \alert{\textit{wage}} might not reflect the causal effect of education, because individuals who choose to get more education might differ from those who don't (higher innate ability, motivation) \alert{[omitted variables]}
+    \item the observed correlation between the \alert{\textit{minimum wage level}} and the \alert{\textit{employment rate}} might not reflect the causal effect of the minimum wage because policymakers may increase the minimum wage in times when the employment rate is high \alert{[reverse causality/simultaneity]}
+\end{itemize}
+\end{frame}
+\end{comment}
+
+\section{Exogeneity and Endogeneity}
+
+\begin{frame}{Endogeneity}
+Exogeneity (Assumption 4) is central to obtain causal effects.
+$$E(u_i|\boldsymbol{X}_i) = E(u_i) = 0$$
+\begin{itemize}
+    \item Regressors $\boldsymbol{X}_i$ and the error term $u_i$ are independent.
+    \item The regressors $\boldsymbol{X}_i$ behave as if they had been randomly assigned. 
+\end{itemize}
+\pause
+\begin{block}{Endogeneity $E(u_i|\boldsymbol{X}_i) \neq 0$}
+    \vspace{2mm}
+    Correlation between one or more regressors $\boldsymbol{X}_i$ and the error term $u_i$. \\
+    Regressors $\boldsymbol{X}_i$ are \alert{not} as if randomly assigned.
+\end{block}
+\pause
+Implication: OLS estimator is biased and inconsistent: 
+\begin{align*}
+E[\hat{\boldsymbol{\beta} }] = \boldsymbol{\beta}  + E[(\boldsymbol{X}'\boldsymbol{X})^{-1}(\boldsymbol{X}'\boldsymbol{u})]  \neq \boldsymbol{\beta}
+\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]{Endogeneity Example in a Generic Simple Regression Model}  
+     \vspace{-4mm}  
+    \begin{align*}
+        Y_{it} = \beta_0 + \beta_1 X_{it} + \alert{u_{it}} \quad i=1,...,N
+    \end{align*}
+    \vspace{2mm}
+    \pause
+    Parameter estimate for the observed sample is:
+    \begin{align*}
+        \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n} \sum_{i=1}^n(X_i - \overline{X}) \cdot u_i}{\frac{1}{n} \sum_{i=1}^n(X_i - \overline{X})^2}
+    \end{align*}
+    \vspace{1mm}
+\pause
+Under Assumptions 1 to 3:
+\[
+\left.
+\begin{array}{l}
+\bullet\ \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X}) \cdot u_i 
+    \xrightarrow{p} \operatorname{cov}(X_i, u_i) \\
+\bullet\ \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X})^2 
+    \xrightarrow{p} \operatorname{var}(X_i)
+\end{array}
+\right\}
+\qquad 
+\hat{\beta}_1 \xrightarrow{p} \beta_1 + \frac{\alert{\operatorname{cov}(X,u)}}{\operatorname{var}(X)}
+\]
+\pause
+$\Rightarrow$ \textbf{Direction of the inconsistency depends on the sign of \alert{$\operatorname{cov}(X,u)$}}
+\end{frame}
+
+\begin{frame}{Sources of Endogeneity}
+Frequent reasons for endogeneity are
+\begin{itemize}
+    \item Omitted variables
+    \item Measurement error in the explanatory variable
+    \item Reverse causality.
+\end{itemize}
+\end{frame}
+
+\section{Omitted Variables}
+
+\begin{frame}[fragile]{Omitted Variables Example}
+\vspace{-2mm}
+\[
+\text{Relevant model: }
+\begin{aligned}
+    \quad wage_i = \beta_0 + \beta_1\, educ_i + \beta_2\, ability_i + u_i
+\end{aligned}
+\]
+\begin{lstlisting}[language=R]
+    mlr <- lm(log(wage) ~ educ +  IQ, data = df_wages)
+\end{lstlisting}
+\pause
+\[
+\text{Estimated model: }
+\begin{aligned}
+        \quad wage_{i} = \beta_0 + \beta_1 educ_{i} + \cancel{\beta_2 ability_{i}} + v_i \quad v_i =  \alert{\beta_2} \cdot ability_{i} + u_i
+\end{aligned}
+\]
+\begin{lstlisting}[language=R]
+    slr <- lm(log(wage) ~ educ, data = df_wages)
+\end{lstlisting}
+\pause
+Endogeneity requires:
+\begin{itemize}
+    \item $\alert{\beta_2} \neq 0$: omitted variable to correlate with outcome.
+    \item $E[educ_i \cdot ability_i] \neq 0$: omitted variable to correlate with the regressor.
+\end{itemize}
+ \begin{align*}
+    E[educ_{i} \cdot v_i] 
+     %= E[educ_{i} \cdot \beta_2 \cdot ability_{i} + educ_{i} \cdot u_i]
+     = \alert{\beta_2} \cdot E[educ_i \cdot ability_i] + \cancelto{0}{E[educ_i \cdot u_i]}
+\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]{Direction of the Bias}
+
+Simmilarly, the covariance between error term and regresson can be expressed as:
+\begin{align*}
+    \operatorname{Cov}(X,u) \rightarrow \operatorname{Cov}(educ,v) = \beta_2 \operatorname{Cov}(educ,ability) + \cancelto{0}{\operatorname{Cov}(educ,u)}
+\end{align*}
+\begin{align*}
+    \hat{\beta}_1 \xrightarrow{p} \beta_1 +
+    \frac{\operatorname{Cov}(X,u)}{\operatorname{Var}(X)} \quad \equiv \quad \beta_1 + \beta_2 \cdot \frac{\operatorname{Cov}(educ,ability)}{\operatorname{Var}(educ)}
+\end{align*}
+\pause
+\vspace{2mm}
+Direction of the \textbf{Omitted Variable Bias} depends on:
+\vspace{-3mm}
+\begin{itemize}
+    \item the sign of $\beta_2$ (impact of ability on wages).
+    \begin{lstlisting}[language=R]
+    test_1 <- lm(log(wage) ~ IQ, data = df_wages)
+    \end{lstlisting}
+    \item the direction of $\operatorname{Cov}(educ, ability)$ (the impact of ability on education)
+    \begin{lstlisting}[language=R]
+    test_2 <- lm(educ ~ IQ, data = df_wages)
+    \end{lstlisting}
+    \pause
+    \vspace{1mm}
+    \item[$\rightarrow$] Will the parameter estimate be upward or downward biased?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Omitted Variables: Example}
+In the Esitmated Model, $\hat{\beta}_1$ is \textbf{\color{teal}biased upward} because 
+\begin{itemize}
+    \item $\beta_2 > 0$: ability increases wages.
+    \item $cov(IQ_i, educ_i) > 0$: $education$ is positively correlated with the omitted variable
+    \footnotesize
+
+\end{itemize}
+Thus, we \textit{overestimate} the true positive impact of education on wages; part of the correlation reflects the \textit{indirect} effect that individuals with higher education have a higher IQ, and therefore have higher wages.
+
+\bigskip
+
+In real-world applications, we do not have data on the omitted variable. \\
+We can only speculate about its correlation with the included regressor(s) and its impact on the dependent variable, to think about how its omission affects the parameter of interest.
+\end{frame}
+
+\section{Measurement Error}
+
+\begin{frame}{(Classical) Measurement Error in the Regressor}
+Original model: $\quad \text{wage}_i = \beta_0 + \beta_1 \text{educ}_i + u_i  \quad E[u_i \mid \text{educ}_i] = 0$ 
+\\
+\pause
+We do not observe $\text{educ}_i$ but just a noisy measure $\widetilde{\text{educ}}_{i}$:
+$\quad \widetilde{\text{educ}}_{i} = \text{educ}_{i} + \alert{w_i}$
+\vspace{-2mm}
+\begin{itemize}
+    \item $E[w_i] = 0$
+    \item $E[w_i \text{educ}_i] = 0$ 
+    \item $E[w_i u_i] = 0$
+\end{itemize}
+Estimated model: 
+$\quad \text{wage}_i = \beta_0 + \beta_1 \widetilde{\text{educ}}_{i} + e_i \quad \quad e_i = - \beta_1 w_{i} + u_i$
+\vspace{+0.2cm}
+\pause
+\begin{align*}
+Cov(X, u)  = Cov(\widetilde{\text{educ}}_{i}, e_i) 
+= & \ E(e_i \widetilde{\text{educ}}_{i}) \\
+= & \ E[(-\beta_1 w_{i} + u_i)\widetilde{\text{educ}}_{i}] \\
+= & \ -\beta_1 E[w_i \widetilde{\text{educ}}_{i}] + E[u_i \widetilde{\text{educ}}_{i}] \\
+= & \ -\beta_1 E[w_i \text{educ}_i + w_i^2] + E[u_i \text{educ}_i + u_i w_i] \\
+= & \ -\beta_1 E[w_i^2] \neq 0
+\end{align*}
+\end{frame}
+
+\begin{frame}{Measurement Error causes attenuation bias}
+\begin{align*}
+\hat{\beta}_1
+\quad \xrightarrow{p} \quad & \beta_1 + \frac{ Cov(\widetilde{\text{educ}}_{i}, e_i) }{ Var(\widetilde{\text{educ}}_{i}) } \\
+&= \beta_1 - \beta_1 \frac{ E[w_i^2] }{ Var(\text{educ}_i + w_i) } \\
+&= \beta_1 - \beta_1 \frac{ Var(w_i) }{ Var(\text{educ}_i) + Var(w_i) } \\
+&= \beta_1 \frac{ Var(\text{educ}_i) + Var(w_i) - Var(w_i) }{ Var(\text{educ}_i) + Var(w_i) } \\
+&= \beta_1 \frac{ Var(\text{educ}_i) }{ Var(\text{educ}_i) + Var(w_i) }
+\end{align*}
+
+$0 < \frac{ Var(\text{educ}_i) }{ Var(\text{educ}_i) + \alert{Var(w_i)}} \leq 1 
+\Rightarrow \hat{\beta}_1$ biased towards zero (attenuation bias)
+\end{frame}
+
+
+\section{Reverse Causality}
+
+\begin{frame}{Reverse Causality}
+We talk about reverse causality when $Y$ causes $X$ \textbf{and} $X$ causes $Y$.
+\pause
+\textbf{Previous Example:} \\
+\begin{itemize}
+    \item  We are interested in the effect of school budget on student outcomes: $$grades_i = \beta_0 + \beta_1 funding_i + u_i$$
+
+\item But the grades also determine government spending on a school: $$funding_i = \delta_0 + \delta_1 grades_i + v_i$$ 
+
+\item Assume: $cov(u_i, v_i ) = 0$
+
+\item Still, we get endogeneity: $cov(funding_i, u_i ) \neq 0$, \\
+because $pol \,funding_i$ (linearly) depends on $grades_i $ and $grades_i$ depends on $u_i$ 
+\end{itemize}
+\end{frame}
+
+
+\begin{comment}
+\section{Model Specification}
+
+\begin{frame}{How to choose which regressors to include in your model?}
+If our aim is to model causal relationships, the choice of which regresssors to include should 
+\begin{itemize}
+    \item be based primarily on economic arguments 
+    \item aim to make MLR.4 plausible
+    \item \textbf{not} be based primarily on statistical tools ($R^2$, adjusted $R^2$, $t$-tests, $F$-tests.)
+\end{itemize}
+\bigskip \color{gray}
+If our aim is prediction rather than causal analysis, statistical tools can be very helpful. \\
+Aim: explain $Y$ as good as possible  
+\end{frame}
+
+\begin{frame}{Choice of regressors in causal analysis}
+     
+We are typically interested in the causal effect of one specific variable $X_1$. \\
+What other variables $X_j$, $j = 2,…,k$ should we add as control variables?
+
+\begin{itemize}
+    \item Good control variables: \color{teal}\textbf{help to avoid OVB} \color{black}
+    \item Bad control variables: \color{orange}\textbf{mediator variables} \color{black}(could be considered as an outcome variable themselves)
+
+\end{itemize}
+\end{frame}
+\begin{frame}{Example for bad control variable}
+Suppose, we are interested in estimating the causal effect of agricultural pesticide use on health care expenditures. 
+
+$Health \: Expenditures_r = \beta_0 + \beta_1 pesticides_r + … + u_i$, $r = 1,…,R$ (region)
+
+\bigskip
+Should we control for the number of doctor visits made? 
+
+\pause
+
+No!
+An increase in the number of doctor visits is a \alert{\textbf{channel}} through which pesticide use increases health care expenditures.  
+
+If we control for the number of doctor visits, $\beta_1$ would reflect the impact of pesticide use on health care expenditures that are not generated by more doctor visits $\rightarrow$ a parameter that is generally  not of pratical interest.
+\end{frame}
+\end{comment}
+
+\section{Recap and Next Steps}
+
+\begin{frame}{Recap}
+\begin{itemize}
+    \item We are interested in estimating \alert relationships between economic variables.
+
+\item This requires that we interpret the linear model as some stylized (economic) model, where the $\beta$s describe causal effects of $\boldsymbol{X}$ on $Y$.
+
+\item When we interpret coefficients in that way, the \alert{Exogeneity Assumption} is crucial to get consistent estimates of the causal effects with OLS.
+
+\item  OLS estimators $\hat{\beta_j}$ consistently estimate the \textbf{(partial) correlation} between $X_j$ and $Y$. But if there is \textbf{endogeneity}, this  does not represent the underlying causal relationship.
+
+\item Endogeneity can arise because of reverse causality, measurement error and omitted variables. It is an extremely frequent problem in the social sciences.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Next Steps}
+How can we address the endogeneity issue?
+\begin{enumerate}
+    \item Instrumental Variables.
+    \item Panel Data.
+    \item Differences in Differences.
+    \item Regression Discontinuity Design.
+\end{enumerate}
+\end{frame}
+\appendix
+\begin{frame}
+
+\Large \centering
+APPENDIX
+    
+\end{frame}
+\begin{frame}{What do slope coefficients in a MLR measure? \\
+The Frisch-Waugh Theorem}
+
+In a MLR, $\hat{\beta}_j$ reflects the partial correlation between $X_j$ and $Y$, after the effects of other regressors have been taken out. 
+\begin{align*}
+   Y_i =\beta _0 + \beta_1X_{1i} + \boldsymbol{X}'_{2i} \boldsymbol{\beta_2} + u_i , i = 1,…, n 
+\end{align*}
+
+\begin{enumerate}
+    \item Regress $X_{1i}$ on  $\boldsymbol{X}_{2i} $: yields residuals $\hat{e}_{x_1i}$
+    \item Regress $Y_i$ on  $\boldsymbol{X}_{2i}$: yields residuals $\hat{e}_{yi}$
+    \item Regress $\hat{e}_{yi}$ on $\hat{e}_{xi}$
+\end{enumerate}
+$\rightarrow$ estimated slope parameter in step 3 is identical to the OLS estimator $\hat{\beta}_1$  in the MLR! (Frisch-Waugh Theorem)
+
+\end{frame}
+
+\begin{frame}{The Frisch-Waugh Theorem}
+
+The error $\hat{e}_{x_1i}$ can be thought of as the component (or variation) of $X_{1i}$ that is not linearly explained by $\boldsymbol{X}_{2i} $.
+
+Thus, the coefficient $\beta_1$ is a (rescaled) measure of linear correlation of $X_{1i}$ and $Y_i$, after \textbf{partialling out (controlling linearly for) the effects of all variables in}  $\boldsymbol{X}_{2i} $
+
+
+$\rightarrow$ Basis for the \textbf{ceteris paribus interpretation} of the model coefficients in a multivariate regression set-up. 
+
+But: we keep only the other included regressors fixed. Causal inference requires that there are no components left in the error that are systematically correlated with $X_1$.
+\end{frame}
+\end{document}

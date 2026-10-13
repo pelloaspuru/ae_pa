@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Correlation vs. Causality}{3}{0}{1}
+\beamer@sectionintoc {2}{Exogeneity and Endogeneity}{25}{0}{2}
+\beamer@sectionintoc {3}{Omitted Variables}{34}{0}{3}
+\beamer@sectionintoc {4}{Measurement Error}{42}{0}{4}
+\beamer@sectionintoc {5}{Reverse Causality}{47}{0}{5}
+\beamer@sectionintoc {6}{Recap and Next Steps}{50}{0}{6}

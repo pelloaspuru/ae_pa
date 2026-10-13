@@ -1,0 +1,25 @@
+\frametitle{Within Estimator with \texttt {fixest}}
+We can directly implement the within-estimator in R using the command \alert{\texttt{feols}} from the package \alert{\texttt{fixest}}.
+
+\small \color{gray}
+\texttt{install.packages("fixest") \\
+library(fixest) \\
+fe\_mod <- feols(fatality\_rate $\sim$ seatbelt\_usage | state, data = dat) \\
+summary(fe\_mod)
+}
+
+
+\texttt{
+\begin{tabular}{lcccc}
+Fixed-effects: &state: 4 &&&\\
+Standard-errors: &Clustered (state)&&& \\
+&&& \\
+      &         Estimate Std.& Error & t value &$Pr(>|t|)$    \\
+seatbelt\_usage& -0.016942  & 0.003851 &-4.39955& 0.021769 *  \\
+ \end{tabular} }
+\normalsize
+\color{black}
+
+Syntax is similar to  \texttt{estimatr::iv\_robust}: here the \textbf{fixed effects come after the $|$}
+
+The command directly provides \textbf{cluster-robust standard errors}: they account for dependence between observations across time within a cross-sectional group (state).

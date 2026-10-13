@@ -1,0 +1,23 @@
+\frametitle{Visualizing Confidence Intervals in R}
+Lets make a plot with the 95\% confidence intervals of $\beta$ parameters.
+\pause
+\begin{enumerate}
+    %\item run script \texttt{session5.R} from moodle.
+    \item store the results from \texttt{coefci(...)} as confidence interval matrix \texttt{ci\_mat}.
+    \item Arrange \texttt{ci\_mat} as a tidy dataset \texttt{df\_ci}.
+    \pause
+    \item use \texttt{ci\_mat} as input for \texttt{ggplot()} function:
+    \begin{lstlisting}[language=R]
+    ggplot(df_ci, aes(x = term, y = estimate)) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+    \end{lstlisting}
+    \pause
+    \item Make aesthetic changes:
+    \begin{lstlisting}[language=R]
+    labs(x = NULL,
+         y = "Coefficient (robust 95% CI)",
+         title = "Robust (HC0) Confidence Intervals from lm") +
+         theme_minimal(base_size = 12)
+    \end{lstlisting}
+\end{enumerate}

@@ -1,0 +1,6 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Motivation}{10}{0}{2}
+\beamer@sectionintoc {3}{Introduction to R}{15}{0}{3}
+\beamer@sectionintoc {4}{Data Frames}{30}{0}{4}
+\beamer@sectionintoc {5}{Graphs}{50}{0}{5}

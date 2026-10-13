@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Example: Mortality Effect of Alcohol Consumption}{10}{0}{1}
+\beamer@sectionintoc {2}{RDD: Details and Issues}{23}{0}{2}
+\beamer@sectionintoc {3}{Identification and Sources of Bias}{35}{0}{3}
+\beamer@sectionintoc {4}{Practice in R}{41}{0}{4}

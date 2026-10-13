@@ -1,0 +1,457 @@
+\documentclass[11pt, aspectratio = 169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\usepackage{hyperref}  
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{verbatim} 
+\usepackage{listings}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\definecolor{links}{HTML}{1B1B81}
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+
+\title{Applied Economics}
+\subtitle{Regression Discontinuity Design}
+\author{Beate Thies}
+\date{}
+\institute{Winter 2024/25}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=teal}
+
+\let\svdescription\description
+\let\svenddescription\enddescription
+\renewenvironment{description}{%
+	\svdescription%
+	\let\svitem\item%
+	\renewcommand\item[1][]{\svitem[\textcolor{\descriptioncolor}{##1}]}%
+}{
+	\svenddescription%
+}
+\newcommand\descriptioncolor{teal}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+	
+	\maketitle
+	
+
+\begin{frame}{Introduction}
+	
+		\begin{itemize}
+			\item Starting point: we are interested in the causal effect of some treatment, but subjects are not randomly allocated to treatment (no randomized experiment)
+			
+			\item We can use \textbf{\alert{quasi-experimental methods}} to estimate a causal effect even if we cannot control for everything that is relevant. Last week: Difference-in-Differences  %(Idea: control group allows you to do that under parallel trends assumption)
+		\end{itemize}
+		\begin{block}{Today: Regression Discontinuity Design (RDD)}
+			\begin{itemize}
+				\item can be applied when we have specific information about the rules determining treatment allocation. $\rightarrow$ exploit this to get quasi-random variation in treatment.
+				
+				\item not applicable everywhere, but intuitive + very credible identification assumption
+			\end{itemize}
+		\end{block}
+	\end{frame}	
+	
+	\begin{frame}{RDD - Basic idea}
+		\begin{itemize}
+			\item  Treatment assignment is determined by a \textbf{threshold} in a continuous variable 
+			
+			\item Many policies/programs are based on arbitrary rules and thresholds: \\ Above the threshold $\rightarrow$ in the program; below threshold $\rightarrow$ not in the program.
+		\end{itemize}		
+		\pause 
+
+		\begin{block}{Examples}
+			\begin{itemize}
+				\item in the US, newborns weighing less than \textbf{1,500 grams} are considered to be of "very low birth weight" and receive additional treatment \footnotesize{(Almond et al., 2010)}
+				\item \normalsize	in the US, the legal drinking age is \textbf{21 years old} \footnotesize{(Carpenter and Dobkin, 2009).}
+			\end{itemize}
+		\end{block}
+		\pause 
+		
+		$\Rightarrow$	we can \textbf{zoom in} on a group of individuals where having been allocated to \hspace*{+0.5cm}treatment is \textbf{as good as random} - hence not influenced by selection bias.
+\end{frame}
+
+	
+		\begin{frame}{RDD - Terminology}
+		We look for a treatment that is assigned based on being above/below a cutoff value of a continuous variable.
+		
+		\vspace{+0.15cm}
+		We call the continuous variable \textit{running variable} because we run along it until we hit the cutoff 
+		\vspace*{+0.25cm}
+		\\
+		\colorbox{white}
+		{
+			\begin{minipage}{\textwidth}
+				\alert{\textbf{Running variable $a$:} variable that determines assignment to treatment.
+					
+					
+					\textbf{Cutoff/threshold $c$:} level of the running variable above (or below) which individuals are treated.}
+				
+		\end{minipage}	}
+		\medskip
+		\begin{block}{Examples}
+			\begin{itemize}
+				\item 	if a candidate gets 50.1\% of the vote they're elected, 40.9\% and they're not. \\
+				$\rightarrow$ $a$ = vote share, $c$ = 0.5, treatment: getting elected into office
+				\item if a newborn weights 1,499g, they get additional treatment, 1,500g and they don't  $\rightarrow$ $a$ = birth weight, $c$ =  1,500, treatment: medical treatment
+			\end{itemize}
+		\end{block}
+	\end{frame}
+	
+	\begin{frame}{RDD - Basic Idea}
+		At the threshold, the \textbf{probability of being treated jumps} from 0 to 1. (sharp discontinuity)
+		\\ \medskip
+        
+		Apart from that, people right before and right after the threshold are \textbf{essentially the same} 
+	
+		$\Rightarrow$ Around the threshold, allocation to treatment is as good as random! \\
+		\pause
+		
+		\medskip 
+		\alert{RDD: Measure the gap in the outcome for those right before vs. after threshold to get treatment effect of interest} \\
+	
+			\begin{block}{Examples}
+			\begin{itemize}
+				\item 	 How different are newborns weighing just below vs. just above 1,500g, other than access to additional medical care? 
+				\item 	Compute difference in later life health between individuals just above and just below the birth weight cutoff to estimate causal effect of access to medical treatment on long-run health outcomes
+			\end{itemize}
+		\end{block}
+		\medskip 
+
+	\end{frame}
+	\begin{frame}{RDD - Caution}
+				Gap in outcome at the threshold  = $\delta$ = \textit{local} average treatment effect (LATE)
+				\medskip 
+		\begin{itemize}
+			\item RDD only tells you the impact of treatment on outcome \textbf{around the cutoff value} of the running variable. \color{gray}(e.g. effect of getting medical treatment at 1,500g) \color{black}
+			\item	Limited \textbf{external validity}: you cannot extrapolate to the entire population. \color{gray}(e.g. effect of getting medical treatment at 3,000g birth weight) \color{black}
+			\item	RDD is a very \textbf{data-hungry method}: only works with sufficiently large samples, because we essentially throw away observations that are not close to the cutoff.	
+		\end{itemize}
+	\end{frame}
+
+		\section{Example: Mortality Effect of Alcohol Consumption}
+
+	
+	\begin{frame}{RDD Framework - Example}
+		
+		We are interested in the causal effect of \textbf{alcohol consumption} by young adults on \textbf{mortality}.
+	\begin{itemize}
+				\item Why can't you just regress dying age on alcohol consumption?
+			%	\pause
+			%	\item there may be unobserved selection into alcohol consumption that may also be a determinant of mortality. } \\
+\end{itemize}
+	\pause
+$\rightarrow$ 	We need some quasi-random variation in alcohol consumption
+	
+		\pause
+		\bigskip
+		\\
+		In the US, alcohol consumption is prohibited before the \textbf{age of 21}.
+		\medskip
+		\\
+		The cutoff age, 21, separates those who can drink legally and those who can't:
+		
+		
+		Treatment status $D_a$ is a \alert{deterministic} and \alert{discontinuous} function of the running variable $age$:
+		\begin{center}
+			
+			
+			$D_a$ = 	\begin{cases}
+				1 & \text{ if } age \geq 21 \\
+				0 & \text{ if } age < 21
+		\end{cases} 	\end{center}	
+	\end{frame}
+	
+	\begin{frame}{RDD - Graphs: Running Variable and Cutoff}
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.83\linewidth]{RDD1}
+			\caption{Discontinuity in Treatment Status at the Cutoff}
+			\label{fig:rdd1}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{RDD - Graphs: Zooming In Around the Cutoff}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.87\linewidth]{RDD2}
+			%\caption{Discontinuity in Treatment Status at the Cutoff}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{RDD - Graphs: Zooming In Around the Cutoff}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.87\linewidth]{RDD3}
+			%\caption{Discontinuity in Treatment Status at the Cutoff}
+		\end{figure}
+	\end{frame}
+
+    	\begin{frame}{RDD - Key Graph: Outcome against the Running Variable}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.83\linewidth]{RDD4}
+			\caption{Discontinuity in the Outcome at the Cutoff}
+		\end{figure}
+	\end{frame}
+	\begin{frame}{Estimation of the size of the gap}
+		
+		We can write the following simple regression model: 
+		\begin{align*}Deathrate_a = \alpha + \beta a + \delta  D_a + u \end{align*}
+		
+		
+			\hspace*{+1cm} $Deathrate_a \: $  -- death rate at age $a$, \\
+		\hspace*{+1cm}		$a \: \: \: \: \: \:  \: \: \:  \: \: \:  \: \: \:  \: \: \: \:$  --  age (defined in months relative to 21st birthday; Running Var.), \\
+		\hspace*{+1cm}$D_a \: \: \: \: \: \:  \: \: \:  \: \: \:   \: \: \:  \:  \: $  -- treatment dummy.  \\
+
+		\medskip 
+		$\delta$ captures the jump in death rate between individuals above and below 21 years old.
+		
+				\medskip 
+		The RDD estimator exploits a discontinuity at  $a = 21$ in the conditional expectation function:
+		
+		$\underbrace{\lim_{c \rightarrow 21^{+}} \mathbbm{E}[deathrate_a | a = c]}_{\alpha + \delta} - \underbrace{\lim_{c \rightarrow 21^{-}} \mathbbm{E}[deathrate_a | a = c]}_{\alpha} = \delta$
+	\end{frame}
+
+
+\begin{frame}{RDD - Graphical Results}
+	\begin{figure}
+		\centering
+		\includegraphics[width =1.1\linewidth]{RDDa}
+	%	\caption{Discontinuity in the Outcome at the Cutoff}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{RDD - Graphical Results}
+	\begin{figure}
+		\centering
+		\includegraphics[width =1.1\linewidth]{RDDa2}
+			\caption{RDD Treatment Effect Estimate}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{RDD - Graphical Results}
+	\begin{figure}
+		\centering
+		\includegraphics[width =.96\linewidth]{RDDe}
+
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]{RDD - Regression}
+	\begin{align*}Deathrate_a = \alpha + \beta (a - cutoff) + \delta  D_a + u \end{align*}
+
+<<include = F>>=
+library(sandwich)
+library(lmtest)
+df <- read.csv("dataRDD.csv")
+df$age_centered <- df$age_cell- 21
+@
+\small
+<<>>=
+mod1 <- lm(death_rate_per_100T ~ age_centered + treat, data = df)
+coeftest(mod1, vcov. = vcovHC(mod1, "HC1"))
+@
+\end{frame}
+
+
+	
+	
+\section{RDD: Details and Issues}
+	
+	
+	\begin{frame}{To conduct an RD analysis, the researcher has to make several choices}
+		
+		\begin{block}{1. Functional Form}
+			\begin{itemize}
+				\item the size of the gap depends on the type of lines you choose on each side of the cutoff
+			 				
+				\item insufficiently flexible specification: risk of mistaking nonlinearity for treatment effect
+			
+				\item overly flexible specification: reduces precision and runs the risk of overfitting.
+			
+			\pause
+				\item essential to visualise the data to choose an appropriate functional form!
+				\item \textbf{Try different options $\rightarrow$ coefficients across models shouldn't vary too much if there is a “true” treatment effect.}
+			\item estimators based on linear or quadratic polynomials or other smooth functions are recommended.
+			\end{itemize}
+		\end{block}
+	\end{frame}
+	
+\begin{frame}{Choosing the Functional Form}
+    	\begin{figure}
+		\centering
+		\includegraphics[width =.9\linewidth]{Oswald.png}
+	\end{figure}
+ \footnotesize Souce: Oswald, Kenedi and  Villedieu
+\end{frame}
+	\begin{frame}[fragile]{Choosing the Functional Form} 
+
+			\begin{itemize}
+				\item  Commonly, we allow the relationship between the outcome and the running variable to differ on the two sides of the discontinuity (varying slopes): 
+				\begin{align*}Y = \alpha + \beta (a - cutoff) + \gamma (a - cutoff) \cdot D_a + \delta  D_a + u \end{align*}
+				\item With a quadratic polynomial we have: 
+				\begin{align*}Y = & \alpha + \beta_1 (a - cutoff) + \beta_1 (a - cutoff)^2 + \\
+					&\gamma_1 (a - cutoff) \cdot D_a + \gamma_2 (a - cutoff)^2 \cdot D_a  +\delta  D_a + u \end{align*}
+			\end{itemize}
+	\end{frame}
+
+\begin{frame}{Graphical Results with different Functional Forms}
+	\begin{figure}
+		\centering
+		\includegraphics[width =.9\linewidth]{RDD5}
+	\end{figure}
+\end{frame}
+
+ \begin{frame}[fragile]{Regressions with Different Functional Forms}
+	\begin{align*}Deathrate_a = \alpha + \beta (a - cutoff)  + \gamma (a - cutoff) \cdot D_a + \delta  D_a + u \end{align*} \small
+<<>>=
+mod2 <- lm(death_rate_per_100T ~  age_centered*treat, data = df)
+coeftest(mod2, vcov. = vcovHC(mod2, "HC1"))
+@
+\end{frame}
+
+\begin{frame}[fragile]{Regressions with Different Functional Forms}
+	\footnotesize \begin{align*}Deathrate_a =  \alpha + \beta_1 (a - cutoff) + \beta_1 (a - cutoff)^2 + \gamma_1 (a - cutoff) \cdot D_a + \gamma_2 (a - cutoff)^2 \cdot D_a  +\delta  D_a + u \end{align*}
+
+<<>>=
+mod3 <- lm(death_rate_per_100T ~  age_centered*treat + I(age_centered^2)*treat, data = df)
+coeftest(mod3, vcov. = vcovHC(mod3, "HC1"))
+@
+\end{frame}
+
+\begin{frame}{To conduct an RD analysis, the researcher has to make several choices}
+			
+			
+			In our estimation, we want to give more weight to observations close to the cutoff level.
+		\\
+        There are two key parameters to do that:
+            
+			\begin{block}{2. Bandwidth}
+				\begin{itemize}
+					\item \textbf{Bandwidth} = window around cutoff outside of which you discard observations
+					(e.g. only consider individuals aged 19 to 23; or only those aged 20 to 22)
+					\item %How far away from the cutoff do observations need to be to be discarded? $\rightarrow$ 
+					bandwidth choice: comparability of observations around the cutoff vs. sample size
+				\end{itemize}
+			\end{block}
+			\pause 
+			\begin{block}{3. Kernel}
+				\begin{itemize}
+					\item \textbf{Kernel} = method for assigning importance to values based on their distance to the cutoff
+					\item because we care the most about observations right by the cutoff, we typically want to give more distant ones less weight
+				\end{itemize}
+			\end{block}
+			\end{frame}
+            
+
+\begin{frame}[fragile]{Different Kernels}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\linewidth]{kernels.png}
+     \label{fig:enter-label}\end{figure}
+\footnotesize Source: Andrew Heiss 
+\end{frame}
+			\begin{frame}[fragile]{RDD - Issues}
+			Your estimate of the treatment effect depends on all these: 
+			\begin{itemize}
+				\item Functional form/line type 
+				\item Bandwidth (wide vs. narrow) 
+				\item 	Kernel weighting
+			\end{itemize}
+			
+			Luckily there is an R package that chooses optimal bandwidth and kernel based on fancy algorithms: \texttt{rdrobust}. 
+			
+			For robustness, check what happens if you double/halve the bandwidth, use different kernels and different functional forms
+			\end{frame}
+			
+
+				\section{Identification and Sources of Bias}
+
+	\begin{frame}{Identifying Assumption}
+				
+				\alert{Key assumption:} Potential outcomes are smooth at the threshold. In other words, in the absence of treatment, there would be no discontinuity.
+				\begin{itemize}
+					\item The population just below must not be discretely different from the population just above the cutoff.
+					
+					\item The only thing that changes at the cutoff must be the treatment status
+					
+					\pause 
+					\item This is violated if people can \alert{manipulate} the running variable
+					
+					\item If manipulation is possible, those right next to the cutoff are no longer comparable treatment/control groups
+				\end{itemize}
+				
+				\pause 
+				
+				One thing we can do to ``test'' this assumption is a \textit{placebo test}: Check if variables \textit{other} than treatment or outcome vary at the cutoff (e.g. control variables) \\
+				
+				If we find a significant discontinuity, that's bad! That tells us that other things are changing at the cutoff.
+				
+				
+			\end{frame}
+			
+			\begin{frame}{Checking for Manipulation: Density of the Running Variable}
+				
+				Manipulation of the running variable around the cutoff often generates a big cluster of observations to one side of the cutoff (bunching) and a gap on the other side
+				\begin{figure}
+					\centering
+					\includegraphics[width=0.55\linewidth]{Marathon.png} \vspace{-0.2cm}
+					\caption{Distribution of Marathon Finishing Times}
+				\end{figure}
+			\end{frame}
+			
+			
+			\begin{frame}{Another Issue: Noncompliance}
+				
+				\textbf{Noncompliance} \\
+				The running variable does not fully determine assignment to treatment. At the cutoff, your chance of treatment $increases$ (jumps upward), but not from 0 to 1.
+				
+				$\rightarrow$ \textbf{Fuzzy RDD} (instead of sharp RDD)
+				
+				We will not cover the fuzzy RDD in detail, just know that the problem of imperfect determination of allocation to treatment can still be solved.
+			\end{frame}
+		
+	\section{Practice in R}
+			
+			\begin{frame}{Effect of Training Program on Exam Score}
+				
+				If students score \textbf{below 40 points} (out of 100) on an initial test, they enter a special training program. We are interested in the effect of this program on the score in the final exam. 
+				
+				\begin{enumerate}
+					\item  Open a new \texttt{.qmd} file and import the dataset \textit{test\_scores.csv}
+					\item  Create a dummy variable for individuals scoring below 40 points on the initial test (\textit{test\_score}).
+					\item  Plot the $final\_score$ as a function of the initial test score, colouring observations above and below 40 points. Choose a suitable bandwidth. Do you see a discontinuity?
+					\item  Generate the same plot but with a re-centered test score variable that is 0 at the cutoff.
+						\end{enumerate}
+			\end{frame}
+			
+			
+			\begin{frame}{Effect of Training Program on Exam Score}
+				
+				\begin{enumerate}\setcounter{enumi}{4}
+					\item Estimate the following model: $Final \: Score = \alpha + \beta Test \: Score + \delta Treated + u$ (using a recentered test score variable). \\
+					Does the RDD coefficient fit your graphical evidence? %correspond to the graphical illustration?
+					\item  How do you interpret each coefficient?
+					\item  Estimate a model  allowing for different linear slopes on each side of the cutoff. Then also estimate a model allowing for different quadratic specifications on each side. Do the RDD coefficients differ across models?
+					
+					\item Generate the RDD plot using \texttt{rdplot()} from the package \texttt{rdrobust()}, and add regression lines.
+					
+					\item Estimate the RDD coefficient using \texttt{rdrobust()}. 
+				\end{enumerate}
+			\end{frame}
+
+\end{document}
+
+
+

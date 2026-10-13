@@ -1,0 +1,305 @@
+\documentclass[11pt, aspectratio = 169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{verbatim} 
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\definecolor{links}{HTML}{1B1B81}
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+
+% listings: To highlight code:
+\usepackage{listings}
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red},
+  frame=single,
+  showstringspaces=false
+}
+\lstset{basicstyle=\ttfamily\footnotesize, frame=single}
+
+% To comment out large sections:
+\usepackage{comment}
+
+\title{Applied Economics}
+\subtitle{OLS Variance and Robust Standard Errors}
+\author{Pello Aspuru}
+\date{}
+\institute{Winter 2025/26}
+
+
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=teal}
+\setbeamercovered{transparent} % default faintness (~15%)
+
+\let\svdescription\description
+\let\svenddescription\enddescription
+\renewenvironment{description}{%
+  \svdescription%
+  \let\svitem\item%
+  \renewcommand\item[1][]{\svitem[\textcolor{\descriptioncolor}{##1}]}%
+  }{
+  \svenddescription%
+  }
+\newcommand\descriptioncolor{teal}
+
+%\usepackage{Sweave}
+\begin{document}
+%\input{AE_w4_OLS-concordance}
+
+\maketitle
+
+\begin{frame}{Plan for this Lecture}
+
+\begin{center}
+  \textbf{How well} does \textcolor{teal}{random variable} \textcolor{teal}{$\hat{\beta}$} represent the \alert{number} \alert{$\beta$}?
+\end{center}
+\pause
+\vspace{-0.2cm}
+    \begin{itemize}
+        \item Last session: \textcolor{teal}{$\hat{\beta}$}'s Unbiasedness, consistency, asymptotic distribution.
+        \item This session: The variance of \textcolor{teal}{$\hat{\beta}$}.
+    \end{itemize}
+\end{frame}
+
+\section{Variance of the OLS Estimator}
+
+\begin{frame}[fragile]{Variance of OLS Estimator $\hat{\beta}$}
+
+\begin{center}
+  Economic question: does pollution $X_{1i}$ \alert{cause} a decrease of housing prices $Y_i$ in Vienna?
+\end{center}
+
+Model for observed \textcolor{teal}{sample} n:
+$\quad Y_i = \textcolor{teal}{\hat{\beta}_0} + \textcolor{teal}{\hat{\beta}_1} X_{1i} + \textcolor{teal}{\hat{\beta}_2} X_{2i} + \hat{u}_{i} \quad i = 1, ... n \quad k=2$
+\begin{lstlisting}[language=R]
+    n <- 100
+    df <- population[sample(nrow(population), n), ]
+    ols_est = lm(price ~ nox + rooms, data = df)
+\end{lstlisting}
+\pause
+The uncertainty of \textcolor{teal}{$\underset{(k+1 \times 1)}{\hat{\boldsymbol{\beta}}}$} is represented by \alert{variance-covariance} matrix:
+\begin{align*}
+\alert{\underset{(k+1 \times k+1)}{Var(\hat{\boldsymbol{\beta}}|\mathbf{X})}} =  \begin{pmatrix}
+                                            Var(\hat{\beta_0}|\mathbf{X}) & cov(\hat{\beta_0}, \hat{\beta_1}|\mathbf{X})  & \ldots & cov(\hat{\beta_0}, \hat{\beta_k}|\mathbf{X})   \\
+                                            cov(\hat{\beta_0}, \hat{\beta_1}|\mathbf{X})  & Var(\hat{\beta_1}|\mathbf{X})  & \ldots & cov(\hat{\beta_1}, \hat{\beta_k}|\mathbf{X})      \\
+                                            \vdots & \vdots   & \ddots & \vdots \\
+                                            cov(\hat{\beta_0}, \hat{\beta_k}|\mathbf{X})  &  cov(\hat{\beta_1}, \hat{\beta_k}|\mathbf{X})  & \ldots & Var(\hat{\beta_k}|\mathbf{X}) \\
+                                            \end{pmatrix}
+\end{align*}
+%We are especially interested in the elements on the diagonal, which reflect the estimation uncertainty regarding the parameters $\beta_j, j = 0,1,...,k$
+\end{frame}
+
+\begin{frame}[fragile]{Variance of OLS Estimates $Var(\hat{\boldsymbol{\beta}}|\mathbf{X})$}
+  From last week's unbiasedness derivtion, 
+  $
+  \hat{\boldsymbol{\beta}} = \boldsymbol{\beta} + (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' \textcolor{teal}{\underset{(n \times 1)}{\mathbf{u}}}
+  $
+\pause
+\begin{align*}
+\underset{(k+1 \times k+1)}{Var(\hat{\boldsymbol{\beta}}|\mathbf{X})} = Var(\hat{\boldsymbol{\beta}}-\beta|\mathbf{X}) &= E[(\hat{\boldsymbol{\beta}}-\boldsymbol{\beta})(\hat{\boldsymbol{\beta}}-\boldsymbol{\beta})'|\mathbf{X}]\\
+                            &= E[((\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\textcolor{teal}{\mathbf{u}})((\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\textcolor{teal}{\mathbf{u}})'|\mathbf{X}]\\
+                            &= E[(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\textcolor{teal}{\mathbf{u}}\textcolor{teal}{\mathbf{u}}'\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}|\mathbf{X}]\\
+                            &= (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\alert{E[\textcolor{teal}{\mathbf{u}\mathbf{u}}'|\mathbf{X}]}\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\\
+\end{align*}
+\pause
+\vspace{-1cm}
+\begin{itemize}
+  \item What do we observe? What we do not observe?
+  \pause
+\begin{lstlisting}[language=R]      
+  X <- as.matrix(df[,names(df) %in% c("constant","nox", "rooms")])
+  Y <- as.matrix(df[,names(df) %in% c("price")])
+\end{lstlisting}   
+  \pause
+  \item Next step: unpack 
+  $\alert{\underset{n \times n}{E[\textcolor{teal}{\mathbf{u}\mathbf{u}}'|\mathbf{X}]}}$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Variance of the error terms $Var(\mathbf{u}|\mathbf{X})$}
+Last session's \textbf{Assumption 3: Random sampling}: $\alert{E[u_{i}u_{j}] = 0} \quad \text{ for all } i \neq j$:
+\pause  
+\begin{align*}
+  E[\mathbf{u}\mathbf{u}'|\mathbf{X}] &=
+ \begin{pmatrix}
+\sigma_1^2 & \alert{0}        & \ldots & \alert{0}     \\
+\alert{0}        & \sigma_2^2 & \ldots & \alert{0}     \\
+\vdots   & \vdots   & \ddots & \vdots \\
+\alert{0}        &  \alert{0}       & \ldots & \sigma_n^2 \\
+\end{pmatrix} = diag(\sigma_1^2, ..., \sigma_n^2) \equiv \Omega
+\end{align*}
+\pause
+\begin{itemize}
+  \item Approximate each unknown $\sigma_i^2$ with $\hat{u}_i Y_i - \mathbf{X_i}\hat{\boldsymbol{\beta}}$.
+  \begin{lstlisting}[language=R]      
+    beta_hat = solve(t(X) %*% X) %*% t(X) %*% Y
+    u_hat_sq = (as.vector(Y - X %*% beta_hat))^2
+  \end{lstlisting}  
+  \pause
+  \item Next, construct $\widehat{\Omega} = diag(\hat{u}_1^2, \hat{u}_2^2, ..., \hat{u}_n^2) = diag(\hat{u}^2) \quad \text{ Where } \underset{n \times 1}{\hat{u}} = \mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}}$
+  \vspace{+0.2cm}
+  \begin{lstlisting}[language=R]      
+    Omega_hat <- as.matrix(diag(u_hat_sq))
+  \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Robust Variance Estimator}
+
+Plugging $\widehat{\Omega}$ into the formula for $Var(\hat{\boldsymbol{\beta}}|\mathbf{X})$ yields a consistent estimator for the variance matrix of the OLS estimator:
+\begin{align*}
+   \widehat{Var}(\hat{\boldsymbol{\beta}}|\mathbf{X}) = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\hat{\Omega}\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}
+\end{align*}
+\begin{lstlisting}[language=R]      
+  var_beta_hat <- 
+  solve(t(X) %*% X) %*% t(X) %*% Omega_hat %*% X %*% solve(t(X) %*% X)
+\end{lstlisting}
+\pause
+\begin{itemize}
+  \item Diagonal elements of $\widehat{Var}(\hat{\boldsymbol{\beta}}|\mathbf{X})$: estimated variances of parameter estimates.
+  \item Taking the square roots yields the \color{teal}\textbf{standard errors} $\widehat{SE}(\hat{\beta}_j)$ \color{black} $\rightarrow$ hypothesis testing.
+  \begin{lstlisting}[language=R]      
+  SE_hat <- sqrt(diag(var_beta_hat))
+  \end{lstlisting}  \pause
+  \item[$\rightarrow$] How do $\widehat{SE}(\hat{\beta}_j)$ compare tho those reported by the lm() function?
+  \begin{lstlisting}[language=R]      
+  ols_est = lm(price ~ nox + rooms, data = df)
+  summary(ols_est)
+  \end{lstlisting} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Heteroskedasticity and Homoskedasticity}
+
+Why the different standard error computation prodcedures gave \alert{different} results?
+\pause
+\begin{itemize}
+  \item $\widehat{Var}(\hat{\boldsymbol{\beta}}|\mathbf{X})$ formula-based standard errors: \textcolor{teal}{\textbf{heteroskedasticity-robust}.}
+  \item lm() function standard errors: \color{teal}\textbf{non-robust}, assume \textbf{homoskedasticity}.
+\end{itemize}
+\pause 
+
+\begin{alertblock}{Assumption 5: Conditional Homoskedasticity}
+\vspace{+.12cm}
+All errors errors $u_i$ feature \alert{the same} conditional variance $\sigma_u^2$:
+$$
+var(u_i|\mathbf{X_i}) = \sigma_u^2 \text{ for all } i = 1,...n. 
+\quad \rightarrow \quad 
+\underset{n \times n}{var(\mathbf{u}|\mathbf{X})}  = \sigma_u^2 \cdot \mathbm{I}_n
+\quad \rightarrow \quad
+\hat{\Omega} = \hat{\sigma}_u^2 \cdot \mathbm{I}_n
+$$
+\end{alertblock}
+\pause
+\vspace{-0.3cm}
+Under conditional homoskedasticity, OLS estimator variance simplifies to:
+$$
+\widehat{Var}(\hat{\boldsymbol{\beta}}|\mathbf{X}) = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\hat{\Omega}\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1} \quad \rightarrow \quad
+\widehat{Var}(\hat{\boldsymbol{\beta}}|\mathbf{X}) = (\mathbf{X}'\mathbf{X})^{-1}\cdot \sigma_u^2
+$$
+\end{frame}
+
+\begin{frame}[fragile]{Heteroskedasticity and Homoskedasticity}
+\alert{Assumption 5 is implausible in most economic applications.} \\
+Example: Among big houses, the price dispersion is larger than among small houses. $\rightarrow$ Unexplained variation price ($Y$) depends on size ($X_{2i}$).  
+\pause
+If \alert{Assumption 5} is violated, the non-robust standard errors based on the simplified formula are inconsistent.
+
+The robust standard errors are consistent under both conditional homoskedasticity  and conditional heteroskedasticity:
+\begin{lstlisting}[language=R]      
+  robust_se <- sqrt(diag(vcovHC(ols_est, type = "HC0")))
+  robust_se
+  coeftest(ols_est, vcov. = vcovHC(ols_est, type = "HC0"))
+  SE_hat # Calculated previously.
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}{Excursion: $R^2$ (goodness of fit)}
+
+$R^2$ is commonly reported in regression output in R, and measures what share of the total variation in the dependent variable is explained by variation in the regressors:
+\begin{align*}
+ R^2=\frac{SSE}{SST}=1-\frac{SSR}{SST}, \text{ with }
+ \end{align*}
+\begin{itemize}
+  \item \textbf{Total sum of squares} (SST): $\sum_{i=1}^N (y_i - \bar{y})^2$
+  \item \textbf{Explained sum of squares} (SSE): $\sum_{i=1}^N (\hat{y}_i - \bar{y})^2$
+  \item \textbf{Residual sum of squares} (SSR): $\sum_{i=1}^N \hat{u}_i^2$
+\end{itemize}
+\pause
+The (adjusted) $R^2$ is sometimes used to compare different models (for the same dependent variable $Y$), but it does not play a major role when your goal is causal analysis.
+\end{frame}
+
+\begin{frame}[fragile]{Multicollinearity and the OLS variance I}
+
+\begin{center}
+  Does pollution ($X_{1i}$) cause a decrease of house prices? \pause New control, \textcolor{teal}{$X_{3i}$} property tax.
+\end{center}
+$$
+\quad Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_{1i} + \hat{\beta}_2 X_{2i} + \textcolor{teal}{\hat{\beta}_3} X_{3i} + \hat{u}_{i} \quad i = 1, ... n \quad k=3
+$$
+\vspace{-0.5cm}
+\begin{lstlisting}[language=R]      
+  ols_est_2 = lm(price ~  nox + rooms + proptax, data = df)
+\end{lstlisting}
+\pause
+$R_j^2$ is the $R^2$ from a regression of $X_j$ on the other regressors. $\rightarrow$ measures multicollinearity (linear correlation) between $X_j$ and the remaining regressors. 
+\begin{lstlisting}[language=R]      
+  R_j_test = lm(nox ~  rooms + proptax, data = df)
+  summary(R_j_test)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Multicollinearity and the OLS variance II}
+\begin{center}
+  Higher $R_{j}^2 \quad \rightarrow \quad$ higher $\hat{Var}(\hat{\beta_{j}} |X)$
+\end{center}
+\pause
+Intuition: If two regressors are strongly correlated, it is hard to disentangle their individual partial effects on $Y$.
+\begin{itemize}
+    \item[$\rightarrow$] Do consumers dislike houses because of pollution $X_{1i}$ or property taxes $X_{3i}$?
+\end{itemize}
+\pause
+In this case, adding the property tax covariate \textcolor{teal}{$X_{3i}$} to our original model \alert{increases} the standard error of our parameter of interest \alert{$\hat{SE}(\hat{\beta}_j)$}.
+\begin{lstlisting}[language=R]      
+  coeftest(ols_est, vcov. = vcovHC(ols_est, type = "HC0"))
+  coeftest(ols_est_2, vcov. = vcovHC(ols_est_2, type = "HC0"))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Drivers of estimation uncertainty}
+We will assume homoskedasticity for illustrative purposes, to analyse which factors drive the variance of the OLS estimator.
+%(Also holds under heteroskedasticity, but is more difficult to show).
+
+Variance of estimator $\hat{\beta_j}$ under homoskedasticity:
+\begin{align*}
+    Var(\hat{\beta_j}|\mathbf{X}) = \frac{1}{\textcolor{teal}{n}} \cdot \frac{\alert{\sigma_u^2}}{\textcolor{teal}{\sigma_{X_j}^2}} \cdot \frac{1}{1-\alert{R_j^2}}
+\end{align*}
+\pause
+  \begin{itemize}
+     \item shrinks as sample size \textcolor{teal}{$n$} increases.
+     \item shrinks as \textcolor{teal}{sample variation in regressor $X_j$} increases. \pause
+     \item increases in the conditional error variance \alert{$\sigma_u^2$}.
+    \item increases as the \alert{correlation between $X_j$ and the other regressors} increases..
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Recommended Literature}
+
+Heiß Chapters 1.9, 3.4, 8.1
+
+Hanck et al. Chapter 5.4
+   
+\end{frame}
+\end{document}

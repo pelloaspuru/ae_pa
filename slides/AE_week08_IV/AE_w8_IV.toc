@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Example in R}{20}{0}{1}
+\beamer@sectionintoc {2}{General Case: Multiple regression model with one or more endogenous regressors}{32}{0}{2}
+\beamer@sectionintoc {3}{Example in R}{38}{0}{3}

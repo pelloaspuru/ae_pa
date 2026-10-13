@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Example: Causal effect of Minimum Wage on Employment}{8}{0}{2}
+\beamer@sectionintoc {3}{Diff-in-Diff Estimator: Basic Form}{19}{0}{3}
+\beamer@sectionintoc {4}{Diff-in-Diff Estimator: \\ Regression Form}{25}{0}{4}
+\beamer@sectionintoc {5}{Practice}{30}{0}{5}

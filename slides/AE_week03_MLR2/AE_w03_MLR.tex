@@ -1,0 +1,760 @@
+\documentclass[11pt, aspectratio = 169]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{bbm} % for \mathbbm{1}
+%\usepackage{fontspec} % for emojis.
+%\usepackage{fontawesome5}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{verbatim} 
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\definecolor{links}{HTML}{1B1B81}
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+
+% listings: To highlight code:
+\usepackage{listings}
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red},
+  frame=single,
+  showstringspaces=false
+}
+\lstset{basicstyle=\ttfamily\footnotesize, frame=single}
+
+% To comment out large sections:
+\usepackage{comment}
+
+\title{Applied Economics}
+\subtitle{Multiple Linear Regression Model II}
+\author{Pello Aspuru}
+\date{}
+\institute{Winter 2025/26}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=teal}
+\setbeamercovered{transparent} % default faintness (~15%)
+
+\let\svdescription\description
+\let\svenddescription\enddescription
+\renewenvironment{description}{%
+  \svdescription%
+  \let\svitem\item%
+  \renewcommand\item[1][]{\svitem[\textcolor{\descriptioncolor}{##1}]}%
+  }{
+  \svenddescription%
+  }
+\newcommand\descriptioncolor{teal}
+
+%\usepackage{Sweave}
+\begin{document}
+%\input{AE_w3_MLR2-concordance}
+
+\maketitle
+
+\begin{frame}{Plan for this Lecture}
+
+Last lecture:
+\begin{itemize}
+    \item Introduced multiple linear regression model (MLR)
+    \item Defined population parameters $\beta$, estimators and estimates ($\hat{\beta}$)
+    \item Derived Ordinary Least Squares (OLS) estimator.
+\end{itemize}    
+\pause
+Today lecture:
+\begin{enumerate}
+    \item Classical MLR Assumptions MLR.1 - MLR.4
+    \item OLS Properties: Unbiasedness, Consistency and Asymptotic Normality
+    \item Nonlinear Functional Forms: Polynomials, Logarithmic Transformations, Group Dummies, Interaction Terms
+    \item Empirical Examples in R
+\end{enumerate}
+\end{frame}
+
+\begin{comment}
+    \begin{frame}{Announcements}
+
+Homework 1 will be uploaded next Friday (Oct 25). It is due on November 4, at 6 pm.
+
+Upload your solutions \textbf{before the deadline} via moodle (only one group member has to do so) and state the names of all group members in the \href{https://docs.google.com/spreadsheets/d/1l7be-LFx-D6pHcUKUn7duspZS-jc_b5Y40W8bhxQS0g/edit?gid=0#gid=0}{spreadsheet}.
+
+\bigskip
+
+Issues with R? Try swirl!
+
+\texttt{> install.packages("swirl")} \\
+\texttt{> library(swirl)} \\
+\texttt{> swirl()}
+
+Learn R interactively, in R.
+\end{frame}
+\end{comment}
+
+\section{MLR Assumptions}
+
+\begin{frame}[fragile]{Motivating Example}
+
+Economic question: does pollution \alert{cause} a decrease of housing prices in Vienna?
+ 
+\pause
+
+MLR model for the \alert{population}:
+$\quad Y_i = \alert{\beta_0} + \alert{\beta_1} X_{1i} + \alert{\beta_2} X_{2i} + u_{i} \quad i = 1, ... N$
+
+\begin{itemize}
+    \item Outcome variable $Y \in [0,\infty]$: housing prices
+    \item Regressors: pollution concentration $X_{1i} \in (0,\infty)$, house size $X_{2i} \in (0,\infty)$.
+\end{itemize}
+\pause
+\begin{lstlisting}[language=R]
+    population <- read.csv("./AE_week3_MLR2/df_pop_house_prices.csv")
+    mlr_params = lm(price ~  nox + rooms, data = population)
+\end{lstlisting}
+
+\pause
+Equivalent model for observed \textcolor{teal}{sample} n:
+$\quad Y_i = \textcolor{teal}{\hat{\beta}_0} + \textcolor{teal}{\hat{\beta}_1} X_{1i} + \textcolor{teal}{\hat{\beta}_2} X_{2i} + \hat{u}_{i} \quad i = 1, ... n$
+\pause
+\begin{lstlisting}[language=R]
+    n <- 100
+    df <- population[sample(nrow(population), n), ]
+    ols_est = lm(price ~ nox + rooms, data = df)
+\end{lstlisting}
+\pause
+\begin{itemize}
+    \item[$\rightarrow$] \alert{$\beta$} is a \alert{number} representing the population, \textcolor{teal}{$\hat{\beta}$} is a \textcolor{teal}{random variable}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Motivating Example}
+\begin{center}
+    Today: \textbf{How well} does \textcolor{teal}{random variable} \textcolor{teal}{$\hat{\beta}$} represent the \alert{number} \alert{$\beta$}?
+\end{center}
+\pause
+$$
+\text{Three MLR assumptions} \xrightarrow{\quad \text{determine} \quad} \text{feasibility and properties of } \textcolor{teal}{\hat{\beta}}
+$$
+\pause
+\begin{enumerate}
+        \item Linearity in parameters $\rightarrow$ closed-form, tractable OLS estimator function.
+        %\item Random sampling $\rightarrow$ Our dataset is representative of the population.
+        \item No perfect Multicolinearity $\rightarrow$ to guarantee $\hat{\beta}$ is computable.
+        \item Random sampling $\rightarrow$ closed form variance of $\hat{\beta}$ (next session).
+        \item Exogeneity so that
+        \begin{itemize}
+            \item[$\rightarrow$] $\beta$ has causal interpretation. 
+            \item[$\rightarrow$] $\hat{\beta}$ is a ``good'' representation of $\beta$
+        \end{itemize}
+\end{enumerate}
+\end{frame}
+
+
+\begin{comment}
+    \begin{frame}[fragile]{MLR Assumptions}
+
+Recall the difference between population parameters, estimators and estimates:
+
+\[
+\onslide<2>{
+\underbrace{
+\underset{\text{Parameter}}{\beta} 
+  \xrightarrow{\text{determines}} \substack{\text{Population}}}_{\text{Unobserved}}}
+  %
+  \onslide<3>{
+  \xrightarrow{\text{iid draws}} 
+  %
+  \underbrace{\substack{\text{Dataset}}
+  \xrightarrow{\text{estimator (OLS)}} 
+  \underset{\text{Estimate}}{\hat{\beta}}}_{\text{Observed}}}
+\]
+
+    \begin{lstlisting}[language=R]
+    # Open population of N = 165,000 houses in vienna: 
+    population <- read.csv("./AE_week3_MLR2/df_pop_house_prices.csv")
+    \end{lstlisting}
+\begin{lstlisting}[language=R]
+    # Obtain population parameters
+    mlr_params = lm(price ~ nox + rooms, data = population)
+    summary(mlr_params)
+    \end{lstlisting}
+\end{frame}
+\end{comment}
+
+\begin{comment}
+    \begin{frame}{MLR Assumptions}
+
+Recall the difference between population parameters, estimators and estimates:
+
+\[
+\underbrace{
+\underset{\text{Parameter}}{\beta} 
+  \xrightarrow{\text{determines}} \substack{\text{Population}}}_{\text{Unobserved}}
+  %
+  \xrightarrow{\text{iid draws}} 
+  %
+  \underbrace{\substack{\text{Dataset}}
+  \xrightarrow{\text{estimator (OLS)}} 
+  \underset{\text{Estimate}}{\hat{\beta}}}_{\text{Observed}}
+\]
+\pause
+How well does estimate $\hat{\beta}$ represent $\beta$? Depends on...
+\begin{itemize}
+    \item The properties of the OLS estimator.
+    \item The propertiers OLS estimator, in turn, depend on \textbf{four} MLR assumptions.
+\end{itemize}
+\end{frame}
+\end{comment}
+
+\begin{frame}{Assumption 1 - Linear Parameters}
+
+\begin{center}
+    In \textbf{population}, regressors $\mathbf{X}_i$ determine the outcome $Y_i$ through \alert{linear} parameters $\mathbf{\beta}$:
+    \begin{align*}
+    \onslide<1->{Y_i &= \alert{\beta_0} + \alert{\beta_1} X_{1i} + \alert{\beta_2} X_{2i} + \cdots + \beta_k X_{ki} + u_i \quad &\text{Linear parameters: Yes}}
+    \\
+    \onslide<2->{Y_i &= \beta_0 + X_{1i}^{\alert{\beta_1}} + \frac{X_{2i}}{\alert{\beta_2}} + u_i \quad &\text{Non-linear parameters: No}}
+    \\
+    \onslide<3->{Y_i &= \beta_0 + \beta_1 \alert{ln(X_{i})} + u_i \quad &\text{Non-linear regressors: ?}}
+    \end{align*}
+\end{center}
+%where $\beta_0, \beta_1, \ldots, \beta_k$ are the unknown regression parameters of interest and $u_i$ is an unobservable random error term.
+
+\begin{block}{\onslide<4->{Why do we need parameters to be linear?}}
+    \onslide<5->{Linear parameters enable matrix form notation of the sample model,} \onslide<6->{consequent straightforward derivation of $\hat{\beta}$ formula:}
+    $$
+    \onslide<5->{\textbf{Y} = \textbf{X} \times \textbf{b} + \hat{\mathbf{u}} \quad} \onslide<6->{\rightarrow \quad SSR(b) = \hat{\mathbf{u}}' \hat{\mathbf{u}}  \quad \xrightarrow{\text{\quad FOC wrt b \quad}} \quad \hat{\boldsymbol{\beta}} =
+    (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y}}
+    $$
+\end{block}
+
+
+\end{frame}
+
+\begin{comment}
+    \begin{frame}{MLR.2: Random sampling}
+
+\[
+\underbrace{
+\underset{\text{Parameter}}{\beta} 
+  \xrightarrow{\text{determines}} \substack{\text{Population}}}_{\text{Unobserved}}
+  %
+  \alert{\xrightarrow{\text{iid draws}}}
+  %
+  \underbrace{\substack{\text{Dataset}}
+  \xrightarrow{\text{estimator (OLS)}} 
+  \underset{\text{Estimate}}{\hat{\beta}}}_{\text{Observed}}
+\]
+
+We observe an \textbf{i.i.d.} random sample of size $n$, $\{Y_i, X_{i1}, X_{i2}, ..., X_{ik}\}, i = 1, 2, ..., n$, following the population model in MLR.1.
+\pause
+\bigskip
+
+ This assumption implies independence \textbf{across} observations $i$.
+ $\mathbf{X}_i \perp \mathbf{X}_{i'}$ and $u_i \perp u_{i'}$ for all $i' \neq i$
+\end{frame}
+\end{comment}
+
+\begin{frame}[fragile]{Assumption 2: No perfect multicollinearity}
+
+    Multicolinearity: Regressors $X_{1}, X_{2}...$ are \textbf{highly} correlated.
+    \begin{lstlisting}[language=R]
+    multicolinearity = lm(nox ~ rooms, data = df)
+    summary(multicolinearity)
+    \end{lstlisting}
+    \pause
+    \alert{Perfect} Multicollinearity: a regressor $X_1$ is a \textbf{perfect} linear function of other regressors:
+        $$
+        X_1 = 1, \quad \quad X_1 = X_1 + \sigma \cdot X_2 \quad \quad X_1 = 1 - X_2
+        $$
+    \vspace{-0.6cm}
+    \begin{lstlisting}[language=R]
+    df$bedrooms = df$rooms - 1
+    ols_est_perf_mc = lm(price ~ nox + rooms + bedrooms, data = df)
+    summary(ols_est_perf_mc)
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Assumption 2: No perfect multicollinearity}
+
+\begin{block}{Why do we need the no perfect multicolinearity assumption?}
+    \pause
+    With perfect multicolinearity, the matrix $(\mathbf{X}'\mathbf{X})$ is not invertible $\rightarrow$ OLS estimator is not computable.
+\end{block}
+\pause
+Easy fix: delete \alert{redundant} regressors. 
+\end{frame}
+
+\begin{frame}{Assumption 3: Random Sampling}
+    We observe an \textbf{i.i.d.} random sample of the population, comprised of $n$ independent observations: 
+    \[
+    \{Y_i, X_{i1}, X_{i2}, \ldots, X_{ik}\},\; i = 1, 2, \ldots, n
+    \]
+    \pause
+    This assumption implies independence \alert{across} observations $i$.
+    \[
+    \mathbf{X}_i \perp \mathbf{X}_{i'} \text{ and } u_i \perp u_{i'} \text{ for all } i' \neq i \quad \Rightarrow \quad E(u_i u_j \mid \mathbf{X}) = 0 \quad \text{for all } i \neq j
+    \]
+    \begin{block}{Why do we need the Random Sampling Assumption?}
+        \pause
+        For the derivation of the OLS estimate $\hat{\beta}$ variance (next session).
+    \end{block}
+\end{frame}
+
+\begin{frame}{Assumption 4: Exogeneity\footnote{Also called \textbf{Zero conditional expectation} assumption}}
+\vspace{-0.5cm}
+\begin{center}
+    Conditional Mean Independence Assumption \onslide<2->{$\quad \rightarrow \quad$ \alert{Exogeneity} Assumption}
+\end{center}
+\vspace{-0.5cm}
+\begin{align*}
+        E[u_i | X_i = A+1, X_{2i}, ..., X_{ki}] = E[u_i | X_i = A, X_{2i}, ..., X_{ki}] \onslide<2->{\alert{=0}}
+\end{align*}
+\onslide<2->{The error term $u_i$ has conditional expected value of zero for all regressors: $$E[u_i|X_{i1}, X_{i2}, \cdots , X_{ik}] = 0$$ }
+\pause
+\vspace{-0.7cm}
+\begin{block}{Why do we need the Exogeneity assumption?}
+    \pause
+    \begin{enumerate}
+        \item As with conditional mean independence assumption: causal interpretation of $\beta$.
+        \pause
+        \item Guarantees estimate $\hat{\beta}$ is a ``good'' representation of parameter $\beta$.
+    \end{enumerate}
+\end{block}
+\end{frame}
+
+
+\section{OLS Properties}
+
+\begin{frame}[fragile]{Recap}
+$$
+\text{Three MLR assumptions} \xrightarrow{\quad \text{determine} \quad} \text{feasibility and properties of } \textcolor{teal}{\hat{\beta}}
+$$
+\vspace{-0.5cm}
+\begin{enumerate}
+        \item Linearity in parameters $\rightarrow$ closed-form, tractable OLS estimator function.
+        %\item Random sampling $\rightarrow$ Our dataset is representative of the population.
+        \item No perfect Multicolinearity $\rightarrow$ to guarantee $\hat{\beta}$ is computable.
+        \item Random Sampling $\rightarrow$ closed form variance of $\hat{\beta}$ (next session).
+        \item Exogeneity so that
+        \begin{itemize}
+            \item[$\rightarrow$] $\beta$ has causal interpretation. 
+            \pause
+            \item[$\rightarrow$] $\hat{\beta}$ is a ``good'' representation of $\beta$
+        \end{itemize}
+\end{enumerate}
+\pause
+\textbf{How well} does \textcolor{teal}{random variable} \textcolor{teal}{$\hat{\beta}$} represent the \alert{number} \alert{$\beta$}? Depends on $\hat{\beta}$ properties
+\vspace{-0.2cm}
+    \begin{itemize}
+        \item The expectation of \textcolor{teal}{$\hat{\beta}$} $\rightarrow$ Unbiasedness and consistency.
+        \item The dispersion of \textcolor{teal}{$\hat{\beta}$} $\rightarrow$ Asymptotic Distribution and variance (next session).
+    \end{itemize}
+\end{frame}
+
+%  With MLR.1 – MLR.4 we can derive several properties:
+%- in expectation, OLS gives true value
+
+\begin{frame}[fragile]{Unbiasedness of OLS - Theorem}
+The expectation of parameter estimate $\hat{\beta}_j$ equals the true parameter $\beta_j$:
+\begin{align*}
+    &E(\hat{\beta}_j) = \beta_j,\;\; j = 0,1,\ldots, k 
+\end{align*}
+\pause
+\begin{lstlisting}[language=R]
+    n <- 100
+    reps <- 1000
+    beta_1 <- mlr_params$coefficients["nox"] # parameter
+    beta_hat_vec <- numeric(reps) # Estimates
+    \end{lstlisting}
+\pause
+Estimate $\hat{\beta}_1$ $reps = 1000$ times, each with a \textbf{different} sample of size $n = 100$.
+\begin{lstlisting}[language=R]
+    for (i in 1:reps) {
+        df <- population[sample(nrow(population), n), ]
+        fit <- lm(price ~ nox + rooms, data = df)
+        beta_hat_vec[i] <- coef(fit)["nox"]}
+    \end{lstlisting}    
+\end{frame}
+
+\begin{frame}[fragile]{Unbiasedness of OLS - Graphical Illustration}
+    Plot all $\hat{\beta}_1$ OLS estimates, together with $\beta_1$ true value they aim to represent:
+    \pause
+    \begin{lstlisting}[language=R]      
+    sims <- data.frame(beta_hat = beta_hat_vec)
+    ggplot(sims, aes(x = beta_hat)) +
+    geom_histogram(bins = 40, alpha = 0.8) +
+    geom_vline(xintercept = beta_1, linetype = "dashed", linewidth = 1)
+    \end{lstlisting}   
+\end{frame}
+
+\begin{frame}{Unbiasedness - Formal Derivation}
+$\underset{n \times 1}{\mathbf{Y}}$ can be expressed in terms of \alert{population parameters} as:
+$
+\mathbf{Y} = \mathbf{X}\boldsymbol{\hat{\beta}} + \mathbf{\hat{u}} = \alert{\mathbf{X}\boldsymbol{\beta} + \mathbf{u}}
+$
+
+\pause
+Decompose OLS estimator into population parameter vector $\boldsymbol{\beta}$ and a sampling error $\mathbf{\hat{u}}$:
+\begin{align*}
+\hat{\boldsymbol{\beta}}=(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\alert{\mathbf{Y}}
+                    = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'(\alert{\mathbf{X}\boldsymbol{\beta}+\mathbf{u}}) = \boldsymbol{\beta}+(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{u}
+\end{align*}
+\pause
+Next, take the conditional expectations:
+\begin{align*}
+E[\hat{\boldsymbol{\beta}}|\mathbf{X}]&= E[\boldsymbol{\beta}+(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{u}|\mathbf{X}]\\
+                            &=  E[\boldsymbol{\beta}|\mathbf{X}] + E[(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{u}|\mathbf{X}]\\
+                            &=  \boldsymbol{\beta}+(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\underbrace{E(\mathbf{u}|\mathbf{X})}_{=\mathbf{0}_{(nx1)}} \\
+                            &=\boldsymbol{\beta} \: \hspace{+1.992cm} \text{\small Exogeneity}
+\end{align*}
+\pause
+Last, use the Law of Iterated Expectations:
+$E[\hat{\boldsymbol{\beta}}]=  E[E(\hat{\boldsymbol{\beta}}|\mathbf{X})  ]                           =E[\boldsymbol{\beta}] 
+                            = \boldsymbol{\beta}$
+\end{frame}
+
+\begin{frame}{Consistency of the OLS Estimator - Theorem}
+The OLS estimator $\hat{\boldsymbol{\beta}}$ converges in probability towards $\boldsymbol{\beta}$:
+\begin{align*}
+  %&  \hat{\boldsymbol{\beta}} \xrightarrow{p} \boldsymbol{\beta} \text{ or } \\
+ &   \hat{\beta_j} \xrightarrow{p} \beta_j \text{ for all } j = 0,1,...,k
+\end{align*}
+Proof sketch
+\begin{enumerate}
+    \item Take a parameter estimate random draw $\hat{\beta_j}$, estimated from a sample of size $n$.
+    \item Define the gap between the estimate and the parameter: $|\hat{\beta_j} - \beta_j |$
+    \item Gap is large if $\quad |\hat{\beta_j} - \beta_j |  > \epsilon$, for some positive number $\epsilon > 0$.
+    \pause
+    \item The probability that the gap is large is: $\quad \mathbf{P}(|\hat{\beta_j} - \beta_j |  > \epsilon) \in [0,1]$.
+    \begin{itemize}
+        \item Large gap not likely $\quad \rightarrow \quad \mathbf{P}(|\hat{\beta_j} - \beta_j |  > \epsilon) \approx 0$
+    \end{itemize}
+\end{enumerate}
+\pause
+As sample size goes to $\infty$, the large gap \textbf{becomes less and less likely}:
+\begin{align*} \lim_{n \to \infty} \mathbf{P}(|\hat{\beta_j} - \beta_j |  > \epsilon) = 0   \text{ for all } \epsilon > 0
+\end{align*}
+More in appendix.
+\end{frame}
+
+\begin{frame}[fragile]{Consistency of the OLS Estimator - Graphical Illustration}
+    Find $|\hat{\beta_j} - \beta_j |$ gap $reps = 1000$ times, each with a \textbf{different} sample of size $n = 100$.
+    \begin{lstlisting}[language=R]      
+    gaps_beta_hat_beta <- numeric(reps)
+    for (i in 1:reps) {
+    df <- population[sample(nrow(population), n), ]
+    fit <- lm(price ~ nox + rooms, data = df)
+    gap <- abs(coef(fit)["nox"]-beta_1)
+    gaps_beta_hat_beta[i] <- gap}
+    \end{lstlisting}   
+    \pause
+    Plot the gaps:
+    \begin{lstlisting}[language=R]      
+    sims_gaps <- data.frame(gaps = gaps_beta_hat_beta)
+    ggplot(sims_gaps, aes(x = gaps)) +
+    geom_histogram(bins = 40, alpha = 0.8) +
+    coord_cartesian(xlim = c(0, 2000))
+    \end{lstlisting}   
+    \pause
+    \begin{itemize}
+        \item[$\rightarrow$] What happens when we set $n = 10000$?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Asymptotic normality of the OLS Estimator - Theorem}
+The random variable $\hat{\boldsymbol{\beta}}$ is asymptotically normally distributed:
+$$
+\hat{\boldsymbol{\beta}} \approx N\left(\boldsymbol{\beta}, \frac{1}{n} \Sigma\right)
+$$
+\pause
+Proof sketch:
+\begin{enumerate}  
+    \item Rewrite gap between estimator and parameter:
+    $\alert{\sqrt{n}}(\hat{\boldsymbol{\beta}}-\boldsymbol{\beta}) = 
+    \left(\alert{\frac{1}{n}}\mathbf{X}'\mathbf{X}\right)^{-1}\left(\alert{\frac{1}{\sqrt{n}}}\mathbf{X}'\mathbf{u}\right)$
+    \pause
+    \item By law of large numbers + no perfect multicolinearity 
+    $\quad \frac{1}{n}\mathbf{X}'\mathbf{X} \xrightarrow{p} \underset{k \times k}{\textcolor{teal}{\mathbf{Q}}}$
+    \item By central limit theorem, exogeneity: $
+\left(\tfrac{1}{\sqrt{n}}\mathbf{X}'\mathbf{u}\right)
+\xrightarrow{d}
+\mathcal{N}\!\left(0, \textcolor{teal}{\Omega} \right)
+$
+    \pause
+    \item Combining previous two with Slutsky theorem:
+    $
+    \sqrt{n}(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta}) \xrightarrow[]{d} N\left(\mathbf{0}_{(k+1)}, \textcolor{teal}{\Sigma}\right)
+    $
+    \item Rescaling by $\sqrt{n}$, and shifting population parameter: 
+    $
+    \underset{k \times 1}{\hat{\boldsymbol{\beta}}}
+     \approx N \left(\boldsymbol{\beta}, \frac{1}{n} \textcolor{teal}{\Sigma} \right)
+    $
+    \pause
+    \item[$\rightarrow$] What are \textcolor{teal}{$Q$}, \textcolor{teal}{$\Omega$}, \textcolor{teal}{$\Sigma$}? \pause Next session!
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Recap: OLS Assumptions and Properties}
+
+\begin{itemize}
+    \item We revisited the OLS assumptions and the properties we get with them.
+\item If the assumptions hold, our estimates $\hat{\beta}$ are correct on average (unbiased) and accurate in large samples (consistent).
+\pause
+\item Next session:
+\begin{itemize}
+    \item How does the variance matrix $Var(\hat{\boldsymbol{\beta}})$ look like?
+    \item Approximate the distribution of the estimator in large samples, which we will exploit for  hypotheses testing.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{Nonlinear Functional Forms}
+
+\begin{frame}{Nonlinear Functional Forms}
+
+OLS Assumption 1 requires linearity only in \color{teal}\textbf{parameters}\color{black}. OLS estimation can incorporate nonlinear transformations of the \color{teal}\textbf{variables}\color{black}.
+
+\pause
+Why include nonlinear transformations?
+\begin{itemize}
+    \item Linearity implies constant partial effects (independent of the level of the explanatory variable). This is often implausible, e.g. in case of decreasing marginal returns.
+
+    \item Logarithmic transformations allow to estimate (semi-)elasticities.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{(i) Polynomials of a regressor}
+
+To model non-linear effects of $X_{1i}$ on $Y_i$ include regressor \textcolor{teal}{polynomials}: $X_{1i}^2, X_{1i}^3 \dots$
+\[
+\quad Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_{1i} + \textcolor{teal}{\hat{\beta}_2} X_{1i}^2 + \hat{\beta}_3 X_{2i} + \hat{u}_{i} \quad i = 1, ... n
+\]
+\pause
+\begin{lstlisting}[language=R]
+    df$nox_sq <- (df$nox)^2
+    ols_est = lm(price ~ nox + nox_sq + rooms, data = df)
+    summary(ols_est)
+\end{lstlisting}
+
+\begin{itemize}
+    \item Linear model: the effect of increasing pollutant $X_{1i}$ in \alert{+1} units on $Y_i$ is \alert{always} $\beta_1$.
+    \pause
+    \item Quadratic model: the effect of increasing pollutant $X_{1i}$ in \alert{+1} units on $Y_i$ is $\beta_1 + 2\beta_2 X_{1i}$. \pause Depends on \alert{level} of $X_{1i}$.
+    \pause
+    \item[$\rightarrow$] What does $\beta_2 < 0$ represent? Increasing or decreasing costs?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{(ii) Indicator Variables}
+A more flexible alternative to capture \alert{nonlinear effects} is to include indicator/dummy variables for different ranges of a continuous regressor.
+\pause
+
+Example: Split the $X_{2i}$ house rooms variable into two categories: small and big.
+%$Big_i = \mathbbm{1}\left\{X_{2i} > 3 \right\}$, where
+\[
+Is\_Big_i  =
+\begin{cases}
+  1 & \text{if } X_{2i} > 5 \text{ rooms},\\
+  0 & \text{otherwise.}
+\end{cases}
+\]
+\pause
+\begin{lstlisting}[language=R]
+    # Generate indicator variable
+    df$is_big <- 1*(df$rooms>5)
+\end{lstlisting}
+\end{frame}
+
+\begin{comment}
+    \begin{frame}
+\frametitle{(iii) Group Dummies}
+We can use group dummies to capture non-linearities in the effect of experience on the wage:
+
+We define \color{teal}\textbf{comprehensive and mutually exclusive} \color{black} categories:
+\begin{align*}
+    D_{1i} &= \mathbf{1}\left\{\text{Experience}_i < 2y\right\} \\
+    D_{2i} &= \mathbf{1}\left\{2y \leq \text{Experience}_i < 5y\right\} \\
+    D_{3i} &= \mathbf{1}\left\{5y \leq \text{Experience}_i < 10y\right\} \\
+    D_{4i} &= \mathbf{1}\left\{\text{Experience}_i \geq 10y\right\} \\
+\end{align*}
+We have to \alert{omit one of the dummies} in the regression. Why?
+\begin{align*}
+Y_i = \beta_0 + \beta_1 X_i + \alpha_1 D_{1i} + \alpha_2 D_{3i} + \alpha_3 D_{4i} + u_i
+\end{align*}
+\end{frame}
+\end{comment}
+
+\begin{frame}[fragile]
+\frametitle{(ii) Indicator Variables}
+The new specification allows the effect of house size to vary non-linearly, depending on whether the house is classified as "big" or "small".
+\[
+Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_{1i} + \alert{\hat{\beta}_2} Is\_Big_i + \hat{u}_{i} \quad i = 1, ... n
+\]
+\begin{lstlisting}[language=R]
+    ols_est_indic = lm(price ~ nox + is_big, data = df)
+    summary(ols_est_indic)
+\end{lstlisting}
+\pause
+\begin{itemize}
+    \item Previous $\hat{\beta}_2$ assumed ``adding'' more rooms to a house had a \alert{linear} effect on price.
+    \item New \alert{$\hat{\beta}_2$} assumes that being a big house causes a discrete jump in its price $\quad \rightarrow \quad$ \alert{Non-linear effect!} 
+\end{itemize}
+\pause
+\alert{$\hat{\beta}_2$} is the average difference in house price $Y_i$ between big and small houses, holding remaining regressors $X_{1i}$ (pollution) fixed.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{(iii) Interaction Terms}
+We can further enrich our model by interacting indicator $Is\_Big_i$ and linear $X_{2i}$ variables to capture differences in slope parameters across different subgroups.
+\begin{align}
+    Y_i &= \hat{\beta}_0 + \hat{\beta}_1 X_{1i} + \alert{\hat{\beta}_2} X_{2i} + \hat{\beta}_3 Is\_Big_i + \hat{u}_{i} \\ 
+    Y_i &= \hat{\beta}_0 + \hat{\beta}_1 X_{1i} + \alert{\hat{\beta}_2} X_{2i} + \hat{\beta}_3 Is\_Big_i + \textcolor{teal}{\hat{\beta}_4} Is\_Big_i \times X_{2i} + \hat{u}_{i}
+\end{align}
+\pause
+Model (1) assumes that size $X_{2i}$ has the same effect on all types of houses. \\
+\pause
+Model (2) allows the effect of size to differ across house size categories:
+\begin{itemize}
+    \item for small houses: \alert{$\beta_2$}, because $Is\_Big_i \times X_{2i} = 0$
+    \item for big houses: $\alert{\beta_2} + \textcolor{teal}{\beta_4}$, because $Is\_Big_i \times X_{2i} = X_{2i}$
+\end{itemize}
+\pause
+\begin{lstlisting}[language=R]
+    ols_est_inter = lm(price ~ nox + rooms*is_big, data = df)
+\end{lstlisting}    
+\end{frame}
+
+%\begin{frame}{(i) Polynomials of a regressor}
+%Practice Problem:
+
+%What is the partial effect of $X_i$ in a cubic model $Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \beta_3 X_i^3 + u_i$? 
+%\end{frame}
+
+\begin{frame}[fragile]{(iv) Logarithmic Transformations}
+
+Starting from today's motivating example, turn pollution varaible $X_{1i}  \rightarrow \textcolor{teal}{ln (X_{1i})}$
+\[
+\quad Y_i = \hat{\beta}_0 + \alert{\hat{\beta}_1} \textcolor{teal}{ln(X_{1i})} + \hat{\beta}_2 X_{2i} + \hat{u}_{i} \quad i = 1, ... n
+\]
+\pause
+Differentiate the equation with respect of $X_{1i}$ to get the partial effect of $X_{1i}$ on $Y_i$:
+\begin{align*}
+    \frac{\partial Y_i}{\partial X_{1i}} = \alert{\hat{\beta}_1} \frac{\partial \textcolor{teal}{ln(X_{1i})}}{\partial X_{1i}} =
+    \hat{\beta}_1 \frac{1}{X_{1i}}
+\end{align*}
+\pause
+Multiply both sides by $\partial X_{1i}$:
+\begin{align*}
+    \partial Y_i = \alert{\hat{\beta}_1} \cdot \frac{\partial X_{1i}}{X_{1i}} 
+    \quad \xrightarrow{\quad \frac{\partial X_{1i}}{X_{1i}} \quad= \quad 0.01 \quad \equiv \quad 1\% \text{ change} \quad} \quad
+     \partial Y_i = \alert{\hat{\beta}_1} \cdot 0.01
+\end{align*}
+
+For a \textbf{1\%} change in the regressor $\frac{\partial X_{1i}}{X_{1i}} = 0.01$, the change in outcome is $\partial Y_i = \alert{{\hat{\beta}}_1} \cdot 0.01$.
+
+\end{frame}
+
+\begin{frame}[fragile]{(iv) Logarithmic Transformations}
+
+\color{teal}\textbf{Level-Log Model:}\color{black} $Y_i=\beta_0+\beta_1ln(X_i) + u_i$
+\begin{lstlisting}[language=R]
+    ols_lev_log = lm(price ~ log_nox + rooms, data = df)
+\end{lstlisting}
+		\begin{itemize}
+		\item A 1\% increase in $X_i$ is associated with a $\frac{\beta_1}{100}$ unit increase in $Y_i$ 
+	\end{itemize}
+\pause
+\color{teal}\textbf{Log-Linear Model:} \color{black} $ln(Y_i)=\beta_0+\beta_1 X_i + u_i$
+\begin{lstlisting}[language=R]
+    ols_log_lev = lm(log_price ~ nox + rooms, data = df)
+\end{lstlisting}
+\begin{itemize}
+		\item A 1 unit increase in $X_i$ is associated with a $100\beta_1$ \% increase in $Y_i$.
+  		%\item This is the semi-elasticity of $Y$ with respect to $X$!
+	\end{itemize}
+\pause
+\color{teal}\textbf{Log-Log Model:} \color{black}$ln(Y_i)=\beta_0+\beta_1ln(X_i) + u_i$
+\begin{lstlisting}[language=R]
+    ols_log_log = lm(log_price ~ log_nox + rooms, data = df)
+\end{lstlisting}
+		\begin{itemize}
+		\item A 1\% increase in $X_i$ is associated with a $\beta_1$ \% increase in $Y_i$.
+		\item This is the elasticity of $Y$ with respect to $X$!
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Interpreting coefficients with logarithmic transformations}
+ 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  \hline
+  \textbf{Model} & \textbf{Dep. Var.} & \textbf{Indep. Var.} & \textbf{Interpretation of $\beta$} \\
+  \hline
+  level-level & $Y_i$    & $X_i$      & $\Delta Y_i = \beta \Delta X_i$ \\
+  level-log   & $Y_i$     & $\ln(X_i)$  & $\Delta Y_i = \left(\frac{\beta}{100}\right) \% \Delta X_i$\\
+  log-level   & $\ln(Y_i)$ & $X_i$      & $\% \Delta Y_i = (100 \beta) \Delta X_i$ \\
+  log-log     & $\ln(Y_i)$ & $\ln(X_i)$  & $\% \Delta Y_i = \beta \% \Delta X_i$ \\
+  \hline
+\end{tabular}
+\end{center}
+$\Delta X$ and $\Delta Y$ denote absolute changes (in units). \\
+$\%\Delta X$ and $\%\Delta Y$ denote relative changes (in \%). 
+\end{frame}
+
+\appendix
+\begin{frame}
+\centering\Large APPENDIX
+    
+\end{frame}
+\begin{frame}{Proof Sketch - Consistency of OLS}
+We can decompose the OLS estimator
+into the true coefficient vector and a sampling error, and write it as a function of sample means
+\begin{align*}
+\hat{\boldsymbol{\beta}}&=(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y} \\
+                    &= (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'(\mathbf{X}\boldsymbol{\beta}+\mathbf{u}) \\ 
+                    &= \boldsymbol{\beta}+(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{u} \\
+                   &= \boldsymbol{\beta}+ \left(\sum_{i=1}^n\mathbf{X_i}\mathbf{X'_i}\right)^{-1}\sum_{i=1}^n\mathbf{X_i}u_i     \\
+                    &= \boldsymbol{\beta}+ \left(\frac{1}{n}\sum_{i=1}^n\mathbf{X_i}\mathbf{X'_i}\right)^{-1}\frac{1}{n}\sum_{i=1}^n\mathbf{X_i}u_i     
+\end{align*}
+
+\end{frame}
+\begin{frame}{Proof Sketch - Consistency of OLS}
+Next we apply rules for the probability limit, and the  Weak Law of Large Numbers.
+
+\begin{align*}
+plim(\hat{\boldsymbol{\beta}})&=                  plim(\boldsymbol{\beta}) + plim\left[\left(\frac{1}{n}\sum_{i=1}^n\mathbf{X_i}\mathbf{X'_i}\right)^{-1}\frac{1}{n}\sum_{i=1}^n\mathbf{X_i}u_i\right]   \\
+& = \boldsymbol{\beta} + plim\left[\left(\frac{1}{n}\sum_{i=1}^n\mathbf{X_i}\mathbf{X'_i}\right)^{-1}\right]  
+plim\left[\frac{1}{n}\sum_{i=1}^n\mathbf{X_i}u_i\right]  \\
+& = \boldsymbol{\beta} + \left[ plim \left( \frac{1}{n}\sum_{i=1}^n\mathbf{X_i}\mathbf{X'_i} \right)\right]^{-1}  plim \left[\frac{1}{n}\sum_{i=1}^n\mathbf{X_i}u_i\right]  \\
+& = \boldsymbol{\beta} +  \underbrace{E[\mathbf{X_i}\mathbf{X'_i}]^{-1}}_{(k+1)x(k+1)}  \underbrace{E(\mathbf{X_i}u_i)}_{\mathbf{0_{(k+1)}}}
+\end{align*}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Recommended Literature}
+Heiß Chapter 6.1, Chapter 7
+\end{frame}
+
+\end{document}
+
+
+

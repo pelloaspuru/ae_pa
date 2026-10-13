@@ -1,0 +1,6 @@
+\frametitle{IV Relevance}
+\scriptsize
+<<message = F>>=
+# Relevance Test
+linearHypothesis(first_labsup, c("samesex = 0"), white.adjust = "hc1")
+@

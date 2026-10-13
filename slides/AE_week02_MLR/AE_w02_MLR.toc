@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Motivating Example for the use of the MLR in Economics}{4}{0}{1}
+\beamer@sectionintoc {2}{Interpreting the Regression Parameters}{30}{0}{2}
+\beamer@sectionintoc {3}{The OLS Estimator}{36}{0}{3}
+\beamer@sectionintoc {4}{Empirical Example}{56}{0}{4}

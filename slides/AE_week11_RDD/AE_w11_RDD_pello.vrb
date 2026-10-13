@@ -1,0 +1,12 @@
+\frametitle{Recap - RDD Implementation}
+
+	\begin{itemize}
+		\item Recall that implementing RDD requires the research to define:
+		\begin{enumerate}
+					\item Functional form of the running covariate.
+					\item Bandwidth choice
+					\item Kernel weighting
+		\end{enumerate}
+		\item[$\rightarrow$] Different choices can lead to different results! Try them all for robustness.
+		%\item The \texttt{rdrobust} R package chooses optimal bandwidth and kernel based on fancy algorithms
+	\end{itemize}		

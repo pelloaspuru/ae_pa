@@ -1,0 +1,9 @@
+\frametitle{IV Estimator}
+$\rightarrow$ Important! use the R package for robust IV for \alert{correct} variance estimates:
+\vspace{2mm}
+\begin{lstlisting}[language=R]
+mlr_iv <- iv_robust(hours ~ kids + age + educ | samesex + age + educ,
+                    data = labsup, se_type = "HC0", diagnostics = TRUE)
+summary(mlr_iv)
+\end{lstlisting}
+

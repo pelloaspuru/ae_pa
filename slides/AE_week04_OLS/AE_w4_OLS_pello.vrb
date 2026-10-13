@@ -1,0 +1,15 @@
+\frametitle{Multicollinearity and the OLS variance II}
+\begin{center}
+  Higher $R_{j}^2 \quad \rightarrow \quad$ higher $\hat{Var}(\hat{\beta_{j}} |X)$
+\end{center}
+\pause
+Intuition: If two regressors are strongly correlated, it is hard to disentangle their individual partial effects on $Y$.
+\begin{itemize}
+    \item[$\rightarrow$] Do consumers dislike houses because of pollution $X_{1i}$ or property taxes $X_{3i}$?
+\end{itemize}
+\pause
+In this case, adding the property tax covariate \textcolor{teal}{$X_{3i}$} to our original model \alert{increases} the standard error of our parameter of interest \alert{$\hat{SE}(\hat{\beta}_j)$}.
+\begin{lstlisting}[language=R]
+  coeftest(ols_est, vcov. = vcovHC(ols_est, type = "HC0"))
+  coeftest(ols_est_2, vcov. = vcovHC(ols_est_2, type = "HC0"))
+\end{lstlisting}

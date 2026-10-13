@@ -1,0 +1,16 @@
+\frametitle{Omitted Variables: Example}
+In the short model, $\hat{\beta}_1$ is \textbf{\color{teal}biased upward} because
+\begin{itemize}
+    \item $\beta_2 > 0$: $IQ$ has a positive impact on $log(wage)$
+    \item $cov(IQ_i, educ_i) > 0$: $education$ is positively correlated with the omitted variable
+    \footnotesize
+<<message = F>>=
+cor(df$educ, df$IQ)
+@
+\end{itemize}
+Thus, we \textit{overestimate} the true positive impact of education on wages; part of the correlation reflects the \textit{indirect} effect that individuals with higher education have a higher IQ, and therefore have higher wages.
+
+\bigskip
+
+In real-world applications, we do not have data on the omitted variable. \\
+We can only speculate about its correlation with the included regressor(s) and its impact on the dependent variable, to think about how its omission affects the parameter of interest.
