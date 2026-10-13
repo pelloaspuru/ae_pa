@@ -1,0 +1,7 @@
+/* Embedded slide decks */
+iframe.slides {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}

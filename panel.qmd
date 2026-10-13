@@ -1,0 +1,9 @@
+# Panel Data Methods {#sec-panel}
+
+*Content coming soon.*
+
+## Slides
+
+## R code
+
+## Data

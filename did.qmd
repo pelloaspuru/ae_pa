@@ -1,0 +1,9 @@
+# Difference-in-Differences {#sec-did}
+
+*Content coming soon.*
+
+## Slides
+
+## R code
+
+## Data

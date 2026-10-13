@@ -1,0 +1,9 @@
+# OLS Variance and Robust Standard Errors {#sec-ols-variance}
+
+*Content coming soon.*
+
+## Slides
+
+## R code
+
+## Data

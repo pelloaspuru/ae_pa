@@ -1,0 +1,372 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Applied Economics",
+    "section": "",
+    "text": "Welcome\nThis is the website of the course Applied Economics at the University of Vienna, Winter 2026/2027.\nContent coming soon.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Applied Economics",
+    "section": "Course description",
+    "text": "Course description",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "Applied Economics",
+    "section": "Schedule",
+    "text": "Schedule",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#assessment",
+    "href": "index.html#assessment",
+    "title": "Applied Economics",
+    "section": "Assessment",
+    "text": "Assessment",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#software",
+    "href": "index.html#software",
+    "title": "Applied Economics",
+    "section": "Software",
+    "text": "Software",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "Applied Economics",
+    "section": "References",
+    "text": "References",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Applied Economics",
+    "section": "Contact",
+    "text": "Contact",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#r-code",
+    "href": "intro.html#r-code",
+    "title": "1  Introduction",
+    "section": "1.2 R code",
+    "text": "1.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#data",
+    "href": "intro.html#data",
+    "title": "1  Introduction",
+    "section": "1.3 Data",
+    "text": "1.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "mlr1.html",
+    "href": "mlr1.html",
+    "title": "2  Multiple Linear Regression I",
+    "section": "",
+    "text": "2.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
+    ]
+  },
+  {
+    "objectID": "mlr1.html#r-code",
+    "href": "mlr1.html#r-code",
+    "title": "2  Multiple Linear Regression I",
+    "section": "2.2 R code",
+    "text": "2.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
+    ]
+  },
+  {
+    "objectID": "mlr1.html#data",
+    "href": "mlr1.html#data",
+    "title": "2  Multiple Linear Regression I",
+    "section": "2.3 Data",
+    "text": "2.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
+    ]
+  },
+  {
+    "objectID": "mlr2.html",
+    "href": "mlr2.html",
+    "title": "3  Multiple Linear Regression II",
+    "section": "",
+    "text": "3.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+    ]
+  },
+  {
+    "objectID": "mlr2.html#r-code",
+    "href": "mlr2.html#r-code",
+    "title": "3  Multiple Linear Regression II",
+    "section": "3.2 R code",
+    "text": "3.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+    ]
+  },
+  {
+    "objectID": "mlr2.html#data",
+    "href": "mlr2.html#data",
+    "title": "3  Multiple Linear Regression II",
+    "section": "3.3 Data",
+    "text": "3.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+    ]
+  },
+  {
+    "objectID": "ols-variance.html",
+    "href": "ols-variance.html",
+    "title": "4  OLS Variance and Robust Standard Errors",
+    "section": "",
+    "text": "4.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+    ]
+  },
+  {
+    "objectID": "ols-variance.html#r-code",
+    "href": "ols-variance.html#r-code",
+    "title": "4  OLS Variance and Robust Standard Errors",
+    "section": "4.2 R code",
+    "text": "4.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+    ]
+  },
+  {
+    "objectID": "ols-variance.html#data",
+    "href": "ols-variance.html#data",
+    "title": "4  OLS Variance and Robust Standard Errors",
+    "section": "4.3 Data",
+    "text": "4.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+    ]
+  },
+  {
+    "objectID": "inference.html",
+    "href": "inference.html",
+    "title": "5  Statistical Inference",
+    "section": "",
+    "text": "5.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "inference.html#r-code",
+    "href": "inference.html#r-code",
+    "title": "5  Statistical Inference",
+    "section": "5.2 R code",
+    "text": "5.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "inference.html#data",
+    "href": "inference.html#data",
+    "title": "5  Statistical Inference",
+    "section": "5.3 Data",
+    "text": "5.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Statistical Inference</span>"
+    ]
+  },
+  {
+    "objectID": "causality.html",
+    "href": "causality.html",
+    "title": "6  Causality and Correlation",
+    "section": "",
+    "text": "6.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Causality and Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "causality.html#r-code",
+    "href": "causality.html#r-code",
+    "title": "6  Causality and Correlation",
+    "section": "6.2 R code",
+    "text": "6.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Causality and Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "causality.html#data",
+    "href": "causality.html#data",
+    "title": "6  Causality and Correlation",
+    "section": "6.3 Data",
+    "text": "6.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Causality and Correlation</span>"
+    ]
+  },
+  {
+    "objectID": "iv.html",
+    "href": "iv.html",
+    "title": "7  Instrumental Variables",
+    "section": "",
+    "text": "7.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Instrumental Variables</span>"
+    ]
+  },
+  {
+    "objectID": "iv.html#r-code",
+    "href": "iv.html#r-code",
+    "title": "7  Instrumental Variables",
+    "section": "7.2 R code",
+    "text": "7.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Instrumental Variables</span>"
+    ]
+  },
+  {
+    "objectID": "iv.html#data",
+    "href": "iv.html#data",
+    "title": "7  Instrumental Variables",
+    "section": "7.3 Data",
+    "text": "7.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Instrumental Variables</span>"
+    ]
+  },
+  {
+    "objectID": "panel.html",
+    "href": "panel.html",
+    "title": "8  Panel Data Methods",
+    "section": "",
+    "text": "8.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Panel Data Methods</span>"
+    ]
+  },
+  {
+    "objectID": "panel.html#r-code",
+    "href": "panel.html#r-code",
+    "title": "8  Panel Data Methods",
+    "section": "8.2 R code",
+    "text": "8.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Panel Data Methods</span>"
+    ]
+  },
+  {
+    "objectID": "panel.html#data",
+    "href": "panel.html#data",
+    "title": "8  Panel Data Methods",
+    "section": "8.3 Data",
+    "text": "8.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Panel Data Methods</span>"
+    ]
+  },
+  {
+    "objectID": "did.html",
+    "href": "did.html",
+    "title": "9  Difference-in-Differences",
+    "section": "",
+    "text": "9.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "did.html#r-code",
+    "href": "did.html#r-code",
+    "title": "9  Difference-in-Differences",
+    "section": "9.2 R code",
+    "text": "9.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "did.html#data",
+    "href": "did.html#data",
+    "title": "9  Difference-in-Differences",
+    "section": "9.3 Data",
+    "text": "9.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "rdd.html",
+    "href": "rdd.html",
+    "title": "10  Regression Discontinuity Design",
+    "section": "",
+    "text": "10.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  },
+  {
+    "objectID": "rdd.html#r-code",
+    "href": "rdd.html#r-code",
+    "title": "10  Regression Discontinuity Design",
+    "section": "10.2 R code",
+    "text": "10.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  },
+  {
+    "objectID": "rdd.html#data",
+    "href": "rdd.html#data",
+    "title": "10  Regression Discontinuity Design",
+    "section": "10.3 Data",
+    "text": "10.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  }
+]
