@@ -4,7 +4,7 @@ Find the slides [here](slides/AE_week01_Intro/AE_w01_intro.pdf)
 
 ### Basic R Programming Concepts
 
-```r
+```{r}
 # This is a comment
 
 # Create object "number"
@@ -12,7 +12,11 @@ Find the slides [here](slides/AE_week01_Intro/AE_w01_intro.pdf)
 number <- 5
 ```
 
-hellooooo
+```{r}
+# Print the object in the console:
+
+number
+```
 
 ```r
 # Define the function "square()"
