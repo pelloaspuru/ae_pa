@@ -164,7 +164,17 @@
     "href": "02_plotting.html",
     "title": "2  Plotting Data",
     "section": "",
-    "text": "2.1 Histogram",
+    "text": "2.1 Introduction\nFind the slides here",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "02_plotting.html#introduction",
+    "href": "02_plotting.html#introduction",
+    "title": "2  Plotting Data",
+    "section": "",
+    "text": "2.1.1 Types of Variables\n\n\n\n\n\n\n\n\n\n\n\n2.1.2 Types of Graphs\n\n\n\n\n\n\n\n\n\nGraph\nVariables\nShows\nggplot2\n\n\n\n\nHistogram\n1 continuous\ndistribution of a variable\ngeom_histogram()\n\n\nBar chart\n1 categorical\nnumber of observations per category\ngeom_bar()\n\n\nBox plot\n1 continuous + 1 categorical\ndistribution within each category\ngeom_boxplot()\n\n\nScatter plot\n2 continuous\nrelationship between two variables\ngeom_point()\n\n\nLine graph\n1 continuous + time\nevolution of a variable over time\ngeom_line()\n\n\n\n\n\n2.1.3 The ggplot2 Package\ninstall.packages(\"ggplot2\")\nlibrary(ggplot2)\n# Histogram of income\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 30) +\n  labs(x = \"Income\", y = \"Frequency\")\n# Scatterplot of income against age\nggplot(df, aes(x = income, y = age)) +\n  geom_point(size  = 2) +\n  labs(x = \"Income\", y = \"Age\")",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
@@ -173,8 +183,8 @@
     "objectID": "02_plotting.html#histogram",
     "href": "02_plotting.html#histogram",
     "title": "2  Plotting Data",
-    "section": "",
-    "text": "ggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20)\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20) +\n  facet_wrap(~ gender, ncol = 1)",
+    "section": "2.2 Histogram",
+    "text": "2.2 Histogram\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20)\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20) +\n  facet_wrap(~ gender, ncol = 1)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
@@ -183,8 +193,8 @@
     "objectID": "02_plotting.html#bar-chart",
     "href": "02_plotting.html#bar-chart",
     "title": "2  Plotting Data",
-    "section": "2.2 Bar Chart",
-    "text": "2.2 Bar Chart\nggplot(df, aes(x = education)) +\n  geom_bar()\nggplot(df, aes(x = education, fill = gender)) +\n  geom_bar(position = \"dodge\") +\n  theme(legend.position = \"bottom\")",
+    "section": "2.3 Bar Chart",
+    "text": "2.3 Bar Chart\nggplot(df, aes(x = education)) +\n  geom_bar()\nggplot(df, aes(x = education, fill = gender)) +\n  geom_bar(position = \"dodge\") +\n  theme(legend.position = \"bottom\")",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
@@ -193,8 +203,8 @@
     "objectID": "02_plotting.html#box-plot",
     "href": "02_plotting.html#box-plot",
     "title": "2  Plotting Data",
-    "section": "2.3 Box Plot",
-    "text": "2.3 Box Plot\nggplot(df, aes(x = education, y = income)) +\n  geom_boxplot()\nggplot(df, aes(x = education, y = income,\n               fill = gender)) +\n  geom_boxplot() +\n  theme(legend.position = \"bottom\")",
+    "section": "2.4 Box Plot",
+    "text": "2.4 Box Plot\nggplot(df, aes(x = education, y = income)) +\n  geom_boxplot()\nggplot(df, aes(x = education, y = income,\n               fill = gender)) +\n  geom_boxplot() +\n  theme(legend.position = \"bottom\")",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
@@ -203,8 +213,8 @@
     "objectID": "02_plotting.html#scatter-plot",
     "href": "02_plotting.html#scatter-plot",
     "title": "2  Plotting Data",
-    "section": "2.4 Scatter Plot",
-    "text": "2.4 Scatter Plot\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nggplot(df, aes(x = age, y = income,\n               colour = gender)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)",
+    "section": "2.5 Scatter Plot",
+    "text": "2.5 Scatter Plot\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nggplot(df, aes(x = age, y = income,\n               colour = gender)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
@@ -213,8 +223,8 @@
     "objectID": "02_plotting.html#line-graph",
     "href": "02_plotting.html#line-graph",
     "title": "2  Plotting Data",
-    "section": "2.5 Line Graph",
-    "text": "2.5 Line Graph\nggplot(df_ts[df_ts$country == \"A\", ],\n       aes(x = year, y = unemp)) +\n  geom_line()\nggplot(df_ts, aes(x = year, y = unemp,\n                  colour = country)) +\n  geom_line()",
+    "section": "2.6 Line Graph",
+    "text": "2.6 Line Graph\nggplot(df_ts[df_ts$country == \"A\", ],\n       aes(x = year, y = unemp)) +\n  geom_line()\nggplot(df_ts, aes(x = year, y = unemp,\n                  colour = country)) +\n  geom_line()",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
     ]

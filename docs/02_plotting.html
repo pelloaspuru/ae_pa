@@ -228,11 +228,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#histogram" id="toc-histogram" class="nav-link active" data-scroll-target="#histogram"><span class="header-section-number">2.1</span> Histogram</a></li>
-  <li><a href="#bar-chart" id="toc-bar-chart" class="nav-link" data-scroll-target="#bar-chart"><span class="header-section-number">2.2</span> Bar Chart</a></li>
-  <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot"><span class="header-section-number">2.3</span> Box Plot</a></li>
-  <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">2.4</span> Scatter Plot</a></li>
-  <li><a href="#line-graph" id="toc-line-graph" class="nav-link" data-scroll-target="#line-graph"><span class="header-section-number">2.5</span> Line Graph</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">2.1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#types-of-variables" id="toc-types-of-variables" class="nav-link" data-scroll-target="#types-of-variables"><span class="header-section-number">2.1.1</span> Types of Variables</a></li>
+  <li><a href="#types-of-graphs" id="toc-types-of-graphs" class="nav-link" data-scroll-target="#types-of-graphs"><span class="header-section-number">2.1.2</span> Types of Graphs</a></li>
+  <li><a href="#the-ggplot2-package" id="toc-the-ggplot2-package" class="nav-link" data-scroll-target="#the-ggplot2-package"><span class="header-section-number">2.1.3</span> The <code>ggplot2</code> Package</a></li>
+  </ul></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">2.2</span> Histogram</a></li>
+  <li><a href="#bar-chart" id="toc-bar-chart" class="nav-link" data-scroll-target="#bar-chart"><span class="header-section-number">2.3</span> Bar Chart</a></li>
+  <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot"><span class="header-section-number">2.4</span> Box Plot</a></li>
+  <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">2.5</span> Scatter Plot</a></li>
+  <li><a href="#line-graph" id="toc-line-graph" class="nav-link" data-scroll-target="#line-graph"><span class="header-section-number">2.6</span> Line Graph</a></li>
   </ul>
 </nav>
     </div>
@@ -258,6 +264,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Find the slides <a href="slides/AE_week02_Plotting/AE_w02_plotting.pdf">here</a></p>
+<section id="introduction" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">2.1</span> Introduction</h2>
+<section id="types-of-variables" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="types-of-variables"><span class="header-section-number">2.1.1</span> Types of Variables</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02_plotting_files/figure-html/unnamed-chunk-1-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="types-of-graphs" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="types-of-graphs"><span class="header-section-number">2.1.2</span> Types of Graphs</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 29%">
+<col style="width: 36%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Graph</th>
+<th>Variables</th>
+<th>Shows</th>
+<th>ggplot2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Histogram</td>
+<td>1 continuous</td>
+<td>distribution of a variable</td>
+<td><code>geom_histogram()</code></td>
+</tr>
+<tr class="even">
+<td>Bar chart</td>
+<td>1 categorical</td>
+<td>number of observations per category</td>
+<td><code>geom_bar()</code></td>
+</tr>
+<tr class="odd">
+<td>Box plot</td>
+<td>1 continuous + 1 categorical</td>
+<td>distribution within each category</td>
+<td><code>geom_boxplot()</code></td>
+</tr>
+<tr class="even">
+<td>Scatter plot</td>
+<td>2 continuous</td>
+<td>relationship between two variables</td>
+<td><code>geom_point()</code></td>
+</tr>
+<tr class="odd">
+<td>Line graph</td>
+<td>1 continuous + time</td>
+<td>evolution of a variable over time</td>
+<td><code>geom_line()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-ggplot2-package" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="the-ggplot2-package"><span class="header-section-number">2.1.3</span> The <code>ggplot2</code> Package</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of income</span></span>
@@ -268,24 +342,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> income, <span class="at">y =</span> age)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size  =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income"</span>, <span class="at">y =</span> <span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="histogram" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="histogram"><span class="header-section-number">2.1</span> Histogram</h2>
+</section>
+</section>
+<section id="histogram" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="histogram"><span class="header-section-number">2.2</span> Histogram</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> income)) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> income)) <span class="sc">+</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gender, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="bar-chart" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="bar-chart"><span class="header-section-number">2.2</span> Bar Chart</h2>
+<section id="bar-chart" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="bar-chart"><span class="header-section-number">2.3</span> Bar Chart</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> education)) <span class="sc">+</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> education, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="box-plot" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="box-plot"><span class="header-section-number">2.3</span> Box Plot</h2>
+<section id="box-plot" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="box-plot"><span class="header-section-number">2.4</span> Box Plot</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> education, <span class="at">y =</span> income)) <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> education, <span class="at">y =</span> income,</span>
@@ -293,8 +369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="scatter-plot" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="scatter-plot"><span class="header-section-number">2.4</span> Scatter Plot</h2>
+<section id="scatter-plot" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="scatter-plot"><span class="header-section-number">2.5</span> Scatter Plot</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> income)) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> income,</span>
@@ -302,8 +378,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="line-graph" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="line-graph"><span class="header-section-number">2.5</span> Line Graph</h2>
+<section id="line-graph" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="line-graph"><span class="header-section-number">2.6</span> Line Graph</h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_ts[df_ts<span class="sc">$</span>country <span class="sc">==</span> <span class="st">"A"</span>, ],</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> unemp)) <span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

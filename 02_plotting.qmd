@@ -1,4 +1,58 @@
+---
+engine: knitr
+---
+
 # Plotting Data {#sec-plotting}
+
+Find the slides [here](slides/AE_week02_Plotting/AE_w02_plotting.pdf)
+
+## Introduction
+
+### Types of Variables
+
+```{tikz}
+%| echo: false
+%| fig-ext: svg
+%| fig-align: center
+%| out-width: 90%
+%| engine.opts:
+%|   dvisvgm.opts: "--no-fonts"
+\definecolor{PelloGrayDark}{RGB}{60,60,60}
+\definecolor{PelloGray}{RGB}{120,120,120}
+\definecolor{PelloGrayLight}{RGB}{235,235,235}
+\begin{tikzpicture}[
+  box/.style={draw=PelloGrayDark, rounded corners, fill=PelloGrayLight, align=center, minimum width=2.7cm, minimum height=0.75cm},
+  ex/.style={align=center, font=\footnotesize, text=PelloGray}]
+  \node[box] (var) at (0,0) {\textbf{Variable}};
+  \node[box] (num) at (-3.6,-1.2) {\textbf{Numerical}\\ \footnotesize values are numbers};
+  \node[box] (cat) at (3.6,-1.2) {\textbf{Categorical}\\ \footnotesize values are groups};
+  \node[box] (dis) at (-5.4,-2.5) {Discrete};
+  \node[box] (con) at (-1.8,-2.5) {Continuous};
+  \node[box] (nom) at (1.8,-2.5) {Nominal};
+  \node[box] (ord) at (5.4,-2.5) {Ordinal};
+  \node[ex] at (-5.4,-3.35) {countable values\\ \texttt{age} in years};
+  \node[ex] at (-1.8,-3.35) {any value in an interval\\ \texttt{income}, height};
+  \node[ex] at (1.8,-3.35) {categories without order\\ \texttt{gender}, country};
+  \node[ex] at (5.4,-3.35) {ordered categories\\ \texttt{education}};
+  \draw (var) -- (num); \draw (var) -- (cat);
+  \draw (num) -- (dis); \draw (num) -- (con);
+  \draw (cat) -- (nom); \draw (cat) -- (ord);
+\end{tikzpicture}
+```
+
+### Types of Graphs
+
+| Graph        | Variables                    | Shows                               | ggplot2            |
+|--------------|------------------------------|-------------------------------------|--------------------|
+| Histogram    | 1 continuous                 | distribution of a variable          | `geom_histogram()` |
+| Bar chart    | 1 categorical                | number of observations per category | `geom_bar()`       |
+| Box plot     | 1 continuous + 1 categorical | distribution within each category   | `geom_boxplot()`   |
+| Scatter plot | 2 continuous                 | relationship between two variables  | `geom_point()`     |
+| Line graph   | 1 continuous + time          | evolution of a variable over time   | `geom_line()`      |
+
+
+
+### The `ggplot2` Package
 
 ```r
 install.packages("ggplot2")
