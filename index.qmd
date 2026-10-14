@@ -2,16 +2,34 @@
 
 This is the website of the course **Applied Economics** at the University of Vienna, Winter 2026/2027.
 
-*Content coming soon.*
+*Content updated weekly.*
 
 ## Course description
 
-## Schedule
+In this course, students reinforce the tools learned in Introductory Econometrics (BA) by applying them to real-world datasets using econometric software. Prior knowledge at that level is assumed throughout. The aim is for students to gain hands-on experience analyzing observational data with the open-source programming language R, and to acquire the tools to carry out empirical research projects independently.
 
 ## Assessment
 
+| Item                 | Tentative Date                                  | Grade Weight |
+|----------------------|-------------------------------------------------|-------------:|
+| Class participation  | Throughout the semester                         | 10%          |
+| Midterm exam         | November 25th/26th 2026                         | 25%          |
+| Project presentation I | December 16th/17th 2026  | 10%          |
+| Project presentation II | January 20th/21st 2027 | 15%          |
+| Final exam           | Wednesday, January 27th 2027                    | 40%          |
+| **Total**            |                                                 | **100%**     |
+
 ## Software
+
+- Install R from <https://cran.r-project.org/>
+- Install RStudio from <https://posit.co/download/rstudio-desktop/>
+
+## Office Hours
+
+By appointment, at <pello.aspuru@univie.ac.at>
 
 ## References
 
-## Contact
+
+
+

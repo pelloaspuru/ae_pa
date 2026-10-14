@@ -1,10 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1792007728.05124 "AE_w01_intro.tex" "AE_w01_intro.pdf" "AE_w01_intro" 1792007731.62569 0
-  "AE_w01_intro.aux" 1792007731 3877 22198683b13b3e245ed6b0668675fca7 "pdflatex"
-  "AE_w01_intro.nav" 1792007731 2409 70cb845c5e3bde78d6117320553ee31f "pdflatex"
-  "AE_w01_intro.out" 1792007731 431 c1d8aaaa8a0d5c5c1af2e08f99f8d00e "pdflatex"
-  "AE_w01_intro.tex" 1792007709 24679 1e9796dd3ac209272319bf08fd65c382 ""
-  "AE_w01_intro.vrb" 1792007731 1435 db9cb95816609fe3b977dfb4692469e8 "pdflatex"
+["pdflatex"] 1792009148.32984 "AE_w01_intro.tex" "AE_w01_intro.pdf" "AE_w01_intro" 1792009151.68487 0
+  "AE_w01_intro.aux" 1792009151 3877 22198683b13b3e245ed6b0668675fca7 "pdflatex"
+  "AE_w01_intro.nav" 1792009151 2409 70cb845c5e3bde78d6117320553ee31f "pdflatex"
+  "AE_w01_intro.out" 1792009151 431 c1d8aaaa8a0d5c5c1af2e08f99f8d00e "pdflatex"
+  "AE_w01_intro.tex" 1792009146 24680 24b8a98ae846efc2f4d0dae496f10144 ""
+  "AE_w01_intro.vrb" 1792009151 1435 db9cb95816609fe3b977dfb4692469e8 "pdflatex"
   "Rstudio.png" 1791914845 148955 10c378b22ff9c7f15292d2cfae58ca25 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1758720392 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1758721221 3524 cb3e574dea2d1052e39280babc910dc8 ""

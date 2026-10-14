@@ -140,3 +140,6 @@ ggplot(df_ts, aes(x = year, y = unemp,
                   colour = country)) +
   geom_line()
 ```
+
+
+## Maps

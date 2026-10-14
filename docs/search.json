@@ -50,21 +50,21 @@
     ]
   },
   {
-    "objectID": "index.html#references",
-    "href": "index.html#references",
+    "objectID": "index.html#office-hours",
+    "href": "index.html#office-hours",
     "title": "Applied Economics",
-    "section": "References",
-    "text": "References",
+    "section": "Office Hours",
+    "text": "Office Hours\nBy appointment, at pello.aspuru@univie.ac.at",
     "crumbs": [
       "Welcome"
     ]
   },
   {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
+    "objectID": "index.html#references",
+    "href": "index.html#references",
     "title": "Applied Economics",
-    "section": "Contact",
-    "text": "Contact",
+    "section": "References",
+    "text": "References",
     "crumbs": [
       "Welcome"
     ]
@@ -497,6 +497,16 @@
     "text": "11.3 Data",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Applied Economics",
+    "section": "Contact",
+    "text": "Contact",
+    "crumbs": [
+      "Welcome"
     ]
   }
 ]
