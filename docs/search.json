@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Applied Economics",
     "section": "",
-    "text": "Welcome\nThis is the website of the course Applied Economics at the University of Vienna, Winter 2026/2027.\nContent coming soon.",
+    "text": "Welcome\nThis is the website of the course Applied Economics at the University of Vienna, Winter 2026/2027.\nContent updated weekly.",
     "crumbs": [
       "Welcome"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#course-description",
     "title": "Applied Economics",
     "section": "Course description",
-    "text": "Course description",
+    "text": "Course description\nIn this course, students reinforce the tools learned in Introductory Econometrics (BA) by applying them to real-world datasets using econometric software. Prior knowledge at that level is assumed throughout. The aim is for students to gain hands-on experience analyzing observational data with the open-source programming language R, and to acquire the tools to carry out empirical research projects independently.",
     "crumbs": [
       "Welcome"
     ]
@@ -24,7 +24,7 @@
     "href": "index.html#schedule",
     "title": "Applied Economics",
     "section": "Schedule",
-    "text": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\n\n\nWeek\nDates\nSession\n\n\n\n\n1\nOct 14th / 15th\nIntroduction\n\n\n2\nOct 21st / 22nd\nData and Plotting\n\n\n\n\nDeregistration period ends\n\n\n3\nOct 28th / 29th\nWeb Scraping Data\n\n\n4\nNov 4th / 5th\nMLR, OLS and Inference\n\n\n5\nNov 11th / 12th\nCausality and Correlation\n\n\n6\nNov 18th / 19th\nPanel Data\n\n\n7\nNov 25th / 26th\nMidterm exam\n\n\n8\nDec 2nd / 3rd\nInstrumental Variables (IV)\n\n\n9\nDec 9th / 10th\nDifferences in Differences (DD)\n\n\n10\nDec 16th / 17th\nProject presentation I\n\n\n\nDec 23rd – Jan 7th\nChristmas break, no classes\n\n\n11\nJan 13th / 14th\nRegression Discontinuity Design (RDD)\n\n\n12\nJan 20th / 21st\nProject presentation II\n\n\n\nWednesday, Jan 27th\nFinal exam",
     "crumbs": [
       "Welcome"
     ]
@@ -34,7 +34,7 @@
     "href": "index.html#assessment",
     "title": "Applied Economics",
     "section": "Assessment",
-    "text": "Assessment",
+    "text": "Assessment\n\n\n\n\n\n\n\n\nItem\nTentative Date\nGrade Weight\n\n\n\n\nClass participation\nThroughout the semester\n10%\n\n\nMidterm exam\nNovember 25th/26th 2026\n25%\n\n\nProject presentation I\nDecember 16th/17th 2026\n10%\n\n\nProject presentation II\nJanuary 20th/21st 2027\n15%\n\n\nFinal exam\nWednesday, January 27th 2027\n40%\n\n\nTotal\n\n100%",
     "crumbs": [
       "Welcome"
     ]
@@ -44,7 +44,7 @@
     "href": "index.html#software",
     "title": "Applied Economics",
     "section": "Software",
-    "text": "Software",
+    "text": "Software\n\nInstall R from https://cran.r-project.org/\nInstall RStudio from https://posit.co/download/rstudio-desktop/",
     "crumbs": [
       "Welcome"
     ]
@@ -505,6 +505,16 @@
     "title": "Applied Economics",
     "section": "Contact",
     "text": "Contact",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#key-dates",
+    "href": "index.html#key-dates",
+    "title": "Applied Economics",
+    "section": "Key Dates",
+    "text": "Key Dates\n\nMidterm exam: Nov 25th / 26th\nProject presentation I: Dec 16th / 17th\nProject presentation II: Jan 20th / 21st\nFinal exam: Jan 27th",
     "crumbs": [
       "Welcome"
     ]

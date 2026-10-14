@@ -2,4 +2,8 @@
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@sectionintoc {2}{Motivation}{10}{0}{2}
 \beamer@sectionintoc {3}{Introduction to R}{15}{0}{3}
-\beamer@sectionintoc {4}{Data Frames}{30}{0}{4}
+\beamer@sectionintoc {4}{Data Frames}{29}{0}{4}
+\beamer@sectionintoc {5}{Inspecting Dataframes}{33}{0}{5}
+\beamer@sectionintoc {6}{Selecting Data}{35}{0}{6}
+\beamer@sectionintoc {7}{Creating Variables}{37}{0}{7}
+\beamer@sectionintoc {8}{Working with Several Datasets}{43}{0}{8}

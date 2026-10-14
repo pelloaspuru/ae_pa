@@ -120,8 +120,7 @@ Office hours: by email appointment via pello.aspuru@univie.ac.at
 People who signed up online for this class and signed the list today
 are considered \textbf{enrolled}.
 
-If you are registered, you will receive a grade! \\
-You can de-register until \textbf{October 8th} (after lecture 2).
+If you are registered, you will receive a grade!
 }
 \end{frame}
 
@@ -398,20 +397,16 @@ You can de-register until \textbf{October 8th} (after lecture 2).
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny]
 # This is a comment
 
-# Create object "number"
-
-number <- 5
+# Create object "n"
+n <- 100
 
 # Define the function "square()"
-
 square <- function(x) { return(x^2) }
 
 # Run function on object, store as "result"
-
-result <- square(number)
+result <- square(n)
 
 # Print the result in the console
-
 print(result)
 \end{lstlisting}
 \end{column}
@@ -423,7 +418,7 @@ print(result)
 \begin{itemize}
     \item \textbf{RStudio} a workspace that provides a user-friendly interface to write and run code.
     \item  Install RStudio from \url{https://posit.co/download/rstudio-desktop/}
-    \item R Studio interface consists of 4 main windows (panes): 
+    \item R Studio interface consists of 4 main windows (panes):
 \end{itemize}
 \begin{figure}[h]
     \centering
@@ -439,14 +434,14 @@ print(result)
   \only<1>{\item[] \textbf{Console}
     \begin{itemize}
       \item Output of your coding and computations appears here (exception: graphs).
-      \item It is possible to write code directly into the console. 
+      \item It is possible to write code directly into the console.
       \alert{\item Do not use the console to make changes to the data.}
     \end{itemize}}
 
   \only<2>{\item[] \textbf{Script Editor}
     \begin{itemize}
-      \item Open a new R script: click $File \rightarrow New \, File \rightarrow R \, Script$. 
-      \item Always write your main code in a script: allows you to save and keep track of your work, and to re-run the analysis or make modifications later.  
+      \item Open a new R script: click $File \rightarrow New \, File \rightarrow R \, Script$.
+      \item Always write your main code in a script: allows you to save and keep track of your work, and to re-run the analysis or make modifications later.
       \item To send the code in your script to the console, click $run$.
     \end{itemize}}
 
@@ -471,34 +466,6 @@ print(result)
 \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{R Packages}
-\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
-
-\begin{block}{What are packages?}
-\begin{itemize}
-  \item Collections of functions, data, and documentation that extend R’s functionality.
-  \item Thousands are available on CRAN, Bioconductor, GitHub, etc.
-  \item Example: \texttt{ggplot2} for data visualization.
-\end{itemize}
-\end{block}
-
-\begin{block}{How to install a package}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\small, frame=single]
-# Install once (downloads from CRAN)
-install.packages("ggplot2")
-\end{lstlisting}
-\end{block}
-
-\begin{block}{How load a package}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\small, frame=single]
-# Load every time you start R
-library(ggplot2)
-\end{lstlisting}
-\end{block}
-
-
-\end{frame}
-
 \begin{frame}[fragile]{Script Set Up}
 
 \textbf{Working directory} is the default folder on your computer where R reads and saves files, unless you tell it otherwise.
@@ -508,8 +475,9 @@ library(ggplot2)
 \begin{column}{0.6\textwidth}
 \onslide<2->{
 \begin{itemize}
+    \item Comments start with \#: R ignores them.
     \item Create a new folder on your desktop called "AE\_2026" to use as your working directory.
-    \item show current working directory {\tt getwd()} 
+    \item show current working directory {\tt getwd()}
     \item setting new working directory to newly created folder \texttt{setwd("C:/Users/.../AE\_2026")}
     \item list all files in your working directory \texttt{dir()}
 \end{itemize}}
@@ -517,6 +485,8 @@ library(ggplot2)
 
 \begin{column}{0.4\textwidth}
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny]
+# This is a comment
+
 # Check current working directory
 getwd()
 
@@ -533,6 +503,26 @@ dir()
 \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Clean the Environment}
+
+\begin{itemize}
+  \item Every object you create stays in the \textbf{environment} until you remove it.
+  \item Start every script from a clean environment, so that your results do not depend on objects left over from earlier work.
+  \item list all objects: \texttt{ls()}; remove all of them: \texttt{rm(list = ls())}
+\end{itemize}
+
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+# List all objects in the environment
+ls()
+
+# Remove all objects from the environment
+rm(list = ls())
+
+# Verify the change
+ls()
+\end{lstlisting}
+\end{frame}
+
 
 \begin{frame}[fragile]{R Objects}
 \textbf{Object} a piece of information (like a number, word, vector, or dataset) stored in memory that can be used and modified by your code.
@@ -544,24 +534,28 @@ dir()
           \item print object to the console: \texttt{object}
           \item identify format using \texttt{str(object)}
           \item get basic information on the object:  \texttt{class(object), dim(object)}
-          \item list all objects: \texttt{ls()} 
+          \item list all objects: \texttt{ls()}
           \item remove an object: \texttt{rm(object)}
       \end{itemize}
   \end{column}
   \begin{column}{0.5\textwidth}
-      \begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny]
-        # generate objects
-        n <- 100 # Scalar object
-        id <- 1:n # Vector object
-        age <- sample(18:65, n, replace = TRUE) 
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny]
+# Create object "n"
+n <- 100
 
-        # Visualize 
-        age # Print object in console
-        str(age) # Object type, size
-        class(age) # Object type 
-        dim(age)
-        ls() # List all objects
-      \end{lstlisting}
+# Print the object in the console:
+n
+
+# generate vector "age":
+age <- sample(18:65, n, replace = TRUE)
+
+# Visualize
+age # Print object in console
+str(age) # Object type, size
+class(age) # Object type
+dim(age)
+ls() # List all objects
+\end{lstlisting}
   \end{column}
 \end{columns}
 
@@ -575,12 +569,10 @@ dir()
 \begin{columns}
   \begin{column}{0.45\textwidth}
       \begin{itemize}
-          \item \texttt{AirPassengers}: number of airline passengers (in thousands) in each month from 1949 to 1960.
+          \item \texttt{AirPassengers}: built-in dataset with the number of airline passengers (in thousands) in each month from 1949 to 1960.
           \item number of elements: \texttt{length(vector)}
           \pause
           \item access elements by their position, in square brackets: \texttt{vector[...]}
-          \pause
-          \item several vectors of the same length can be put together as the columns of a dataset: \texttt{data.frame(...)}
       \end{itemize}
   \end{column}
   \begin{column}{0.55\textwidth}
@@ -596,10 +588,6 @@ length(passengers)     # 144
 passengers[1]          # first element: 112
 passengers[1:3]        # elements 1 to 3: 112 118 132
 passengers[c(1, 144)]  # first and last: 112 432
-
-# Create a dataset from the three vectors
-df_air <- data.frame(year, month, passengers)
-dim(df_air)            # 144 rows, 3 columns
 \end{lstlisting}
   \end{column}
 \end{columns}
@@ -608,20 +596,25 @@ dim(df_air)            # 144 rows, 3 columns
 
 \section{Data Frames}
 
-\begin{frame}[fragile]{From Vectors to a Dataframes}
+\begin{frame}[fragile]{From Vectors to Dataframes}
 \linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 
 Dataframes are two-dimensional objects that store data in a tabular format, with rows and columns:
 \begin{itemize}
-  \item Rows: units of observation (individuals, years, ...). 
+  \item Rows: units of observation (individuals, years, ...).
   \item Columns: variables (e.g. income, education, GNP, ....) [vectors]
 \end{itemize}
 \pause
-\texttt{head(...)} prints the first six rows of the dataset we created from the three vectors:
+\texttt{data.frame()} puts vectors of the same length side by side as columns; \texttt{head()} prints the first rows:
 
 \begin{columns}[c]
   \begin{column}{0.4\textwidth}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize]
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny]
+# Create a dataset from the three vectors
+df_air <- data.frame(year, month, passengers)
+dim(df_air)            # 144 rows, 3 columns
+\end{lstlisting}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny]
 > head(df_air)
   year month passengers
 1 1949     1        112
@@ -684,20 +677,233 @@ Dataframes are two-dimensional objects that store data in a tabular format, with
 \end{comment}
 
 
-\begin{frame}[fragile]{Multiple Data Frames}
+\begin{frame}[fragile]{Functions}
+
+\begin{itemize}
+  \item A \textbf{function} takes one or more objects as input, performs a task, and returns an output.
+  \item We have already used several, such as \texttt{sample()}, \texttt{length()} and \texttt{data.frame()}. We can also write our own:
+\end{itemize}
+
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+ls()
+
+# Define the function "square()"
+square <- function(x) { return(x^2) }
+
+# Run function on object, store as "result"
+result <- square(n)
+
+# Print the result in the console
+print(result)
+
+ls()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{R Packages}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+
+\begin{block}{What are packages?}
+\begin{itemize}
+  \item Collections of functions, data, and documentation that extend R’s functionality.
+  \item Thousands are available on CRAN, the official R package repository.
+  \item Example: \texttt{dplyr} to manipulate dataframes, \texttt{ggplot2} to draw graphs.
+\end{itemize}
+\end{block}
+
+\begin{block}{How to install a package (once per computer)}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small, frame=single]
+# Install once (downloads from CRAN)
+install.packages("dplyr")
+\end{lstlisting}
+\end{block}
+
+\begin{block}{How to load a package (every time you start R)}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small, frame=single]
+# Load every time you start R
+library(dplyr)
+\end{lstlisting}
+\end{block}
+
+\end{frame}
+
+
+\section{Inspecting Dataframes}
+
+\begin{frame}[fragile]{Size and Structure}
+
+Before running any analysis, take a first look at the data: how large it is, which variables it contains, what values they take. This helps to spot mistakes early.
+
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{itemize}
+    \item number of rows and columns: \texttt{dim()}
+    \item variable names: \texttt{names()}
+    \item type of each variable and its first values: \texttt{str()}
+    \item first / last six rows: \texttt{head()}, \texttt{tail()}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+dim(df_air)
+names(df_air)
+str(df_air)
+
+tail(df_air)
+\end{lstlisting}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Summary Statistics and Frequency Tables}
+
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{itemize}
+    \item \texttt{summary()}: minimum, quartiles, mean and maximum of a numerical variable.
+    \item Applied to a whole dataframe, it summarises every variable at once.
+    \item Individual statistics: \texttt{mean()}, \texttt{median()}, \texttt{var()}, \texttt{sd()}.
+    \item \texttt{table()} counts how many observations take each value of a variable: most useful for categorical variables.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+summary(df_air$passengers)
+
+summary(df_air)
+
+mean(df_air$passengers)
+sd(df_air$passengers)
+
+table(df_air$year)
+\end{lstlisting}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\section{Selecting Data}
+
+\begin{frame}[fragile]{Selecting Observations and Variables}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+
+Square brackets select parts of a dataframe by position: \texttt{dataframe[rows, columns]}. Leaving rows or columns empty selects all of them. The \texttt{\$} sign selects a single variable by its name.
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+# Accessing data through row/column indexes
+df_air[1:3,] # Rows 1 to 3, all columns.
+df_air[c(2,5),c(1,3)] # Rows 2 and 5, Columns 1 and 3.
+head(df_air[,c(1,3)]) # All rows, Columns 1 and 3 (first six rows shown).
+
+# Access the 'passengers' variable.
+df_air$passengers
+\end{lstlisting}
+\pause
+Store a subset under a \textbf{new name}, which keeps the original data. \alert{Danger!} \texttt{df\_air <- df\_air[...,...]} drops everything that is not selected.
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+df_air_first_9_rows <- df_air[1:9,]
+ls()
+\end{lstlisting}
+\end{frame}
+
+
+\section{Creating Variables}
+
+\begin{frame}[fragile]{From Existing Variables}
+
+\begin{itemize}
+  \item A new variable is created by assigning a vector to a name that does not yet exist in the dataframe: \texttt{dataframe\$new\_variable <- ...}
+  \item The vector is usually computed from existing variables.
+  \item \texttt{passengers} is measured in thousands, so dividing it by 1000 gives the number of passengers in millions:
+\end{itemize}
+
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+df_air$passengers_millions <- df_air$passengers / 1000
+head(df_air)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Logical Conditions}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+
+A logical condition compares values and returns \texttt{TRUE} or \texttt{FALSE} for each element of a vector.
+
+\begin{center}
+  \small
+  \begin{tabular}{ll}
+  \toprule
+  \textbf{Operator} & \textbf{Meaning} \\
+  \midrule
+  \texttt{==} & equal to \\
+  \texttt{!=} & not equal to \\
+  \texttt{>}, \texttt{>=} & greater than (or equal to) \\
+  \texttt{<}, \texttt{<=} & less than (or equal to) \\
+  \texttt{\&} & and: both are true \\
+  \texttt{|} & or: at least one is true \\
+  \texttt{\%in\%} & one of a set of values \\
+  \bottomrule
+  \end{tabular}
+\end{center}
+
+\pause
+The following condition is \texttt{TRUE} for the months between 1950 and 1959; \texttt{table()} counts how many observations satisfy it:
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+# Logical condition vector
+index_fifties <- (df_air$year >= 1950) & (df_air$year <= 1959)
+table(index_fifties)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Variables Based on a Condition}
+
+\begin{itemize}
+  \item \texttt{ifelse(condition, a, b)} returns \texttt{a} where the condition is \texttt{TRUE} and \texttt{b} where it is \texttt{FALSE}: useful for creating categorical variables.
+  \item \texttt{season} separates the summer months from the rest of the year.
+  \item \texttt{traffic} separates the months with more passengers than the median month from the others.
+\end{itemize}
+
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+df_air$season  <- ifelse(df_air$month %in% 6:8, "Summer", "Rest of year")
+df_air$traffic <- ifelse(df_air$passengers > median(df_air$passengers), "High", "Low")
+
+table(df_air$season)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Two-way Tables and Selecting with a Condition}
+
+With two variables, \texttt{table()} returns a \textbf{two-way table}, which counts the observations for each combination of categories. \texttt{prop.table(..., margin = 1)} turns the counts into shares within each row:
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+table(df_air$season, df_air$traffic)
+
+prop.table(table(df_air$season, df_air$traffic), margin = 1)
+\end{lstlisting}
+\pause
+A logical vector selects the rows where it is \texttt{TRUE}:
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+df_air_fifties <- df_air[index_fifties, ]
+dim(df_air_fifties)
+\end{lstlisting}
+\end{frame}
+
+
+\section{Working with Several Datasets}
+
+\begin{frame}[fragile]{A Second Dataset: \texttt{longley}}
 \linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 \begin{itemize}
   \item R is able to work with multiple datasets at the same time.
-  \item Let us load the built in datasets \texttt{longley} dataset.
+  \item \texttt{longley}: built-in dataset with yearly US macroeconomic data, 1947--1962.
 \end{itemize}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
-        # longley: US macroeconomic data, one row per year (1947-1962)
-        data(longley)
-        class(longley)        # "data.frame"
-        head(longley)
- \end{lstlisting}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+# longley: US macroeconomic data, one row per year (1947-1962)
+data(longley)
+class(longley)
 
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize]
+dim(longley)
+head(longley)
+\end{lstlisting}
+
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
 > head(longley)
      GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
 1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
@@ -717,6 +923,158 @@ Dataframes are two-dimensional objects that store data in a tabular format, with
 
 \end{frame}
 
+\begin{frame}{The \texttt{longley} Variables}
+
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Variable} & \textbf{Description} & \textbf{Units} \\
+\midrule
+\texttt{GNP.deflator} & GNP implicit price deflator (price level) & index, 1954 = 100 \\
+\texttt{GNP} & Gross National Product & billions of current US dollars \\
+\texttt{Unemployed} & number of unemployed people & tens of thousands of people \\
+\texttt{Armed.Forces} & number of people in the armed forces & tens of thousands of people \\
+\texttt{Population} & non-institutionalized population aged 14+ & millions of people \\
+\texttt{Year} & the year of the observation & calendar year \\
+\texttt{Employed} & number of employed people & millions of people \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\pause
+Example: in 1947, \texttt{Unemployed} is 235.6, about 2.36 million unemployed people, and \texttt{Employed} is 60.323, about 60.3 million employed people.
+\end{frame}
+
+\begin{frame}[fragile]{Creating Variables with \texttt{dplyr}}
+
+The old-fashioned way:
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+longley$employment_share <- longley$Employed/longley$Population
+\end{lstlisting}
+\pause
+The \texttt{dplyr} way: \texttt{mutate()} creates several variables at once, and the pipe \texttt{|>} passes the dataframe on to the next function.
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize]
+longley <- longley |>
+  mutate(employment_share   = Employed / Population,
+         unemployment_share = (Unemployed / 100) / Population,
+         population_growth  = (Population - lag(Population)) / lag(Population))
+
+head(longley)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Aggregating Data}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+
+\begin{itemize}
+  \item To combine \texttt{df\_air} with \texttt{longley}, both datasets need the same frequency: \texttt{df\_air} is monthly, \texttt{longley} is annual.
+  \item We aggregate \texttt{df\_air} from monthly to annual data: \texttt{group\_by()} forms one group per year, \texttt{summarise()} computes one row per group.
+\end{itemize}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+head(df_air)
+\end{lstlisting}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+# Aggregate the monthly data to one row per year
+df_air_annual <- df_air |>
+  group_by(year) |>
+  summarise(annual_passengers       = sum(passengers),
+            mean_monthly_passengers = mean(passengers),
+            min_monthly_passengers  = min(passengers),
+            max_monthly_passengers  = max(passengers))
+
+head(df_air_annual)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Merging Datasets}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+
+\begin{itemize}
+  \item \textbf{Merging} (joining) puts the columns of two datasets side by side, matching the rows that refer to the same observation.
+  \item The variable used to match the rows is the \textbf{key}: the year, called \texttt{year} in \texttt{df\_air\_annual} and \texttt{Year} in \texttt{longley}, so we use \texttt{by = c("year" = "Year")}.
+  \item Problem: the two datasets do not cover the same years.
+\end{itemize}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+df_air_annual$year
+longley$Year
+\end{lstlisting}
+\pause
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Function} & \textbf{Rows it keeps} & \textbf{Rows in our example} \\
+\midrule
+\texttt{inner\_join()} & only the rows with a match in both datasets & 12 (1949 to 1960) \\
+\texttt{left\_join()} & all rows of the left dataset & 12 (1949 to 1960) \\
+\texttt{right\_join()} & all rows of the right dataset & 16 (1947 to 1962) \\
+\texttt{full\_join()} & all rows of both datasets & 16 (1947 to 1962) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Inner and Left Joins}
+
+In \texttt{x |> some\_join(y)}, \texttt{x} is the \textit{left} dataset and \texttt{y} the \textit{right} dataset.
+
+\texttt{inner\_join()} keeps only the years that appear in both datasets:
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+# Merge the two annual datasets, keeping the years present in both
+df_inner <- df_air_annual |>
+  inner_join(longley, by = c("year" = "Year"))
+
+dim(df_inner)
+head(df_inner)
+\end{lstlisting}
+\pause
+\texttt{left\_join()} keeps every row of \texttt{df\_air\_annual}. Every year in it also appears in \texttt{longley}, so the result has the same 12 rows:
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+df_left <- df_air_annual |>
+  left_join(longley, by = c("year" = "Year"))
+
+dim(df_left)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Right Joins}
+
+\texttt{right\_join()} keeps every row of \texttt{longley}, so the result has 16 rows. 1947, 1948, 1961 and 1962 have no match in \texttt{df\_air\_annual}, so their passenger variables are missing (\texttt{NA}):
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize]
+df_right <- df_air_annual |>
+  right_join(longley, by = c("year" = "Year"))
+
+dim(df_right)
+
+# Rows without passenger data
+df_right[is.na(df_right$annual_passengers), c("year", "annual_passengers", "GNP")]
+\end{lstlisting}
+\pause
+\begin{itemize}
+  \item Which join to use depends on which observations you want to keep.
+  \item A \textbf{left join} is the most common choice: it keeps your main dataset intact and adds information from a second one, without dropping or adding rows.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Missing Values}
+
+\begin{itemize}
+  \item \texttt{is.na()} returns \texttt{TRUE} for every missing value. R counts \texttt{TRUE} as 1, so \texttt{sum()} gives the number of missing values in a variable, and \texttt{colSums()} gives it for every variable.
+\end{itemize}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+sum(is.na(df_right$annual_passengers))
+colSums(is.na(df_right))
+\end{lstlisting}
+\pause
+\begin{itemize}
+  \item Many functions return \texttt{NA} if the variable contains missing values. \texttt{na.rm = TRUE} tells them to ignore the missing values:
+\end{itemize}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+mean(df_right$annual_passengers)
+mean(df_right$annual_passengers, na.rm = TRUE)
+\end{lstlisting}
+\end{frame}
+
 
 \end{document}
-

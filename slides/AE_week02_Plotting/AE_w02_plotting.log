@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  14 OCT 2026 21:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  14 OCT 2026 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1089,13 +1089,13 @@ thkerncmss.
 [4
 
 ]
-
-[5
-
-]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb)
+
+[5
+
+] (./AE_w02_plotting.vrb)
 
 [6
 
@@ -1103,160 +1103,111 @@ thkerncmss.
 
 [7
 
-] (./AE_w02_plotting.vrb)
+]
 
 [8
 
-] (./AE_w02_plotting.vrb)
+]
 
 [9
 
 ]
 \openout4 = `AE_w02_plotting.vrb'.
 
- (./AE_w02_plotting.vrb)
-
-[10
-
-] (./AE_w02_plotting.vrb)
-
-[11
-
-] (./AE_w02_plotting.vrb)
-
-[12
-
-]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb)
-
-[13
-
-] (./AE_w02_plotting.vrb)
-
-[14
-
-]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb)
-
-[15
-
-] (./AE_w02_plotting.vrb)
-
-[16
-
-] (./AE_w02_plotting.vrb)
-
-[17
-
-]
-
-[18
-
-]
-
-[19
-
-]
-\openout4 = `AE_w02_plotting.vrb'.
-
  (./AE_w02_plotting.vrb
-<w1_graphs.pdf, id=675, page=3, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=284, page=3, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 3>
 Package pdftex.def Info: w1_graphs.pdf , page3 used on input line 8.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
-<w1_graphs.pdf, id=676, page=4, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=285, page=4, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 4>
 Package pdftex.def Info: w1_graphs.pdf , page4 used on input line 16.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
 )
 
-[20
+[10
 
  <./w1_graphs.pdf> <./w1_graphs.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w1_graphs.pdf, id=734, page=5, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=331, page=5, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 5>
 Package pdftex.def Info: w1_graphs.pdf , page5 used on input line 8.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
-<w1_graphs.pdf, id=735, page=6, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=332, page=6, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 6>
 Package pdftex.def Info: w1_graphs.pdf , page6 used on input line 16.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
 )
 
-[21
+[11
 
  <./w1_graphs.pdf> <./w1_graphs.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w1_graphs.pdf, id=794, page=7, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=378, page=7, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 7>
 Package pdftex.def Info: w1_graphs.pdf , page7 used on input line 8.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
-<w1_graphs.pdf, id=795, page=8, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=379, page=8, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 8>
 Package pdftex.def Info: w1_graphs.pdf , page8 used on input line 16.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
 )
 
-[22
+[12
 
  <./w1_graphs.pdf> <./w1_graphs.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w1_graphs.pdf, id=853, page=9, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=426, page=9, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 9>
 Package pdftex.def Info: w1_graphs.pdf , page9 used on input line 8.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
-<w1_graphs.pdf, id=854, page=10, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=427, page=10, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 10>
 Package pdftex.def Info: w1_graphs.pdf , page10 used on input line 16.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
 )
 
-[23
+[13
 
  <./w1_graphs.pdf> <./w1_graphs.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w1_graphs.pdf, id=912, page=11, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=474, page=11, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 11>
 Package pdftex.def Info: w1_graphs.pdf , page11 used on input line 8.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
-<w1_graphs.pdf, id=913, page=12, 289.08pt x 180.675pt>
+<w1_graphs.pdf, id=475, page=12, 289.08pt x 180.675pt>
 File: w1_graphs.pdf Graphic file (type pdf)
 <use w1_graphs.pdf, page 12>
 Package pdftex.def Info: w1_graphs.pdf , page12 used on input line 17.
 (pdftex.def)             Requested size: 179.25114pt x 112.03111pt.
 )
 
-[24
+[14
 
  <./w1_graphs.pdf> <./w1_graphs.pdf>]
 
-[25
+[15
 
 ]
 
-[26
+[16
 
 ]
 \tf@nav=\write7
@@ -1277,28 +1228,27 @@ Package rerunfilecheck Info: File `AE_w02_plotting.out' has not changed.
 (rerunfilecheck)             Checksum: 3C5E39E52FC193932E48779E5ADB19F6;136.
  ) 
 Here is how much of TeX's memory you used:
- 28962 strings out of 467797
- 549221 string characters out of 5435982
- 1126125 words of memory out of 5000000
- 56961 multiletter control sequences out of 15000+600000
- 643633 words of font info for 82 fonts, out of 8000000 for 9000
+ 28895 strings out of 467797
+ 548242 string characters out of 5435982
+ 1125125 words of memory out of 5000000
+ 56932 multiletter control sequences out of 15000+600000
+ 643320 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,123p,390b,1955s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb><c:/tex
-live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2025/
-texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb><c:/texlive/2025/texmf-dist
-/fonts/type1/public/cm-super/sfss0500.pfb><c:/texlive/2025/texmf-dist/fonts/typ
-e1/public/cm-super/sfss0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/
-cm-super/sfss0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/s
-fss0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pf
-b><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb><c:/texl
-ive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><c:/texlive/2025/t
-exmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/
-fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on AE_w02_plotting.pdf (26 pages, 301471 bytes).
+ 128i,17n,123p,390b,1969s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texl
+ive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb><c:/texlive/2025/t
+exmf-dist/fonts/type1/public/cm-super/sfss0500.pfb><c:/texlive/2025/texmf-dist/
+fonts/type1/public/cm-super/sfss0700.pfb><c:/texlive/2025/texmf-dist/fonts/type
+1/public/cm-super/sfss0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/c
+m-super/sfss0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sf
+ss1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb
+><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><c:/texli
+ve/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/te
+xmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
+Output written on AE_w02_plotting.pdf (16 pages, 265421 bytes).
 PDF statistics:
- 1065 PDF objects out of 1200 (max. 8388607)
- 599 compressed objects within 6 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 600 PDF objects out of 1000 (max. 8388607)
+ 328 compressed objects within 4 object streams
+ 35 named destinations out of 1000 (max. 500000)
  127 words of extra memory for PDF output out of 10000 (max. 10000000)
 

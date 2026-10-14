@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1792010137.36289 "syllabus.tex" "syllabus.pdf" "syllabus" 1792010138.16092 0
+["pdflatex"] 1792010988.70743 "syllabus.tex" "syllabus.pdf" "syllabus" 1792010989.53619 0
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1758722142 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1758722142 2840 216e6e45ad352e2456e1149f28885bee ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc" 1758722142 3031 6c4d3515bf7115d8518af1c9ab97ca44 ""
@@ -87,9 +87,9 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758725226 5574153 af86687748baf417d9e7d549313527be ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1758725418 3621637 9f6129c810c3f1b21d8c7b59b93f22e8 ""
   "c:/texlive/2025/texmf.cnf" 1758725208 713 e69b156964470283e0530f5060668171 ""
-  "syllabus.aux" 1792010138 1292 878599ef8fae8695a1b9c5cd4f8a1320 "pdflatex"
-  "syllabus.out" 1792010138 1252 299d247d6da9583f337b7208db74ccea "pdflatex"
-  "syllabus.tex" 1792010135 6426 d6f1817ce9522f9fd2de3d6214689fc2 ""
+  "syllabus.aux" 1792010989 1292 878599ef8fae8695a1b9c5cd4f8a1320 "pdflatex"
+  "syllabus.out" 1792010989 1252 299d247d6da9583f337b7208db74ccea "pdflatex"
+  "syllabus.tex" 1792010986 6390 5aaaea4c0c71f4029b732b781e6bc4d0 ""
   (generated)
   "syllabus.aux"
   "syllabus.log"

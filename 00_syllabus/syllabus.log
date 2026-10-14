@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  14 OCT 2026 22:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  14 OCT 2026 22:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -516,7 +516,7 @@ Here is how much of TeX's memory you used:
 type1/public/lm/lmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr
 i10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texliv
 e/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on syllabus.pdf (3 pages, 142580 bytes).
+Output written on syllabus.pdf (3 pages, 142560 bytes).
 PDF statistics:
  114 PDF objects out of 1000 (max. 8388607)
  95 compressed objects within 1 object stream
