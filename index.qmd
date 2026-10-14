@@ -19,6 +19,27 @@ In this course, students reinforce the tools learned in Introductory Econometric
 | Final exam           | Wednesday, January 27th 2027                    | 40%          |
 | **Total**            |                                                 | **100%**     |
 
+## Schedule
+
+| Week | Dates                | Session                                             |
+|-----:|----------------------|-----------------------------------------------------|
+| 1    | Oct 7th / 8th        | Introduction                                        |
+| 2    | Oct 14th / 15th      | Data and Plotting                                   |
+|      |                      | *Deregistration period ends*                        |
+| 3    | Oct 21st / 22nd      | Web Scraping Data                                   |
+| 4    | Oct 28th / 29th      | MLR and OLS                                         |
+| 5    | Nov 4th / 5th        | Inference                                           |
+| 6    | Nov 11th / 12th      | Causality and Correlation                           |
+| 7    | Nov 18th / 19th      | Panel Data                                          |
+| 8    | Nov 25th / 26th      | **Midterm exam**                                    |
+| 9    | Dec 2nd / 3rd        | Instrumental Variables (IV)                         |
+| 10   | Dec 9th / 10th       | Differences in Differences (DD)                     |
+| 11   | Dec 16th / 17th      | **Project presentation I**                          |
+|      | Dec 23rd – Jan 7th   | *Christmas break, no classes*                       |
+| 12   | Jan 13th / 14th      | Regression Discontinuity Design (RDD)               |
+| 13   | Jan 20th / 21st      | **Project presentation II**                         |
+|      | Wednesday, Jan 27th  | **Final exam**                                      |
+
 ## Software
 
 - Install R from <https://cran.r-project.org/>

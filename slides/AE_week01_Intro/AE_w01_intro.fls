@@ -1,8 +1,8 @@
-PWD C:/Users/Aspuru Pello/Desktop/ae_pa/slides/AE_week01_Intro
+PWD c:/Users/Aspuru Pello/Desktop/ae_pa/slides/AE_week01_Intro
 INPUT c:/texlive/2025/texmf.cnf
 INPUT c:/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT AE_w01_intro.tex
+INPUT c:/Users/Aspuru Pello/Desktop/ae_pa/slides/AE_week01_Intro/AE_w01_intro.tex
 OUTPUT AE_w01_intro.log
 INPUT c:/texlive/2025/texmf-dist/tex/latex/beamer/beamer.cls
 INPUT c:/texlive/2025/texmf-dist/tex/latex/beamer/beamer.cls

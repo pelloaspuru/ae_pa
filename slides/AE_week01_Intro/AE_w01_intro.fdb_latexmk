@@ -1,11 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1792009148.32984 "AE_w01_intro.tex" "AE_w01_intro.pdf" "AE_w01_intro" 1792009151.68487 0
-  "AE_w01_intro.aux" 1792009151 3877 22198683b13b3e245ed6b0668675fca7 "pdflatex"
-  "AE_w01_intro.nav" 1792009151 2409 70cb845c5e3bde78d6117320553ee31f "pdflatex"
-  "AE_w01_intro.out" 1792009151 431 c1d8aaaa8a0d5c5c1af2e08f99f8d00e "pdflatex"
-  "AE_w01_intro.tex" 1792009146 24680 24b8a98ae846efc2f4d0dae496f10144 ""
-  "AE_w01_intro.vrb" 1792009151 1435 db9cb95816609fe3b977dfb4692469e8 "pdflatex"
+["pdflatex"] 1792010205.86516 "c:/Users/Aspuru Pello/Desktop/ae_pa/slides/AE_week01_Intro/AE_w01_intro.tex" "AE_w01_intro.pdf" "AE_w01_intro" 1792010209.43346 0
+  "AE_w01_intro.aux" 1792010209 3877 22198683b13b3e245ed6b0668675fca7 "pdflatex"
+  "AE_w01_intro.nav" 1792010209 2409 70cb845c5e3bde78d6117320553ee31f "pdflatex"
+  "AE_w01_intro.out" 1792010209 431 c1d8aaaa8a0d5c5c1af2e08f99f8d00e "pdflatex"
+  "AE_w01_intro.tex" 1792010205 24600 14376678fcbd193f4e8322bf3d64b259 ""
+  "AE_w01_intro.vrb" 1792010209 1435 db9cb95816609fe3b977dfb4692469e8 "pdflatex"
   "Rstudio.png" 1791914845 148955 10c378b22ff9c7f15292d2cfae58ca25 ""
+  "c:/Users/Aspuru Pello/Desktop/ae_pa/slides/AE_week01_Intro/AE_w01_intro.tex" 1792010205 24600 14376678fcbd193f4e8322bf3d64b259 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1758720392 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1758721221 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecsi0800.tfm" 1758720848 3584 3dfe0566d0b48ead5866d1b455f67a43 ""
