@@ -8,14 +8,14 @@ In this course, students reinforce the tools learned in Introductory Econometric
 
 # Assessment
 
-| Item                 | Tentative Date                             | Grade Weight |
-|----------------------|--------------------------------------------|-------------:|
-| Class participation  | Throughout the semester                    | 10%          |
-| Midterm exam         | November 25th/26th 2026                    | 25%          |
-| Project presentation I | December 16th/17th 2026                  | 10%          |
-| Project presentation II | January 20th/21st 2027                  | 15%          |
-| Final exam           | Wednesday, January 27th 2027               | 40%          |
-| **Total**            |                                            | **100%**     |
+| Item                 | Tentative Date                      | Grade Weight |
+|----------------------|-------------------------------------|-------------:|
+| Class participation  | Throughout the semester             | 10%          |
+| Midterm exam         | November 25th/26th 2026             | 25%          |
+| Project presentation I | December 16th/17th 2026           | 10%          |
+| Project presentation II | January 20th/21st 2027           | 15%          |
+| Final exam           | Wednesday, January 27th 2027        | 40%          |
+| **Total**            |                                     | **100%**     |
 
 # Key Dates
 
