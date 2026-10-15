@@ -4,9 +4,9 @@
     "href": "index.html",
     "title": "Applied Economics",
     "section": "",
-    "text": "Welcome\nThis is the website of the course Applied Economics at the University of Vienna, Winter 2026/2027.\nContent updated weekly.",
+    "text": "Course description\nThis is the website of the course Applied Economics at the University of Vienna, Winter 2026/2027.\nContent updated weekly.\nIn this course, students reinforce the tools learned in Introductory Econometrics (BA) by applying them to real-world datasets using econometric software. Prior knowledge at that level is assumed throughout. The aim is for students to gain hands-on experience analyzing observational data with the open-source programming language R, and to acquire the tools to carry out empirical research projects independently.\n\n\nAssessment\n\n\n\n\n\n\n\n\nItem\nTentative Date\nGrade Weight\n\n\n\n\nClass participation\nThroughout the semester\n10%\n\n\nMidterm exam\nNovember 25th/26th 2026\n25%\n\n\nProject presentation I\nDecember 16th/17th 2026\n10%\n\n\nProject presentation II\nJanuary 20th/21st 2027\n15%\n\n\nFinal exam\nWednesday, January 27th 2027\n40%\n\n\nTotal\n\n100%\n\n\n\n\n\nKey Dates\n\nMidterm exam: Nov 25th / 26th\nProject presentation I: Dec 16th / 17th\nProject presentation II: Jan 20th / 21st\nFinal exam: Jan 27th\n\n\n\nSoftware\n\nInstall R from https://cran.r-project.org/\nInstall RStudio from https://posit.co/download/rstudio-desktop/\n\n\n\nOffice Hours\nBy appointment, at pello.aspuru@univie.ac.at\n\n\nReferences",
     "crumbs": [
-      "Welcome"
+      "Course description"
     ]
   },
   {
@@ -23,50 +23,50 @@
     "objectID": "index.html#assessment",
     "href": "index.html#assessment",
     "title": "Applied Economics",
-    "section": "Assessment",
-    "text": "Assessment\n\n\n\n\n\n\n\n\nItem\nTentative Date\nGrade Weight\n\n\n\n\nClass participation\nThroughout the semester\n10%\n\n\nMidterm exam\nNovember 25th/26th 2026\n25%\n\n\nProject presentation I\nDecember 16th/17th 2026\n10%\n\n\nProject presentation II\nJanuary 20th/21st 2027\n15%\n\n\nFinal exam\nWednesday, January 27th 2027\n40%\n\n\nTotal\n\n100%",
+    "section": "0.2 Assessment",
+    "text": "0.2 Assessment\n\n\n\n\n\n\n\n\nItem\nTentative Date\nGrade Weight\n\n\n\n\nClass participation\nThroughout the semester\n10%\n\n\nMidterm exam\nNovember 25th/26th 2026\n25%\n\n\nProject presentation I\nDecember 16th/17th 2026\n10%\n\n\nProject presentation II\nJanuary 20th/21st 2027\n15%\n\n\nFinal exam\nWednesday, January 27th 2027\n40%\n\n\nTotal\n\n100%",
     "crumbs": [
-      "Welcome"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
     ]
   },
   {
     "objectID": "index.html#key-dates",
     "href": "index.html#key-dates",
     "title": "Applied Economics",
-    "section": "Key Dates",
-    "text": "Key Dates\n\nMidterm exam: Nov 25th / 26th\nProject presentation I: Dec 16th / 17th\nProject presentation II: Jan 20th / 21st\nFinal exam: Jan 27th",
+    "section": "0.3 Key Dates",
+    "text": "0.3 Key Dates\n\nMidterm exam: Nov 25th / 26th\nProject presentation I: Dec 16th / 17th\nProject presentation II: Jan 20th / 21st\nFinal exam: Jan 27th",
     "crumbs": [
-      "Welcome"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
     ]
   },
   {
     "objectID": "index.html#software",
     "href": "index.html#software",
     "title": "Applied Economics",
-    "section": "Software",
-    "text": "Software\n\nInstall R from https://cran.r-project.org/\nInstall RStudio from https://posit.co/download/rstudio-desktop/",
+    "section": "0.4 Software",
+    "text": "0.4 Software\n\nInstall R from https://cran.r-project.org/\nInstall RStudio from https://posit.co/download/rstudio-desktop/",
     "crumbs": [
-      "Welcome"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
     ]
   },
   {
     "objectID": "index.html#office-hours",
     "href": "index.html#office-hours",
     "title": "Applied Economics",
-    "section": "Office Hours",
-    "text": "Office Hours\nBy appointment, at pello.aspuru@univie.ac.at",
+    "section": "0.5 Office Hours",
+    "text": "0.5 Office Hours\nBy appointment, at pello.aspuru@univie.ac.at",
     "crumbs": [
-      "Welcome"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
     ]
   },
   {
     "objectID": "index.html#references",
     "href": "index.html#references",
     "title": "Applied Economics",
-    "section": "References",
-    "text": "References",
+    "section": "0.6 References",
+    "text": "0.6 References",
     "crumbs": [
-      "Welcome"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
     ]
   },
   {
@@ -94,7 +94,7 @@
     "href": "01_intro.html#r-objects",
     "title": "1  Introduction",
     "section": "1.2 R Objects",
-    "text": "1.2 R Objects\n\n1.2.1 Scalar objects\n\n# Create object \"n\"\nn &lt;- 100\n\n# Print the object in the console:\nn\n\n[1] 100\n\n\n\n\n1.2.2 Vectors\n\n# generate vector \"age\":\nage &lt;- sample(18:65, n, replace = TRUE)\n\n\n# Visualize\nage # Print object in console\n\n  [1] 25 24 56 48 52 47 51 54 34 19 42 56 52 23 65 38 42 28 25 42 38 34 45 25 27\n [26] 53 61 46 40 18 31 62 50 20 31 53 51 32 33 33 47 57 19 65 40 29 54 54 48 29\n [51] 36 41 65 26 41 40 63 39 20 19 58 38 44 54 26 39 57 19 26 36 40 33 49 18 63\n [76] 23 20 18 36 47 28 59 64 30 22 32 65 40 20 61 59 33 52 57 22 49 56 22 47 36\n\nstr(age) # Object type, size\n\n int [1:100] 25 24 56 48 52 47 51 54 34 19 ...\n\nclass(age) # Object type\n\n[1] \"integer\"\n\ndim(age)\n\nNULL\n\nls() # List all objects\n\n[1] \"age\" \"n\"  \n\n\nAirPassengers is a dataset that comes built into R: the monthly totals of international airline passengers, in thousands, from January 1949 to December 1960. Stores information in three vectors:\n\n# Three vectors with one value per month\npassengers &lt;- as.numeric(AirPassengers)\nyear       &lt;- as.numeric(floor(time(AirPassengers)))\nmonth      &lt;- as.numeric(cycle(AirPassengers))\n\nlength(passengers)     # 144\n\n[1] 144\n\n\n\n# Access elements of a vector\npassengers[1]          # first element: 112\n\n[1] 112\n\npassengers[1:3]        # elements 1 to 3: 112 118 132\n\n[1] 112 118 132\n\npassengers[c(1, 144)]  # first and last: 112 432\n\n[1] 112 432\n\n\n\n\n1.2.3 From Vectors to Dataframes\nA dataframe is a two-dimensional object that stores data as a table, with rows and columns:\n\nEach row is one observation (an individual, a month, a country, …).\nEach column is one variable (income, education, number of passengers, …).\n\n\n\n\n\n\n\n\n\n\nEvery column of a dataframe is a vector, and all columns have the same length. So if we have several vectors of the same length, where position 1 in each vector refers to the same observation, position 2 to the next one, and so on, we can put them side by side as the columns of a dataframe with data.frame(). The three vectors year, month and passengers each have 144 elements, one per month, so together they form a dataframe with 144 rows and 3 columns:\n\n# Create a dataset from the three vectors\ndf_air &lt;- data.frame(year, month, passengers)\ndim(df_air)            # 144 rows, 3 columns\n\n[1] 144   3\n\n\n\nhead(df_air)\n\n  year month passengers\n1 1949     1        112\n2 1949     2        118\n3 1949     3        132\n4 1949     4        129\n5 1949     5        121\n6 1949     6        135",
+    "text": "1.2 R Objects\n\n1.2.1 Scalar objects\n\n# Create object \"n\"\nn &lt;- 100\n\n# Print the object in the console:\nn\n\n[1] 100\n\n\n\n\n1.2.2 Vectors\n\n# generate vector \"age\":\nage &lt;- sample(18:65, n, replace = TRUE)\n\n\n# Visualize\nage # Print object in console\n\n  [1] 22 58 23 36 48 30 62 52 23 42 18 21 18 32 26 30 48 26 42 53 40 19 25 41 31\n [26] 35 30 33 27 26 45 23 53 32 61 50 21 23 40 64 28 23 27 22 64 53 19 62 34 21\n [51] 57 38 21 62 48 18 64 61 37 41 42 25 23 57 35 23 23 30 55 63 53 36 53 32 43\n [76] 53 49 49 18 42 23 22 56 28 62 36 54 64 65 37 51 47 50 31 53 53 40 45 65 53\n\nstr(age) # Object type, size\n\n int [1:100] 22 58 23 36 48 30 62 52 23 42 ...\n\nclass(age) # Object type\n\n[1] \"integer\"\n\ndim(age)\n\nNULL\n\nls() # List all objects\n\n[1] \"age\" \"n\"  \n\n\nAirPassengers is a dataset that comes built into R: the monthly totals of international airline passengers, in thousands, from January 1949 to December 1960. Stores information in three vectors:\n\n# Three vectors with one value per month\npassengers &lt;- as.numeric(AirPassengers)\nyear       &lt;- as.numeric(floor(time(AirPassengers)))\nmonth      &lt;- as.numeric(cycle(AirPassengers))\n\nlength(passengers)     # 144\n\n[1] 144\n\n\n\n# Access elements of a vector\npassengers[1]          # first element: 112\n\n[1] 112\n\npassengers[1:3]        # elements 1 to 3: 112 118 132\n\n[1] 112 118 132\n\npassengers[c(1, 144)]  # first and last: 112 432\n\n[1] 112 432\n\n\n\n\n1.2.3 From Vectors to Dataframes\nA dataframe is a two-dimensional object that stores data as a table, with rows and columns:\n\nEach row is one observation (an individual, a month, a country, …).\nEach column is one variable (income, education, number of passengers, …).\n\n\n\n\n\n\n\n\n\n\nEvery column of a dataframe is a vector, and all columns have the same length. So if we have several vectors of the same length, where position 1 in each vector refers to the same observation, position 2 to the next one, and so on, we can put them side by side as the columns of a dataframe with data.frame(). The three vectors year, month and passengers each have 144 elements, one per month, so together they form a dataframe with 144 rows and 3 columns:\n\n# Create a dataset from the three vectors\ndf_air &lt;- data.frame(year, month, passengers)\ndim(df_air)            # 144 rows, 3 columns\n\n[1] 144   3\n\n\n\nhead(df_air)\n\n  year month passengers\n1 1949     1        112\n2 1949     2        118\n3 1949     3        132\n4 1949     4        129\n5 1949     5        121\n6 1949     6        135",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]

@@ -5,3 +5,24 @@ iframe.slides {
   border: 1px solid #dee2e6;
   border-radius: 4px;
 }
+
+/* Page TOC nested under its chapter in the sidebar (see toc-in-sidebar.html) */
+#TOC.toc-nested {
+  margin: 0.2rem 0 0.4rem 0.8rem;
+  padding: 0;
+}
+#TOC.toc-nested #toc-title {
+  display: none;
+}
+#TOC.toc-nested ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+#TOC.toc-nested ul ul {
+  padding-left: 0.8rem;
+}
+#TOC.toc-nested .nav-link {
+  font-size: 0.85rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}

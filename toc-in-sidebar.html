@@ -1,0 +1,12 @@
+<!-- Nest the page's table of contents under its chapter in the left sidebar -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var toc = document.getElementById("TOC");
+  var active = document.querySelector("#quarto-sidebar .sidebar-link.active");
+  if (!toc || !active) return;
+  var item = active.closest("li.sidebar-item");
+  if (!item) return;
+  item.appendChild(toc);
+  toc.classList.add("toc-nested");
+});
+</script>
