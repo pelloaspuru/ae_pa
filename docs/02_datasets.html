@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Datasets in R – Applied Economics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03_data_construction.html" rel="next">
+<link href="./01_intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-174fd6913be23cc9900c0b0ca550f0a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_datasets.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datasets in R</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Applied Economics</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/pelloaspuru/ae_pa" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course description</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_datasets.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datasets in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_data_construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Building Datasets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plotting Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_mlr1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multiple Linear Regression I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_mlr2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Linear Regression II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_ols-variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Causality and Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_iv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Instrumental Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_panel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Panel Data Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_did.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Difference-in-Differences</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_rdd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#inspecting-dataframes" id="toc-inspecting-dataframes" class="nav-link active" data-scroll-target="#inspecting-dataframes"><span class="header-section-number">2.1</span> Inspecting Dataframes</a>
+  <ul class="collapse">
+  <li><a href="#size-and-structure" id="toc-size-and-structure" class="nav-link" data-scroll-target="#size-and-structure"><span class="header-section-number">2.1.1</span> Size and structure</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="header-section-number">2.1.2</span> Summary statistics</a></li>
+  <li><a href="#frequency-tables" id="toc-frequency-tables" class="nav-link" data-scroll-target="#frequency-tables"><span class="header-section-number">2.1.3</span> Frequency tables</a></li>
+  </ul></li>
+  <li><a href="#selecting-observations-and-variables" id="toc-selecting-observations-and-variables" class="nav-link" data-scroll-target="#selecting-observations-and-variables"><span class="header-section-number">2.2</span> Selecting Observations and Variables</a></li>
+  <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables"><span class="header-section-number">2.3</span> Creating Variables</a>
+  <ul class="collapse">
+  <li><a href="#from-existing-variables" id="toc-from-existing-variables" class="nav-link" data-scroll-target="#from-existing-variables"><span class="header-section-number">2.3.1</span> From existing variables</a></li>
+  <li><a href="#logical-conditions" id="toc-logical-conditions" class="nav-link" data-scroll-target="#logical-conditions"><span class="header-section-number">2.3.2</span> Logical conditions</a></li>
+  <li><a href="#variables-based-on-a-condition" id="toc-variables-based-on-a-condition" class="nav-link" data-scroll-target="#variables-based-on-a-condition"><span class="header-section-number">2.3.3</span> Variables based on a condition</a></li>
+  <li><a href="#two-way-tables" id="toc-two-way-tables" class="nav-link" data-scroll-target="#two-way-tables"><span class="header-section-number">2.3.4</span> Two-way tables</a></li>
+  <li><a href="#selecting-observations-with-a-condition" id="toc-selecting-observations-with-a-condition" class="nav-link" data-scroll-target="#selecting-observations-with-a-condition"><span class="header-section-number">2.3.5</span> Selecting observations with a condition</a></li>
+  </ul></li>
+  <li><a href="#working-with-several-datasets" id="toc-working-with-several-datasets" class="nav-link" data-scroll-target="#working-with-several-datasets"><span class="header-section-number">2.4</span> Working with Several Datasets</a>
+  <ul class="collapse">
+  <li><a href="#a-second-dataset-longley" id="toc-a-second-dataset-longley" class="nav-link" data-scroll-target="#a-second-dataset-longley"><span class="header-section-number">2.4.1</span> A second dataset: <code>longley</code></a></li>
+  <li><a href="#creating-variables-with-dplyr" id="toc-creating-variables-with-dplyr" class="nav-link" data-scroll-target="#creating-variables-with-dplyr"><span class="header-section-number">2.4.2</span> Creating variables with <code>dplyr</code></a></li>
+  <li><a href="#aggregating-data" id="toc-aggregating-data" class="nav-link" data-scroll-target="#aggregating-data"><span class="header-section-number">2.4.3</span> Aggregating data</a></li>
+  <li><a href="#merging-datasets" id="toc-merging-datasets" class="nav-link" data-scroll-target="#merging-datasets"><span class="header-section-number">2.4.4</span> Merging datasets</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="header-section-number">2.4.5</span> Missing values</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-datasets" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datasets in R</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="inspecting-dataframes" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="inspecting-dataframes"><span class="header-section-number">2.1</span> Inspecting Dataframes</h2>
+<p>Before running any analysis, take a first look at the data: how large it is, which variables it contains, what values they take, and whether anything is missing. This helps to spot mistakes early, for example a merge that dropped observations or a variable stored in the wrong units.</p>
+<p>We use <code>df_air</code>, the monthly passenger dataset created in <a href="01_intro.html" class="quarto-xref"><span>Chapter 1</span></a>, as an example.</p>
+<section id="size-and-structure" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="size-and-structure"><span class="header-section-number">2.1.1</span> Size and structure</h3>
+<p><code>dim()</code> returns the number of rows and columns, <code>names()</code> the variable names, and <code>str()</code> the type of each variable together with its first values:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 144   3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "year"       "month"      "passengers"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   144 obs. of  3 variables:
+ $ year      : num  1949 1949 1949 1949 1949 ...
+ $ month     : num  1 2 3 4 5 6 7 8 9 10 ...
+ $ passengers: num  112 118 132 129 121 135 148 148 136 119 ...</code></pre>
+</div>
+</div>
+<p><code>head()</code>, used in <a href="01_intro.html" class="quarto-xref"><span>Chapter 1</span></a>, prints the first six rows, and <code>tail()</code> prints the last six:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    year month passengers
+139 1960     7        622
+140 1960     8        606
+141 1960     9        508
+142 1960    10        461
+143 1960    11        390
+144 1960    12        432</code></pre>
+</div>
+</div>
+</section>
+<section id="summary-statistics" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="summary-statistics"><span class="header-section-number">2.1.2</span> Summary statistics</h3>
+<p><code>summary()</code> returns the minimum, the quartiles, the mean and the maximum of a numerical variable:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_air<span class="sc">$</span>passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  104.0   180.0   265.5   280.3   360.5   622.0 </code></pre>
+</div>
+</div>
+<p>Applied to a whole dataframe, it summarises every variable at once:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      year          month         passengers   
+ Min.   :1949   Min.   : 1.00   Min.   :104.0  
+ 1st Qu.:1952   1st Qu.: 3.75   1st Qu.:180.0  
+ Median :1954   Median : 6.50   Median :265.5  
+ Mean   :1954   Mean   : 6.50   Mean   :280.3  
+ 3rd Qu.:1957   3rd Qu.: 9.25   3rd Qu.:360.5  
+ Max.   :1960   Max.   :12.00   Max.   :622.0  </code></pre>
+</div>
+</div>
+<p>Individual statistics have their own functions, such as <code>mean()</code>, <code>median()</code>, <code>var()</code> (variance) and <code>sd()</code> (standard deviation):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_air<span class="sc">$</span>passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 280.2986</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(df_air<span class="sc">$</span>passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 119.9663</code></pre>
+</div>
+</div>
+</section>
+<section id="frequency-tables" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="frequency-tables"><span class="header-section-number">2.1.3</span> Frequency tables</h3>
+<p><code>table()</code> counts how many observations take each value of a variable. It is most useful for categorical variables. Here it confirms that every year has exactly 12 monthly observations:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_air<span class="sc">$</span>year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 
+  12   12   12   12   12   12   12   12   12   12   12   12 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="selecting-observations-and-variables" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="selecting-observations-and-variables"><span class="header-section-number">2.2</span> Selecting Observations and Variables</h2>
+<p>Square brackets select parts of a dataframe by position, as <code>dataframe[rows, columns]</code>. Leaving the rows or the columns empty selects all of them. The <code>$</code> sign selects a single variable by its name.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing data through row/column indexes</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_air[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,] <span class="co"># Rows 1 to 3, all columns.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year month passengers
+1 1949     1        112
+2 1949     2        118
+3 1949     3        132</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_air[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)] <span class="co"># Rows 2 and 5, Columns 1 and 3.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year passengers
+2 1949        118
+5 1949        121</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]) <span class="co"># All rows, Columns 1 and 3 (first six rows shown).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year passengers
+1 1949        112
+2 1949        118
+3 1949        132
+4 1949        129
+5 1949        121
+6 1949        135</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the 'passengers' variable.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>passengers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 112 118 132 129 121 135 148 148 136 119 104 118 115 126 141 135 125 149
+ [19] 170 170 158 133 114 140 145 150 178 163 172 178 199 199 184 162 146 166
+ [37] 171 180 193 181 183 218 230 242 209 191 172 194 196 196 236 235 229 243
+ [55] 264 272 237 211 180 201 204 188 235 227 234 264 302 293 259 229 203 229
+ [73] 242 233 267 269 270 315 364 347 312 274 237 278 284 277 317 313 318 374
+ [91] 413 405 355 306 271 306 315 301 356 348 355 422 465 467 404 347 305 336
+[109] 340 318 362 348 363 435 491 505 404 359 310 337 360 342 406 396 420 472
+[127] 548 559 463 407 362 405 417 391 419 461 472 535 622 606 508 461 390 432</code></pre>
+</div>
+</div>
+<p>Generate a new dataset <code>df_air_first_9_rows</code> by selecting the first 9 observations/rows of the dataset:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_air_first_9_rows <span class="ot">&lt;-</span> df_air[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "df_air"              "df_air_first_9_rows" "month"              
+[4] "pandoc_dir"          "passengers"          "quarto_bin_path"    
+[7] "year"               </code></pre>
+</div>
+</div>
+</section>
+<section id="creating-variables" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="creating-variables"><span class="header-section-number">2.3</span> Creating Variables</h2>
+<section id="from-existing-variables" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="from-existing-variables"><span class="header-section-number">2.3.1</span> From existing variables</h3>
+<p>A new variable is created by assigning a vector to a name that does not yet exist in the dataframe, with <code>dataframe$new_variable &lt;- ...</code>. The vector is usually computed from existing variables. <code>passengers</code> is measured in thousands, so dividing it by 1000 gives the number of passengers in millions:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>passengers_millions <span class="ot">&lt;-</span> df_air<span class="sc">$</span>passengers <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year month passengers passengers_millions
+1 1949     1        112               0.112
+2 1949     2        118               0.118
+3 1949     3        132               0.132
+4 1949     4        129               0.129
+5 1949     5        121               0.121
+6 1949     6        135               0.135</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-conditions" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="logical-conditions"><span class="header-section-number">2.3.2</span> Logical conditions</h3>
+<p>A logical condition compares values and returns <code>TRUE</code> or <code>FALSE</code> for each element of a vector. The most common operators are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>==</code></td>
+<td>equal to</td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>not equal to</td>
+</tr>
+<tr class="odd">
+<td><code>&gt;</code>, <code>&gt;=</code></td>
+<td>greater than, greater than or equal to</td>
+</tr>
+<tr class="even">
+<td><code>&lt;</code>, <code>&lt;=</code></td>
+<td>less than, less than or equal to</td>
+</tr>
+<tr class="odd">
+<td><code>&amp;</code></td>
+<td>and: both conditions are true</td>
+</tr>
+<tr class="even">
+<td><code>\|</code></td>
+<td>or: at least one condition is true</td>
+</tr>
+<tr class="odd">
+<td><code>%in%</code></td>
+<td>the value is one of a set of values</td>
+</tr>
+</tbody>
+</table>
+<p>The following condition is <code>TRUE</code> for the months between 1950 and 1959. <code>table()</code> counts how many observations satisfy it:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical condition vector</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>index_fifties <span class="ot">&lt;-</span> (df_air<span class="sc">$</span>year <span class="sc">&gt;=</span> <span class="dv">1950</span>) <span class="sc">&amp;</span> (df_air<span class="sc">$</span>year <span class="sc">&lt;=</span> <span class="dv">1959</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(index_fifties)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>index_fifties
+FALSE  TRUE 
+   24   120 </code></pre>
+</div>
+</div>
+</section>
+<section id="variables-based-on-a-condition" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="variables-based-on-a-condition"><span class="header-section-number">2.3.3</span> Variables based on a condition</h3>
+<p><code>ifelse()</code> returns one value where a condition is <code>TRUE</code> and another where it is <code>FALSE</code>, which makes it useful for creating categorical variables. We create two categorical variables: <code>season</code> separates the summer months from the rest of the year, and <code>traffic</code> separates the months with more passengers than the median month from the others:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>season  <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df_air<span class="sc">$</span>month <span class="sc">%in%</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>, <span class="st">"Summer"</span>, <span class="st">"Rest of year"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>traffic <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df_air<span class="sc">$</span>passengers <span class="sc">&gt;</span> <span class="fu">median</span>(df_air<span class="sc">$</span>passengers), <span class="st">"High"</span>, <span class="st">"Low"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_air<span class="sc">$</span>season)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Rest of year       Summer 
+         108           36 </code></pre>
+</div>
+</div>
+</section>
+<section id="two-way-tables" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="two-way-tables"><span class="header-section-number">2.3.4</span> Two-way tables</h3>
+<p>With two variables, <code>table()</code> returns a <strong>two-way table</strong> (or cross-table), which counts the observations for each combination of categories:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_air<span class="sc">$</span>season, df_air<span class="sc">$</span>traffic)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              
+               High Low
+  Rest of year   51  57
+  Summer         21  15</code></pre>
+</div>
+</div>
+<p><code>prop.table()</code> turns the counts into shares. With <code>margin = 1</code>, the shares add up to one within each row:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(df_air<span class="sc">$</span>season, df_air<span class="sc">$</span>traffic), <span class="at">margin =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              
+                    High       Low
+  Rest of year 0.4722222 0.5277778
+  Summer       0.5833333 0.4166667</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-observations-with-a-condition" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="selecting-observations-with-a-condition"><span class="header-section-number">2.3.5</span> Selecting observations with a condition</h3>
+<p>Generate a new dataset <code>df_air_fifties</code> by selecting the observations/rows that match the condition in <code>index_fifties</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_air_fifties <span class="ot">&lt;-</span> df_air[index_fifties, ]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_air_fifties)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 120   6</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="working-with-several-datasets" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="working-with-several-datasets"><span class="header-section-number">2.4</span> Working with Several Datasets</h2>
+<p>In this section we work with a second dataset, <code>longley</code>, and later combine it with <code>df_air</code>.</p>
+<section id="a-second-dataset-longley" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="a-second-dataset-longley"><span class="header-section-number">2.4.1</span> A second dataset: <code>longley</code></h3>
+<p><code>longley</code> is a dataset that comes built into R, with yearly macroeconomic data for the United States from 1947 to 1962. Each row is one year, and each column is one of the following seven variables:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 43%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>GNP.deflator</code></td>
+<td>GNP implicit price deflator, a measure of the price level</td>
+<td>index, 1954 = 100</td>
+</tr>
+<tr class="even">
+<td><code>GNP</code></td>
+<td>Gross National Product</td>
+<td>billions of current US dollars</td>
+</tr>
+<tr class="odd">
+<td><code>Unemployed</code></td>
+<td>number of unemployed people</td>
+<td>tens of thousands of people</td>
+</tr>
+<tr class="even">
+<td><code>Armed.Forces</code></td>
+<td>number of people in the armed forces</td>
+<td>tens of thousands of people</td>
+</tr>
+<tr class="odd">
+<td><code>Population</code></td>
+<td>non-institutionalized population aged 14 or older</td>
+<td>millions of people</td>
+</tr>
+<tr class="even">
+<td><code>Year</code></td>
+<td>the year of the observation</td>
+<td>calendar year</td>
+</tr>
+<tr class="odd">
+<td><code>Employed</code></td>
+<td>number of employed people</td>
+<td>millions of people</td>
+</tr>
+</tbody>
+</table>
+<p>For example, in 1947 the value of <code>Unemployed</code> is 235.6, which means about 2.36 million unemployed people, and the value of <code>Employed</code> is 60.323, which means about 60.3 million employed people.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># longley: US macroeconomic data, one row per year (1947-1962)</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(longley)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+</div>
+<p><code>longley</code> data features 7 variables, 16 observations:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16  7</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
+1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
+1948         88.5 259.426      232.5        145.6    108.632 1948   61.122
+1949         88.2 258.054      368.2        161.6    109.773 1949   60.171
+1950         89.5 284.599      335.1        165.0    110.929 1950   61.187
+1951         96.2 328.975      209.9        309.9    112.075 1951   63.221
+1952         98.1 346.999      193.2        359.4    113.270 1952   63.639</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-variables-with-dplyr" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="creating-variables-with-dplyr"><span class="header-section-number">2.4.2</span> Creating variables with <code>dplyr</code></h3>
+<p>The old-fashioned way</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>longley<span class="sc">$</span>employment_share <span class="ot">&lt;-</span> longley<span class="sc">$</span>Employed<span class="sc">/</span>longley<span class="sc">$</span>Population</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>dplyr</code> way:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>longley <span class="ot">&lt;-</span> longley <span class="sc">|&gt;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">employment_share   =</span> Employed <span class="sc">/</span> Population,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">unemployment_share =</span> (Unemployed <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">/</span> Population,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">population_growth  =</span> (Population <span class="sc">-</span> <span class="fu">lag</span>(Population)) <span class="sc">/</span> <span class="fu">lag</span>(Population))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
+1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
+1948         88.5 259.426      232.5        145.6    108.632 1948   61.122
+1949         88.2 258.054      368.2        161.6    109.773 1949   60.171
+1950         89.5 284.599      335.1        165.0    110.929 1950   61.187
+1951         96.2 328.975      209.9        309.9    112.075 1951   63.221
+1952         98.1 346.999      193.2        359.4    113.270 1952   63.639
+     employment_share unemployment_share population_growth
+1947        0.5605810         0.02189428                NA
+1948        0.5626519         0.02140253       0.009516021
+1949        0.5481403         0.03354195       0.010503351
+1950        0.5515871         0.03020851       0.010530823
+1951        0.5640955         0.01872853       0.010330932
+1952        0.5618346         0.01705659       0.010662503</code></pre>
+</div>
+</div>
+</section>
+<section id="aggregating-data" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="aggregating-data"><span class="header-section-number">2.4.3</span> Aggregating data</h3>
+<p>Suppose we now want to combine the information in <code>df_air</code> with the information in <code>longley</code>. There is a problem: <code>df_air</code> is a monthly dataset, while <code>longley</code> is annual. Before we can combine them, both datasets need to have the same frequency, so we first aggregate <code>df_air</code> from monthly to annual data.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year month passengers passengers_millions       season traffic
+1 1949     1        112               0.112 Rest of year     Low
+2 1949     2        118               0.118 Rest of year     Low
+3 1949     3        132               0.132 Rest of year     Low
+4 1949     4        129               0.129 Rest of year     Low
+5 1949     5        121               0.121 Rest of year     Low
+6 1949     6        135               0.135       Summer     Low</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the monthly data to one row per year</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>df_air_annual <span class="ot">&lt;-</span> df_air <span class="sc">|&gt;</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">annual_passengers       =</span> <span class="fu">sum</span>(passengers),</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_monthly_passengers =</span> <span class="fu">mean</span>(passengers),</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_monthly_passengers  =</span> <span class="fu">min</span>(passengers),</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_monthly_passengers  =</span> <span class="fu">max</span>(passengers))</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air_annual)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+   year annual_passengers mean_monthly_passengers min_monthly_passengers
+  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
+1  1949              1520                    127.                    104
+2  1950              1676                    140.                    114
+3  1951              2042                    170.                    145
+4  1952              2364                    197                     171
+5  1953              2700                    225                     180
+6  1954              2867                    239.                    188
+# ℹ 1 more variable: max_monthly_passengers &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="merging-datasets" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="merging-datasets"><span class="header-section-number">2.4.4</span> Merging datasets</h3>
+<p>After aggregating the data to the “highest” common denominator, we want to combine the two datasets in a single dataset.</p>
+<p>Merging (or <em>joining</em>) two datasets means putting their columns side by side, matching the rows that refer to the same observation. The variable used to match the rows is called the <strong>key</strong>. Here the key is the year, which is called <code>year</code> in <code>df_air_annual</code> and <code>Year</code> in <code>longley</code>, so we tell <code>dplyr</code> that they are the same variable with <code>by = c("year" = "Year")</code>.</p>
+<p>New problem: The two datasets do not cover the same years: <code>df_air_annual</code> covers 1949 to 1960 (12 years), while <code>longley</code> covers 1947 to 1962 (16 years).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df_air_annual<span class="sc">$</span>year</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>longley<span class="sc">$</span>Year</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1947 1948 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 1961
+[16] 1962</code></pre>
+</div>
+</div>
+<p><code>dplyr</code> has several join functions, which differ only in what they do with the rows that have no match in the other dataset. In <code>x |&gt; some_join(y)</code>, <code>x</code> is the <em>left</em> dataset and <code>y</code> is the <em>right</em> dataset:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 32%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Rows it keeps</th>
+<th>Rows in our example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>inner_join()</code></td>
+<td>only the rows with a match in both datasets</td>
+<td>12 (1949 to 1960)</td>
+</tr>
+<tr class="even">
+<td><code>left_join()</code></td>
+<td>all rows of the left dataset</td>
+<td>12 (1949 to 1960)</td>
+</tr>
+<tr class="odd">
+<td><code>right_join()</code></td>
+<td>all rows of the right dataset</td>
+<td>16 (1947 to 1962)</td>
+</tr>
+<tr class="even">
+<td><code>full_join()</code></td>
+<td>all rows of both datasets</td>
+<td>16 (1947 to 1962)</td>
+</tr>
+</tbody>
+</table>
+<p><code>inner_join()</code> keeps only the years that appear in both datasets:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the two annual datasets, keeping the years present in both</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>df_inner <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12 14</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 14
+   year annual_passengers mean_monthly_passengers min_monthly_passengers
+  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
+1  1949              1520                    127.                    104
+2  1950              1676                    140.                    114
+3  1951              2042                    170.                    145
+4  1952              2364                    197                     171
+5  1953              2700                    225                     180
+6  1954              2867                    239.                    188
+# ℹ 10 more variables: max_monthly_passengers &lt;dbl&gt;, GNP.deflator &lt;dbl&gt;,
+#   GNP &lt;dbl&gt;, Unemployed &lt;dbl&gt;, Armed.Forces &lt;dbl&gt;, Population &lt;dbl&gt;,
+#   Employed &lt;dbl&gt;, employment_share &lt;dbl&gt;, unemployment_share &lt;dbl&gt;,
+#   population_growth &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><code>left_join()</code> keeps every row of the left dataset, <code>df_air_annual</code>, and adds the <code>longley</code> variables to it. Since every year in <code>df_air_annual</code> also appears in <code>longley</code>, the result has the same 12 rows as with <code>inner_join()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>df_left <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_left)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12 14</code></pre>
+</div>
+</div>
+<p><code>right_join()</code> keeps every row of the right dataset, <code>longley</code>, so the result has 16 rows. The years 1947, 1948, 1961 and 1962 have no match in <code>df_air_annual</code>, so the passenger variables are missing (<code>NA</code>) in those rows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df_right <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_right)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16 14</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rows without passenger data</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>df_right[<span class="fu">is.na</span>(df_right<span class="sc">$</span>annual_passengers), <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"annual_passengers"</span>, <span class="st">"GNP"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+   year annual_passengers   GNP
+  &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;
+1  1947                NA  234.
+2  1948                NA  259.
+3  1961                NA  518.
+4  1962                NA  555.</code></pre>
+</div>
+</div>
+<p>Which join to use depends on which observations you want to keep. A left join is the most common choice: it keeps your main dataset intact and adds information from a second one, without dropping or adding rows.</p>
+</section>
+<section id="missing-values" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="missing-values"><span class="header-section-number">2.4.5</span> Missing values</h3>
+<p><code>is.na()</code> returns <code>TRUE</code> for every missing value. Since R counts <code>TRUE</code> as 1 and <code>FALSE</code> as 0, <code>sum()</code> gives the number of missing values in a variable, and <code>colSums()</code> gives it for every variable of a dataframe:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df_right<span class="sc">$</span>annual_passengers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(df_right))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   year       annual_passengers mean_monthly_passengers 
+                      0                       4                       4 
+ min_monthly_passengers  max_monthly_passengers            GNP.deflator 
+                      4                       4                       0 
+                    GNP              Unemployed            Armed.Forces 
+                      0                       0                       0 
+             Population                Employed        employment_share 
+                      0                       0                       0 
+     unemployment_share       population_growth 
+                      0                       1 </code></pre>
+</div>
+</div>
+<p>Many functions return <code>NA</code> if the variable contains missing values. Adding <code>na.rm = TRUE</code> tells them to ignore the missing values:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_right<span class="sc">$</span>annual_passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_right<span class="sc">$</span>annual_passengers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3363.583</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<!-- Nest the page's table of contents under its chapter in the left sidebar -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var toc = document.getElementById("TOC");
+  var active = document.querySelector("#quarto-sidebar .sidebar-link.active");
+  if (!toc || !active) return;
+  var item = active.closest("li.sidebar-item");
+  if (!item) return;
+  item.appendChild(toc);
+  toc.classList.add("toc-nested");
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01_intro.html" class="pagination-link" aria-label="Introduction to R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03_data_construction.html" class="pagination-link" aria-label="Building Datasets">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Building Datasets</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Applied Economics, University of Vienna</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

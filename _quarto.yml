@@ -15,16 +15,18 @@ book:
   chapters:
     - index.qmd
     - 01_intro.qmd
-    - 02_plotting.qmd
-    - 03_mlr1.qmd
-    - 04_mlr2.qmd
-    - 05_ols-variance.qmd
-    - 06_inference.qmd
-    - 07_causality.qmd
-    - 08_iv.qmd
-    - 09_panel.qmd
-    - 10_did.qmd
-    - 11_rdd.qmd
+    - 02_datasets.qmd
+    - 03_data_construction.qmd
+    - 04_plotting.qmd
+    - 05_mlr1.qmd
+    - 06_mlr2.qmd
+    - 07_ols-variance.qmd
+    - 08_inference.qmd
+    - 09_causality.qmd
+    - 10_iv.qmd
+    - 11_panel.qmd
+    - 12_did.qmd
+    - 13_rdd.qmd
   page-footer:
     left: "Applied Economics, University of Vienna"
     right: "Built with [Quarto](https://quarto.org/)"

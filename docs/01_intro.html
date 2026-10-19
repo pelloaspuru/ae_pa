@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Applied Economics</title>
+<title>1&nbsp; Introduction to R – Applied Economics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02_plotting.html" rel="next">
+<link href="./02_datasets.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,67 +161,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_plotting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting Data</span></span></a>
+  <a href="./02_datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datasets in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_mlr1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression I</span></span></a>
+  <a href="./03_data_construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Building Datasets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_mlr2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multiple Linear Regression II</span></span></a>
+  <a href="./04_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plotting Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_ols-variance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></span></a>
+  <a href="./05_mlr1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multiple Linear Regression I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span></a>
+  <a href="./06_mlr2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Linear Regression II</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality and Correlation</span></span></a>
+  <a href="./07_ols-variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_iv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Instrumental Variables</span></span></a>
+  <a href="./08_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_panel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Panel Data Methods</span></span></a>
+  <a href="./09_causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Causality and Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_did.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Difference-in-Differences</span></span></a>
+  <a href="./10_iv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Instrumental Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_rdd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design</span></span></a>
+  <a href="./11_panel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Panel Data Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_did.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Difference-in-Differences</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_rdd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design</span></span></a>
   </div>
 </li>
     </ul>
@@ -239,34 +251,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#r-objects" id="toc-r-objects" class="nav-link" data-scroll-target="#r-objects"><span class="header-section-number">1.2</span> R Objects</a>
   <ul class="collapse">
   <li><a href="#scalar-objects" id="toc-scalar-objects" class="nav-link" data-scroll-target="#scalar-objects"><span class="header-section-number">1.2.1</span> Scalar objects</a></li>
-  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors"><span class="header-section-number">1.2.2</span> Vectors</a></li>
-  <li><a href="#from-vectors-to-dataframes" id="toc-from-vectors-to-dataframes" class="nav-link" data-scroll-target="#from-vectors-to-dataframes"><span class="header-section-number">1.2.3</span> From Vectors to Dataframes</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.2.2</span> Functions</a></li>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors"><span class="header-section-number">1.2.3</span> Vectors</a></li>
+  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes"><span class="header-section-number">1.2.4</span> Dataframes</a></li>
   </ul></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.3</span> Functions</a></li>
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span class="header-section-number">1.4</span> R Packages</a></li>
-  <li><a href="#inspecting-dataframes" id="toc-inspecting-dataframes" class="nav-link" data-scroll-target="#inspecting-dataframes"><span class="header-section-number">1.5</span> Inspecting Dataframes</a>
-  <ul class="collapse">
-  <li><a href="#size-and-structure" id="toc-size-and-structure" class="nav-link" data-scroll-target="#size-and-structure"><span class="header-section-number">1.5.1</span> Size and structure</a></li>
-  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="header-section-number">1.5.2</span> Summary statistics</a></li>
-  <li><a href="#frequency-tables" id="toc-frequency-tables" class="nav-link" data-scroll-target="#frequency-tables"><span class="header-section-number">1.5.3</span> Frequency tables</a></li>
-  </ul></li>
-  <li><a href="#selecting-observations-and-variables" id="toc-selecting-observations-and-variables" class="nav-link" data-scroll-target="#selecting-observations-and-variables"><span class="header-section-number">1.6</span> Selecting Observations and Variables</a></li>
-  <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables"><span class="header-section-number">1.7</span> Creating Variables</a>
-  <ul class="collapse">
-  <li><a href="#from-existing-variables" id="toc-from-existing-variables" class="nav-link" data-scroll-target="#from-existing-variables"><span class="header-section-number">1.7.1</span> From existing variables</a></li>
-  <li><a href="#logical-conditions" id="toc-logical-conditions" class="nav-link" data-scroll-target="#logical-conditions"><span class="header-section-number">1.7.2</span> Logical conditions</a></li>
-  <li><a href="#variables-based-on-a-condition" id="toc-variables-based-on-a-condition" class="nav-link" data-scroll-target="#variables-based-on-a-condition"><span class="header-section-number">1.7.3</span> Variables based on a condition</a></li>
-  <li><a href="#two-way-tables" id="toc-two-way-tables" class="nav-link" data-scroll-target="#two-way-tables"><span class="header-section-number">1.7.4</span> Two-way tables</a></li>
-  <li><a href="#selecting-observations-with-a-condition" id="toc-selecting-observations-with-a-condition" class="nav-link" data-scroll-target="#selecting-observations-with-a-condition"><span class="header-section-number">1.7.5</span> Selecting observations with a condition</a></li>
-  </ul></li>
-  <li><a href="#working-with-several-datasets" id="toc-working-with-several-datasets" class="nav-link" data-scroll-target="#working-with-several-datasets"><span class="header-section-number">1.8</span> Working with Several Datasets</a>
-  <ul class="collapse">
-  <li><a href="#a-second-dataset-longley" id="toc-a-second-dataset-longley" class="nav-link" data-scroll-target="#a-second-dataset-longley"><span class="header-section-number">1.8.1</span> A second dataset: <code>longley</code></a></li>
-  <li><a href="#creating-variables-with-dplyr" id="toc-creating-variables-with-dplyr" class="nav-link" data-scroll-target="#creating-variables-with-dplyr"><span class="header-section-number">1.8.2</span> Creating variables with <code>dplyr</code></a></li>
-  <li><a href="#aggregating-data" id="toc-aggregating-data" class="nav-link" data-scroll-target="#aggregating-data"><span class="header-section-number">1.8.3</span> Aggregating data</a></li>
-  <li><a href="#merging-datasets" id="toc-merging-datasets" class="nav-link" data-scroll-target="#merging-datasets"><span class="header-section-number">1.8.4</span> Merging datasets</a></li>
-  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="header-section-number">1.8.5</span> Missing values</a></li>
-  </ul></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span class="header-section-number">1.3</span> R Packages</a></li>
   </ul>
 </nav>
 </nav>
@@ -279,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span id="sec-intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></h1>
 </div>
 
 
@@ -353,68 +342,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="vectors" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.2.2</span> Vectors</h3>
+<section id="functions" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">1.2.2</span> Functions</h3>
+<p>A <strong>function</strong> takes one or more objects as input, performs a task, and returns an output. We have already used several, such as <code>sample()</code>, <code>length()</code> and <code>data.frame()</code>. We can also write our own:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate vector "age":</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">18</span><span class="sc">:</span><span class="dv">65</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "n"</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>age <span class="co"># Print object in console</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function "square()"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span>) }</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run function on object, store as "result"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">square</span>(n)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result in the console</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 22 58 23 36 48 30 62 52 23 42 18 21 18 32 26 30 48 26 42 53 40 19 25 41 31
- [26] 35 30 33 27 26 45 23 53 32 61 50 21 23 40 64 28 23 27 22 64 53 19 62 34 21
- [51] 57 38 21 62 48 18 64 61 37 41 42 25 23 57 35 23 23 30 55 63 53 36 53 32 43
- [76] 53 49 49 18 42 23 22 56 28 62 36 54 64 65 37 51 47 50 31 53 53 40 45 65 53</code></pre>
+<pre><code>[1] 10000</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(age) <span class="co"># Object type, size</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> int [1:100] 22 58 23 36 48 30 62 52 23 42 ...</code></pre>
+<pre><code>[1] "n"      "result" "square"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age) <span class="co"># Object type</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="vectors" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.2.3</span> Vectors</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate vector "age":</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">18</span><span class="sc">:</span><span class="dv">65</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>age <span class="co"># Print object in console</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 35 20 20 49 34 19 42 57 36 20 19 39 22 35 47 29 52 54 47 28 39 59 47 39 21
+ [26] 35 52 65 59 38 37 49 41 33 43 23 51 44 51 27 40 59 48 58 20 50 19 51 56 63
+ [51] 19 59 60 28 48 33 43 51 38 46 29 60 18 65 27 54 19 28 43 51 23 55 37 56 44
+ [76] 53 54 58 43 36 41 31 57 65 57 18 22 61 50 64 45 56 61 60 61 21 61 59 23 59</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(age) <span class="co"># Object type, size</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> int [1:100] 35 20 20 49 34 19 42 57 36 20 ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age) <span class="co"># Object type</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>() <span class="co"># List all objects</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>() <span class="co"># List all objects</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "age" "n"  </code></pre>
+<pre><code>[1] "age"    "n"      "result" "square"</code></pre>
 </div>
 </div>
 <p><code>AirPassengers</code> is a dataset that comes built into R: the monthly totals of international airline passengers, in thousands, from January 1949 to December 1960. Stores information in three vectors:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Three vectors with one value per month</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>passengers <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(AirPassengers)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>year       <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">floor</span>(<span class="fu">time</span>(AirPassengers)))</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>month      <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">cycle</span>(AirPassengers))</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(passengers)     <span class="co"># 144</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Three vectors with one value per month</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>passengers <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(AirPassengers)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>year       <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">floor</span>(<span class="fu">time</span>(AirPassengers)))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>month      <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">cycle</span>(AirPassengers))</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(passengers)     <span class="co"># 144</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 144</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access elements of a vector</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>passengers[<span class="dv">1</span>]          <span class="co"># first element: 112</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access elements of a vector</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>passengers[<span class="dv">1</span>]          <span class="co"># first element: 112</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 112</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>passengers[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]        <span class="co"># elements 1 to 3: 112 118 132</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>passengers[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]        <span class="co"># elements 1 to 3: 112 118 132</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 112 118 132</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>passengers[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">144</span>)]  <span class="co"># first and last: 112 432</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>passengers[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">144</span>)]  <span class="co"># first and last: 112 432</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 112 432</code></pre>
 </div>
 </div>
 </section>
-<section id="from-vectors-to-dataframes" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="from-vectors-to-dataframes"><span class="header-section-number">1.2.3</span> From Vectors to Dataframes</h3>
+<section id="dataframes" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="dataframes"><span class="header-section-number">1.2.4</span> Dataframes</h3>
 <p>A <strong>dataframe</strong> is a two-dimensional object that stores data as a table, with rows and columns:</p>
 <ul>
 <li>Each <strong>row</strong> is one observation (an individual, a month, a country, …).</li>
@@ -424,22 +442,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="01_intro_files/figure-html/unnamed-chunk-8-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+<p><img src="01_intro_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Every column of a dataframe is a vector, and all columns have the same length. So if we have several vectors of the same length, where position 1 in each vector refers to the same observation, position 2 to the next one, and so on, we can put them side by side as the columns of a dataframe with <code>data.frame()</code>. The three vectors <code>year</code>, <code>month</code> and <code>passengers</code> each have 144 elements, one per month, so together they form a dataframe with 144 rows and 3 columns:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset from the three vectors</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df_air <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(year, month, passengers)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_air)            <span class="co"># 144 rows, 3 columns</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset from the three vectors</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df_air <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(year, month, passengers)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_air)            <span class="co"># 144 rows, 3 columns</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 144   3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year month passengers
 1 1949     1        112
@@ -452,39 +470,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="functions" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">1.3</span> Functions</h2>
-<p>A <strong>function</strong> takes one or more objects as input, performs a task, and returns an output. We have already used several, such as <code>sample()</code>, <code>length()</code> and <code>data.frame()</code>. We can also write our own:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "age"        "df_air"     "month"      "n"          "passengers"
-[6] "year"      </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function "square()"</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span>) }</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run function on object, store as "result"</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">square</span>(n)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result in the console</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10000</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "age"        "df_air"     "month"      "n"          "passengers"
-[6] "result"     "square"     "year"      </code></pre>
-</div>
-</div>
-</section>
-<section id="r-packages" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="r-packages"><span class="header-section-number">1.4</span> R Packages</h2>
+<section id="r-packages" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="r-packages"><span class="header-section-number">1.3</span> R Packages</h2>
 <p>A <strong>package</strong> is a collection of functions, data and documentation written by other R users, which extends what R can do. R comes with a basic set of functions (such as <code>mean()</code> or <code>data.frame()</code>), and packages add new ones for specific tasks. For example, <code>dplyr</code> adds functions to manipulate dataframes and <code>ggplot2</code> adds functions to draw graphs. Thousands of packages are freely available on <a href="https://cran.r-project.org/">CRAN</a>, the official R package repository.</p>
 <p>Using a package takes two steps. First, <strong>install</strong> it, which downloads it to your computer. This is done only once per computer:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install once (downloads from CRAN)</span></span>
@@ -511,572 +498,8 @@ Attaching package: 'dplyr'</code></pre>
     intersect, setdiff, setequal, union</code></pre>
 </div>
 </div>
-</section>
-<section id="inspecting-dataframes" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="inspecting-dataframes"><span class="header-section-number">1.5</span> Inspecting Dataframes</h2>
-<p>Before running any analysis, take a first look at the data: how large it is, which variables it contains, what values they take, and whether anything is missing. This helps to spot mistakes early, for example a merge that dropped observations or a variable stored in the wrong units.</p>
-<p>We use <code>df_air</code>, the monthly passenger dataset created above, as an example.</p>
-<section id="size-and-structure" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="size-and-structure"><span class="header-section-number">1.5.1</span> Size and structure</h3>
-<p><code>dim()</code> returns the number of rows and columns, <code>names()</code> the variable names, and <code>str()</code> the type of each variable together with its first values:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 144   3</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "year"       "month"      "passengers"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   144 obs. of  3 variables:
- $ year      : num  1949 1949 1949 1949 1949 ...
- $ month     : num  1 2 3 4 5 6 7 8 9 10 ...
- $ passengers: num  112 118 132 129 121 135 148 148 136 119 ...</code></pre>
-</div>
-</div>
-<p><code>head()</code>, used above, prints the first six rows, and <code>tail()</code> prints the last six:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    year month passengers
-139 1960     7        622
-140 1960     8        606
-141 1960     9        508
-142 1960    10        461
-143 1960    11        390
-144 1960    12        432</code></pre>
-</div>
-</div>
-</section>
-<section id="summary-statistics" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="summary-statistics"><span class="header-section-number">1.5.2</span> Summary statistics</h3>
-<p><code>summary()</code> returns the minimum, the quartiles, the mean and the maximum of a numerical variable:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_air<span class="sc">$</span>passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  104.0   180.0   265.5   280.3   360.5   622.0 </code></pre>
-</div>
-</div>
-<p>Applied to a whole dataframe, it summarises every variable at once:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      year          month         passengers   
- Min.   :1949   Min.   : 1.00   Min.   :104.0  
- 1st Qu.:1952   1st Qu.: 3.75   1st Qu.:180.0  
- Median :1954   Median : 6.50   Median :265.5  
- Mean   :1954   Mean   : 6.50   Mean   :280.3  
- 3rd Qu.:1957   3rd Qu.: 9.25   3rd Qu.:360.5  
- Max.   :1960   Max.   :12.00   Max.   :622.0  </code></pre>
-</div>
-</div>
-<p>Individual statistics have their own functions, such as <code>mean()</code>, <code>median()</code>, <code>var()</code> (variance) and <code>sd()</code> (standard deviation):</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_air<span class="sc">$</span>passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 280.2986</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(df_air<span class="sc">$</span>passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 119.9663</code></pre>
-</div>
-</div>
-</section>
-<section id="frequency-tables" class="level3" data-number="1.5.3">
-<h3 data-number="1.5.3" class="anchored" data-anchor-id="frequency-tables"><span class="header-section-number">1.5.3</span> Frequency tables</h3>
-<p><code>table()</code> counts how many observations take each value of a variable. It is most useful for categorical variables. Here it confirms that every year has exactly 12 monthly observations:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_air<span class="sc">$</span>year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 
-  12   12   12   12   12   12   12   12   12   12   12   12 </code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="selecting-observations-and-variables" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="selecting-observations-and-variables"><span class="header-section-number">1.6</span> Selecting Observations and Variables</h2>
-<p>Square brackets select parts of a dataframe by position, as <code>dataframe[rows, columns]</code>. Leaving the rows or the columns empty selects all of them. The <code>$</code> sign selects a single variable by its name.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing data through row/column indexes</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>df_air[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,] <span class="co"># Rows 1 to 3, all columns.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  year month passengers
-1 1949     1        112
-2 1949     2        118
-3 1949     3        132</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_air[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)] <span class="co"># Rows 2 and 5, Columns 1 and 3.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  year passengers
-2 1949        118
-5 1949        121</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]) <span class="co"># All rows, Columns 1 and 3 (first six rows shown).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  year passengers
-1 1949        112
-2 1949        118
-3 1949        132
-4 1949        129
-5 1949        121
-6 1949        135</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the 'passengers' variable.</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>passengers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] 112 118 132 129 121 135 148 148 136 119 104 118 115 126 141 135 125 149
- [19] 170 170 158 133 114 140 145 150 178 163 172 178 199 199 184 162 146 166
- [37] 171 180 193 181 183 218 230 242 209 191 172 194 196 196 236 235 229 243
- [55] 264 272 237 211 180 201 204 188 235 227 234 264 302 293 259 229 203 229
- [73] 242 233 267 269 270 315 364 347 312 274 237 278 284 277 317 313 318 374
- [91] 413 405 355 306 271 306 315 301 356 348 355 422 465 467 404 347 305 336
-[109] 340 318 362 348 363 435 491 505 404 359 310 337 360 342 406 396 420 472
-[127] 548 559 463 407 362 405 417 391 419 461 472 535 622 606 508 461 390 432</code></pre>
-</div>
-</div>
-<p>Generate a new dataset <code>df_air_first_9_rows</code> by selecting the first 9 observations/rows of the dataset:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df_air_first_9_rows <span class="ot">&lt;-</span> df_air[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,]</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "age"                 "df_air"              "df_air_first_9_rows"
-[4] "month"               "n"                   "passengers"         
-[7] "result"              "square"              "year"               </code></pre>
-</div>
-</div>
-</section>
-<section id="creating-variables" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="creating-variables"><span class="header-section-number">1.7</span> Creating Variables</h2>
-<section id="from-existing-variables" class="level3" data-number="1.7.1">
-<h3 data-number="1.7.1" class="anchored" data-anchor-id="from-existing-variables"><span class="header-section-number">1.7.1</span> From existing variables</h3>
-<p>A new variable is created by assigning a vector to a name that does not yet exist in the dataframe, with <code>dataframe$new_variable &lt;- ...</code>. The vector is usually computed from existing variables. <code>passengers</code> is measured in thousands, so dividing it by 1000 gives the number of passengers in millions:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>passengers_millions <span class="ot">&lt;-</span> df_air<span class="sc">$</span>passengers <span class="sc">/</span> <span class="dv">1000</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  year month passengers passengers_millions
-1 1949     1        112               0.112
-2 1949     2        118               0.118
-3 1949     3        132               0.132
-4 1949     4        129               0.129
-5 1949     5        121               0.121
-6 1949     6        135               0.135</code></pre>
-</div>
-</div>
-</section>
-<section id="logical-conditions" class="level3" data-number="1.7.2">
-<h3 data-number="1.7.2" class="anchored" data-anchor-id="logical-conditions"><span class="header-section-number">1.7.2</span> Logical conditions</h3>
-<p>A logical condition compares values and returns <code>TRUE</code> or <code>FALSE</code> for each element of a vector. The most common operators are:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>==</code></td>
-<td>equal to</td>
-</tr>
-<tr class="even">
-<td><code>!=</code></td>
-<td>not equal to</td>
-</tr>
-<tr class="odd">
-<td><code>&gt;</code>, <code>&gt;=</code></td>
-<td>greater than, greater than or equal to</td>
-</tr>
-<tr class="even">
-<td><code>&lt;</code>, <code>&lt;=</code></td>
-<td>less than, less than or equal to</td>
-</tr>
-<tr class="odd">
-<td><code>&amp;</code></td>
-<td>and: both conditions are true</td>
-</tr>
-<tr class="even">
-<td><code>|</code></td>
-<td>or: at least one condition is true</td>
-</tr>
-<tr class="odd">
-<td><code>%in%</code></td>
-<td>the value is one of a set of values</td>
-</tr>
-</tbody>
-</table>
-<p>The following condition is <code>TRUE</code> for the months between 1950 and 1959. <code>table()</code> counts how many observations satisfy it:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical condition vector</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>index_fifties <span class="ot">&lt;-</span> (df_air<span class="sc">$</span>year <span class="sc">&gt;=</span> <span class="dv">1950</span>) <span class="sc">&amp;</span> (df_air<span class="sc">$</span>year <span class="sc">&lt;=</span> <span class="dv">1959</span>)</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(index_fifties)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>index_fifties
-FALSE  TRUE 
-   24   120 </code></pre>
-</div>
-</div>
-</section>
-<section id="variables-based-on-a-condition" class="level3" data-number="1.7.3">
-<h3 data-number="1.7.3" class="anchored" data-anchor-id="variables-based-on-a-condition"><span class="header-section-number">1.7.3</span> Variables based on a condition</h3>
-<p><code>ifelse()</code> returns one value where a condition is <code>TRUE</code> and another where it is <code>FALSE</code>, which makes it useful for creating categorical variables. We create two categorical variables: <code>season</code> separates the summer months from the rest of the year, and <code>traffic</code> separates the months with more passengers than the median month from the others:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>season  <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df_air<span class="sc">$</span>month <span class="sc">%in%</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>, <span class="st">"Summer"</span>, <span class="st">"Rest of year"</span>)</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>traffic <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df_air<span class="sc">$</span>passengers <span class="sc">&gt;</span> <span class="fu">median</span>(df_air<span class="sc">$</span>passengers), <span class="st">"High"</span>, <span class="st">"Low"</span>)</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_air<span class="sc">$</span>season)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Rest of year       Summer 
-         108           36 </code></pre>
-</div>
-</div>
-</section>
-<section id="two-way-tables" class="level3" data-number="1.7.4">
-<h3 data-number="1.7.4" class="anchored" data-anchor-id="two-way-tables"><span class="header-section-number">1.7.4</span> Two-way tables</h3>
-<p>With two variables, <code>table()</code> returns a <strong>two-way table</strong> (or cross-table), which counts the observations for each combination of categories:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_air<span class="sc">$</span>season, df_air<span class="sc">$</span>traffic)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              
-               High Low
-  Rest of year   51  57
-  Summer         21  15</code></pre>
-</div>
-</div>
-<p><code>prop.table()</code> turns the counts into shares. With <code>margin = 1</code>, the shares add up to one within each row:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(df_air<span class="sc">$</span>season, df_air<span class="sc">$</span>traffic), <span class="at">margin =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              
-                    High       Low
-  Rest of year 0.4722222 0.5277778
-  Summer       0.5833333 0.4166667</code></pre>
-</div>
-</div>
-</section>
-<section id="selecting-observations-with-a-condition" class="level3" data-number="1.7.5">
-<h3 data-number="1.7.5" class="anchored" data-anchor-id="selecting-observations-with-a-condition"><span class="header-section-number">1.7.5</span> Selecting observations with a condition</h3>
-<p>Generate a new dataset <code>df_air_fifties</code> by selecting the observations/rows that match the condition in <code>index_fifties</code>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>df_air_fifties <span class="ot">&lt;-</span> df_air[index_fifties, ]</span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_air_fifties)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 120   6</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="working-with-several-datasets" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="working-with-several-datasets"><span class="header-section-number">1.8</span> Working with Several Datasets</h2>
-<p>In this section we work with a second dataset, <code>longley</code>, and later combine it with <code>df_air</code>.</p>
-<section id="a-second-dataset-longley" class="level3" data-number="1.8.1">
-<h3 data-number="1.8.1" class="anchored" data-anchor-id="a-second-dataset-longley"><span class="header-section-number">1.8.1</span> A second dataset: <code>longley</code></h3>
-<p><code>longley</code> is a dataset that comes built into R, with yearly macroeconomic data for the United States from 1947 to 1962. Each row is one year, and each column is one of the following seven variables:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 43%">
-<col style="width: 23%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Description</th>
-<th>Units</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>GNP.deflator</code></td>
-<td>GNP implicit price deflator, a measure of the price level</td>
-<td>index, 1954 = 100</td>
-</tr>
-<tr class="even">
-<td><code>GNP</code></td>
-<td>Gross National Product</td>
-<td>billions of current US dollars</td>
-</tr>
-<tr class="odd">
-<td><code>Unemployed</code></td>
-<td>number of unemployed people</td>
-<td>tens of thousands of people</td>
-</tr>
-<tr class="even">
-<td><code>Armed.Forces</code></td>
-<td>number of people in the armed forces</td>
-<td>tens of thousands of people</td>
-</tr>
-<tr class="odd">
-<td><code>Population</code></td>
-<td>non-institutionalized population aged 14 or older</td>
-<td>millions of people</td>
-</tr>
-<tr class="even">
-<td><code>Year</code></td>
-<td>the year of the observation</td>
-<td>calendar year</td>
-</tr>
-<tr class="odd">
-<td><code>Employed</code></td>
-<td>number of employed people</td>
-<td>millions of people</td>
-</tr>
-</tbody>
-</table>
-<p>For example, in 1947 the value of <code>Unemployed</code> is 235.6, which means about 2.36 million unemployed people, and the value of <code>Employed</code> is 60.323, which means about 60.3 million employed people.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># longley: US macroeconomic data, one row per year (1947-1962)</span></span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(longley)</span>
-<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(longley) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "data.frame"</code></pre>
-</div>
-</div>
-<p><code>longley</code> data features 7 variables, 16 observations:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16  7</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
-1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
-1948         88.5 259.426      232.5        145.6    108.632 1948   61.122
-1949         88.2 258.054      368.2        161.6    109.773 1949   60.171
-1950         89.5 284.599      335.1        165.0    110.929 1950   61.187
-1951         96.2 328.975      209.9        309.9    112.075 1951   63.221
-1952         98.1 346.999      193.2        359.4    113.270 1952   63.639</code></pre>
-</div>
-</div>
-</section>
-<section id="creating-variables-with-dplyr" class="level3" data-number="1.8.2">
-<h3 data-number="1.8.2" class="anchored" data-anchor-id="creating-variables-with-dplyr"><span class="header-section-number">1.8.2</span> Creating variables with <code>dplyr</code></h3>
-<p>The old-fashioned way</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>longley<span class="sc">$</span>employment_share <span class="ot">&lt;-</span> longley<span class="sc">$</span>Employed<span class="sc">/</span>longley<span class="sc">$</span>Population</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>dplyr</code> way:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>longley <span class="ot">&lt;-</span> longley <span class="sc">|&gt;</span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">employment_share   =</span> Employed <span class="sc">/</span> Population,</span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">unemployment_share =</span> (Unemployed <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">/</span> Population,</span>
-<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">population_growth  =</span> (Population <span class="sc">-</span> <span class="fu">lag</span>(Population)) <span class="sc">/</span> <span class="fu">lag</span>(Population))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
-1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
-1948         88.5 259.426      232.5        145.6    108.632 1948   61.122
-1949         88.2 258.054      368.2        161.6    109.773 1949   60.171
-1950         89.5 284.599      335.1        165.0    110.929 1950   61.187
-1951         96.2 328.975      209.9        309.9    112.075 1951   63.221
-1952         98.1 346.999      193.2        359.4    113.270 1952   63.639
-     employment_share unemployment_share population_growth
-1947        0.5605810         0.02189428                NA
-1948        0.5626519         0.02140253       0.009516021
-1949        0.5481403         0.03354195       0.010503351
-1950        0.5515871         0.03020851       0.010530823
-1951        0.5640955         0.01872853       0.010330932
-1952        0.5618346         0.01705659       0.010662503</code></pre>
-</div>
-</div>
-</section>
-<section id="aggregating-data" class="level3" data-number="1.8.3">
-<h3 data-number="1.8.3" class="anchored" data-anchor-id="aggregating-data"><span class="header-section-number">1.8.3</span> Aggregating data</h3>
-<p>Suppose we now want to combine the information in <code>df_air</code> with the information in <code>longley</code>. There is a problem: <code>df_air</code> is a monthly dataset, while <code>longley</code> is annual. Before we can combine them, both datasets need to have the same frequency, so we first aggregate <code>df_air</code> from monthly to annual data.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  year month passengers passengers_millions       season traffic
-1 1949     1        112               0.112 Rest of year     Low
-2 1949     2        118               0.118 Rest of year     Low
-3 1949     3        132               0.132 Rest of year     Low
-4 1949     4        129               0.129 Rest of year     Low
-5 1949     5        121               0.121 Rest of year     Low
-6 1949     6        135               0.135       Summer     Low</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate the monthly data to one row per year</span></span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>df_air_annual <span class="ot">&lt;-</span> df_air <span class="sc">|&gt;</span></span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
-<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">annual_passengers       =</span> <span class="fu">sum</span>(passengers),</span>
-<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_monthly_passengers =</span> <span class="fu">mean</span>(passengers),</span>
-<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_monthly_passengers  =</span> <span class="fu">min</span>(passengers),</span>
-<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_monthly_passengers  =</span> <span class="fu">max</span>(passengers))</span>
-<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air_annual)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-   year annual_passengers mean_monthly_passengers min_monthly_passengers
-  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
-1  1949              1520                    127.                    104
-2  1950              1676                    140.                    114
-3  1951              2042                    170.                    145
-4  1952              2364                    197                     171
-5  1953              2700                    225                     180
-6  1954              2867                    239.                    188
-# ℹ 1 more variable: max_monthly_passengers &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="merging-datasets" class="level3" data-number="1.8.4">
-<h3 data-number="1.8.4" class="anchored" data-anchor-id="merging-datasets"><span class="header-section-number">1.8.4</span> Merging datasets</h3>
-<p>After aggregating the data to the ``highest’’ common denominator, we want to combine the two datasets in a single dataset.</p>
-<p>Merging (or <em>joining</em>) two datasets means putting their columns side by side, matching the rows that refer to the same observation. The variable used to match the rows is called the <strong>key</strong>. Here the key is the year, which is called <code>year</code> in <code>df_air_annual</code> and <code>Year</code> in <code>longley</code>, so we tell <code>dplyr</code> that they are the same variable with <code>by = c("year" = "Year")</code>.</p>
-<p>New problem: The two datasets do not cover the same years: <code>df_air_annual</code> covers 1949 to 1960 (12 years), while <code>longley</code> covers 1947 to 1962 (16 years).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>df_air_annual<span class="sc">$</span>year</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>longley<span class="sc">$</span>Year</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 1947 1948 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 1961
-[16] 1962</code></pre>
-</div>
-</div>
-<p><code>dplyr</code> has several join functions, which differ only in what they do with the rows that have no match in the other dataset. In <code>x |&gt; some_join(y)</code>, <code>x</code> is the <em>left</em> dataset and <code>y</code> is the <em>right</em> dataset:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 32%">
-<col style="width: 45%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>Rows it keeps</th>
-<th>Rows in our example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>inner_join()</code></td>
-<td>only the rows with a match in both datasets</td>
-<td>12 (1949 to 1960)</td>
-</tr>
-<tr class="even">
-<td><code>left_join()</code></td>
-<td>all rows of the left dataset</td>
-<td>12 (1949 to 1960)</td>
-</tr>
-<tr class="odd">
-<td><code>right_join()</code></td>
-<td>all rows of the right dataset</td>
-<td>16 (1947 to 1962)</td>
-</tr>
-<tr class="even">
-<td><code>full_join()</code></td>
-<td>all rows of both datasets</td>
-<td>16 (1947 to 1962)</td>
-</tr>
-</tbody>
-</table>
-<p><code>inner_join()</code> keeps only the years that appear in both datasets:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the two annual datasets, keeping the years present in both</span></span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>df_inner <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
-<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 12 14</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 14
-   year annual_passengers mean_monthly_passengers min_monthly_passengers
-  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
-1  1949              1520                    127.                    104
-2  1950              1676                    140.                    114
-3  1951              2042                    170.                    145
-4  1952              2364                    197                     171
-5  1953              2700                    225                     180
-6  1954              2867                    239.                    188
-# ℹ 10 more variables: max_monthly_passengers &lt;dbl&gt;, GNP.deflator &lt;dbl&gt;,
-#   GNP &lt;dbl&gt;, Unemployed &lt;dbl&gt;, Armed.Forces &lt;dbl&gt;, Population &lt;dbl&gt;,
-#   Employed &lt;dbl&gt;, employment_share &lt;dbl&gt;, unemployment_share &lt;dbl&gt;,
-#   population_growth &lt;dbl&gt;</code></pre>
-</div>
-</div>
-<p><code>left_join()</code> keeps every row of the left dataset, <code>df_air_annual</code>, and adds the <code>longley</code> variables to it. Since every year in <code>df_air_annual</code> also appears in <code>longley</code>, the result has the same 12 rows as with <code>inner_join()</code>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>df_left <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_left)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 12 14</code></pre>
-</div>
-</div>
-<p><code>right_join()</code> keeps every row of the right dataset, <code>longley</code>, so the result has 16 rows. The years 1947, 1948, 1961 and 1962 have no match in <code>df_air_annual</code>, so the passenger variables are missing (<code>NA</code>) in those rows:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>df_right <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
-<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
-<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_right)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16 14</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rows without passenger data</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>df_right[<span class="fu">is.na</span>(df_right<span class="sc">$</span>annual_passengers), <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"annual_passengers"</span>, <span class="st">"GNP"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-   year annual_passengers   GNP
-  &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;
-1  1947                NA  234.
-2  1948                NA  259.
-3  1961                NA  518.
-4  1962                NA  555.</code></pre>
-</div>
-</div>
-<p>Which join to use depends on which observations you want to keep. A left join is the most common choice: it keeps your main dataset intact and adds information from a second one, without dropping or adding rows.</p>
-</section>
-<section id="missing-values" class="level3" data-number="1.8.5">
-<h3 data-number="1.8.5" class="anchored" data-anchor-id="missing-values"><span class="header-section-number">1.8.5</span> Missing values</h3>
-<p><code>is.na()</code> returns <code>TRUE</code> for every missing value. Since R counts <code>TRUE</code> as 1 and <code>FALSE</code> as 0, <code>sum()</code> gives the number of missing values in a variable, and <code>colSums()</code> gives it for every variable of a dataframe:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df_right<span class="sc">$</span>annual_passengers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(df_right))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                   year       annual_passengers mean_monthly_passengers 
-                      0                       4                       4 
- min_monthly_passengers  max_monthly_passengers            GNP.deflator 
-                      4                       4                       0 
-                    GNP              Unemployed            Armed.Forces 
-                      0                       0                       0 
-             Population                Employed        employment_share 
-                      0                       0                       0 
-     unemployment_share       population_growth 
-                      0                       1 </code></pre>
-</div>
-</div>
-<p>Many functions return <code>NA</code> if the variable contains missing values. Adding <code>na.rm = TRUE</code> tells them to ignore the missing values:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_right<span class="sc">$</span>annual_passengers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_right<span class="sc">$</span>annual_passengers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3363.583</code></pre>
-</div>
-</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1499,8 +922,8 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02_plotting.html" class="pagination-link" aria-label="Plotting Data">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02_datasets.html" class="pagination-link" aria-label="Datasets in R">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datasets in R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

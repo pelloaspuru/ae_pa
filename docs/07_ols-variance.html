@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Statistical Inference – Applied Economics</title>
+<title>7&nbsp; OLS Variance and Robust Standard Errors – Applied Economics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./07_causality.html" rel="next">
-<link href="./05_ols-variance.html" rel="prev">
+<link href="./08_inference.html" rel="next">
+<link href="./06_mlr2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_inference.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Inference</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_ols-variance.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,73 +120,85 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
+ <span class="menu-text">Course description</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_plotting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting Data</span></span></a>
+  <a href="./02_datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datasets in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_mlr1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression I</span></span></a>
+  <a href="./03_data_construction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Building Datasets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_mlr2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Multiple Linear Regression II</span></span></a>
+  <a href="./04_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Plotting Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_ols-variance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></span></a>
+  <a href="./05_mlr1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multiple Linear Regression I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_inference.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span></a>
+  <a href="./06_mlr2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Linear Regression II</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality and Correlation</span></span></a>
+  <a href="./07_ols-variance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_iv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Instrumental Variables</span></span></a>
+  <a href="./08_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_panel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Panel Data Methods</span></span></a>
+  <a href="./09_causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Causality and Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_did.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Difference-in-Differences</span></span></a>
+  <a href="./10_iv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Instrumental Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_rdd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design</span></span></a>
+  <a href="./11_panel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Panel Data Methods</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_did.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Difference-in-Differences</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_rdd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Regression Discontinuity Design</span></span></a>
   </div>
 </li>
     </ul>
@@ -195,9 +207,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides"><span class="header-section-number">6.1</span> Slides</a></li>
-  <li><a href="#r-code" id="toc-r-code" class="nav-link" data-scroll-target="#r-code"><span class="header-section-number">6.2</span> R code</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">6.3</span> Data</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides"><span class="header-section-number">7.1</span> Slides</a></li>
+  <li><a href="#r-code" id="toc-r-code" class="nav-link" data-scroll-target="#r-code"><span class="header-section-number">7.2</span> R code</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">7.3</span> Data</a></li>
   </ul>
 </nav>
 </nav>
@@ -210,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-inference" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span></h1>
+<h1 class="title"><span id="sec-ols-variance" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></span></h1>
 </div>
 
 
@@ -228,14 +240,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><em>Content coming soon.</em></p>
-<section id="slides" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="slides"><span class="header-section-number">6.1</span> Slides</h2>
+<section id="slides" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="slides"><span class="header-section-number">7.1</span> Slides</h2>
 </section>
-<section id="r-code" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="r-code"><span class="header-section-number">6.2</span> R code</h2>
+<section id="r-code" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="r-code"><span class="header-section-number">7.2</span> R code</h2>
 </section>
-<section id="data" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="data"><span class="header-section-number">6.3</span> Data</h2>
+<section id="data" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="data"><span class="header-section-number">7.3</span> Data</h2>
 
 
 </section>
@@ -655,13 +667,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05_ols-variance.html" class="pagination-link" aria-label="OLS Variance and Robust Standard Errors">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">OLS Variance and Robust Standard Errors</span></span>
+      <a href="./06_mlr2.html" class="pagination-link" aria-label="Multiple Linear Regression II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Linear Regression II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_causality.html" class="pagination-link" aria-label="Causality and Correlation">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causality and Correlation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08_inference.html" class="pagination-link" aria-label="Statistical Inference">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistical Inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

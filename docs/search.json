@@ -10,493 +10,443 @@
     ]
   },
   {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "Applied Economics",
-    "section": "Course description",
-    "text": "Course description\nIn this course, students reinforce the tools learned in Introductory Econometrics (BA) by applying them to real-world datasets using econometric software. Prior knowledge at that level is assumed throughout. The aim is for students to gain hands-on experience analyzing observational data with the open-source programming language R, and to acquire the tools to carry out empirical research projects independently.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#assessment",
-    "href": "index.html#assessment",
-    "title": "Applied Economics",
-    "section": "0.2 Assessment",
-    "text": "0.2 Assessment\n\n\n\n\n\n\n\n\nItem\nTentative Date\nGrade Weight\n\n\n\n\nClass participation\nThroughout the semester\n10%\n\n\nMidterm exam\nNovember 25th/26th 2026\n25%\n\n\nProject presentation I\nDecember 16th/17th 2026\n10%\n\n\nProject presentation II\nJanuary 20th/21st 2027\n15%\n\n\nFinal exam\nWednesday, January 27th 2027\n40%\n\n\nTotal\n\n100%",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#key-dates",
-    "href": "index.html#key-dates",
-    "title": "Applied Economics",
-    "section": "0.3 Key Dates",
-    "text": "0.3 Key Dates\n\nMidterm exam: Nov 25th / 26th\nProject presentation I: Dec 16th / 17th\nProject presentation II: Jan 20th / 21st\nFinal exam: Jan 27th",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#software",
-    "href": "index.html#software",
-    "title": "Applied Economics",
-    "section": "0.4 Software",
-    "text": "0.4 Software\n\nInstall R from https://cran.r-project.org/\nInstall RStudio from https://posit.co/download/rstudio-desktop/",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#office-hours",
-    "href": "index.html#office-hours",
-    "title": "Applied Economics",
-    "section": "0.5 Office Hours",
-    "text": "0.5 Office Hours\nBy appointment, at pello.aspuru@univie.ac.at",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#references",
-    "href": "index.html#references",
-    "title": "Applied Economics",
-    "section": "0.6 References",
-    "text": "0.6 References",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Course description</span>"
-    ]
-  },
-  {
     "objectID": "01_intro.html",
     "href": "01_intro.html",
-    "title": "1  Introduction",
+    "title": "1  Introduction to R",
     "section": "",
     "text": "1.1 Setting up your first .R script\nFind the slides here",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
   {
     "objectID": "01_intro.html#setting-up-your-first-.r-script",
     "href": "01_intro.html#setting-up-your-first-.r-script",
-    "title": "1  Introduction",
+    "title": "1  Introduction to R",
     "section": "",
     "text": "1.1.1 Comments\n\n# This is a comment\n\n\n\n1.1.2 Header\n# Check current working directory\ngetwd()\n\n# Set a new working directory.\nsetwd(\"C:/Users/YourName/Desktop/AE_2026\")\n\n# Verify the change\ngetwd()\n\n# List files in the working directory\ndir()\n\n\n1.1.3 Clean the environment\n\n# List all objects in the environment\nls()\n\n[1] \"pandoc_dir\"      \"quarto_bin_path\"\n\n# Remove all objects from the environment\nrm(list = ls())\n\n# Verify the change\nls()\n\ncharacter(0)",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
   {
     "objectID": "01_intro.html#r-objects",
     "href": "01_intro.html#r-objects",
-    "title": "1  Introduction",
+    "title": "1  Introduction to R",
     "section": "1.2 R Objects",
-    "text": "1.2 R Objects\n\n1.2.1 Scalar objects\n\n# Create object \"n\"\nn &lt;- 100\n\n# Print the object in the console:\nn\n\n[1] 100\n\n\n\n\n1.2.2 Vectors\n\n# generate vector \"age\":\nage &lt;- sample(18:65, n, replace = TRUE)\n\n\n# Visualize\nage # Print object in console\n\n  [1] 22 58 23 36 48 30 62 52 23 42 18 21 18 32 26 30 48 26 42 53 40 19 25 41 31\n [26] 35 30 33 27 26 45 23 53 32 61 50 21 23 40 64 28 23 27 22 64 53 19 62 34 21\n [51] 57 38 21 62 48 18 64 61 37 41 42 25 23 57 35 23 23 30 55 63 53 36 53 32 43\n [76] 53 49 49 18 42 23 22 56 28 62 36 54 64 65 37 51 47 50 31 53 53 40 45 65 53\n\nstr(age) # Object type, size\n\n int [1:100] 22 58 23 36 48 30 62 52 23 42 ...\n\nclass(age) # Object type\n\n[1] \"integer\"\n\ndim(age)\n\nNULL\n\nls() # List all objects\n\n[1] \"age\" \"n\"  \n\n\nAirPassengers is a dataset that comes built into R: the monthly totals of international airline passengers, in thousands, from January 1949 to December 1960. Stores information in three vectors:\n\n# Three vectors with one value per month\npassengers &lt;- as.numeric(AirPassengers)\nyear       &lt;- as.numeric(floor(time(AirPassengers)))\nmonth      &lt;- as.numeric(cycle(AirPassengers))\n\nlength(passengers)     # 144\n\n[1] 144\n\n\n\n# Access elements of a vector\npassengers[1]          # first element: 112\n\n[1] 112\n\npassengers[1:3]        # elements 1 to 3: 112 118 132\n\n[1] 112 118 132\n\npassengers[c(1, 144)]  # first and last: 112 432\n\n[1] 112 432\n\n\n\n\n1.2.3 From Vectors to Dataframes\nA dataframe is a two-dimensional object that stores data as a table, with rows and columns:\n\nEach row is one observation (an individual, a month, a country, …).\nEach column is one variable (income, education, number of passengers, …).\n\n\n\n\n\n\n\n\n\n\nEvery column of a dataframe is a vector, and all columns have the same length. So if we have several vectors of the same length, where position 1 in each vector refers to the same observation, position 2 to the next one, and so on, we can put them side by side as the columns of a dataframe with data.frame(). The three vectors year, month and passengers each have 144 elements, one per month, so together they form a dataframe with 144 rows and 3 columns:\n\n# Create a dataset from the three vectors\ndf_air &lt;- data.frame(year, month, passengers)\ndim(df_air)            # 144 rows, 3 columns\n\n[1] 144   3\n\n\n\nhead(df_air)\n\n  year month passengers\n1 1949     1        112\n2 1949     2        118\n3 1949     3        132\n4 1949     4        129\n5 1949     5        121\n6 1949     6        135",
+    "text": "1.2 R Objects\n\n1.2.1 Scalar objects\n\n# Create object \"n\"\nn &lt;- 100\n\n# Print the object in the console:\nn\n\n[1] 100\n\n\n\n\n1.2.2 Functions\nA function takes one or more objects as input, performs a task, and returns an output. We have already used several, such as sample(), length() and data.frame(). We can also write our own:\n\nls()\n\n[1] \"n\"\n\n\n\n# Define the function \"square()\"\nsquare &lt;- function(x) { return(x^2) }\n\n# Run function on object, store as \"result\"\nresult &lt;- square(n)\n\n# Print the result in the console\nprint(result)\n\n[1] 10000\n\n\n\nls()\n\n[1] \"n\"      \"result\" \"square\"\n\n\n\n\n1.2.3 Vectors\n\n# generate vector \"age\":\nage &lt;- sample(18:65, n, replace = TRUE)\n\n\n# Visualize\nage # Print object in console\n\n  [1] 35 20 20 49 34 19 42 57 36 20 19 39 22 35 47 29 52 54 47 28 39 59 47 39 21\n [26] 35 52 65 59 38 37 49 41 33 43 23 51 44 51 27 40 59 48 58 20 50 19 51 56 63\n [51] 19 59 60 28 48 33 43 51 38 46 29 60 18 65 27 54 19 28 43 51 23 55 37 56 44\n [76] 53 54 58 43 36 41 31 57 65 57 18 22 61 50 64 45 56 61 60 61 21 61 59 23 59\n\nstr(age) # Object type, size\n\n int [1:100] 35 20 20 49 34 19 42 57 36 20 ...\n\nclass(age) # Object type\n\n[1] \"integer\"\n\ndim(age)\n\nNULL\n\nls() # List all objects\n\n[1] \"age\"    \"n\"      \"result\" \"square\"\n\n\nAirPassengers is a dataset that comes built into R: the monthly totals of international airline passengers, in thousands, from January 1949 to December 1960. Stores information in three vectors:\n\n# Three vectors with one value per month\npassengers &lt;- as.numeric(AirPassengers)\nyear       &lt;- as.numeric(floor(time(AirPassengers)))\nmonth      &lt;- as.numeric(cycle(AirPassengers))\n\nlength(passengers)     # 144\n\n[1] 144\n\n\n\n# Access elements of a vector\npassengers[1]          # first element: 112\n\n[1] 112\n\npassengers[1:3]        # elements 1 to 3: 112 118 132\n\n[1] 112 118 132\n\npassengers[c(1, 144)]  # first and last: 112 432\n\n[1] 112 432\n\n\n\n\n1.2.4 Dataframes\nA dataframe is a two-dimensional object that stores data as a table, with rows and columns:\n\nEach row is one observation (an individual, a month, a country, …).\nEach column is one variable (income, education, number of passengers, …).\n\n\n\n\n\n\n\n\n\n\nEvery column of a dataframe is a vector, and all columns have the same length. So if we have several vectors of the same length, where position 1 in each vector refers to the same observation, position 2 to the next one, and so on, we can put them side by side as the columns of a dataframe with data.frame(). The three vectors year, month and passengers each have 144 elements, one per month, so together they form a dataframe with 144 rows and 3 columns:\n\n# Create a dataset from the three vectors\ndf_air &lt;- data.frame(year, month, passengers)\ndim(df_air)            # 144 rows, 3 columns\n\n[1] 144   3\n\n\n\nhead(df_air)\n\n  year month passengers\n1 1949     1        112\n2 1949     2        118\n3 1949     3        132\n4 1949     4        129\n5 1949     5        121\n6 1949     6        135",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01_intro.html#functions",
-    "href": "01_intro.html#functions",
-    "title": "1  Introduction",
-    "section": "1.3 Functions",
-    "text": "1.3 Functions\nA function takes one or more objects as input, performs a task, and returns an output. We have already used several, such as sample(), length() and data.frame(). We can also write our own:\n\nls()\n\n[1] \"age\"        \"df_air\"     \"month\"      \"n\"          \"passengers\"\n[6] \"year\"      \n\n\n\n# Define the function \"square()\"\nsquare &lt;- function(x) { return(x^2) }\n\n# Run function on object, store as \"result\"\nresult &lt;- square(n)\n\n# Print the result in the console\nprint(result)\n\n[1] 10000\n\n\n\nls()\n\n[1] \"age\"        \"df_air\"     \"month\"      \"n\"          \"passengers\"\n[6] \"result\"     \"square\"     \"year\"",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
   {
     "objectID": "01_intro.html#r-packages",
     "href": "01_intro.html#r-packages",
-    "title": "1  Introduction",
-    "section": "1.4 R Packages",
-    "text": "1.4 R Packages\nA package is a collection of functions, data and documentation written by other R users, which extends what R can do. R comes with a basic set of functions (such as mean() or data.frame()), and packages add new ones for specific tasks. For example, dplyr adds functions to manipulate dataframes and ggplot2 adds functions to draw graphs. Thousands of packages are freely available on CRAN, the official R package repository.\nUsing a package takes two steps. First, install it, which downloads it to your computer. This is done only once per computer:\n# Install once (downloads from CRAN)\ninstall.packages(\"dplyr\")\nSecond, load it with library(), which makes its functions available in your current R session. This has to be done every time you start R, so the library() lines usually go at the top of the script:\n\n# Load every time you start R\nlibrary(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.5.2\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union",
+    "title": "1  Introduction to R",
+    "section": "1.3 R Packages",
+    "text": "1.3 R Packages\nA package is a collection of functions, data and documentation written by other R users, which extends what R can do. R comes with a basic set of functions (such as mean() or data.frame()), and packages add new ones for specific tasks. For example, dplyr adds functions to manipulate dataframes and ggplot2 adds functions to draw graphs. Thousands of packages are freely available on CRAN, the official R package repository.\nUsing a package takes two steps. First, install it, which downloads it to your computer. This is done only once per computer:\n# Install once (downloads from CRAN)\ninstall.packages(\"dplyr\")\nSecond, load it with library(), which makes its functions available in your current R session. This has to be done every time you start R, so the library() lines usually go at the top of the script:\n\n# Load every time you start R\nlibrary(dplyr)\n\nWarning: package 'dplyr' was built under R version 4.5.2\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R</span>"
     ]
   },
   {
-    "objectID": "01_intro.html#inspecting-dataframes",
-    "href": "01_intro.html#inspecting-dataframes",
-    "title": "1  Introduction",
-    "section": "1.5 Inspecting Dataframes",
-    "text": "1.5 Inspecting Dataframes\nBefore running any analysis, take a first look at the data: how large it is, which variables it contains, what values they take, and whether anything is missing. This helps to spot mistakes early, for example a merge that dropped observations or a variable stored in the wrong units.\nWe use df_air, the monthly passenger dataset created above, as an example.\n\n1.5.1 Size and structure\ndim() returns the number of rows and columns, names() the variable names, and str() the type of each variable together with its first values:\n\ndim(df_air)\n\n[1] 144   3\n\nnames(df_air)\n\n[1] \"year\"       \"month\"      \"passengers\"\n\nstr(df_air)\n\n'data.frame':   144 obs. of  3 variables:\n $ year      : num  1949 1949 1949 1949 1949 ...\n $ month     : num  1 2 3 4 5 6 7 8 9 10 ...\n $ passengers: num  112 118 132 129 121 135 148 148 136 119 ...\n\n\nhead(), used above, prints the first six rows, and tail() prints the last six:\n\ntail(df_air)\n\n    year month passengers\n139 1960     7        622\n140 1960     8        606\n141 1960     9        508\n142 1960    10        461\n143 1960    11        390\n144 1960    12        432\n\n\n\n\n1.5.2 Summary statistics\nsummary() returns the minimum, the quartiles, the mean and the maximum of a numerical variable:\n\nsummary(df_air$passengers)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  104.0   180.0   265.5   280.3   360.5   622.0 \n\n\nApplied to a whole dataframe, it summarises every variable at once:\n\nsummary(df_air)\n\n      year          month         passengers   \n Min.   :1949   Min.   : 1.00   Min.   :104.0  \n 1st Qu.:1952   1st Qu.: 3.75   1st Qu.:180.0  \n Median :1954   Median : 6.50   Median :265.5  \n Mean   :1954   Mean   : 6.50   Mean   :280.3  \n 3rd Qu.:1957   3rd Qu.: 9.25   3rd Qu.:360.5  \n Max.   :1960   Max.   :12.00   Max.   :622.0  \n\n\nIndividual statistics have their own functions, such as mean(), median(), var() (variance) and sd() (standard deviation):\n\nmean(df_air$passengers)\n\n[1] 280.2986\n\nsd(df_air$passengers)\n\n[1] 119.9663\n\n\n\n\n1.5.3 Frequency tables\ntable() counts how many observations take each value of a variable. It is most useful for categorical variables. Here it confirms that every year has exactly 12 monthly observations:\n\ntable(df_air$year)\n\n\n1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 \n  12   12   12   12   12   12   12   12   12   12   12   12",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01_intro.html#selecting-observations-and-variables",
-    "href": "01_intro.html#selecting-observations-and-variables",
-    "title": "1  Introduction",
-    "section": "1.6 Selecting Observations and Variables",
-    "text": "1.6 Selecting Observations and Variables\nSquare brackets select parts of a dataframe by position, as dataframe[rows, columns]. Leaving the rows or the columns empty selects all of them. The $ sign selects a single variable by its name.\n\n# Accessing data through row/column indexes\ndf_air[1:3,] # Rows 1 to 3, all columns.\n\n  year month passengers\n1 1949     1        112\n2 1949     2        118\n3 1949     3        132\n\ndf_air[c(2,5),c(1,3)] # Rows 2 and 5, Columns 1 and 3.\n\n  year passengers\n2 1949        118\n5 1949        121\n\nhead(df_air[,c(1,3)]) # All rows, Columns 1 and 3 (first six rows shown).\n\n  year passengers\n1 1949        112\n2 1949        118\n3 1949        132\n4 1949        129\n5 1949        121\n6 1949        135\n\n\n\n# Access the 'passengers' variable.\ndf_air$passengers\n\n  [1] 112 118 132 129 121 135 148 148 136 119 104 118 115 126 141 135 125 149\n [19] 170 170 158 133 114 140 145 150 178 163 172 178 199 199 184 162 146 166\n [37] 171 180 193 181 183 218 230 242 209 191 172 194 196 196 236 235 229 243\n [55] 264 272 237 211 180 201 204 188 235 227 234 264 302 293 259 229 203 229\n [73] 242 233 267 269 270 315 364 347 312 274 237 278 284 277 317 313 318 374\n [91] 413 405 355 306 271 306 315 301 356 348 355 422 465 467 404 347 305 336\n[109] 340 318 362 348 363 435 491 505 404 359 310 337 360 342 406 396 420 472\n[127] 548 559 463 407 362 405 417 391 419 461 472 535 622 606 508 461 390 432\n\n\nGenerate a new dataset df_air_first_9_rows by selecting the first 9 observations/rows of the dataset:\n\ndf_air_first_9_rows &lt;- df_air[1:9,]\nls()\n\n[1] \"age\"                 \"df_air\"              \"df_air_first_9_rows\"\n[4] \"month\"               \"n\"                   \"passengers\"         \n[7] \"result\"              \"square\"              \"year\"",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01_intro.html#creating-variables",
-    "href": "01_intro.html#creating-variables",
-    "title": "1  Introduction",
-    "section": "1.7 Creating Variables",
-    "text": "1.7 Creating Variables\n\n1.7.1 From existing variables\nA new variable is created by assigning a vector to a name that does not yet exist in the dataframe, with dataframe$new_variable &lt;- .... The vector is usually computed from existing variables. passengers is measured in thousands, so dividing it by 1000 gives the number of passengers in millions:\n\ndf_air$passengers_millions &lt;- df_air$passengers / 1000\nhead(df_air)\n\n  year month passengers passengers_millions\n1 1949     1        112               0.112\n2 1949     2        118               0.118\n3 1949     3        132               0.132\n4 1949     4        129               0.129\n5 1949     5        121               0.121\n6 1949     6        135               0.135\n\n\n\n\n1.7.2 Logical conditions\nA logical condition compares values and returns TRUE or FALSE for each element of a vector. The most common operators are:\n\n\n\nOperator\nMeaning\n\n\n\n\n==\nequal to\n\n\n!=\nnot equal to\n\n\n&gt;, &gt;=\ngreater than, greater than or equal to\n\n\n&lt;, &lt;=\nless than, less than or equal to\n\n\n&\nand: both conditions are true\n\n\n|\nor: at least one condition is true\n\n\n%in%\nthe value is one of a set of values\n\n\n\nThe following condition is TRUE for the months between 1950 and 1959. table() counts how many observations satisfy it:\n\n# Logical condition vector\nindex_fifties &lt;- (df_air$year &gt;= 1950) & (df_air$year &lt;= 1959)\ntable(index_fifties)\n\nindex_fifties\nFALSE  TRUE \n   24   120 \n\n\n\n\n1.7.3 Variables based on a condition\nifelse() returns one value where a condition is TRUE and another where it is FALSE, which makes it useful for creating categorical variables. We create two categorical variables: season separates the summer months from the rest of the year, and traffic separates the months with more passengers than the median month from the others:\n\ndf_air$season  &lt;- ifelse(df_air$month %in% 6:8, \"Summer\", \"Rest of year\")\ndf_air$traffic &lt;- ifelse(df_air$passengers &gt; median(df_air$passengers), \"High\", \"Low\")\n\ntable(df_air$season)\n\n\nRest of year       Summer \n         108           36 \n\n\n\n\n1.7.4 Two-way tables\nWith two variables, table() returns a two-way table (or cross-table), which counts the observations for each combination of categories:\n\ntable(df_air$season, df_air$traffic)\n\n              \n               High Low\n  Rest of year   51  57\n  Summer         21  15\n\n\nprop.table() turns the counts into shares. With margin = 1, the shares add up to one within each row:\n\nprop.table(table(df_air$season, df_air$traffic), margin = 1)\n\n              \n                    High       Low\n  Rest of year 0.4722222 0.5277778\n  Summer       0.5833333 0.4166667\n\n\n\n\n1.7.5 Selecting observations with a condition\nGenerate a new dataset df_air_fifties by selecting the observations/rows that match the condition in index_fifties:\n\ndf_air_fifties &lt;- df_air[index_fifties, ]\ndim(df_air_fifties)\n\n[1] 120   6",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01_intro.html#working-with-several-datasets",
-    "href": "01_intro.html#working-with-several-datasets",
-    "title": "1  Introduction",
-    "section": "1.8 Working with Several Datasets",
-    "text": "1.8 Working with Several Datasets\nIn this section we work with a second dataset, longley, and later combine it with df_air.\n\n1.8.1 A second dataset: longley\nlongley is a dataset that comes built into R, with yearly macroeconomic data for the United States from 1947 to 1962. Each row is one year, and each column is one of the following seven variables:\n\n\n\n\n\n\n\n\nVariable\nDescription\nUnits\n\n\n\n\nGNP.deflator\nGNP implicit price deflator, a measure of the price level\nindex, 1954 = 100\n\n\nGNP\nGross National Product\nbillions of current US dollars\n\n\nUnemployed\nnumber of unemployed people\ntens of thousands of people\n\n\nArmed.Forces\nnumber of people in the armed forces\ntens of thousands of people\n\n\nPopulation\nnon-institutionalized population aged 14 or older\nmillions of people\n\n\nYear\nthe year of the observation\ncalendar year\n\n\nEmployed\nnumber of employed people\nmillions of people\n\n\n\nFor example, in 1947 the value of Unemployed is 235.6, which means about 2.36 million unemployed people, and the value of Employed is 60.323, which means about 60.3 million employed people.\n\n# longley: US macroeconomic data, one row per year (1947-1962)\ndata(longley)\nclass(longley) \n\n[1] \"data.frame\"\n\n\nlongley data features 7 variables, 16 observations:\n\ndim(longley)\n\n[1] 16  7\n\nhead(longley)\n\n     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed\n1947         83.0 234.289      235.6        159.0    107.608 1947   60.323\n1948         88.5 259.426      232.5        145.6    108.632 1948   61.122\n1949         88.2 258.054      368.2        161.6    109.773 1949   60.171\n1950         89.5 284.599      335.1        165.0    110.929 1950   61.187\n1951         96.2 328.975      209.9        309.9    112.075 1951   63.221\n1952         98.1 346.999      193.2        359.4    113.270 1952   63.639\n\n\n\n\n1.8.2 Creating variables with dplyr\nThe old-fashioned way\nlongley$employment_share &lt;- longley$Employed/longley$Population\nThe dplyr way:\n\nlongley &lt;- longley |&gt;\n  mutate(employment_share   = Employed / Population,\n         unemployment_share = (Unemployed / 100) / Population,\n         population_growth  = (Population - lag(Population)) / lag(Population))\n\n\nhead(longley)\n\n     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed\n1947         83.0 234.289      235.6        159.0    107.608 1947   60.323\n1948         88.5 259.426      232.5        145.6    108.632 1948   61.122\n1949         88.2 258.054      368.2        161.6    109.773 1949   60.171\n1950         89.5 284.599      335.1        165.0    110.929 1950   61.187\n1951         96.2 328.975      209.9        309.9    112.075 1951   63.221\n1952         98.1 346.999      193.2        359.4    113.270 1952   63.639\n     employment_share unemployment_share population_growth\n1947        0.5605810         0.02189428                NA\n1948        0.5626519         0.02140253       0.009516021\n1949        0.5481403         0.03354195       0.010503351\n1950        0.5515871         0.03020851       0.010530823\n1951        0.5640955         0.01872853       0.010330932\n1952        0.5618346         0.01705659       0.010662503\n\n\n\n\n1.8.3 Aggregating data\nSuppose we now want to combine the information in df_air with the information in longley. There is a problem: df_air is a monthly dataset, while longley is annual. Before we can combine them, both datasets need to have the same frequency, so we first aggregate df_air from monthly to annual data.\n\nhead(df_air)\n\n  year month passengers passengers_millions       season traffic\n1 1949     1        112               0.112 Rest of year     Low\n2 1949     2        118               0.118 Rest of year     Low\n3 1949     3        132               0.132 Rest of year     Low\n4 1949     4        129               0.129 Rest of year     Low\n5 1949     5        121               0.121 Rest of year     Low\n6 1949     6        135               0.135       Summer     Low\n\n\n\n# Aggregate the monthly data to one row per year\ndf_air_annual &lt;- df_air |&gt;\n  group_by(year) |&gt;\n  summarise(annual_passengers       = sum(passengers),\n            mean_monthly_passengers = mean(passengers),\n            min_monthly_passengers  = min(passengers),\n            max_monthly_passengers  = max(passengers))\n\nhead(df_air_annual)\n\n# A tibble: 6 × 5\n   year annual_passengers mean_monthly_passengers min_monthly_passengers\n  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;\n1  1949              1520                    127.                    104\n2  1950              1676                    140.                    114\n3  1951              2042                    170.                    145\n4  1952              2364                    197                     171\n5  1953              2700                    225                     180\n6  1954              2867                    239.                    188\n# ℹ 1 more variable: max_monthly_passengers &lt;dbl&gt;\n\n\n\n\n1.8.4 Merging datasets\nAfter aggregating the data to the ``highest’’ common denominator, we want to combine the two datasets in a single dataset.\nMerging (or joining) two datasets means putting their columns side by side, matching the rows that refer to the same observation. The variable used to match the rows is called the key. Here the key is the year, which is called year in df_air_annual and Year in longley, so we tell dplyr that they are the same variable with by = c(\"year\" = \"Year\").\nNew problem: The two datasets do not cover the same years: df_air_annual covers 1949 to 1960 (12 years), while longley covers 1947 to 1962 (16 years).\n\ndf_air_annual$year\n\n [1] 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960\n\nlongley$Year\n\n [1] 1947 1948 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 1961\n[16] 1962\n\n\ndplyr has several join functions, which differ only in what they do with the rows that have no match in the other dataset. In x |&gt; some_join(y), x is the left dataset and y is the right dataset:\n\n\n\n\n\n\n\n\nFunction\nRows it keeps\nRows in our example\n\n\n\n\ninner_join()\nonly the rows with a match in both datasets\n12 (1949 to 1960)\n\n\nleft_join()\nall rows of the left dataset\n12 (1949 to 1960)\n\n\nright_join()\nall rows of the right dataset\n16 (1947 to 1962)\n\n\nfull_join()\nall rows of both datasets\n16 (1947 to 1962)\n\n\n\ninner_join() keeps only the years that appear in both datasets:\n\n# Merge the two annual datasets, keeping the years present in both\ndf_inner &lt;- df_air_annual |&gt;\n  inner_join(longley, by = c(\"year\" = \"Year\"))\n\ndim(df_inner)\n\n[1] 12 14\n\nhead(df_inner)\n\n# A tibble: 6 × 14\n   year annual_passengers mean_monthly_passengers min_monthly_passengers\n  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;\n1  1949              1520                    127.                    104\n2  1950              1676                    140.                    114\n3  1951              2042                    170.                    145\n4  1952              2364                    197                     171\n5  1953              2700                    225                     180\n6  1954              2867                    239.                    188\n# ℹ 10 more variables: max_monthly_passengers &lt;dbl&gt;, GNP.deflator &lt;dbl&gt;,\n#   GNP &lt;dbl&gt;, Unemployed &lt;dbl&gt;, Armed.Forces &lt;dbl&gt;, Population &lt;dbl&gt;,\n#   Employed &lt;dbl&gt;, employment_share &lt;dbl&gt;, unemployment_share &lt;dbl&gt;,\n#   population_growth &lt;dbl&gt;\n\n\nleft_join() keeps every row of the left dataset, df_air_annual, and adds the longley variables to it. Since every year in df_air_annual also appears in longley, the result has the same 12 rows as with inner_join():\n\ndf_left &lt;- df_air_annual |&gt;\n  left_join(longley, by = c(\"year\" = \"Year\"))\n\ndim(df_left)\n\n[1] 12 14\n\n\nright_join() keeps every row of the right dataset, longley, so the result has 16 rows. The years 1947, 1948, 1961 and 1962 have no match in df_air_annual, so the passenger variables are missing (NA) in those rows:\n\ndf_right &lt;- df_air_annual |&gt;\n  right_join(longley, by = c(\"year\" = \"Year\"))\n\ndim(df_right)\n\n[1] 16 14\n\n# Rows without passenger data\ndf_right[is.na(df_right$annual_passengers), c(\"year\", \"annual_passengers\", \"GNP\")]\n\n# A tibble: 4 × 3\n   year annual_passengers   GNP\n  &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;\n1  1947                NA  234.\n2  1948                NA  259.\n3  1961                NA  518.\n4  1962                NA  555.\n\n\nWhich join to use depends on which observations you want to keep. A left join is the most common choice: it keeps your main dataset intact and adds information from a second one, without dropping or adding rows.\n\n\n1.8.5 Missing values\nis.na() returns TRUE for every missing value. Since R counts TRUE as 1 and FALSE as 0, sum() gives the number of missing values in a variable, and colSums() gives it for every variable of a dataframe:\n\nsum(is.na(df_right$annual_passengers))\n\n[1] 4\n\ncolSums(is.na(df_right))\n\n                   year       annual_passengers mean_monthly_passengers \n                      0                       4                       4 \n min_monthly_passengers  max_monthly_passengers            GNP.deflator \n                      4                       4                       0 \n                    GNP              Unemployed            Armed.Forces \n                      0                       0                       0 \n             Population                Employed        employment_share \n                      0                       0                       0 \n     unemployment_share       population_growth \n                      0                       1 \n\n\nMany functions return NA if the variable contains missing values. Adding na.rm = TRUE tells them to ignore the missing values:\n\nmean(df_right$annual_passengers)\n\n[1] NA\n\nmean(df_right$annual_passengers, na.rm = TRUE)\n\n[1] 3363.583",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "02_plotting.html",
-    "href": "02_plotting.html",
-    "title": "2  Plotting Data",
+    "objectID": "02_datasets.html",
+    "href": "02_datasets.html",
+    "title": "2  Datasets in R",
     "section": "",
-    "text": "2.1 Introduction\nFind the slides here",
+    "text": "2.1 Inspecting Dataframes\nBefore running any analysis, take a first look at the data: how large it is, which variables it contains, what values they take, and whether anything is missing. This helps to spot mistakes early, for example a merge that dropped observations or a variable stored in the wrong units.\nWe use df_air, the monthly passenger dataset created in Chapter 1, as an example.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Datasets in R</span>"
     ]
   },
   {
-    "objectID": "02_plotting.html#introduction",
-    "href": "02_plotting.html#introduction",
-    "title": "2  Plotting Data",
+    "objectID": "02_datasets.html#inspecting-dataframes",
+    "href": "02_datasets.html#inspecting-dataframes",
+    "title": "2  Datasets in R",
     "section": "",
-    "text": "2.1.1 Types of Variables\n\n\n\n\n\n\n\n\n\n\n\n2.1.2 Types of Graphs\n\n\n\n\n\n\n\n\n\nGraph\nVariables\nShows\nggplot2\n\n\n\n\nHistogram\n1 continuous\ndistribution of a variable\ngeom_histogram()\n\n\nBar chart\n1 categorical\nnumber of observations per category\ngeom_bar()\n\n\nBox plot\n1 continuous + 1 categorical\ndistribution within each category\ngeom_boxplot()\n\n\nScatter plot\n2 continuous\nrelationship between two variables\ngeom_point()\n\n\nLine graph\n1 continuous + time\nevolution of a variable over time\ngeom_line()\n\n\n\n\n\n2.1.3 The ggplot2 Package\ninstall.packages(\"ggplot2\")\nlibrary(ggplot2)\n# Histogram of income\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 30) +\n  labs(x = \"Income\", y = \"Frequency\")\n# Scatterplot of income against age\nggplot(df, aes(x = income, y = age)) +\n  geom_point(size  = 2) +\n  labs(x = \"Income\", y = \"Age\")",
+    "text": "2.1.1 Size and structure\ndim() returns the number of rows and columns, names() the variable names, and str() the type of each variable together with its first values:\n\ndim(df_air)\n\n[1] 144   3\n\nnames(df_air)\n\n[1] \"year\"       \"month\"      \"passengers\"\n\nstr(df_air)\n\n'data.frame':   144 obs. of  3 variables:\n $ year      : num  1949 1949 1949 1949 1949 ...\n $ month     : num  1 2 3 4 5 6 7 8 9 10 ...\n $ passengers: num  112 118 132 129 121 135 148 148 136 119 ...\n\n\nhead(), used in Chapter 1, prints the first six rows, and tail() prints the last six:\n\ntail(df_air)\n\n    year month passengers\n139 1960     7        622\n140 1960     8        606\n141 1960     9        508\n142 1960    10        461\n143 1960    11        390\n144 1960    12        432\n\n\n\n\n2.1.2 Summary statistics\nsummary() returns the minimum, the quartiles, the mean and the maximum of a numerical variable:\n\nsummary(df_air$passengers)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  104.0   180.0   265.5   280.3   360.5   622.0 \n\n\nApplied to a whole dataframe, it summarises every variable at once:\n\nsummary(df_air)\n\n      year          month         passengers   \n Min.   :1949   Min.   : 1.00   Min.   :104.0  \n 1st Qu.:1952   1st Qu.: 3.75   1st Qu.:180.0  \n Median :1954   Median : 6.50   Median :265.5  \n Mean   :1954   Mean   : 6.50   Mean   :280.3  \n 3rd Qu.:1957   3rd Qu.: 9.25   3rd Qu.:360.5  \n Max.   :1960   Max.   :12.00   Max.   :622.0  \n\n\nIndividual statistics have their own functions, such as mean(), median(), var() (variance) and sd() (standard deviation):\n\nmean(df_air$passengers)\n\n[1] 280.2986\n\nsd(df_air$passengers)\n\n[1] 119.9663\n\n\n\n\n2.1.3 Frequency tables\ntable() counts how many observations take each value of a variable. It is most useful for categorical variables. Here it confirms that every year has exactly 12 monthly observations:\n\ntable(df_air$year)\n\n\n1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 \n  12   12   12   12   12   12   12   12   12   12   12   12",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Datasets in R</span>"
     ]
   },
   {
-    "objectID": "02_plotting.html#histogram",
-    "href": "02_plotting.html#histogram",
-    "title": "2  Plotting Data",
-    "section": "2.2 Histogram",
-    "text": "2.2 Histogram\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20)\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20) +\n  facet_wrap(~ gender, ncol = 1)",
+    "objectID": "02_datasets.html#selecting-observations-and-variables",
+    "href": "02_datasets.html#selecting-observations-and-variables",
+    "title": "2  Datasets in R",
+    "section": "2.2 Selecting Observations and Variables",
+    "text": "2.2 Selecting Observations and Variables\nSquare brackets select parts of a dataframe by position, as dataframe[rows, columns]. Leaving the rows or the columns empty selects all of them. The $ sign selects a single variable by its name.\n\n# Accessing data through row/column indexes\ndf_air[1:3,] # Rows 1 to 3, all columns.\n\n  year month passengers\n1 1949     1        112\n2 1949     2        118\n3 1949     3        132\n\ndf_air[c(2,5),c(1,3)] # Rows 2 and 5, Columns 1 and 3.\n\n  year passengers\n2 1949        118\n5 1949        121\n\nhead(df_air[,c(1,3)]) # All rows, Columns 1 and 3 (first six rows shown).\n\n  year passengers\n1 1949        112\n2 1949        118\n3 1949        132\n4 1949        129\n5 1949        121\n6 1949        135\n\n\n\n# Access the 'passengers' variable.\ndf_air$passengers\n\n  [1] 112 118 132 129 121 135 148 148 136 119 104 118 115 126 141 135 125 149\n [19] 170 170 158 133 114 140 145 150 178 163 172 178 199 199 184 162 146 166\n [37] 171 180 193 181 183 218 230 242 209 191 172 194 196 196 236 235 229 243\n [55] 264 272 237 211 180 201 204 188 235 227 234 264 302 293 259 229 203 229\n [73] 242 233 267 269 270 315 364 347 312 274 237 278 284 277 317 313 318 374\n [91] 413 405 355 306 271 306 315 301 356 348 355 422 465 467 404 347 305 336\n[109] 340 318 362 348 363 435 491 505 404 359 310 337 360 342 406 396 420 472\n[127] 548 559 463 407 362 405 417 391 419 461 472 535 622 606 508 461 390 432\n\n\nGenerate a new dataset df_air_first_9_rows by selecting the first 9 observations/rows of the dataset:\n\ndf_air_first_9_rows &lt;- df_air[1:9,]\nls()\n\n[1] \"df_air\"              \"df_air_first_9_rows\" \"month\"              \n[4] \"pandoc_dir\"          \"passengers\"          \"quarto_bin_path\"    \n[7] \"year\"",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Datasets in R</span>"
     ]
   },
   {
-    "objectID": "02_plotting.html#bar-chart",
-    "href": "02_plotting.html#bar-chart",
-    "title": "2  Plotting Data",
-    "section": "2.3 Bar Chart",
-    "text": "2.3 Bar Chart\nggplot(df, aes(x = education)) +\n  geom_bar()\nggplot(df, aes(x = education, fill = gender)) +\n  geom_bar(position = \"dodge\") +\n  theme(legend.position = \"bottom\")",
+    "objectID": "02_datasets.html#creating-variables",
+    "href": "02_datasets.html#creating-variables",
+    "title": "2  Datasets in R",
+    "section": "2.3 Creating Variables",
+    "text": "2.3 Creating Variables\n\n2.3.1 From existing variables\nA new variable is created by assigning a vector to a name that does not yet exist in the dataframe, with dataframe$new_variable &lt;- .... The vector is usually computed from existing variables. passengers is measured in thousands, so dividing it by 1000 gives the number of passengers in millions:\n\ndf_air$passengers_millions &lt;- df_air$passengers / 1000\nhead(df_air)\n\n  year month passengers passengers_millions\n1 1949     1        112               0.112\n2 1949     2        118               0.118\n3 1949     3        132               0.132\n4 1949     4        129               0.129\n5 1949     5        121               0.121\n6 1949     6        135               0.135\n\n\n\n\n2.3.2 Logical conditions\nA logical condition compares values and returns TRUE or FALSE for each element of a vector. The most common operators are:\n\n\n\nOperator\nMeaning\n\n\n\n\n==\nequal to\n\n\n!=\nnot equal to\n\n\n&gt;, &gt;=\ngreater than, greater than or equal to\n\n\n&lt;, &lt;=\nless than, less than or equal to\n\n\n&\nand: both conditions are true\n\n\n\\|\nor: at least one condition is true\n\n\n%in%\nthe value is one of a set of values\n\n\n\nThe following condition is TRUE for the months between 1950 and 1959. table() counts how many observations satisfy it:\n\n# Logical condition vector\nindex_fifties &lt;- (df_air$year &gt;= 1950) & (df_air$year &lt;= 1959)\ntable(index_fifties)\n\nindex_fifties\nFALSE  TRUE \n   24   120 \n\n\n\n\n2.3.3 Variables based on a condition\nifelse() returns one value where a condition is TRUE and another where it is FALSE, which makes it useful for creating categorical variables. We create two categorical variables: season separates the summer months from the rest of the year, and traffic separates the months with more passengers than the median month from the others:\n\ndf_air$season  &lt;- ifelse(df_air$month %in% 6:8, \"Summer\", \"Rest of year\")\ndf_air$traffic &lt;- ifelse(df_air$passengers &gt; median(df_air$passengers), \"High\", \"Low\")\n\ntable(df_air$season)\n\n\nRest of year       Summer \n         108           36 \n\n\n\n\n2.3.4 Two-way tables\nWith two variables, table() returns a two-way table (or cross-table), which counts the observations for each combination of categories:\n\ntable(df_air$season, df_air$traffic)\n\n              \n               High Low\n  Rest of year   51  57\n  Summer         21  15\n\n\nprop.table() turns the counts into shares. With margin = 1, the shares add up to one within each row:\n\nprop.table(table(df_air$season, df_air$traffic), margin = 1)\n\n              \n                    High       Low\n  Rest of year 0.4722222 0.5277778\n  Summer       0.5833333 0.4166667\n\n\n\n\n2.3.5 Selecting observations with a condition\nGenerate a new dataset df_air_fifties by selecting the observations/rows that match the condition in index_fifties:\n\ndf_air_fifties &lt;- df_air[index_fifties, ]\ndim(df_air_fifties)\n\n[1] 120   6",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Datasets in R</span>"
     ]
   },
   {
-    "objectID": "02_plotting.html#box-plot",
-    "href": "02_plotting.html#box-plot",
-    "title": "2  Plotting Data",
-    "section": "2.4 Box Plot",
-    "text": "2.4 Box Plot\nggplot(df, aes(x = education, y = income)) +\n  geom_boxplot()\nggplot(df, aes(x = education, y = income,\n               fill = gender)) +\n  geom_boxplot() +\n  theme(legend.position = \"bottom\")",
+    "objectID": "02_datasets.html#working-with-several-datasets",
+    "href": "02_datasets.html#working-with-several-datasets",
+    "title": "2  Datasets in R",
+    "section": "2.4 Working with Several Datasets",
+    "text": "2.4 Working with Several Datasets\nIn this section we work with a second dataset, longley, and later combine it with df_air.\n\n2.4.1 A second dataset: longley\nlongley is a dataset that comes built into R, with yearly macroeconomic data for the United States from 1947 to 1962. Each row is one year, and each column is one of the following seven variables:\n\n\n\n\n\n\n\n\nVariable\nDescription\nUnits\n\n\n\n\nGNP.deflator\nGNP implicit price deflator, a measure of the price level\nindex, 1954 = 100\n\n\nGNP\nGross National Product\nbillions of current US dollars\n\n\nUnemployed\nnumber of unemployed people\ntens of thousands of people\n\n\nArmed.Forces\nnumber of people in the armed forces\ntens of thousands of people\n\n\nPopulation\nnon-institutionalized population aged 14 or older\nmillions of people\n\n\nYear\nthe year of the observation\ncalendar year\n\n\nEmployed\nnumber of employed people\nmillions of people\n\n\n\nFor example, in 1947 the value of Unemployed is 235.6, which means about 2.36 million unemployed people, and the value of Employed is 60.323, which means about 60.3 million employed people.\n\n# longley: US macroeconomic data, one row per year (1947-1962)\ndata(longley)\nclass(longley)\n\n[1] \"data.frame\"\n\n\nlongley data features 7 variables, 16 observations:\n\ndim(longley)\n\n[1] 16  7\n\nhead(longley)\n\n     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed\n1947         83.0 234.289      235.6        159.0    107.608 1947   60.323\n1948         88.5 259.426      232.5        145.6    108.632 1948   61.122\n1949         88.2 258.054      368.2        161.6    109.773 1949   60.171\n1950         89.5 284.599      335.1        165.0    110.929 1950   61.187\n1951         96.2 328.975      209.9        309.9    112.075 1951   63.221\n1952         98.1 346.999      193.2        359.4    113.270 1952   63.639\n\n\n\n\n2.4.2 Creating variables with dplyr\nThe old-fashioned way\nlongley$employment_share &lt;- longley$Employed/longley$Population\nThe dplyr way:\n\nlongley &lt;- longley |&gt;\n  mutate(employment_share   = Employed / Population,\n         unemployment_share = (Unemployed / 100) / Population,\n         population_growth  = (Population - lag(Population)) / lag(Population))\n\n\nhead(longley)\n\n     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed\n1947         83.0 234.289      235.6        159.0    107.608 1947   60.323\n1948         88.5 259.426      232.5        145.6    108.632 1948   61.122\n1949         88.2 258.054      368.2        161.6    109.773 1949   60.171\n1950         89.5 284.599      335.1        165.0    110.929 1950   61.187\n1951         96.2 328.975      209.9        309.9    112.075 1951   63.221\n1952         98.1 346.999      193.2        359.4    113.270 1952   63.639\n     employment_share unemployment_share population_growth\n1947        0.5605810         0.02189428                NA\n1948        0.5626519         0.02140253       0.009516021\n1949        0.5481403         0.03354195       0.010503351\n1950        0.5515871         0.03020851       0.010530823\n1951        0.5640955         0.01872853       0.010330932\n1952        0.5618346         0.01705659       0.010662503\n\n\n\n\n2.4.3 Aggregating data\nSuppose we now want to combine the information in df_air with the information in longley. There is a problem: df_air is a monthly dataset, while longley is annual. Before we can combine them, both datasets need to have the same frequency, so we first aggregate df_air from monthly to annual data.\n\nhead(df_air)\n\n  year month passengers passengers_millions       season traffic\n1 1949     1        112               0.112 Rest of year     Low\n2 1949     2        118               0.118 Rest of year     Low\n3 1949     3        132               0.132 Rest of year     Low\n4 1949     4        129               0.129 Rest of year     Low\n5 1949     5        121               0.121 Rest of year     Low\n6 1949     6        135               0.135       Summer     Low\n\n\n\n# Aggregate the monthly data to one row per year\ndf_air_annual &lt;- df_air |&gt;\n  group_by(year) |&gt;\n  summarise(annual_passengers       = sum(passengers),\n            mean_monthly_passengers = mean(passengers),\n            min_monthly_passengers  = min(passengers),\n            max_monthly_passengers  = max(passengers))\n\nhead(df_air_annual)\n\n# A tibble: 6 × 5\n   year annual_passengers mean_monthly_passengers min_monthly_passengers\n  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;\n1  1949              1520                    127.                    104\n2  1950              1676                    140.                    114\n3  1951              2042                    170.                    145\n4  1952              2364                    197                     171\n5  1953              2700                    225                     180\n6  1954              2867                    239.                    188\n# ℹ 1 more variable: max_monthly_passengers &lt;dbl&gt;\n\n\n\n\n2.4.4 Merging datasets\nAfter aggregating the data to the “highest” common denominator, we want to combine the two datasets in a single dataset.\nMerging (or joining) two datasets means putting their columns side by side, matching the rows that refer to the same observation. The variable used to match the rows is called the key. Here the key is the year, which is called year in df_air_annual and Year in longley, so we tell dplyr that they are the same variable with by = c(\"year\" = \"Year\").\nNew problem: The two datasets do not cover the same years: df_air_annual covers 1949 to 1960 (12 years), while longley covers 1947 to 1962 (16 years).\n\ndf_air_annual$year\n\n [1] 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960\n\nlongley$Year\n\n [1] 1947 1948 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 1961\n[16] 1962\n\n\ndplyr has several join functions, which differ only in what they do with the rows that have no match in the other dataset. In x |&gt; some_join(y), x is the left dataset and y is the right dataset:\n\n\n\n\n\n\n\n\nFunction\nRows it keeps\nRows in our example\n\n\n\n\ninner_join()\nonly the rows with a match in both datasets\n12 (1949 to 1960)\n\n\nleft_join()\nall rows of the left dataset\n12 (1949 to 1960)\n\n\nright_join()\nall rows of the right dataset\n16 (1947 to 1962)\n\n\nfull_join()\nall rows of both datasets\n16 (1947 to 1962)\n\n\n\ninner_join() keeps only the years that appear in both datasets:\n\n# Merge the two annual datasets, keeping the years present in both\ndf_inner &lt;- df_air_annual |&gt;\n  inner_join(longley, by = c(\"year\" = \"Year\"))\n\ndim(df_inner)\n\n[1] 12 14\n\nhead(df_inner)\n\n# A tibble: 6 × 14\n   year annual_passengers mean_monthly_passengers min_monthly_passengers\n  &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;\n1  1949              1520                    127.                    104\n2  1950              1676                    140.                    114\n3  1951              2042                    170.                    145\n4  1952              2364                    197                     171\n5  1953              2700                    225                     180\n6  1954              2867                    239.                    188\n# ℹ 10 more variables: max_monthly_passengers &lt;dbl&gt;, GNP.deflator &lt;dbl&gt;,\n#   GNP &lt;dbl&gt;, Unemployed &lt;dbl&gt;, Armed.Forces &lt;dbl&gt;, Population &lt;dbl&gt;,\n#   Employed &lt;dbl&gt;, employment_share &lt;dbl&gt;, unemployment_share &lt;dbl&gt;,\n#   population_growth &lt;dbl&gt;\n\n\nleft_join() keeps every row of the left dataset, df_air_annual, and adds the longley variables to it. Since every year in df_air_annual also appears in longley, the result has the same 12 rows as with inner_join():\n\ndf_left &lt;- df_air_annual |&gt;\n  left_join(longley, by = c(\"year\" = \"Year\"))\n\ndim(df_left)\n\n[1] 12 14\n\n\nright_join() keeps every row of the right dataset, longley, so the result has 16 rows. The years 1947, 1948, 1961 and 1962 have no match in df_air_annual, so the passenger variables are missing (NA) in those rows:\n\ndf_right &lt;- df_air_annual |&gt;\n  right_join(longley, by = c(\"year\" = \"Year\"))\n\ndim(df_right)\n\n[1] 16 14\n\n# Rows without passenger data\ndf_right[is.na(df_right$annual_passengers), c(\"year\", \"annual_passengers\", \"GNP\")]\n\n# A tibble: 4 × 3\n   year annual_passengers   GNP\n  &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;\n1  1947                NA  234.\n2  1948                NA  259.\n3  1961                NA  518.\n4  1962                NA  555.\n\n\nWhich join to use depends on which observations you want to keep. A left join is the most common choice: it keeps your main dataset intact and adds information from a second one, without dropping or adding rows.\n\n\n2.4.5 Missing values\nis.na() returns TRUE for every missing value. Since R counts TRUE as 1 and FALSE as 0, sum() gives the number of missing values in a variable, and colSums() gives it for every variable of a dataframe:\n\nsum(is.na(df_right$annual_passengers))\n\n[1] 4\n\ncolSums(is.na(df_right))\n\n                   year       annual_passengers mean_monthly_passengers \n                      0                       4                       4 \n min_monthly_passengers  max_monthly_passengers            GNP.deflator \n                      4                       4                       0 \n                    GNP              Unemployed            Armed.Forces \n                      0                       0                       0 \n             Population                Employed        employment_share \n                      0                       0                       0 \n     unemployment_share       population_growth \n                      0                       1 \n\n\nMany functions return NA if the variable contains missing values. Adding na.rm = TRUE tells them to ignore the missing values:\n\nmean(df_right$annual_passengers)\n\n[1] NA\n\nmean(df_right$annual_passengers, na.rm = TRUE)\n\n[1] 3363.583",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Datasets in R</span>"
     ]
   },
   {
-    "objectID": "02_plotting.html#scatter-plot",
-    "href": "02_plotting.html#scatter-plot",
-    "title": "2  Plotting Data",
-    "section": "2.5 Scatter Plot",
-    "text": "2.5 Scatter Plot\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nggplot(df, aes(x = age, y = income,\n               colour = gender)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
-    ]
-  },
-  {
-    "objectID": "02_plotting.html#line-graph",
-    "href": "02_plotting.html#line-graph",
-    "title": "2  Plotting Data",
-    "section": "2.6 Line Graph",
-    "text": "2.6 Line Graph\nggplot(df_ts[df_ts$country == \"A\", ],\n       aes(x = year, y = unemp)) +\n  geom_line()\nggplot(df_ts, aes(x = year, y = unemp,\n                  colour = country)) +\n  geom_line()",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting Data</span>"
-    ]
-  },
-  {
-    "objectID": "03_mlr1.html",
-    "href": "03_mlr1.html",
-    "title": "3  Multiple Linear Regression I",
+    "objectID": "04_plotting.html",
+    "href": "04_plotting.html",
+    "title": "4  Plotting Data",
     "section": "",
-    "text": "3.1 Slides\nContent coming soon.",
+    "text": "4.1 Introduction\nFind the slides here",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
   },
   {
-    "objectID": "03_mlr1.html#r-code",
-    "href": "03_mlr1.html#r-code",
-    "title": "3  Multiple Linear Regression I",
-    "section": "3.2 R code",
-    "text": "3.2 R code",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
-    ]
-  },
-  {
-    "objectID": "03_mlr1.html#data",
-    "href": "03_mlr1.html#data",
-    "title": "3  Multiple Linear Regression I",
-    "section": "3.3 Data",
-    "text": "3.3 Data",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
-    ]
-  },
-  {
-    "objectID": "04_mlr2.html",
-    "href": "04_mlr2.html",
-    "title": "4  Multiple Linear Regression II",
+    "objectID": "04_plotting.html#introduction",
+    "href": "04_plotting.html#introduction",
+    "title": "4  Plotting Data",
     "section": "",
-    "text": "4.1 Slides\nContent coming soon.",
+    "text": "4.1.1 Types of Variables\n\n\n\n\n\n\n\n\n\n\n\n4.1.2 Types of Graphs\n\n\n\n\n\n\n\n\n\nGraph\nVariables\nShows\nggplot2\n\n\n\n\nHistogram\n1 continuous\ndistribution of a variable\ngeom_histogram()\n\n\nBar chart\n1 categorical\nnumber of observations per category\ngeom_bar()\n\n\nBox plot\n1 continuous + 1 categorical\ndistribution within each category\ngeom_boxplot()\n\n\nScatter plot\n2 continuous\nrelationship between two variables\ngeom_point()\n\n\nLine graph\n1 continuous + time\nevolution of a variable over time\ngeom_line()\n\n\n\n\n\n4.1.3 The ggplot2 Package\ninstall.packages(\"ggplot2\")\nlibrary(ggplot2)\n# Histogram of income\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 30) +\n  labs(x = \"Income\", y = \"Frequency\")\n# Scatterplot of income against age\nggplot(df, aes(x = income, y = age)) +\n  geom_point(size  = 2) +\n  labs(x = \"Income\", y = \"Age\")",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
   },
   {
-    "objectID": "04_mlr2.html#r-code",
-    "href": "04_mlr2.html#r-code",
-    "title": "4  Multiple Linear Regression II",
-    "section": "4.2 R code",
-    "text": "4.2 R code",
+    "objectID": "04_plotting.html#histogram",
+    "href": "04_plotting.html#histogram",
+    "title": "4  Plotting Data",
+    "section": "4.2 Histogram",
+    "text": "4.2 Histogram\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20)\nggplot(df, aes(x = income)) +\n  geom_histogram(bins = 20) +\n  facet_wrap(~ gender, ncol = 1)",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
   },
   {
-    "objectID": "04_mlr2.html#data",
-    "href": "04_mlr2.html#data",
-    "title": "4  Multiple Linear Regression II",
-    "section": "4.3 Data",
-    "text": "4.3 Data",
+    "objectID": "04_plotting.html#bar-chart",
+    "href": "04_plotting.html#bar-chart",
+    "title": "4  Plotting Data",
+    "section": "4.3 Bar Chart",
+    "text": "4.3 Bar Chart\nggplot(df, aes(x = education)) +\n  geom_bar()\nggplot(df, aes(x = education, fill = gender)) +\n  geom_bar(position = \"dodge\") +\n  theme(legend.position = \"bottom\")",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
   },
   {
-    "objectID": "05_ols-variance.html",
-    "href": "05_ols-variance.html",
-    "title": "5  OLS Variance and Robust Standard Errors",
+    "objectID": "04_plotting.html#box-plot",
+    "href": "04_plotting.html#box-plot",
+    "title": "4  Plotting Data",
+    "section": "4.4 Box Plot",
+    "text": "4.4 Box Plot\nggplot(df, aes(x = education, y = income)) +\n  geom_boxplot()\nggplot(df, aes(x = education, y = income,\n               fill = gender)) +\n  geom_boxplot() +\n  theme(legend.position = \"bottom\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "04_plotting.html#scatter-plot",
+    "href": "04_plotting.html#scatter-plot",
+    "title": "4  Plotting Data",
+    "section": "4.5 Scatter Plot",
+    "text": "4.5 Scatter Plot\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nggplot(df, aes(x = age, y = income,\n               colour = gender)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "04_plotting.html#line-graph",
+    "href": "04_plotting.html#line-graph",
+    "title": "4  Plotting Data",
+    "section": "4.6 Line Graph",
+    "text": "4.6 Line Graph\nggplot(df_ts[df_ts$country == \"A\", ],\n       aes(x = year, y = unemp)) +\n  geom_line()\nggplot(df_ts, aes(x = year, y = unemp,\n                  colour = country)) +\n  geom_line()",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "04_plotting.html#maps",
+    "href": "04_plotting.html#maps",
+    "title": "4  Plotting Data",
+    "section": "4.7 Maps",
+    "text": "4.7 Maps",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
+    ]
+  },
+  {
+    "objectID": "05_mlr1.html",
+    "href": "05_mlr1.html",
+    "title": "5  Multiple Linear Regression I",
     "section": "",
     "text": "5.1 Slides\nContent coming soon.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
     ]
   },
   {
-    "objectID": "05_ols-variance.html#r-code",
-    "href": "05_ols-variance.html#r-code",
-    "title": "5  OLS Variance and Robust Standard Errors",
+    "objectID": "05_mlr1.html#r-code",
+    "href": "05_mlr1.html#r-code",
+    "title": "5  Multiple Linear Regression I",
     "section": "5.2 R code",
     "text": "5.2 R code",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
     ]
   },
   {
-    "objectID": "05_ols-variance.html#data",
-    "href": "05_ols-variance.html#data",
-    "title": "5  OLS Variance and Robust Standard Errors",
+    "objectID": "05_mlr1.html#data",
+    "href": "05_mlr1.html#data",
+    "title": "5  Multiple Linear Regression I",
     "section": "5.3 Data",
     "text": "5.3 Data",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Multiple Linear Regression I</span>"
     ]
   },
   {
-    "objectID": "06_inference.html",
-    "href": "06_inference.html",
-    "title": "6  Statistical Inference",
+    "objectID": "06_mlr2.html",
+    "href": "06_mlr2.html",
+    "title": "6  Multiple Linear Regression II",
     "section": "",
     "text": "6.1 Slides\nContent coming soon.",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Statistical Inference</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
     ]
   },
   {
-    "objectID": "06_inference.html#r-code",
-    "href": "06_inference.html#r-code",
-    "title": "6  Statistical Inference",
+    "objectID": "06_mlr2.html#r-code",
+    "href": "06_mlr2.html#r-code",
+    "title": "6  Multiple Linear Regression II",
     "section": "6.2 R code",
     "text": "6.2 R code",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Statistical Inference</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
     ]
   },
   {
-    "objectID": "06_inference.html#data",
-    "href": "06_inference.html#data",
-    "title": "6  Statistical Inference",
+    "objectID": "06_mlr2.html#data",
+    "href": "06_mlr2.html#data",
+    "title": "6  Multiple Linear Regression II",
     "section": "6.3 Data",
     "text": "6.3 Data",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Statistical Inference</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Multiple Linear Regression II</span>"
     ]
   },
   {
-    "objectID": "07_causality.html",
-    "href": "07_causality.html",
-    "title": "7  Causality and Correlation",
+    "objectID": "07_ols-variance.html",
+    "href": "07_ols-variance.html",
+    "title": "7  OLS Variance and Robust Standard Errors",
     "section": "",
     "text": "7.1 Slides\nContent coming soon.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Causality and Correlation</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
     ]
   },
   {
-    "objectID": "07_causality.html#r-code",
-    "href": "07_causality.html#r-code",
-    "title": "7  Causality and Correlation",
+    "objectID": "07_ols-variance.html#r-code",
+    "href": "07_ols-variance.html#r-code",
+    "title": "7  OLS Variance and Robust Standard Errors",
     "section": "7.2 R code",
     "text": "7.2 R code",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Causality and Correlation</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
     ]
   },
   {
-    "objectID": "07_causality.html#data",
-    "href": "07_causality.html#data",
-    "title": "7  Causality and Correlation",
+    "objectID": "07_ols-variance.html#data",
+    "href": "07_ols-variance.html#data",
+    "title": "7  OLS Variance and Robust Standard Errors",
     "section": "7.3 Data",
     "text": "7.3 Data",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Causality and Correlation</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OLS Variance and Robust Standard Errors</span>"
     ]
   },
   {
-    "objectID": "08_iv.html",
-    "href": "08_iv.html",
-    "title": "8  Instrumental Variables",
+    "objectID": "08_inference.html",
+    "href": "08_inference.html",
+    "title": "8  Statistical Inference",
     "section": "",
     "text": "8.1 Slides\nContent coming soon.",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instrumental Variables</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Statistical Inference</span>"
     ]
   },
   {
-    "objectID": "08_iv.html#r-code",
-    "href": "08_iv.html#r-code",
-    "title": "8  Instrumental Variables",
+    "objectID": "08_inference.html#r-code",
+    "href": "08_inference.html#r-code",
+    "title": "8  Statistical Inference",
     "section": "8.2 R code",
     "text": "8.2 R code",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instrumental Variables</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Statistical Inference</span>"
     ]
   },
   {
-    "objectID": "08_iv.html#data",
-    "href": "08_iv.html#data",
-    "title": "8  Instrumental Variables",
+    "objectID": "08_inference.html#data",
+    "href": "08_inference.html#data",
+    "title": "8  Statistical Inference",
     "section": "8.3 Data",
     "text": "8.3 Data",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Instrumental Variables</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Statistical Inference</span>"
     ]
   },
   {
-    "objectID": "09_panel.html",
-    "href": "09_panel.html",
-    "title": "9  Panel Data Methods",
+    "objectID": "09_causality.html",
+    "href": "09_causality.html",
+    "title": "9  Causality and Correlation",
     "section": "",
     "text": "9.1 Slides\nContent coming soon.",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Panel Data Methods</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Causality and Correlation</span>"
     ]
   },
   {
-    "objectID": "09_panel.html#r-code",
-    "href": "09_panel.html#r-code",
-    "title": "9  Panel Data Methods",
+    "objectID": "09_causality.html#r-code",
+    "href": "09_causality.html#r-code",
+    "title": "9  Causality and Correlation",
     "section": "9.2 R code",
     "text": "9.2 R code",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Panel Data Methods</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Causality and Correlation</span>"
     ]
   },
   {
-    "objectID": "09_panel.html#data",
-    "href": "09_panel.html#data",
-    "title": "9  Panel Data Methods",
+    "objectID": "09_causality.html#data",
+    "href": "09_causality.html#data",
+    "title": "9  Causality and Correlation",
     "section": "9.3 Data",
     "text": "9.3 Data",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Panel Data Methods</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Causality and Correlation</span>"
     ]
   },
   {
-    "objectID": "10_did.html",
-    "href": "10_did.html",
-    "title": "10  Difference-in-Differences",
+    "objectID": "10_iv.html",
+    "href": "10_iv.html",
+    "title": "10  Instrumental Variables",
     "section": "",
     "text": "10.1 Slides\nContent coming soon.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Instrumental Variables</span>"
     ]
   },
   {
-    "objectID": "10_did.html#r-code",
-    "href": "10_did.html#r-code",
-    "title": "10  Difference-in-Differences",
+    "objectID": "10_iv.html#r-code",
+    "href": "10_iv.html#r-code",
+    "title": "10  Instrumental Variables",
     "section": "10.2 R code",
     "text": "10.2 R code",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Instrumental Variables</span>"
     ]
   },
   {
-    "objectID": "10_did.html#data",
-    "href": "10_did.html#data",
-    "title": "10  Difference-in-Differences",
+    "objectID": "10_iv.html#data",
+    "href": "10_iv.html#data",
+    "title": "10  Instrumental Variables",
     "section": "10.3 Data",
     "text": "10.3 Data",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Instrumental Variables</span>"
     ]
   },
   {
-    "objectID": "11_rdd.html",
-    "href": "11_rdd.html",
-    "title": "11  Regression Discontinuity Design",
+    "objectID": "11_panel.html",
+    "href": "11_panel.html",
+    "title": "11  Panel Data Methods",
     "section": "",
     "text": "11.1 Slides\nContent coming soon.",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Panel Data Methods</span>"
     ]
   },
   {
-    "objectID": "11_rdd.html#r-code",
-    "href": "11_rdd.html#r-code",
-    "title": "11  Regression Discontinuity Design",
+    "objectID": "11_panel.html#r-code",
+    "href": "11_panel.html#r-code",
+    "title": "11  Panel Data Methods",
     "section": "11.2 R code",
     "text": "11.2 R code",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Panel Data Methods</span>"
     ]
   },
   {
-    "objectID": "11_rdd.html#data",
-    "href": "11_rdd.html#data",
-    "title": "11  Regression Discontinuity Design",
+    "objectID": "11_panel.html#data",
+    "href": "11_panel.html#data",
+    "title": "11  Panel Data Methods",
     "section": "11.3 Data",
     "text": "11.3 Data",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Panel Data Methods</span>"
+    ]
+  },
+  {
+    "objectID": "12_did.html",
+    "href": "12_did.html",
+    "title": "12  Difference-in-Differences",
+    "section": "",
+    "text": "12.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "12_did.html#r-code",
+    "href": "12_did.html#r-code",
+    "title": "12  Difference-in-Differences",
+    "section": "12.2 R code",
+    "text": "12.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "12_did.html#data",
+    "href": "12_did.html#data",
+    "title": "12  Difference-in-Differences",
+    "section": "12.3 Data",
+    "text": "12.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Difference-in-Differences</span>"
+    ]
+  },
+  {
+    "objectID": "13_rdd.html",
+    "href": "13_rdd.html",
+    "title": "13  Regression Discontinuity Design",
+    "section": "",
+    "text": "13.1 Slides\nContent coming soon.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  },
+  {
+    "objectID": "13_rdd.html#r-code",
+    "href": "13_rdd.html#r-code",
+    "title": "13  Regression Discontinuity Design",
+    "section": "13.2 R code",
+    "text": "13.2 R code",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
+    ]
+  },
+  {
+    "objectID": "13_rdd.html#data",
+    "href": "13_rdd.html#data",
+    "title": "13  Regression Discontinuity Design",
+    "section": "13.3 Data",
+    "text": "13.3 Data",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
     ]
   }
 ]
