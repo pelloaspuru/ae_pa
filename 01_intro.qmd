@@ -2,7 +2,7 @@
 
 Find the slides [here](slides/AE_week01_Intro/AE_w01_intro.pdf)
 
-## Setting up your first .R script
+## Setting an .R script
 
 ### Comments
 

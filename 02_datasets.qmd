@@ -155,7 +155,30 @@ df_air_fifties <- df_air[index_fifties, ]
 dim(df_air_fifties)
 ```
 
-## Working with Several Datasets
+### Creating variables with `dplyr`
+
+The old-fashioned way creates one variable at a time, repeating the name of the dataframe each time:
+
+```r
+df_air$passengers_millions <- df_air$passengers / 1000
+```
+
+The `dplyr` way starts from the dataframe and passes it to `mutate()` with the pipe `|>`. Inside `mutate()`, variables are referred to by their name alone, and several new variables can be created at once. `lag()` returns the value of the previous row, so `lag(passengers)` is the number of passengers in the previous month and `lag(passengers, 12)` the number in the same month of the previous year:
+
+```{r}
+df_air <- df_air |>
+  mutate(passengers_millions = passengers / 1000,
+         growth_monthly      = (passengers - lag(passengers)) / lag(passengers),
+         growth_yearly       = (passengers - lag(passengers, 12)) / lag(passengers, 12))
+```
+
+The first month has no previous month, and the first 12 months have no previous year, so the growth rates are missing (`NA`) in those rows:
+
+```{r}
+head(df_air[, c("year", "month", "passengers", "passengers_millions", "growth_monthly", "growth_yearly")], 14)
+```
+
+## Multiple Datasets
 
 In this section we work with a second dataset, `longley`, and later combine it with `df_air`.
 
@@ -184,26 +207,6 @@ class(longley)
 `longley` data features 7 variables, 16 observations:
 ```{r}
 dim(longley)
-head(longley)
-```
-
-### Creating variables with `dplyr`
-
-The old-fashioned way
-
-```r
-longley$employment_share <- longley$Employed/longley$Population
-```
-
-The `dplyr` way:
-```{r}
-longley <- longley |>
-  mutate(employment_share   = Employed / Population,
-         unemployment_share = (Unemployed / 100) / Population,
-         population_growth  = (Population - lag(Population)) / lag(Population))
-```
-
-```{r}
 head(longley)
 ```
 

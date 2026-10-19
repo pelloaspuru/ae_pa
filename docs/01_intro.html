@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_data_construction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Building Datasets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Scraping Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -242,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setting-up-your-first-.r-script" id="toc-setting-up-your-first-.r-script" class="nav-link active" data-scroll-target="#setting-up-your-first-.r-script"><span class="header-section-number">1.1</span> Setting up your first .R script</a>
+  <li><a href="#setting-an-.r-script" id="toc-setting-an-.r-script" class="nav-link active" data-scroll-target="#setting-an-.r-script"><span class="header-section-number">1.1</span> Setting an .R script</a>
   <ul class="collapse">
   <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments"><span class="header-section-number">1.1.1</span> Comments</a></li>
   <li><a href="#header" id="toc-header" class="nav-link" data-scroll-target="#header"><span class="header-section-number">1.1.2</span> Header</a></li>
@@ -286,8 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Find the slides <a href="slides/AE_week01_Intro/AE_w01_intro.pdf">here</a></p>
-<section id="setting-up-your-first-.r-script" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="setting-up-your-first-.r-script"><span class="header-section-number">1.1</span> Setting up your first .R script</h2>
+<section id="setting-an-.r-script" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="setting-an-.r-script"><span class="header-section-number">1.1</span> Setting an .R script</h2>
 <section id="comments" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="comments"><span class="header-section-number">1.1.1</span> Comments</h3>
 <div class="cell">
@@ -381,14 +381,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>age <span class="co"># Print object in console</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 35 20 20 49 34 19 42 57 36 20 19 39 22 35 47 29 52 54 47 28 39 59 47 39 21
- [26] 35 52 65 59 38 37 49 41 33 43 23 51 44 51 27 40 59 48 58 20 50 19 51 56 63
- [51] 19 59 60 28 48 33 43 51 38 46 29 60 18 65 27 54 19 28 43 51 23 55 37 56 44
- [76] 53 54 58 43 36 41 31 57 65 57 18 22 61 50 64 45 56 61 60 61 21 61 59 23 59</code></pre>
+<pre><code>  [1] 34 56 62 20 53 27 53 44 26 39 23 56 35 29 51 46 56 25 61 44 56 28 31 18 42
+ [26] 52 33 53 39 45 56 40 33 48 24 31 58 64 51 58 29 23 65 61 39 47 26 25 34 46
+ [51] 52 26 58 29 42 64 52 38 65 41 61 30 56 37 18 40 18 24 54 57 56 36 23 49 58
+ [76] 46 53 18 27 47 61 19 50 29 56 20 39 64 32 65 41 18 18 63 20 25 27 60 45 19</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(age) <span class="co"># Object type, size</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> int [1:100] 35 20 20 49 34 19 42 57 36 20 ...</code></pre>
+<pre><code> int [1:100] 34 56 62 20 53 27 53 44 26 39 ...</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age) <span class="co"># Object type</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">

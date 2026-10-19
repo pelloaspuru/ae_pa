@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_data_construction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Building Datasets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Scraping Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -256,14 +256,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#variables-based-on-a-condition" id="toc-variables-based-on-a-condition" class="nav-link" data-scroll-target="#variables-based-on-a-condition"><span class="header-section-number">2.3.3</span> Variables based on a condition</a></li>
   <li><a href="#two-way-tables" id="toc-two-way-tables" class="nav-link" data-scroll-target="#two-way-tables"><span class="header-section-number">2.3.4</span> Two-way tables</a></li>
   <li><a href="#selecting-observations-with-a-condition" id="toc-selecting-observations-with-a-condition" class="nav-link" data-scroll-target="#selecting-observations-with-a-condition"><span class="header-section-number">2.3.5</span> Selecting observations with a condition</a></li>
+  <li><a href="#creating-variables-with-dplyr" id="toc-creating-variables-with-dplyr" class="nav-link" data-scroll-target="#creating-variables-with-dplyr"><span class="header-section-number">2.3.6</span> Creating variables with <code>dplyr</code></a></li>
   </ul></li>
-  <li><a href="#working-with-several-datasets" id="toc-working-with-several-datasets" class="nav-link" data-scroll-target="#working-with-several-datasets"><span class="header-section-number">2.4</span> Working with Several Datasets</a>
+  <li><a href="#multiple-datasets" id="toc-multiple-datasets" class="nav-link" data-scroll-target="#multiple-datasets"><span class="header-section-number">2.4</span> Multiple Datasets</a>
   <ul class="collapse">
   <li><a href="#a-second-dataset-longley" id="toc-a-second-dataset-longley" class="nav-link" data-scroll-target="#a-second-dataset-longley"><span class="header-section-number">2.4.1</span> A second dataset: <code>longley</code></a></li>
-  <li><a href="#creating-variables-with-dplyr" id="toc-creating-variables-with-dplyr" class="nav-link" data-scroll-target="#creating-variables-with-dplyr"><span class="header-section-number">2.4.2</span> Creating variables with <code>dplyr</code></a></li>
-  <li><a href="#aggregating-data" id="toc-aggregating-data" class="nav-link" data-scroll-target="#aggregating-data"><span class="header-section-number">2.4.3</span> Aggregating data</a></li>
-  <li><a href="#merging-datasets" id="toc-merging-datasets" class="nav-link" data-scroll-target="#merging-datasets"><span class="header-section-number">2.4.4</span> Merging datasets</a></li>
-  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="header-section-number">2.4.5</span> Missing values</a></li>
+  <li><a href="#aggregating-data" id="toc-aggregating-data" class="nav-link" data-scroll-target="#aggregating-data"><span class="header-section-number">2.4.2</span> Aggregating data</a></li>
+  <li><a href="#merging-datasets" id="toc-merging-datasets" class="nav-link" data-scroll-target="#merging-datasets"><span class="header-section-number">2.4.3</span> Merging datasets</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="header-section-number">2.4.4</span> Missing values</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -555,9 +555,42 @@ Rest of year       Summer
 </div>
 </div>
 </section>
+<section id="creating-variables-with-dplyr" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="creating-variables-with-dplyr"><span class="header-section-number">2.3.6</span> Creating variables with <code>dplyr</code></h3>
+<p>The old-fashioned way creates one variable at a time, repeating the name of the dataframe each time:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_air<span class="sc">$</span>passengers_millions <span class="ot">&lt;-</span> df_air<span class="sc">$</span>passengers <span class="sc">/</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>dplyr</code> way starts from the dataframe and passes it to <code>mutate()</code> with the pipe <code>|&gt;</code>. Inside <code>mutate()</code>, variables are referred to by their name alone, and several new variables can be created at once. <code>lag()</code> returns the value of the previous row, so <code>lag(passengers)</code> is the number of passengers in the previous month and <code>lag(passengers, 12)</code> the number in the same month of the previous year:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_air <span class="ot">&lt;-</span> df_air <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">passengers_millions =</span> passengers <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">growth_monthly      =</span> (passengers <span class="sc">-</span> <span class="fu">lag</span>(passengers)) <span class="sc">/</span> <span class="fu">lag</span>(passengers),</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">growth_yearly       =</span> (passengers <span class="sc">-</span> <span class="fu">lag</span>(passengers, <span class="dv">12</span>)) <span class="sc">/</span> <span class="fu">lag</span>(passengers, <span class="dv">12</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The first month has no previous month, and the first 12 months have no previous year, so the growth rates are missing (<code>NA</code>) in those rows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air[, <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"passengers"</span>, <span class="st">"passengers_millions"</span>, <span class="st">"growth_monthly"</span>, <span class="st">"growth_yearly"</span>)], <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   year month passengers passengers_millions growth_monthly growth_yearly
+1  1949     1        112               0.112             NA            NA
+2  1949     2        118               0.118     0.05357143            NA
+3  1949     3        132               0.132     0.11864407            NA
+4  1949     4        129               0.129    -0.02272727            NA
+5  1949     5        121               0.121    -0.06201550            NA
+6  1949     6        135               0.135     0.11570248            NA
+7  1949     7        148               0.148     0.09629630            NA
+8  1949     8        148               0.148     0.00000000            NA
+9  1949     9        136               0.136    -0.08108108            NA
+10 1949    10        119               0.119    -0.12500000            NA
+11 1949    11        104               0.104    -0.12605042            NA
+12 1949    12        118               0.118     0.13461538            NA
+13 1950     1        115               0.115    -0.02542373    0.02678571
+14 1950     2        126               0.126     0.09565217    0.06779661</code></pre>
+</div>
+</div>
 </section>
-<section id="working-with-several-datasets" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="working-with-several-datasets"><span class="header-section-number">2.4</span> Working with Several Datasets</h2>
+</section>
+<section id="multiple-datasets" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="multiple-datasets"><span class="header-section-number">2.4</span> Multiple Datasets</h2>
 <p>In this section we work with a second dataset, <code>longley</code>, and later combine it with <code>df_air</code>.</p>
 <section id="a-second-dataset-longley" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="a-second-dataset-longley"><span class="header-section-number">2.4.1</span> A second dataset: <code>longley</code></h3>
@@ -615,20 +648,20 @@ Rest of year       Summer
 </table>
 <p>For example, in 1947 the value of <code>Unemployed</code> is 235.6, which means about 2.36 million unemployed people, and the value of <code>Employed</code> is 60.323, which means about 60.3 million employed people.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># longley: US macroeconomic data, one row per year (1947-1962)</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(longley)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># longley: US macroeconomic data, one row per year (1947-1962)</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(longley)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
 <p><code>longley</code> data features 7 variables, 16 observations:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16  7</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
 1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
@@ -640,50 +673,26 @@ Rest of year       Summer
 </div>
 </div>
 </section>
-<section id="creating-variables-with-dplyr" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="creating-variables-with-dplyr"><span class="header-section-number">2.4.2</span> Creating variables with <code>dplyr</code></h3>
-<p>The old-fashioned way</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>longley<span class="sc">$</span>employment_share <span class="ot">&lt;-</span> longley<span class="sc">$</span>Employed<span class="sc">/</span>longley<span class="sc">$</span>Population</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>dplyr</code> way:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>longley <span class="ot">&lt;-</span> longley <span class="sc">|&gt;</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">employment_share   =</span> Employed <span class="sc">/</span> Population,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">unemployment_share =</span> (Unemployed <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">/</span> Population,</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">population_growth  =</span> (Population <span class="sc">-</span> <span class="fu">lag</span>(Population)) <span class="sc">/</span> <span class="fu">lag</span>(Population))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(longley)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     GNP.deflator     GNP Unemployed Armed.Forces Population Year Employed
-1947         83.0 234.289      235.6        159.0    107.608 1947   60.323
-1948         88.5 259.426      232.5        145.6    108.632 1948   61.122
-1949         88.2 258.054      368.2        161.6    109.773 1949   60.171
-1950         89.5 284.599      335.1        165.0    110.929 1950   61.187
-1951         96.2 328.975      209.9        309.9    112.075 1951   63.221
-1952         98.1 346.999      193.2        359.4    113.270 1952   63.639
-     employment_share unemployment_share population_growth
-1947        0.5605810         0.02189428                NA
-1948        0.5626519         0.02140253       0.009516021
-1949        0.5481403         0.03354195       0.010503351
-1950        0.5515871         0.03020851       0.010530823
-1951        0.5640955         0.01872853       0.010330932
-1952        0.5618346         0.01705659       0.010662503</code></pre>
-</div>
-</div>
-</section>
-<section id="aggregating-data" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="aggregating-data"><span class="header-section-number">2.4.3</span> Aggregating data</h3>
+<section id="aggregating-data" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="aggregating-data"><span class="header-section-number">2.4.2</span> Aggregating data</h3>
 <p>Suppose we now want to combine the information in <code>df_air</code> with the information in <code>longley</code>. There is a problem: <code>df_air</code> is a monthly dataset, while <code>longley</code> is annual. Before we can combine them, both datasets need to have the same frequency, so we first aggregate <code>df_air</code> from monthly to annual data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  year month passengers passengers_millions       season traffic
-1 1949     1        112               0.112 Rest of year     Low
-2 1949     2        118               0.118 Rest of year     Low
-3 1949     3        132               0.132 Rest of year     Low
-4 1949     4        129               0.129 Rest of year     Low
-5 1949     5        121               0.121 Rest of year     Low
-6 1949     6        135               0.135       Summer     Low</code></pre>
+<pre><code>  year month passengers passengers_millions       season traffic growth_monthly
+1 1949     1        112               0.112 Rest of year     Low             NA
+2 1949     2        118               0.118 Rest of year     Low     0.05357143
+3 1949     3        132               0.132 Rest of year     Low     0.11864407
+4 1949     4        129               0.129 Rest of year     Low    -0.02272727
+5 1949     5        121               0.121 Rest of year     Low    -0.06201550
+6 1949     6        135               0.135       Summer     Low     0.11570248
+  growth_yearly
+1            NA
+2            NA
+3            NA
+4            NA
+5            NA
+6            NA</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -710,8 +719,8 @@ Rest of year       Summer
 </div>
 </div>
 </section>
-<section id="merging-datasets" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="merging-datasets"><span class="header-section-number">2.4.4</span> Merging datasets</h3>
+<section id="merging-datasets" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="merging-datasets"><span class="header-section-number">2.4.3</span> Merging datasets</h3>
 <p>After aggregating the data to the “highest” common denominator, we want to combine the two datasets in a single dataset.</p>
 <p>Merging (or <em>joining</em>) two datasets means putting their columns side by side, matching the rows that refer to the same observation. The variable used to match the rows is called the <strong>key</strong>. Here the key is the year, which is called <code>year</code> in <code>df_air_annual</code> and <code>Year</code> in <code>longley</code>, so we tell <code>dplyr</code> that they are the same variable with <code>by = c("year" = "Year")</code>.</p>
 <p>New problem: The two datasets do not cover the same years: <code>df_air_annual</code> covers 1949 to 1960 (12 years), while <code>longley</code> covers 1947 to 1962 (16 years).</p>
@@ -771,11 +780,11 @@ Rest of year       Summer
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 12 14</code></pre>
+<pre><code>[1] 12 11</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_inner)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 14
+<pre><code># A tibble: 6 × 11
    year annual_passengers mean_monthly_passengers min_monthly_passengers
   &lt;dbl&gt;             &lt;dbl&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
 1  1949              1520                    127.                    104
@@ -784,10 +793,9 @@ Rest of year       Summer
 4  1952              2364                    197                     171
 5  1953              2700                    225                     180
 6  1954              2867                    239.                    188
-# ℹ 10 more variables: max_monthly_passengers &lt;dbl&gt;, GNP.deflator &lt;dbl&gt;,
+# ℹ 7 more variables: max_monthly_passengers &lt;dbl&gt;, GNP.deflator &lt;dbl&gt;,
 #   GNP &lt;dbl&gt;, Unemployed &lt;dbl&gt;, Armed.Forces &lt;dbl&gt;, Population &lt;dbl&gt;,
-#   Employed &lt;dbl&gt;, employment_share &lt;dbl&gt;, unemployment_share &lt;dbl&gt;,
-#   population_growth &lt;dbl&gt;</code></pre>
+#   Employed &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p><code>left_join()</code> keeps every row of the left dataset, <code>df_air_annual</code>, and adds the <code>longley</code> variables to it. Since every year in <code>df_air_annual</code> also appears in <code>longley</code>, the result has the same 12 rows as with <code>inner_join()</code>:</p>
@@ -797,7 +805,7 @@ Rest of year       Summer
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_left)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 12 14</code></pre>
+<pre><code>[1] 12 11</code></pre>
 </div>
 </div>
 <p><code>right_join()</code> keeps every row of the right dataset, <code>longley</code>, so the result has 16 rows. The years 1947, 1948, 1961 and 1962 have no match in <code>df_air_annual</code>, so the passenger variables are missing (<code>NA</code>) in those rows:</p>
@@ -807,7 +815,7 @@ Rest of year       Summer
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_right)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 16 14</code></pre>
+<pre><code>[1] 16 11</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rows without passenger data</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>df_right[<span class="fu">is.na</span>(df_right<span class="sc">$</span>annual_passengers), <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"annual_passengers"</span>, <span class="st">"GNP"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -823,8 +831,8 @@ Rest of year       Summer
 </div>
 <p>Which join to use depends on which observations you want to keep. A left join is the most common choice: it keeps your main dataset intact and adds information from a second one, without dropping or adding rows.</p>
 </section>
-<section id="missing-values" class="level3" data-number="2.4.5">
-<h3 data-number="2.4.5" class="anchored" data-anchor-id="missing-values"><span class="header-section-number">2.4.5</span> Missing values</h3>
+<section id="missing-values" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="missing-values"><span class="header-section-number">2.4.4</span> Missing values</h3>
 <p><code>is.na()</code> returns <code>TRUE</code> for every missing value. Since R counts <code>TRUE</code> as 1 and <code>FALSE</code> as 0, <code>sum()</code> gives the number of missing values in a variable, and <code>colSums()</code> gives it for every variable of a dataframe:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df_right<span class="sc">$</span>annual_passengers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -839,10 +847,8 @@ Rest of year       Summer
                       4                       4                       0 
                     GNP              Unemployed            Armed.Forces 
                       0                       0                       0 
-             Population                Employed        employment_share 
-                      0                       0                       0 
-     unemployment_share       population_growth 
-                      0                       1 </code></pre>
+             Population                Employed 
+                      0                       0 </code></pre>
 </div>
 </div>
 <p>Many functions return <code>NA</code> if the variable contains missing values. Adding <code>na.rm = TRUE</code> tells them to ignore the missing values:</p>
@@ -1281,8 +1287,8 @@ document.addEventListener("DOMContentLoaded", function () {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_data_construction.html" class="pagination-link" aria-label="Building Datasets">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Building Datasets</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03_data_construction.html" class="pagination-link" aria-label="Scraping Data">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Scraping Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
