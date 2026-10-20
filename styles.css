@@ -26,3 +26,15 @@ iframe.slides {
   padding-top: 0.15rem;
   padding-bottom: 0.15rem;
 }
+
+/* Shaded box for prompts given to an AI assistant */
+.prompt-box {
+  background-color: #f1f3f5;
+  border-left: 4px solid #adb5bd;
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+}
+.prompt-box > :last-child {
+  margin-bottom: 0;
+}

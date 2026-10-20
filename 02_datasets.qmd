@@ -65,7 +65,7 @@ sd(df_air$passengers)
 table(df_air$year)
 ```
 
-## Selecting Observations and Variables
+## Selecting Subsets
 
 Square brackets select parts of a dataframe by position, as `dataframe[rows, columns]`. Leaving the rows or the columns empty selects all of them. The `$` sign selects a single variable by its name.
 

@@ -104,7 +104,7 @@ We want to further enrich the `airports` dataset with additional information abo
 ![](pics/airport_dulles_2.png){fig-alt="Wikipedia infobox for Washington Dulles International Airport, continued: map of the airport, table of runways, and 2025 statistics on aircraft operations, passengers and cargo."}
 :::
 
-## Vibecoding a Scrapper
+## Vibecoding a Scraper
 
 Generate a prompt to your LLM of choice, asking to create a webscraper that extracts the following information from each airport's Wikipedia page:
 
@@ -117,7 +117,9 @@ nrow(airports)
 head(airports$faa)
 ```
 
+::: {.prompt-box}
 *I am working on R. I have a list of unique airport codes from the flights dataset `airports$faa`. with elements of the list that look as follows: "ABQ" "ACK" "ALB" "ANC" "ATL" "AUS"... I want to extract information about each airport from its Wikipedia page. Write an R script that loops through the list, scrapes the Wikipedia pages (e.g., [https://en.wikipedia.org/wiki/](https://en.wikipedia.org/wiki/) + airport code), extracts: 1) the number of runways in the airport, 2) the length of each runway, in metres, from the Wikipedia infobox.*
+:::
 
 A minimal version of the resulting scraper uses the `rvest` package, which reads a web page and extracts its parts. It is far from perfect: airports whose page is not found are skipped, and airports whose page has no runway table get 0 runways. Since the number of runways differs across airports, the lengths are stored as a single text, separated by semicolons:
 
@@ -175,24 +177,28 @@ What about the `runway_length_m` variable? It is a text variable, so we cannot u
 head(df_airports_wiki[df_airports_wiki$n_runways != 0, ])
 ```
 
-Lastly, how well did the scrapper record the Dulles International Airport (IAD) information? The airport has 4 runways, with lengths 11,500; 11,500; 10,501; 10,501 feet (3,505; 3,505; 3,200; 3,200 metres). Did the scrapper get it right?
+Lastly, how well did the scraper record the Dulles International Airport (IAD) information? The airport has 4 runways, with lengths 11,500; 11,500; 10,501; 10,501 feet (3,505; 3,505; 3,200; 3,200 metres). Did the scraper get it right?
 
 ```{r}
 print(df_airports_wiki[df_airports_wiki$airport_code == "IAD", ])
 ```
 
+To sum up, the vibecoded scraper did record the runway information for a few airports, but most airports were not recorded properly. More worryingly, the failure is easy to miss: even when the scraper could not find any information about an airport, it still filled in the `n_runways` variable, recording 0 runways. Every airport therefore has a value, and at first glance the scraper seems to have done a great job. This is a general lesson about AI-generated code: a script that runs without errors and returns a complete dataset is not necessarily correct, and its output must always be checked against cases we already know, as we did with Dulles.
+
 ### Second Attempt
 
-After this first attempt, we can refine the scrapper to improve its coverage. For that purpose, we are going to generate a list of the airport codes that were not found in the previous attempt:
+After this first attempt, we can refine the scraper to improve its coverage. For that purpose, we are going to generate a list of the airport codes that were not found in the previous attempt:
 
 ```{r}
 df_airports_not_found <- df_airports_wiki$airport_code[df_airports_wiki$n_runways == 0]
 print(df_airports_not_found)
 ```
 
-After that, we can generate a new prompt to the LLM, asking it to improve the scrapper:
+After that, we can generate a new prompt to the LLM, asking it to improve the scraper:
 
-*The previous scrapper missed the following airports: [paste the list of missed airports here]. Moreover, I want that, if you are unable to find a specific variable, such as no airport runaways n_runways, you record "NA" value instead of 0. If the number of runways is NA, record the runaway length variable runway_length_m  as "NA". Generate a new version of the scrapper.*
+::: {.prompt-box}
+*The previous scraper missed the following airports: [paste the list of missed airports here]. Moreover, I want that, if you are unable to find a specific variable, such as no airport runaways n_runways, you record "NA" value instead of 0. If the number of runways is NA, record the runaway length variable runway_length_m  as "NA". Generate a new version of the scraper.*
+:::
 
 ```{r}
 #| cache: true
@@ -239,7 +245,6 @@ for (code in airports$faa) {
 
   df_airports_wiki2 <- rbind(df_airports_wiki2, data.frame(
     airport_code    = code,
-    airport_name    = title,
     n_runways       = n_runways,
     runway_length_m = runway_length_m
   ))
@@ -258,10 +263,10 @@ table(is.na(df_airports_wiki2$n_runways))
 table(df_airports_wiki2$n_runways)
 ```
 
-Sanity check: did the scrapper accurately register the [Dulles International Airport (IAD)](https://en.wikipedia.org/wiki/Dulles_International_Airport) information?
+Sanity check: did the scraper accurately register the [Dulles International Airport (IAD)](https://en.wikipedia.org/wiki/Dulles_International_Airport) information?
 
 ```{r}
-print(df_airports_wiki2[df_airports_wiki2$airport_code == "IAD", ])
+print(df_airports_wiki2[df_airports_wiki2$airport_code == "IAD", c("airport_code", "n_runways", "runway_length_m")])
 ```
 
 ## Final Dataset
@@ -318,9 +323,14 @@ Let us test the coverage of the runway variables:
 table(is.na(df_flights$dest_n_runways), is.na(df_flights$origin_n_runways))
 ```
 
-Finally, we can save the enriched dataset to a CSV file for later use:
+Finally, we can save the enriched dataset to a CSV file for later use, The dataset will be stored in the default working directory:
 
+```r
+# Get the default working directory printed:
+getwd()
+```
 ```{r}
+# Saving dataset df_flights:
 write.csv(df_flights, "data/df_flights_enriched.csv", row.names = FALSE)
 ```
 
