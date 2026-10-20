@@ -4,7 +4,7 @@ engine: knitr
 
 # Plotting Data {#sec-plotting}
 
-Find the slides [here](slides/AE_week02_Plotting/AE_w02_plotting.pdf)
+Find the slides [here](slides/AE_week03_Plotting/AE_w02_plotting.pdf)
 
 ## Introduction
 
