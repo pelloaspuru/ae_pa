@@ -1,5 +1,7 @@
 # Scraping Data
 
+Find the slides [here](slides/AE_week02_Scraping/AE_w02_scraping.pdf)
+
 In applied economics research, the data needed to answer a question is rarely available in a single dataset: it is usually scattered across multiple sources. In @sec-datasets, we enriched a main dataset by merging it with a second, ready-made dataset. Often, however, the additional information we need is not available as a dataset at all, but only as web content. In this session, we learn how to collect such information from the web, store it in a dataframe, and merge it with our main dataset.
 
 ## Introduction

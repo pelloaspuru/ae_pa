@@ -1,0 +1,10 @@
+\frametitle{Saving the Dataset}
+
+Save the enriched dataset to a CSV file for later use. Unless told otherwise, R saves it in the working directory:
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+# Print the working directory
+getwd()
+
+# Save dataset df_flights
+write.csv(df_flights, "data/df_flights_enriched.csv", row.names = FALSE)
+\end{lstlisting}
