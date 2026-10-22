@@ -964,16 +964,51 @@ head(longley)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Aggregating Data}
+\begin{frame}[fragile]{Aggregating Data - Motivation}
 \linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 
-\begin{itemize}
-  \item To combine \texttt{df\_air} with \texttt{longley}, both datasets need the same frequency: \texttt{df\_air} is monthly, \texttt{longley} is annual.
-  \item We aggregate \texttt{df\_air} from monthly to annual data: \texttt{group\_by()} forms one group per year, \texttt{summarise()} computes one row per group.
-\end{itemize}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
-head(df_air)
-\end{lstlisting}
+\begin{columns}[T]
+  \begin{column}{0.45\textwidth}
+  \begin{itemize}
+    \item \textbf{Problem:} Dataset merge requries same frequency.
+    \item \textbf{Solution:} We aggregate \texttt{df\_air} from monthly to annual data. 
+    \item \texttt{group\_by()} groups observations by year $\rightarrow$ \texttt{summarise()} for aggregate stats.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.55\textwidth}
+  \centering
+  \begin{tikzpicture}[x=1.25cm, y=0.4cm, font=\scriptsize,
+    cell/.style={draw=white, line width=1pt, fill=PelloGrayLight, minimum width=1.25cm, minimum height=0.4cm, inner sep=0pt},
+    head/.style={cell, fill=PelloGrayDark, text=white, font=\scriptsize\ttfamily}]
+    % table titles
+    \node[font=\scriptsize\ttfamily] at (1,1.2) {df\_air (monthly)};
+    \node[font=\scriptsize\ttfamily] at (4.5,1.2) {longley (annual)};
+    % headers
+    \node[head] at (0,0) {year};
+    \node[head] at (1,0) {month};
+    \node[head] at (2,0) {passengers};
+    \node[head] at (4,0) {Year};
+    \node[head] at (5,0) {GNP};
+    % first five rows of each dataset
+    \foreach \r/\v/\y/\g in {1/112/1947/234.3, 2/118/1948/259.4, 3/132/1949/258.1, 4/129/1950/284.6, 5/121/1951/329.0} {
+      \node[cell] at (0,-\r) {1949};
+      \node[cell] at (1,-\r) {\r};
+      \node[cell] at (2,-\r) {\v};
+      \node[cell] at (4,-\r) {\y};
+      \node[cell] at (5,-\r) {\g};
+      % every 1949 month points to the single 1949 row of longley
+      \draw[red, thick, shorten <=2pt, shorten >=2pt] (2.5,-\r) -- (3.5,-3);
+    }
+    \draw[red, line width=1.2pt, rounded corners=2pt] (3.5,-2.5) rectangle (5.5,-3.5);
+    \node[red, align=center] at (2.5,-6.4) {five 1949 rows in \texttt{df\_air}, one 1949 row in \texttt{longley}:\\ which month gets 1949's \texttt{GNP}?};
+  \end{tikzpicture}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Aggregating Data with \texttt{dplyr}}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
 # Aggregate the monthly data to one row per year
 df_air_annual <- df_air |>
@@ -985,21 +1020,107 @@ df_air_annual <- df_air |>
 
 head(df_air_annual)
 \end{lstlisting}
+
+\begin{center}
+\begin{tikzpicture}[x=1.25cm, y=0.4cm, font=\scriptsize,
+  cell/.style={draw=white, line width=1pt, fill=PelloGrayLight, minimum width=1.25cm, minimum height=0.4cm, inner sep=0pt},
+  wide/.style={cell, minimum width=2.5cm},
+  head/.style={fill=PelloGrayDark, text=white, font=\scriptsize\ttfamily}]
+  % table titles
+  \node[font=\scriptsize\ttfamily] at (1,1.2) {df\_air (monthly)};
+  \node[font=\scriptsize\ttfamily] at (6.6,1.2) {df\_air\_annual (annual)};
+  % headers
+  \node[cell, head] at (0,0) {year};
+  \node[cell, head] at (1,0) {month};
+  \node[cell, head] at (2,0) {passengers};
+  \node[cell, head] at (5.5,0) {year};
+  \node[wide, head] at (7,0) {annual\_passengers};
+  \node[cell, head] at (8.5,0) {\dots};
+  % first five rows of each dataset
+  \foreach \r/\v/\y/\s in {1/112/1949/1520, 2/118/1950/1676, 3/132/1951/2042, 4/129/1952/2364, 5/121/1953/2700} {
+    \node[cell] at (0,-\r) {1949};
+    \node[cell] at (1,-\r) {\r};
+    \node[cell] at (2,-\r) {\v};
+    \node[cell] at (5.5,-\r) {\y};
+    \node[wide] at (7,-\r) {\s};
+    \node[cell] at (8.5,-\r) {\dots};
+  }
+  % aggregation step
+  \draw[red, line width=1.2pt, -stealth] (2.75,-3) -- (4.75,-3);
+  \node[red, font=\scriptsize\ttfamily, align=center] at (3.75,-1.8) {group\_by(year) |>\\ summarise()};
+  \node[red, align=center] at (3.75,-4.4) {12 rows per year\\ $\rightarrow$ 1 row per year};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Merging Datasets}
 \linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 
-\begin{itemize}
-  \item \textbf{Merging} (joining) puts the columns of two datasets side by side, matching the rows that refer to the same observation.
-  \item The variable used to match the rows is the \textbf{key}: the year, called \texttt{year} in \texttt{df\_air\_annual} and \texttt{Year} in \texttt{longley}, so we use \texttt{by = c("year" = "Year")}.
-  \item Problem: the two datasets do not cover the same years.
-\end{itemize}
+\begin{center}
+  Putting the columns of two datasets side by side, \textbf{matching} the rows that refer to the same observation.
+\end{center}
+
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+  \begin{itemize}
+    \item \textbf{key}: The variable used to match the rows.
+    \begin{itemize}
+      \item \texttt{year} in \texttt{df\_air\_annual} 
+      \item \texttt{Year} in \texttt{longley}
+    \end{itemize}
+    \item \textbf{Problem:} imperfect overlap of key variable.
+    \begin{itemize}
+      \item {df\_air\_annual\$year}: 1949-1960.
+      \item {df\_air\_annual\$Year}: 1947-1962.
+    \end{itemize}
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \centering
+  \begin{tikzpicture}[x=1cm, y=0.36cm, font=\scriptsize,
+    cell/.style={draw=white, line width=1pt, fill=PelloGrayLight, minimum width=1cm, minimum height=0.36cm, inner sep=0pt},
+    wide/.style={cell, minimum width=2.2cm},
+    head/.style={fill=PelloGrayDark, text=white, font=\scriptsize\ttfamily},
+    gap/.style={text=PelloGray}]
+    % table titles
+    \node[font=\scriptsize\ttfamily] at (1.1,1.3) {df\_air\_annual};
+    \node[font=\scriptsize\ttfamily] at (4.9,1.3) {longley};
+    % headers
+    \node[cell, head] at (0,0) {year};
+    \node[wide, head] at (1.6,0) {annual\_passengers};
+    \node[cell, head] at (4.4,0) {Year};
+    \node[cell, head] at (5.4,0) {GNP};
+    % first five rows of each dataset, aligned by year: df_air_annual starts in 1949, longley in 1947
+    \foreach \r in {1, 2} \node[gap] at (0.8,-\r) {no row};
+    \foreach \r/\y/\p in {3/1949/1520, 4/1950/1676, 5/1951/2042, 6/1952/2364, 7/1953/2700} {
+      \node[cell] at (0,-\r) {\y};
+      \node[wide] at (1.6,-\r) {\p};
+    }
+    \foreach \r/\y/\g in {1/1947/234.3, 2/1948/259.4, 3/1949/258.1, 4/1950/284.6, 5/1951/329.0} {
+      \node[cell] at (4.4,-\r) {\y};
+      \node[cell] at (5.4,-\r) {\g};
+    }
+    % longley continues to 1962; its later rows are not shown
+    \node[gap] at (4.9,-6) {$\vdots$};
+    \node[gap] at (4.9,-7) {rows to 1962};
+    % years in both datasets
+    \draw[red, line width=1.2pt, rounded corners=2pt] (-0.55,-2.5) rectangle (5.95,-5.5);
+  \end{tikzpicture}
+  \end{column}
+\end{columns}
+%
+\vspace{5mm}
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
 df_air_annual$year
 longley$Year
 \end{lstlisting}
-\pause
+\end{frame}
+
+\begin{frame}{Types of Joins}
+\begin{center}
+  The four join functions differ in which rows they keep when the keys do not overlap:
+\end{center}
+\vspace{5mm}
 \begin{center}
 \small
 \begin{tabular}{lll}
@@ -1013,48 +1134,181 @@ longley$Year
 \bottomrule
 \end{tabular}
 \end{center}
+\vspace{5mm}
+\begin{itemize}
+  \item In \texttt{x |> some\_join(y)}, \texttt{x} is the \textit{left} dataset and \texttt{y} the \textit{right} dataset.
+  \item \color{red}\texttt{inner\_join()} and \texttt{left\_join()} are the most used.
+\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Inner and Left Joins}
+\begin{frame}[fragile]{Inner Joins}
 
-In \texttt{x |> some\_join(y)}, \texttt{x} is the \textit{left} dataset and \texttt{y} the \textit{right} dataset.
+\begin{columns}[c]
+  \begin{column}{0.35\textwidth}
+  \begin{itemize}
+    \item \textit{Left} dataset: \texttt{df\_air\_annual}.
+    \item \textit{Right} dataset: \texttt{longley}. 
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.65\textwidth}
+  \centering
+  \begin{tikzpicture}[x=1cm, y=0.36cm, font=\scriptsize,
+    cell/.style={draw=white, line width=1pt, fill=PelloGrayLight, minimum width=1cm, minimum height=0.36cm, inner sep=0pt},
+    wide/.style={cell, minimum width=2.2cm},
+    head/.style={fill=PelloGrayDark, text=white, font=\scriptsize\ttfamily},
+    gap/.style={text=PelloGray}]
+    % table titles
+    \node[font=\scriptsize\ttfamily] at (1.1,1.3) {df\_air\_annual};
+    \node[font=\scriptsize\ttfamily] at (4.9,1.3) {longley};
+    % headers
+    \node[cell, head] at (0,0) {year};
+    \node[wide, head] at (1.6,0) {annual\_passengers};
+    \node[cell, head] at (4.4,0) {Year};
+    \node[cell, head] at (5.4,0) {GNP};
+    % both ends of the data, aligned by year: df_air_annual covers 1949-1960, longley 1947-1962
+    \foreach \r in {1, 2, 7, 8} \node[gap] at (0.8,-\r) {no row};
+    \foreach \r/\y/\p in {3/1949/1520, 4/1950/1676, 6/1960/5714} {
+      \node[cell] at (0,-\r) {\y};
+      \node[wide] at (1.6,-\r) {\p};
+    }
+    \foreach \r/\y/\g in {3/1949/258.1, 4/1950/284.6, 6/1960/502.6} {
+      \node[cell] at (4.4,-\r) {\y};
+      \node[cell] at (5.4,-\r) {\g};
+    }
+    % middle years not shown
+    \node[gap] at (0.8,-5) {$\vdots$};
+    \node[gap] at (4.9,-5) {$\vdots$};
+    % longley years without a match: dropped by inner_join()
+    \foreach \r/\y/\g in {1/1947/234.3, 2/1948/259.4, 7/1961/518.2, 8/1962/554.9} {
+      \node[cell, fill=PelloGrayUltraLight, text=PelloGray] at (4.4,-\r) {\y};
+      \node[cell, fill=PelloGrayUltraLight, text=PelloGray] at (5.4,-\r) {\g};
+    }
+    % years in both datasets: kept by inner_join()
+    \draw[red, line width=1.2pt, rounded corners=2pt] (-0.55,-2.5) rectangle (5.95,-6.5);
+  \end{tikzpicture}
+  \end{column}
+\end{columns}
+\vspace{5mm}
 
 \texttt{inner\_join()} keeps only the years that appear in both datasets:
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
 # Merge the two annual datasets, keeping the years present in both
 df_inner <- df_air_annual |>
   inner_join(longley, by = c("year" = "Year"))
-
-dim(df_inner)
-head(df_inner)
 \end{lstlisting}
-\pause
+\end{frame}
+
+\begin{frame}[fragile]{Left Joins}
+
+\begin{columns}[c]
+  \begin{column}{0.35\textwidth}
+  \begin{itemize}
+    \item \textit{Left} dataset: \texttt{df\_air\_annual}.
+    \item \textit{Right} dataset: \texttt{longley}.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.65\textwidth}
+  \centering
+  \begin{tikzpicture}[x=1cm, y=0.36cm, font=\scriptsize,
+    cell/.style={draw=white, line width=1pt, fill=PelloGrayLight, minimum width=1cm, minimum height=0.36cm, inner sep=0pt},
+    wide/.style={cell, minimum width=2.2cm},
+    head/.style={fill=PelloGrayDark, text=white, font=\scriptsize\ttfamily},
+    gap/.style={text=PelloGray}]
+    % table titles
+    \node[font=\scriptsize\ttfamily] at (1.1,1.3) {df\_air\_annual};
+    \node[font=\scriptsize\ttfamily] at (4.9,1.3) {longley};
+    % headers
+    \node[cell, head] at (0,0) {year};
+    \node[wide, head] at (1.6,0) {annual\_passengers};
+    \node[cell, head] at (4.4,0) {Year};
+    \node[cell, head] at (5.4,0) {GNP};
+    % both ends of the data, aligned by year: df_air_annual covers 1949-1960, longley 1947-1962
+    \foreach \r in {1, 2, 7, 8} \node[gap] at (0.8,-\r) {no row};
+    \foreach \r/\y/\p in {3/1949/1520, 4/1950/1676, 6/1960/5714} {
+      \node[cell] at (0,-\r) {\y};
+      \node[wide] at (1.6,-\r) {\p};
+    }
+    \foreach \r/\y/\g in {3/1949/258.1, 4/1950/284.6, 6/1960/502.6} {
+      \node[cell] at (4.4,-\r) {\y};
+      \node[cell] at (5.4,-\r) {\g};
+    }
+    % middle years not shown
+    \node[gap] at (0.8,-5) {$\vdots$};
+    \node[gap] at (4.9,-5) {$\vdots$};
+    % longley years without a match in df_air_annual: dropped by left_join()
+    \foreach \r/\y/\g in {1/1947/234.3, 2/1948/259.4, 7/1961/518.2, 8/1962/554.9} {
+      \node[cell, fill=PelloGrayUltraLight, text=PelloGray] at (4.4,-\r) {\y};
+      \node[cell, fill=PelloGrayUltraLight, text=PelloGray] at (5.4,-\r) {\g};
+    }
+    % every row of df_air_annual: kept by left_join()
+    \draw[red, line width=1.2pt, rounded corners=2pt] (-0.55,-2.5) rectangle (5.95,-6.5);
+  \end{tikzpicture}
+  \end{column}
+\end{columns}
+\vspace{5mm}
+
 \texttt{left\_join()} keeps every row of \texttt{df\_air\_annual}. Every year in it also appears in \texttt{longley}, so the result has the same 12 rows:
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+# Merge the two annual datasets, keeping all the years of df_air_annual
 df_left <- df_air_annual |>
   left_join(longley, by = c("year" = "Year"))
-
-dim(df_left)
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{Right Joins}
-
-\texttt{right\_join()} keeps every row of \texttt{longley}, so the result has 16 rows. 1947, 1948, 1961 and 1962 have no match in \texttt{df\_air\_annual}, so their passenger variables are missing (\texttt{NA}):
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize]
+\begin{center}
+  \texttt{right\_join()} keeps every row of \texttt{longley}, so the result has 16 rows. 1947, 1948, 1961 and 1962 have no match in \texttt{df\_air\_annual}, so their passenger variables are missing (\texttt{NA}):
+\end{center}
+\begin{columns}[c]
+  \begin{column}{0.35\textwidth}
+  \begin{itemize}
+    \item \textit{Left} dataset: \texttt{df\_air\_annual}.
+    \item \textit{Right} dataset: \texttt{longley}.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.65\textwidth}
+  \centering
+  \begin{tikzpicture}[x=1cm, y=0.3cm, font=\scriptsize,
+    cell/.style={draw=white, line width=1pt, fill=PelloGrayLight, minimum width=1cm, minimum height=0.3cm, inner sep=0pt},
+    wide/.style={cell, minimum width=2.2cm},
+    head/.style={fill=PelloGrayDark, text=white, font=\scriptsize\ttfamily},
+    gap/.style={text=PelloGray}]
+    % table titles
+    \node[font=\scriptsize\ttfamily] at (1.1,1.3) {df\_air\_annual};
+    \node[font=\scriptsize\ttfamily] at (4.9,1.3) {longley};
+    % headers
+    \node[cell, head] at (0,0) {year};
+    \node[wide, head] at (1.6,0) {annual\_passengers};
+    \node[cell, head] at (4.4,0) {Year};
+    \node[cell, head] at (5.4,0) {GNP};
+    % both ends of the data, aligned by year: df_air_annual covers 1949-1960, longley 1947-1962
+    \foreach \r/\y/\p in {3/1949/1520, 4/1950/1676, 6/1960/5714} {
+      \node[cell] at (0,-\r) {\y};
+      \node[wide] at (1.6,-\r) {\p};
+    }
+    \foreach \r/\y/\g in {1/1947/234.3, 2/1948/259.4, 3/1949/258.1, 4/1950/284.6, 6/1960/502.6, 7/1961/518.2, 8/1962/554.9} {
+      \node[cell] at (4.4,-\r) {\y};
+      \node[cell] at (5.4,-\r) {\g};
+    }
+    % middle years not shown
+    \node[gap] at (0.8,-5) {$\vdots$};
+    \node[gap] at (4.9,-5) {$\vdots$};
+    % longley years without a match in df_air_annual: passenger data become NA
+    \foreach \r/\y in {1/1947, 2/1948, 7/1961, 8/1962} {
+      \node[cell, fill=PelloGrayUltraLight, text=red] at (0,-\r) {\y};
+      \node[wide, fill=PelloGrayUltraLight, text=red] at (1.6,-\r) {NA};
+    }
+    % every row of longley: kept by right_join()
+    \draw[red, line width=1.2pt, rounded corners=2pt] (-0.55,-0.5) rectangle (5.95,-8.5);
+  \end{tikzpicture}
+  \end{column}
+\end{columns}
+\vspace{5mm}
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\small]
+# Merge the two annual datasets, keeping all the years of longley
 df_right <- df_air_annual |>
   right_join(longley, by = c("year" = "Year"))
-
-dim(df_right)
-
-# Rows without passenger data
-df_right[is.na(df_right$annual_passengers), c("year", "annual_passengers", "GNP")]
 \end{lstlisting}
-\pause
-\begin{itemize}
-  \item Which join to use depends on which observations you want to keep.
-  \item A \textbf{left join} is the most common choice: it keeps your main dataset intact and adds information from a second one, without dropping or adding rows.
-\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Missing Values}

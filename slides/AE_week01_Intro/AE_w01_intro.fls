@@ -576,14 +576,12 @@ OUTPUT AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT AE_w01_intro.vrb
-INPUT ./AE_w01_intro.vrb
-INPUT ./AE_w01_intro.vrb
-INPUT AE_w01_intro.vrb
 OUTPUT AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT AE_w01_intro.vrb
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecsi0900.tfm
+OUTPUT AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT AE_w01_intro.vrb
@@ -591,6 +589,7 @@ OUTPUT AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT AE_w01_intro.vrb
+OUTPUT AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT ./AE_w01_intro.vrb
 INPUT AE_w01_intro.vrb
@@ -608,11 +607,13 @@ INPUT AE_w01_intro.aux
 INPUT ./AE_w01_intro.out
 INPUT ./AE_w01_intro.out
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb
+INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0800.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb
+INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb

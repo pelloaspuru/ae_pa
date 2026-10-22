@@ -676,6 +676,11 @@ Rest of year       Summer
 <section id="aggregating-data" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="aggregating-data"><span class="header-section-number">2.4.2</span> Aggregating data</h3>
 <p>Suppose we now want to combine the information in <code>df_air</code> with the information in <code>longley</code>. There is a problem: <code>df_air</code> is a monthly dataset, while <code>longley</code> is annual. Before we can combine them, both datasets need to have the same frequency, so we first aggregate <code>df_air</code> from monthly to annual data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/aggregate.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="The first five rows of df_air and of longley side by side. All five df_air rows are months of 1949, and red lines connect each of them to the single 1949 row of longley, asking which month should get 1949's GNP."></p>
+</figure>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -717,6 +722,11 @@ Rest of year       Summer
 6  1954              2867                    239.                    188
 # ℹ 1 more variable: max_monthly_passengers &lt;dbl&gt;</code></pre>
 </div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/aggregate_dplyr.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="The first five rows of df_air, all months of 1949, next to the first five rows of df_air_annual, one row per year from 1949 to 1953. A red arrow labelled group_by(year) and summarise() points from the monthly to the annual table: 12 rows per year become 1 row per year."></p>
+</figure>
 </div>
 </section>
 <section id="merging-datasets" class="level3" data-number="2.4.3">
@@ -773,6 +783,11 @@ Rest of year       Summer
 </tbody>
 </table>
 <p><code>inner_join()</code> keeps only the years that appear in both datasets:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/inner_join.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="df_air_annual and longley side by side, aligned by year. A red frame marks the years 1949 to 1960, which appear in both datasets and are kept. The longley rows for 1947, 1948, 1961 and 1962 have no match in df_air_annual and are greyed out as dropped."></p>
+</figure>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the two annual datasets, keeping the years present in both</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>df_inner <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
@@ -799,6 +814,11 @@ Rest of year       Summer
 </div>
 </div>
 <p><code>left_join()</code> keeps every row of the left dataset, <code>df_air_annual</code>, and adds the <code>longley</code> variables to it. Since every year in <code>df_air_annual</code> also appears in <code>longley</code>, the result has the same 12 rows as with <code>inner_join()</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/left_join.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="df_air_annual and longley side by side, aligned by year. A red frame marks every row of df_air_annual, 1949 to 1960, which are kept together with the matching longley rows. The longley rows for 1947, 1948, 1961 and 1962 are greyed out as dropped."></p>
+</figure>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>df_left <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>
@@ -809,6 +829,11 @@ Rest of year       Summer
 </div>
 </div>
 <p><code>right_join()</code> keeps every row of the right dataset, <code>longley</code>, so the result has 16 rows. The years 1947, 1948, 1961 and 1962 have no match in <code>df_air_annual</code>, so the passenger variables are missing (<code>NA</code>) in those rows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/right_join.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="df_air_annual and longley side by side, aligned by year. A red frame marks every row of longley, 1947 to 1962, which are all kept. For 1947, 1948, 1961 and 1962 the df_air_annual columns show NA in red, because those years have no passenger data."></p>
+</figure>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df_right <span class="ot">&lt;-</span> df_air_annual <span class="sc">|&gt;</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(longley, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span> <span class="ot">=</span> <span class="st">"Year"</span>))</span>

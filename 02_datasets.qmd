@@ -214,6 +214,8 @@ head(longley)
 
 Suppose we now want to combine the information in `df_air` with the information in `longley`. There is a problem: `df_air` is a monthly dataset, while `longley` is annual. Before we can combine them, both datasets need to have the same frequency, so we first aggregate `df_air` from monthly to annual data.
 
+![](pics/aggregate.svg){fig-align="center" fig-alt="The first five rows of df_air and of longley side by side. All five df_air rows are months of 1949, and red lines connect each of them to the single 1949 row of longley, asking which month should get 1949's GNP."}
+
 ```{r}
 head(df_air)
 ```
@@ -230,6 +232,8 @@ df_air_annual <- df_air |>
 
 head(df_air_annual)
 ```
+
+![](pics/aggregate_dplyr.svg){fig-align="center" fig-alt="The first five rows of df_air, all months of 1949, next to the first five rows of df_air_annual, one row per year from 1949 to 1953. A red arrow labelled group_by(year) and summarise() points from the monthly to the annual table: 12 rows per year become 1 row per year."}
 
 ### Merging datasets
 
@@ -255,6 +259,8 @@ longley$Year
 
 `inner_join()` keeps only the years that appear in both datasets:
 
+![](pics/inner_join.svg){fig-align="center" fig-alt="df_air_annual and longley side by side, aligned by year. A red frame marks the years 1949 to 1960, which appear in both datasets and are kept. The longley rows for 1947, 1948, 1961 and 1962 have no match in df_air_annual and are greyed out as dropped."}
+
 ```{r}
 # Merge the two annual datasets, keeping the years present in both
 df_inner <- df_air_annual |>
@@ -266,6 +272,8 @@ head(df_inner)
 
 `left_join()` keeps every row of the left dataset, `df_air_annual`, and adds the `longley` variables to it. Since every year in `df_air_annual` also appears in `longley`, the result has the same 12 rows as with `inner_join()`:
 
+![](pics/left_join.svg){fig-align="center" fig-alt="df_air_annual and longley side by side, aligned by year. A red frame marks every row of df_air_annual, 1949 to 1960, which are kept together with the matching longley rows. The longley rows for 1947, 1948, 1961 and 1962 are greyed out as dropped."}
+
 ```{r}
 df_left <- df_air_annual |>
   left_join(longley, by = c("year" = "Year"))
@@ -274,6 +282,8 @@ dim(df_left)
 ```
 
 `right_join()` keeps every row of the right dataset, `longley`, so the result has 16 rows. The years 1947, 1948, 1961 and 1962 have no match in `df_air_annual`, so the passenger variables are missing (`NA`) in those rows:
+
+![](pics/right_join.svg){fig-align="center" fig-alt="df_air_annual and longley side by side, aligned by year. A red frame marks every row of longley, 1947 to 1962, which are all kept. For 1947, 1948, 1961 and 1962 the df_air_annual columns show NA in red, because those years have no passenger data."}
 
 ```{r}
 df_right <- df_air_annual |>
