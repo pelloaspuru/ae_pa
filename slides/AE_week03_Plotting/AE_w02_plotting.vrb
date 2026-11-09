@@ -1,24 +1,33 @@
-\frametitle{Line Graph}
+\frametitle{Maps}
 \linespread{1.3}\selectfont
-\textbf{One continuous variable over time.} Points are connected in time order. Categories: one line per category.
+\textbf{One variable across regions.} Each region (country, state, municipality) is a shape, coloured by the value of a variable (a \textit{choropleth} map). Shapes come as an \texttt{sf} object, plotted with \texttt{geom\_sf()}.
 
 \begin{columns}[t]
 \begin{column}{0.5\textwidth}
 \centering
-\graphfig{11}
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
-ggplot(df_ts[df_ts$country == "A", ],
-       aes(x = year, y = unemp)) +
-  geom_line()
+library(sf)
+library(rnaturalearth)
+world <- ne_countries(returnclass = "sf")
+
+# Map of the world
+ggplot(world) +
+  geom_sf()
 \end{lstlisting}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\graphfig{12}
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
-ggplot(df_ts, aes(x = year, y = unemp,
-                  colour = country)) +
-  geom_line()
+# Countries coloured by a variable
+ggplot(world, aes(fill = pop_est)) +
+  geom_sf() +
+  theme(legend.position = "bottom")
 \end{lstlisting}
 \end{column}
 \end{columns}
+
+\pause
+\begin{itemize}
+  \item To map your own data, merge it into the \texttt{sf} object by a region identifier: \texttt{merge(world, df, by = "iso\_a3")}.
+  \item \texttt{fill} can be continuous (income) or categorical (\texttt{continent}).
+\end{itemize}

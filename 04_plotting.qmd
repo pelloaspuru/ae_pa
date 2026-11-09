@@ -30,17 +30,21 @@ Find the slides [here](slides/AE_week03_Plotting/AE_w02_plotting.pdf)
   \node[box] (con) at (-1.8,-2.5) {Continuous};
   \node[box] (nom) at (1.8,-2.5) {Nominal};
   \node[box] (ord) at (5.4,-2.5) {Ordinal};
-  \node[ex] at (-5.4,-3.35) {countable values\\ \texttt{age} in years};
-  \node[ex] at (-1.8,-3.35) {any value in an interval\\ \texttt{income}, height};
-  \node[ex] at (1.8,-3.35) {categories without order\\ \texttt{gender}, country};
-  \node[ex] at (5.4,-3.35) {ordered categories\\ \texttt{education}};
+  \node[ex] at (-5.4,-3.35) {countable values\\ \texttt{origin\_n\_runways}};
+  \node[ex] at (-1.8,-3.35) {any value in an interval\\ \texttt{distance}, \texttt{arr\_delay}};
+  \node[ex] at (1.8,-3.35) {categories without order\\ \texttt{carrier}, \texttt{origin}};
+  \node[ex] at (5.4,-3.35) {ordered categories\\ \texttt{month}};
   \draw (var) -- (num); \draw (var) -- (cat);
   \draw (num) -- (dis); \draw (num) -- (con);
   \draw (cat) -- (nom); \draw (cat) -- (ord);
 \end{tikzpicture}
 ```
 
-### Types of Graphs
+### Types of Variables and Their Graphs
+
+```{r}
+df_flights <- read.csv("data/df_flights_enriched.csv")
+```
 
 | Graph        | Variables                    | Shows                               | ggplot2            |
 |--------------|------------------------------|-------------------------------------|--------------------|
@@ -51,26 +55,25 @@ Find the slides [here](slides/AE_week03_Plotting/AE_w02_plotting.pdf)
 | Line graph   | 1 continuous + time          | evolution of a variable over time   | `geom_line()`      |
 
 
-
 ### The `ggplot2` Package
 
-```r
+```{r}
 install.packages("ggplot2")
 library(ggplot2)
 ```
 
-```r
-# Histogram of income
-ggplot(df, aes(x = income)) +
+```{r}
+# Histogram of arrival delays
+ggplot(df_flights, aes(x = arr_delay)) +
   geom_histogram(bins = 30) +
-  labs(x = "Income", y = "Frequency")
+  labs(x = "Arrival delay (minutes)", y = "Frequency")
 ```
 
 ```r
-# Scatterplot of income against age
-ggplot(df, aes(x = income, y = age)) +
-  geom_point(size  = 2) +
-  labs(x = "Income", y = "Age")
+# Scatterplot of air time against distance
+ggplot(df_flights, aes(x = distance, y = air_time)) +
+  geom_point(size = 2) +
+  labs(x = "Distance (miles)", y = "Air time (minutes)")
 ```
 
 ## Histogram
