@@ -1,33 +1,55 @@
-\frametitle{Maps}
-\linespread{1.3}\selectfont
-\textbf{One variable across regions.} Each region (country, state, municipality) is a shape, coloured by the value of a variable (a \textit{choropleth} map). Shapes come as an \texttt{sf} object, plotted with \texttt{geom\_sf()}.
-
-\begin{columns}[t]
-\begin{column}{0.5\textwidth}
-\centering
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
-library(sf)
-library(rnaturalearth)
-world <- ne_countries(returnclass = "sf")
-
-# Map of the world
-ggplot(world) +
-  geom_sf()
-\end{lstlisting}
+\frametitle{Line Graph: Comparisons in Percentages}
+\linespread{1.2}\selectfont
+\begin{center}
+  Airports of different sizes can be compared with an \textbf{index}.
+\end{center}
+\begin{columns}[T]
+\begin{column}{0.44\textwidth}
+\begin{itemize}
+  \item Raw counts differ in \textbf{size} across airports: their changes are hard to compare.
+  \item Each airport's first full week is set to \textbf{100}; the graph shows the \textbf{\% change} from it.
+  \item All lines start at 0\%: they show \textbf{relative} changes.
+  \item Decisions: the baseline period and the time unit (weeks).
+\end{itemize}
 \end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
-# Countries coloured by a variable
-ggplot(world, aes(fill = pop_est)) +
-  geom_sf() +
-  theme(legend.position = "bottom")
+\begin{column}{0.56\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{I want to represent how the number of flights in each airport has changed over the months. For that, I want to aggregate the data to weekly level, then determine the first period as level 100 for each airport, and finally plot the percentage change of flights with respect to the baseline.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny, frame=single]
+weekly <- df_flights |>
+  # week = Monday that starts each week
+  mutate(date = as.Date(paste(year, month, day,
+                              sep = "-")),
+         week = as.Date(cut(date, "week"))) |>
+  group_by(origin, week) |>
+  summarise(n = n(), days = n_distinct(date),
+            .groups = "drop") |>
+  # drop incomplete weeks (start/end of year)
+  filter(days == 7) |>
+  group_by(origin) |>
+  mutate(index = 100 * n / first(n),
+         pct_change = index - 100) |>
+  ungroup()
+
+ggplot(weekly, aes(x = week, y = pct_change,
+                   colour = origin)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_line() + geom_point(size = 1) +
+  scale_x_date(date_breaks = "1 month",
+               date_labels = "%b") +
+  labs(x = "Week", y = "Change in flights (%)",
+       colour = "Origin",
+       caption = paste("Note: first full week of 2013 = 100.",
+                       "Incomplete weeks excluded."))
 \end{lstlisting}
+\end{onlyenv}
+\begin{onlyenv}<3>
+\centering
+\includegraphics[width=0.9\linewidth]{w3_vibe_line_weekly.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
-
-\pause
-\begin{itemize}
-  \item To map your own data, merge it into the \texttt{sf} object by a region identifier: \texttt{merge(world, df, by = "iso\_a3")}.
-  \item \texttt{fill} can be continuous (income) or categorical (\texttt{continent}).
-\end{itemize}

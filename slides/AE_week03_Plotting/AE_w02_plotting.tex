@@ -66,7 +66,7 @@
 
 % --- Meta ---
 \title{Applied Economics}
-\subtitle{Data and Plotting}
+\subtitle{Plotting Data}
 \author{Pello Aspuru}
 %\institute{University of Vienna}
 \date{Winter 2026/2027}
@@ -103,13 +103,13 @@
   Previous sessions:
   \begin{itemize}
     \item Set up R
-    \item Download, create and merge datasets.
+    \item Download, scrape and merge datasets.
   \end{itemize}
-  Today: Visualize data with graphs.
+  Today: Visualize data with \textbf{graphs}.
   \begin{itemize}
     \item Review types of variables, how they match to graph types.
-    \item Learn how to plot data with ggplot2.
-    \item Discuss what makes a good graph and how to improve them.
+    \item Learn how to plot data with LLM-s and \texttt{ggplot2}.
+    \item \textbf{Discuss} what makes a good graph and how to improve them.
   \end{itemize}
 \end{frame}
 
@@ -135,13 +135,15 @@ Fewer assumptions: no functional form choice.
 \end{tabular}
 \end{center}
 
-\vspace{0.7cm}
+\vspace{0.3cm}
 \pause
 Plots and econometric analysis are \textbf{complements}: 
-\begin{itemize}
-  \item Plots help to understand variables' features and correlates $\rightarrow$ Choose the best econometric model.
+\begin{enumerate}
+  \item Plots help to understand variables' features and correlates.
   \item Econometric analysis to establish causal relationships and test their significance.
-\end{itemize}
+\end{enumerate}
+\vspace{0.3cm}
+\pause
 The author holds significant \textbf{discretion}: be honest with yourself and your audience.
 \begin{itemize}
   \item Decide the purpose of the graph.
@@ -183,53 +185,51 @@ df_flights <- read.csv("data/df_flights_enriched.csv")
 \begin{frame}{Types of Variables and Their Graphs}
 
 \begin{center}
-\small
-\begin{tabular}{llll}
+\footnotesize
+\begin{tabular}{lllll}
 \toprule
-\textbf{Graph} & \textbf{Variables} & \textbf{Shows} & \textbf{ggplot2} \\
+\textbf{Graph} & \textbf{X axis Variable} & \textbf{Y axis Variable} & \textbf{Shows} & \textbf{ggplot2} \\
 \midrule
-Histogram    & 1 continuous                 & distribution of a variable          & \texttt{geom\_histogram()} \\
-Bar chart    & 1 categorical                & number of observations per category & \texttt{geom\_bar()} \\
-Box plot     & 1 continuous + 1 categorical & distribution within each category   & \texttt{geom\_boxplot()} \\
-Scatter plot & 2 continuous                 & relationship between two variables  & \texttt{geom\_point()} \\
-Line graph   & 1 continuous + time          & evolution of a variable over time   & \texttt{geom\_line()} \\
+Histogram    & continuous & count per bin      & distribution of a variable          & \texttt{geom\_histogram()} \\
+Bar chart    & categorical         & count per category & number of obs. per category & \texttt{geom\_bar()} \\
+Box plot     & categorical         & continuous         & distribution within category   & \texttt{geom\_boxplot()} \\
+Scatter plot & continuous          & continuous         & correlation of two variables   & \texttt{geom\_point()} \\
+Line graph   & time                & continuous         & evolution of a variable   & \texttt{geom\_line()} \\
 \bottomrule
 \end{tabular}
 \end{center}
+\pause
+\vspace{0.3cm}
+\begin{block}{Readability and Information Trade-off}
+  \begin{itemize}
+    \item Colour categories, patterns, or shapes can show a \textbf{additional categorical variables}.
+    \item More information can make the graph harder to read.
+  \end{itemize}
+\end{block}
 \end{frame}
+
 
 \section{ggplot2}
 
 \begin{frame}[fragile]{Plotting Data with ggplot2}
 \linespread{1.2}\selectfont
 
-\textbf{ggplot2} is the most widely used R package for graphs. A plot is built in \textbf{layers} joined with \texttt{+}:
-\begin{itemize}
-  \item \texttt{ggplot(data, aes(...))}: the dataset and which variables go on each axis (or colour, fill\dots).
-  \item \texttt{geom\_...()}: the type of graph (histogram, points, lines\dots).
-  \item \texttt{labs()}, \texttt{theme()}, \dots: labels and appearance.
-\end{itemize}
-
-Minimal example:
-
-\pause
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\small, frame=single]
-# Histogram of arrival delays
-ggplot(df_flights, aes(x = arr_delay)) +
-  geom_histogram(bins = 30) +
-  labs(x = "Arrival delay (minutes)", y = "Frequency")
-\end{lstlisting}
-\pause
-\begin{block}{Note}
-Cancelled flights have no \texttt{arr\_delay} or \texttt{air\_time}, so ggplot warns that it removed rows with missing values. The plot is still drawn.
-\end{block}
-
+\textbf{ggplot2} is the most widely used R package for graphs. A plot is built in \textbf{layers} joined with \texttt{+} sign:
+\begin{enumerate}
+  \item Data layer: \texttt{ggplot(data, aes(...))}: identifies the dataset and its variables.
+  \item Graph layer: \texttt{geom\_...()}: sets the type of graph (histogram, points, lines\dots).
+  \item Appearance layers: \texttt{labs()}, \texttt{theme()}, \dots: labels and appearance.
+\end{enumerate}
 \end{frame}
 
-% Figures built by w3_figures.R (run from the project root)
-\begin{frame}[fragile]{Histogram of arrival delays}
+\begin{frame}[fragile]{Manually Coding graphs}
+\begin{itemize}
+  \item Coding ggplot2 graphs manually is tedious and iterative.
+  \item Any minor mistake leads to an error message.
+\end{itemize}
 \begin{columns}[c]
-\begin{column}{0.45\textwidth}
+\begin{column}{0.5\textwidth}
+Example: coding a histogram of arrival delays.
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize, frame=single]
 # Histogram of arrival delays
 ggplot(df_flights, aes(x = arr_delay)) +
@@ -238,65 +238,82 @@ ggplot(df_flights, aes(x = arr_delay)) +
        y = "Frequency")
 \end{lstlisting}
 \end{column}
-\begin{column}{0.55\textwidth}
-\centering
-\includegraphics[width=\linewidth]{w3_hist_arr_delay.pdf}
-\end{column}
-\end{columns}
-\end{frame}
-
-\section{Histogram}
-
-\begin{frame}{Histogram}
-\begin{center}
-  Represents the distribution of a \textbf{single continuous variable}.
-\end{center}
-\vspace{0.3cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-  \item \textbf{Horizontal axis}: the values of the variable, divided into intervals of equal width (\textbf{bins}).
-  \item \textbf{Vertical axis}: the \textbf{number of observations} (frequency) whose value falls in each bin.
-  \item The \textbf{height} of each bar is the count.
-\end{itemize}
-\end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=0.8\linewidth]{w3_hist_arr_delay.pdf}
+\includegraphics[width=0.9\linewidth]{w3_hist_arr_delay.pdf}
 \end{column}
 \end{columns}
-\vfill
-\vspace{0.3cm}
-Decision: The number of bins (\texttt{bins = 30}) changes how detailed the shape looks.
 \end{frame}
 
 \begin{frame}{Vibecoding Graphs}
 \linespread{1.4}\selectfont
   \begin{center}
-    Before LLMs $\rightarrow$ graph scarcity.  After LLMs $\rightarrow$ graph congestion.
+  LLM Prompt $\rightarrow$ LLM translates prompt into an R script $\rightarrow$ New graph.
   \end{center}
   \medskip
 
-  Think before vibecoding: what is the purpose of the graph? What is the best way to show it?
-
+  Avoid graph \textbf{congestion}: what is the purpose of the graph?
   \medskip
-  \pause
-  \begin{block}{}
-  \textit{I am working on R using the \texttt{ggplot2} graphs package. I have a continuous variable \texttt{df\_flights\$arr\_delay}, representing the arrival delay of flights that departed from NYC airports. The dataset is based on the "flights" dataset from the \texttt{nycflights13} R package. Write an R script using ggplot2 that shows a histogram of this variable.}
-  \end{block}
   \pause
   \begin{itemize}
     \item The programming language, the package.
     \item The dataset and variable names.
     \item The type of graph.
   \end{itemize}
-  
+  \begin{block}{Prompt Example}
+  \textit{I am working on R using the \texttt{ggplot2} graphs package. I have a continuous variable \texttt{df\_flights\$arr\_delay}, representing the arrival delay of flights that departed from NYC airports. The dataset is based on the "flights" dataset from the \texttt{nycflights13} R package. Write an R script using ggplot2 that shows a histogram of this variable.}
+  \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{First Attempt}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+% Transition: from vibecoding principles to the graph types
+\begin{frame}{Where We Are}
+\linespread{1.2}\selectfont
+\begin{block}{So far}
+  \begin{itemize}
+    \item Graphs and econometric analysis are \textbf{complements}, and the author has \textbf{discretion}.
+    \item The \textbf{type of variable} (continuous, categorical, time) determines the type of graph.
+    \item \texttt{ggplot2} builds graphs in \textbf{layers}: data, graph type, appearance.
+    \item Manual coding is tedious $\rightarrow$ \textbf{vibecoding}: a precise prompt gets an LLM to write the script.
+  \end{itemize}
+\end{block}
+\pause
+\vspace{0.3cm}
+\begin{block}{Next: vibecode the five basic graphs}
+  \begin{itemize}
+    \item \textbf{Histogram}, bar chart, box plot, scatter plot, line graph.
+    \item For each: what it shows $\rightarrow$ prompt $\rightarrow$ code $\rightarrow$ graph.
+    \item Then \textbf{discuss and improve} the first attempt with follow-up prompts.
+  \end{itemize}
+\end{block}
+\end{frame}
+
+\section{Histogram}
+
+% Figures built by w3_figures.R (run from the project root)
+% Left: explanation (all steps). Right: step 1 prompt, step 2 vibecoded code, step 3 resulting graph
+\begin{frame}[fragile]{Histogram}
+\begin{center}
+  Represents the distribution of a \textbf{single continuous variable}.
+\end{center}
+\vspace{0.1cm}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+  \item \textbf{Horizontal axis}: the values of the variable, divided into intervals of equal width (\textbf{bins}).
+  \item \textbf{Vertical axis}: the \textbf{number of observations} (frequency) whose value falls in each bin.
+  \item The \textbf{height} of each bar is the count.
+\end{itemize}
+\vspace{0.2cm}
+\end{column}
+\begin{column}{0.52\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\footnotesize
+\textit{I am working on R using the \texttt{ggplot2} graphs package. I have a continuous variable \texttt{df\_flights\$arr\_delay}, representing the arrival delay of flights that departed from NYC airports. The dataset is based on the "flights" dataset from the \texttt{nycflights13} R package. Write an R script using ggplot2 that shows a histogram of this variable.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
 library(ggplot2)
 
 ggplot(df_flights, aes(x = arr_delay)) +
@@ -309,17 +326,15 @@ ggplot(df_flights, aes(x = arr_delay)) +
        y = "Number of flights") +
   theme_minimal()
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=\linewidth]{w3_vibe_hist_1.pdf}
+\includegraphics[width=0.85\linewidth]{w3_vibe_hist_1.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
-\pause
-\vspace{0.3cm}
-\begin{center}
-  How would you improve this histogram?
-\end{center}
+\vfill
+\only<3>{\begin{center}How would you improve this histogram?\end{center}}
 \end{frame}
 
 \begin{frame}[fragile]{Refining the Histogram}
@@ -364,72 +379,128 @@ ggplot(df_flights, aes(x = arr_delay)) +
   Represents the frequency of a \textbf{single categorical variable}.
 \end{center}
 \vspace{0.3cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{overprint}
-\onslide<1>
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
 \begin{itemize}
   \item \textbf{Horizontal axis}: the categories of the variable (months of the year), one bar per category.
-  \item \textbf{Vertical axis}: the \textbf{number of observations} in each category.
-  \item The \textbf{height} of each bar is the observation count.
+  \item \textbf{Vertical axis}: the \textbf{number of observations}.
+  \item Bar \textbf{height} is observation count.
 \end{itemize}
-\onslide<2>
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize, frame=single]
-# Bar chart of flights per month
-ggplot(df_flights,
-       aes(x = factor(month))) +
-  geom_bar() +
-  labs(x = "Month",
-       y = "Number of flights")
-\end{lstlisting}
-\end{overprint}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.52\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{I am working on R using the \texttt{ggplot2} graphs package. I have a categorical variable \texttt{df\_flights\$month}, representing the months of the year for each flight. Write an R script using ggplot2 that shows a bar chart of this variable.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+ggplot(df_flights,
+       aes(x = factor(month,
+                      levels = 1:12,
+                      labels = month.abb))) +
+  geom_bar(fill = "steelblue") +
+  labs(title = "Number of Flights per Month",
+       x = "Month",
+       y = "Number of flights") +
+  theme_minimal()
+\end{lstlisting}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.8\linewidth]{w3_bar_month.pdf}
+\includegraphics[width=0.8\linewidth]{w3_vibe_bar_month.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Bar Chart: Adding Categories with Colours}
+\begin{frame}[fragile]{Bar Chart: Stacked Colours}
 \linespread{1.2}\selectfont
-A \textbf{second categorical variable} can be shown with the \textbf{colour} of the bars.
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
+\begin{center}
+  A \textbf{second categorical variable} can be shown with the \textbf{colour} of the bars.
+\end{center}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
 \begin{itemize}
   \item One colour per airport, shown in the \textbf{legend}.
   \item Each colour counts the flights in a month \textbf{and} from one airport.
-  \item Decision: bars can be \textbf{side by side} or \textbf{stacked}.
+  \item \textbf{Stacked} (default): total bar height is still the monthly total.
 \end{itemize}
-\begin{overprint}
-\onslide<1>
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize, frame=single]
-# Stacked (default)
-ggplot(df_flights,
-       aes(x = factor(month),
-           fill = origin)) +
-  geom_bar() +
-  labs(x = "Month",
-       y = "Number of flights",
-       fill = "Origin")
-\end{lstlisting}
-\onslide<2>
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize, frame=single]
-# Side by side
-ggplot(df_flights,
-       aes(x = factor(month),
-           fill = origin)) +
-  geom_bar(position = "dodge") +
-  labs(x = "Month",
-       y = "Number of flights",
-       fill = "Origin")
-\end{lstlisting}
-\end{overprint}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{Can you improve the previous bar chart by classifying the flights by their origin airport? Each airport should be represented by a different colour, with the bars stacked on top of each other. Please add a legend to the graph.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = factor(month,
+                      levels = 1:12,
+                      labels = month.abb),
+           fill = origin)) +
+  geom_bar() +  # stacked by default
+  labs(title = "Flights per Month by Origin",
+       x = "Month",
+       y = "Number of flights",
+       fill = "Origin") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+\end{lstlisting}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\only<1>{\includegraphics[width=0.9\linewidth]{w3_bar_month_origin_stack.pdf}}%
-\only<2>{\includegraphics[width=0.9\linewidth]{w3_bar_month_origin.pdf}}
+\includegraphics[width=0.9\linewidth]{w3_vibe_bar_month_origin_stack.pdf}
+\end{onlyenv}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Bar Chart: Side-by-Side Colours}
+\linespread{1.2}\selectfont
+\begin{center}
+  Alternatively, the coloured bars can be placed \textbf{side by side}.
+\end{center}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
+\begin{itemize}
+  \item One colour per airport, shown in the \textbf{legend}.
+  \item Each colour counts the flights in a month \textbf{and} from one airport.
+  \item One bar per airport within each month.
+  \item Set with \texttt{position = "dodge"}.
+\end{itemize}
+\end{column}
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{Can you change the previous bar chart so that the bars of each airport are placed side by side instead of stacked?}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = factor(month,
+                      levels = 1:12,
+                      labels = month.abb),
+           fill = origin)) +
+  geom_bar(position = "dodge") +  # side by side
+  labs(title = "Flights per Month by Origin",
+       x = "Month",
+       y = "Number of flights",
+       fill = "Origin") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+\end{lstlisting}
+\end{onlyenv}
+\begin{onlyenv}<3>
+\centering
+\includegraphics[width=0.9\linewidth]{w3_vibe_bar_month_origin_dodge.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
 \end{frame}
@@ -440,12 +511,12 @@ ggplot(df_flights,
 \begin{column}{0.5\textwidth}
 \centering
 \textbf{Stacked} (default)\\[0.3em]
-\includegraphics[width=0.85\linewidth]{w3_bar_month_origin_stack.pdf}
+\includegraphics[width=0.85\linewidth]{w3_vibe_bar_month_origin_stack.pdf}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
 \textbf{Side by side} (\texttt{position = "dodge"})\\[0.3em]
-\includegraphics[width=0.85\linewidth]{w3_bar_month_origin.pdf}
+\includegraphics[width=0.85\linewidth]{w3_vibe_bar_month_origin_dodge.pdf}
 \end{column}
 \end{columns}
 \vfill
@@ -516,112 +587,100 @@ What does the graph show? How can we improve it?
 \begin{center}
   Represents the correlation between \textbf{two continuous variables} (distance and arrival delay).
 \end{center}
-\vspace{0.3cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{overprint}
-\onslide<1>
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
 \begin{itemize}
   \item \textbf{Horizontal axis}: the first continuous variable (distance in miles).
   \item \textbf{Vertical axis}: the second continuous variable (arrival delay in minutes).
   \item Each \textbf{point} is one observation (one flight), placed at its distance and its delay.
   \item With many observations, points overlap: transparency (\texttt{alpha = 0.2}) shows where they concentrate.
 \end{itemize}
-\onslide<2->
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\footnotesize, frame=single]
-# Scatter plot of delay against distance
+\end{column}
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{I am working on R using the \texttt{ggplot2} graphs package. I have two continuous variables, \texttt{df\_flights\$distance} and \texttt{df\_flights\$arr\_delay}, representing the distance (in miles) and the arrival delay (in minutes) of each flight. Write an R script using ggplot2 that shows a scatter plot of arrival delay against distance.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+library(ggplot2)
+
 ggplot(df_flights,
        aes(x = distance,
            y = arr_delay)) +
-  geom_point(alpha = 0.2) +
-  labs(x = "Distance (miles)",
-       y = "Arrival delay (minutes)")
+  geom_point(alpha = 0.2,  # many points
+             color = "steelblue",
+             na.rm = TRUE) +
+  labs(title = "Arrival Delay vs. Distance",
+       x = "Distance (miles)",
+       y = "Arrival delay (minutes)") +
+  theme_minimal()
 \end{lstlisting}
-\begin{center}
-  What does the plot show?
-\end{center}
-\end{overprint}
-\end{column}
-\begin{column}{0.5\textwidth}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.8\linewidth]{w3_scatter_distance_delay.png}
+\includegraphics[width=0.9\linewidth]{w3_vibe_scatter_distance_delay.png}
+\end{onlyenv}
 \end{column}
 \end{columns}
+\vfill
+\only<3>{\begin{center}What does the plot show?\end{center}}
 
 \end{frame}
 
-\begin{frame}{Binscatter Plot}
-\linespread{1.2}\selectfont
+% Left: binscatter explanation (all steps). Right: step 1 prompt, step 2 vibecoded code, step 3 resulting graph
+\begin{frame}[fragile]{Binscatter Plot}
 \begin{center}
-  When scatterplots are too crowded, they can be summarized with a binscatter plot.
+  When scatterplots are too crowded $\rightarrow$ binscatter plot.
+  \\
+  Each point is the average of x and y within one bin of x.
 \end{center}
-\vspace{0.3cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
 \begin{itemize}
   \item \textbf{Horizontal axis}: the first variable (distance), divided into 20 \textbf{bins} with the same number of flights each.
   \item \textbf{Vertical axis}: the \textbf{mean} of the second variable (arrival delay) within each bin.
   \item Each \textbf{point} is one bin, not one flight.
 \end{itemize}
 \end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=0.8\linewidth]{w3_binscatter_distance_delay.pdf}
-\end{column}
-\end{columns}
-\vfill
-\vspace{0.3cm}
-\begin{center}
-  The hidden pattern \textbf{emerges}: longer flights arrive, on average, with shorter delays.
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]{Vibecoding a Binscatter Plot}
-\linespread{1.2}\selectfont
-
- \begin{block}{}
-  \textit{I have this scatterplot that is too crowded [paste the previous code here]. I want to turn it into a binscatter plot with 20 bins. Please reflect any other arbitrary decisions in the graph footnote.}
-  \end{block}
-  \pause
-\begin{columns}[c]
-\begin{column}{0.55\textwidth}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-d <- subset(df_flights, !is.na(arr_delay))
-brk <- quantile(d$distance,
-                probs = seq(0, 1, 0.05))
-d$bin <- cut(d$distance, unique(brk),
-             include.lowest = TRUE)
-bins <- aggregate(cbind(distance, arr_delay)
-                  ~ bin, data = d, FUN = mean)
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{I have this scatterplot that is too crowded [paste the previous code here]. I want to turn it into a binscatter plot with 20 bins. Please reflect any other arbitrary decisions in the graph footnote.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny, frame=single]
+# 20 bins of distance, equal number of flights
+df_bins <- df_flights |>
+  filter(!is.na(arr_delay)) |>
+  mutate(bin = ntile(distance, 20)) |>
+  group_by(bin) |>
+  summarise(distance  = mean(distance),
+            arr_delay = mean(arr_delay))
 \end{lstlisting}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-ggplot(bins, aes(x = distance,
-                 y = arr_delay)) +
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny, frame=single]
+ggplot(df_bins, aes(x = distance,
+                    y = arr_delay)) +
   geom_point(size = 2) +
   labs(x = "Distance (miles)",
        y = "Mean arrival delay (minutes)",
        caption = paste(
-         "Note: 20 distance bins with roughly equal",
-         "numbers of flights. Points are bin means.",
-         "Cancelled flights (no delay) excluded.",
+         "Note: 20 distance bins with equal",
+         "numbers of flights. Points are bin",
+         "means. Cancelled flights excluded.",
          sep = "\n"))
 \end{lstlisting}
-\end{column}
-\begin{column}{0.45\textwidth}
-\only<2>{%
-\linespread{1.1}\selectfont\footnotesize
-\textbf{How the bins are made:}
-\begin{enumerate}
-  \item Order the flights by distance, drop \texttt{NA} values.
-  \item \texttt{brk} breaks at every 5th percentile.
-  \item \texttt{d\$bin} assigns each flight to one of the 20 bins.
-  \item \texttt{bins} computes the mean distance and the mean delay.
-\end{enumerate}}%
-\only<3>{%
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.9\linewidth]{w3_vibe_binscatter.pdf}}
+\includegraphics[width=0.9\linewidth]{w3_vibe_binscatter.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
+\vfill
+\only<3>{\begin{center}The hidden pattern \textbf{emerges}: longer flights arrive, on average, with shorter delays.\end{center}}
 \end{frame}
 
 \begin{frame}[fragile]{Binscatter improvements: Adding Categories with Colours}
@@ -634,15 +693,17 @@ ggplot(bins, aes(x = distance,
 \begin{columns}[c]
 \begin{column}{0.55\textwidth}
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-# Same bins as before (d, brk, d$bin)
-bins <- aggregate(cbind(distance, arr_delay)
-                  ~ bin + origin,
-                  data = d, FUN = mean)
-\end{lstlisting}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-ggplot(bins, aes(x = distance,
-                 y = arr_delay,
-                 colour = origin)) +
+# Same 20 bins, means by bin and airport
+df_bins <- df_flights |>
+  filter(!is.na(arr_delay)) |>
+  mutate(bin = ntile(distance, 20)) |>
+  group_by(bin, origin) |>
+  summarise(distance  = mean(distance),
+            arr_delay = mean(arr_delay))
+
+ggplot(df_bins, aes(x = distance,
+                    y = arr_delay,
+                    colour = origin)) +
   geom_point(size = 2) +
   labs(x = "Distance (miles)",
        y = "Mean arrival delay (minutes)",
@@ -670,42 +731,47 @@ ggplot(bins, aes(x = distance,
 \begin{center}
   A line graph shows how \textbf{one continuous variable evolves over time}.
 \end{center}
-\vspace{0.2cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{overprint}
-\onslide<1>
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
 \begin{itemize}
   \item \textbf{Horizontal axis}: time (here, each day of 2013).
   \item \textbf{Vertical axis}: the value of the variable at each date (here, the number of flights that day).
   \item Points are \textbf{connected in time order}.
 \end{itemize}
-\onslide<2>
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-# Count the flights of each day
-library(dplyr)
-daily <- df_flights |>
-  mutate(date = as.Date(paste(year, month,
-                              day, sep = "-"))) |>
-  group_by(date) |>
-  summarise(n = n())
-\end{lstlisting}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-ggplot(daily, aes(x = date, y = n)) +
-  geom_line() +
-  labs(x = "Date", y = "Number of flights")
-\end{lstlisting}
-\end{overprint}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{I am working on R using the \texttt{ggplot2} graphs package. Each row of \texttt{df\_flights} is a flight that departed from NYC in 2013, with its date in the variables \texttt{year}, \texttt{month} and \texttt{day}. Write an R script using ggplot2 that shows a line graph of the number of flights per day.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+library(ggplot2)
+library(dplyr)
+
+# Count the flights of each day
+daily <- df_flights |>
+  mutate(date = as.Date(
+    paste(year, month, day, sep = "-"))) |>
+  count(date)
+
+ggplot(daily, aes(x = date, y = n)) +
+  geom_line(color = "steelblue") +
+  labs(title = "Number of Flights per Day",
+       x = "Date",
+       y = "Number of flights") +
+  theme_minimal()
+\end{lstlisting}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.85\linewidth]{w3_line_daily.pdf}
+\includegraphics[width=0.9\linewidth]{w3_vibe_line_daily.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
-
-\begin{center}
-  What does the graph show? How can we improve it?
-\end{center}
+\vfill
+\only<3>{\begin{center}What does the graph show? How can we improve it?\end{center}}
 
 \end{frame}
 
@@ -714,35 +780,50 @@ ggplot(daily, aes(x = date, y = n)) +
 \begin{center}
   The \textbf{time unit} we choose changes what the graph shows.
 \end{center}
-\vspace{0.2cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
+\begin{itemize}
+  \item Daily counts are \textbf{noisy}: weekdays and weekends alternate.
+  \item Aggregating to \textbf{months} smooths the noise and shows the seasonal pattern.
+  \item Decision: the time unit (day, week, month) is the author's choice.
+\end{itemize}
+\end{column}
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{Can you change the previous line graph so that it shows the number of flights per month instead of per day? Label each month on the horizontal axis.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+library(ggplot2)
+library(dplyr)
+
 # Count the flights of each month
-df_flights <- df_flights |>
-  mutate(ym = as.Date(paste(year, month,
-                            1, sep = "-")))
 monthly <- df_flights |>
-  group_by(ym) |>
-  summarise(n = n())
-\end{lstlisting}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+  mutate(ym = as.Date(
+    paste(year, month, 1, sep = "-"))) |>
+  count(ym)
+
 ggplot(monthly, aes(x = ym, y = n)) +
-  geom_line() +
-  geom_point() +
+  geom_line(color = "steelblue") +
+  geom_point(color = "steelblue") +
   scale_x_date(date_breaks = "1 month",
                date_labels = "%b") +
-  labs(x = "Month", y = "Number of flights")
+  labs(title = "Number of Flights per Month",
+       x = "Month",
+       y = "Number of flights") +
+  theme_minimal()
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.85\linewidth]{w3_line_monthly.pdf}
+\includegraphics[width=0.9\linewidth]{w3_vibe_line_monthly.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
-\begin{center}
-  What is happening in February?
-\end{center}
+\vfill
+\only<3>{\begin{center}What is happening in February?\end{center}}
 \end{frame}
 
 \begin{frame}[fragile]{Line Graph: Starting the Vertical Axis at Zero}
@@ -750,24 +831,39 @@ ggplot(monthly, aes(x = ym, y = n)) +
 \begin{center}
   Where the vertical axis starts changes how \textbf{large} the changes look.
 \end{center}
-\vspace{0.2cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
+\begin{itemize}
+  \item By default, \texttt{ggplot2} \textbf{zooms} the vertical axis on the range of the data.
+  \item Small changes then look \textbf{dramatic}.
+  \item Starting at \textbf{zero} shows their true size: every month has roughly 25,000 to 29,500 flights.
+\end{itemize}
+\end{column}
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{Can you make the vertical axis of the previous graph start at zero?}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-# Same monthly graph, vertical axis from zero
+# Same monthly data as before
 ggplot(monthly, aes(x = ym, y = n)) +
-  geom_line() +
-  geom_point() +
-  expand_limits(y = 0) +
+  geom_line(color = "steelblue") +
+  geom_point(color = "steelblue") +
+  expand_limits(y = 0) +  # axis from zero
   scale_x_date(date_breaks = "1 month",
                date_labels = "%b") +
-  labs(x = "Month", y = "Number of flights")
+  labs(title = "Number of Flights per Month",
+       x = "Month",
+       y = "Number of flights") +
+  theme_minimal()
 \end{lstlisting}
-%By default, \texttt{ggplot2} zooms the vertical axis on the data, so small changes look dramatic. Starting at \textbf{zero} shows their true size: every month has between 25,000 and 29,500 flights.
-\end{column}
-\begin{column}{0.5\textwidth}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.85\linewidth]{w3_line_monthly_zero.pdf}
+\includegraphics[width=0.9\linewidth]{w3_vibe_line_monthly_zero.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
 \end{frame}
@@ -777,15 +873,29 @@ ggplot(monthly, aes(x = ym, y = n)) +
 \begin{center}
   A \textbf{categorical variable} can be shown with one line per category.
 \end{center}
-\vspace{0.2cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
+\begin{itemize}
+  \item One colour per airport, shown in the \textbf{legend}.
+  \item Each point counts the flights in a month \textbf{and} from one airport.
+  \item Lines make it easy to \textbf{compare trends} across airports.
+\end{itemize}
+\end{column}
+\begin{column}{0.54\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{Can you improve the previous graph by showing one line per origin airport? Each airport should be represented by a different colour. Please add a legend to the graph.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
 # Count the flights of each month and airport
 monthly_origin <- df_flights |>
-  group_by(ym, origin) |>
-  summarise(n = n())
+  mutate(ym = as.Date(
+    paste(year, month, 1, sep = "-"))) |>
+  count(ym, origin)
 \end{lstlisting}
+
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
 ggplot(monthly_origin, aes(x = ym, y = n,
                            colour = origin)) +
@@ -794,59 +904,79 @@ ggplot(monthly_origin, aes(x = ym, y = n,
   expand_limits(y = 0) +
   scale_x_date(date_breaks = "1 month",
                date_labels = "%b") +
-  labs(x = "Month", y = "Number of flights",
+  labs(title = "Flights per Month by Origin",
+       x = "Month", y = "Number of flights",
        colour = "Origin") +
+  theme_minimal() +
   theme(legend.position = "bottom")
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.85\linewidth]{w3_line_monthly_origin.pdf}
+\includegraphics[width=0.9\linewidth]{w3_vibe_line_monthly_origin.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Vibecoding a Line Graph}
-\linespread{1.0}\selectfont
-  \begin{block}{}
-  \footnotesize\textit{I want to represent how the number of flights in each airport has changed over the months. For that, I want to aggregate the data to weekly level, then determine the first period as level 100 for each airport, and finally plot the percentage change of flights with respect to the baseline.}
-  \end{block}
-  \pause
-\begin{columns}[c]
-\begin{column}{0.55\textwidth}
+\begin{frame}[fragile]{Line Graph: Comparisons in Percentages}
+\linespread{1.2}\selectfont
+\begin{center}
+  Airports of different sizes can be compared with an \textbf{index}.
+\end{center}
+\begin{columns}[T]
+\begin{column}{0.44\textwidth}
+\begin{itemize}
+  \item Raw counts differ in \textbf{size} across airports: their changes are hard to compare.
+  \item Each airport's first full week is set to \textbf{100}; the graph shows the \textbf{\% change} from it.
+  \item All lines start at 0\%: they show \textbf{relative} changes.
+  \item Decisions: the baseline period and the time unit (weeks).
+\end{itemize}
+\end{column}
+\begin{column}{0.56\textwidth}
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{I want to represent how the number of flights in each airport has changed over the months. For that, I want to aggregate the data to weekly level, then determine the first period as level 100 for each airport, and finally plot the percentage change of flights with respect to the baseline.}
+\end{block}
+\end{onlyenv}
+\begin{onlyenv}<2>
 \begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny, frame=single]
 weekly <- df_flights |>
-  # week = date of the Monday that starts each week
-  mutate(date = as.Date(paste(year, month, day, sep = "-")),
+  # week = Monday that starts each week
+  mutate(date = as.Date(paste(year, month, day,
+                              sep = "-")),
          week = as.Date(cut(date, "week"))) |>
   group_by(origin, week) |>
-  summarise(n = n(), days = n_distinct(date), .groups = "drop") |>
-  # drop incomplete weeks (start and end of the year)
+  summarise(n = n(), days = n_distinct(date),
+            .groups = "drop") |>
+  # drop incomplete weeks (start/end of year)
   filter(days == 7) |>
   group_by(origin) |>
   mutate(index = 100 * n / first(n),
          pct_change = index - 100) |>
   ungroup()
-\end{lstlisting}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
-ggplot(weekly, aes(x = week, y = pct_change, colour = origin)) +
+
+ggplot(weekly, aes(x = week, y = pct_change,
+                   colour = origin)) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   geom_line() + geom_point(size = 1) +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
-  labs(x = "Week", y = "Change in flights (%)", colour = "Origin",
+  scale_x_date(date_breaks = "1 month",
+               date_labels = "%b") +
+  labs(x = "Week", y = "Change in flights (%)",
+       colour = "Origin",
        caption = paste("Note: first full week of 2013 = 100.",
                        "Incomplete weeks excluded."))
 \end{lstlisting}
-\end{column}
-\begin{column}{0.45\textwidth}
+\end{onlyenv}
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.95\linewidth]{w3_vibe_line_weekly.pdf}
+\includegraphics[width=0.9\linewidth]{w3_vibe_line_weekly.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
 \end{frame}
 
-
-
+\begin{comment}
 \section{Maps}
 
 \begin{frame}[fragile]{Maps}
@@ -883,35 +1013,30 @@ ggplot(world, aes(fill = pop_est)) +
   \item \texttt{fill} can be continuous (income) or categorical (\texttt{continent}).
 \end{itemize}
 \end{frame}
+\end{comment}
 
 
 \section{Summary}
 
 \begin{frame}{Graphs: Summary}
-
-\begin{center}
-\small
-\begin{tabular}{llll}
-\toprule
-\textbf{Graph} & \textbf{Variables plotted} & \textbf{Adding categories} & \textbf{Variables with categories} \\
-\midrule
-Histogram    & 1 & panels (\texttt{facet\_wrap}) or \texttt{fill} & 2 \\
-Bar chart    & 1 & \texttt{fill}                                  & 2 \\
-Box plot     & 2 & \texttt{fill}                                  & 3 \\
-Scatter plot & 2 & \texttt{colour} or \texttt{shape}              & 3 \\
-Line graph   & 2 & \texttt{colour} or \texttt{linetype}           & 3 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\pause
+Graphs and econometric models
 \begin{itemize}
-  \item Panels (\texttt{facet\_wrap}) work with every graph, and can be combined with colours to add yet another variable.
-  \item Always label the axes and state the units: \texttt{labs(x = "...", y = "...")}.
-  \item Later in the course: graphs of \textbf{estimates} rather than raw data (fitted regression lines, coefficients with confidence intervals).
+    \item[+] Easy to read, show whole distributions, no functional form.
+    \item[--] Only 2--3 variables at once, no causal effect, no significance test.
+  \end{itemize}
+\pause
+Graphs for \textbf{preliminary} analysis.
+\begin{itemize}
+    \item Plot before you estimate: distributions, outliers, missing values, patterns.
+    \item Choose graph type wisely: what is the purpose of the visualization?
+  \end{itemize}
+\pause
+Vibecoding graphs in R \texttt{ggplot2} package.
+\begin{itemize}
+    \item A precise prompt: language and package, dataset and variable names, graph type.
+    \item \textbf{Read} the code, check the graph, and \textbf{iterate} with follow-up prompts.
 \end{itemize}
 \end{frame}
-
 
 \end{document}
 
