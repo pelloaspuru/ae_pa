@@ -58,7 +58,11 @@ df_flights <- read.csv("data/df_flights_enriched.csv")
 ### The `ggplot2` Package
 
 ```{r}
+#| eval: false
 install.packages("ggplot2")
+```
+
+```{r}
 library(ggplot2)
 ```
 
