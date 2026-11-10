@@ -1,5 +1,11 @@
 ---
 engine: knitr
+knitr:
+  opts_chunk:
+    fig.width: 7
+    fig.height: 4.5
+    fig.align: center
+    message: false
 ---
 
 # Plotting Data {#sec-plotting}
@@ -8,7 +14,35 @@ Find the slides [here](slides/AE_week03_Plotting/AE_w02_plotting.pdf)
 
 ## Introduction
 
+Previous sessions: we set up R, and downloaded, scraped and merged datasets. Today we **visualize data with graphs**:
+
+- Review the types of variables, and how they match to graph types.
+- Learn how to plot data with LLMs and `ggplot2`.
+- **Discuss** what makes a good graph and how to improve it.
+
+### Data Plots and Econometric Analysis
+
+| Advantages                                          | Disadvantages                                  |
+|-----------------------------------------------------|------------------------------------------------|
+| Easy to read                                        | Misleading: axis scales, colour use...         |
+| Shows variables' distribution: outliers, skewness... | Omitted variables: only shows 2--3 at once.    |
+| Fewer assumptions: no functional form choice.       | No causal effect, no significance test.        |
+
+Plots and econometric analysis are **complements**:
+
+1. Plots help to understand variables' features and correlates.
+2. Econometric analysis establishes causal relationships and tests their significance.
+
+The author holds significant **discretion**: be honest with yourself and your audience.
+
+- Decide the purpose of the graph.
+- Trade-offs: what to show, how to show it, and what to skip.
+
 ### Types of Variables
+
+```{r}
+df_flights <- read.csv("data/df_flights_enriched.csv")
+```
 
 ```{tikz}
 %| echo: false
@@ -42,111 +76,542 @@ Find the slides [here](slides/AE_week03_Plotting/AE_w02_plotting.pdf)
 
 ### Types of Variables and Their Graphs
 
-```{r}
-df_flights <- read.csv("data/df_flights_enriched.csv")
-```
+| Graph        | X axis variable | Y axis variable    | Shows                        | ggplot2            |
+|--------------|-----------------|--------------------|------------------------------|--------------------|
+| Histogram    | continuous      | count per bin      | distribution of a variable   | `geom_histogram()` |
+| Bar chart    | categorical     | count per category | number of obs. per category  | `geom_bar()`       |
+| Box plot     | categorical     | continuous         | distribution within category | `geom_boxplot()`   |
+| Scatter plot | continuous      | continuous         | correlation of two variables | `geom_point()`     |
+| Line graph   | time            | continuous         | evolution of a variable      | `geom_line()`      |
 
-| Graph        | Variables                    | Shows                               | ggplot2            |
-|--------------|------------------------------|-------------------------------------|--------------------|
-| Histogram    | 1 continuous                 | distribution of a variable          | `geom_histogram()` |
-| Bar chart    | 1 categorical                | number of observations per category | `geom_bar()`       |
-| Box plot     | 1 continuous + 1 categorical | distribution within each category   | `geom_boxplot()`   |
-| Scatter plot | 2 continuous                 | relationship between two variables  | `geom_point()`     |
-| Line graph   | 1 continuous + time          | evolution of a variable over time   | `geom_line()`      |
+::: {.callout-tip}
+## Readability and information trade-off
+- Colours, patterns or shapes can show **additional categorical variables**.
+- More information can make the graph harder to read.
+:::
 
+## The `ggplot2` Package
 
-### The `ggplot2` Package
+`ggplot2` is the most widely used R package for graphs. A plot is built in **layers** joined with the `+` sign:
+
+1. Data layer: `ggplot(data, aes(...))` identifies the dataset and its variables.
+2. Graph layer: `geom_...()` sets the type of graph (histogram, points, lines...).
+3. Appearance layers: `labs()`, `theme()`, ... set the labels and appearance.
 
 ```{r}
 #| eval: false
-install.packages("ggplot2")
+install.packages(c("ggplot2", "dplyr"))
 ```
 
 ```{r}
+#| warning: false
+#| results: hide
 library(ggplot2)
+library(dplyr)
+Sys.setlocale("LC_TIME", "C")  # English month names on date axes
 ```
+
+### Manually Coding Graphs
+
+Coding `ggplot2` graphs manually is tedious and iterative: any minor mistake leads to an error message. Example: coding a histogram of arrival delays.
 
 ```{r}
 # Histogram of arrival delays
 ggplot(df_flights, aes(x = arr_delay)) +
   geom_histogram(bins = 30) +
-  labs(x = "Arrival delay (minutes)", y = "Frequency")
+  labs(x = "Arrival delay (minutes)",
+       y = "Frequency")
 ```
 
-```r
-# Scatterplot of air time against distance
-ggplot(df_flights, aes(x = distance, y = air_time)) +
-  geom_point(size = 2) +
-  labs(x = "Distance (miles)", y = "Air time (minutes)")
-```
+Cancelled flights have no `arr_delay`, so `ggplot2` warns that it removed rows with missing values.
+
+### Vibecoding Graphs
+
+LLM prompt → the LLM translates the prompt into an R script → new graph.
+
+Avoid graph **congestion**: what is the purpose of the graph? A good prompt states:
+
+- The programming language and the package.
+- The dataset and the variable names.
+- The type of graph.
+
+The sections below follow the same steps for each graph: what it shows → **prompt** → **code** → **graph** → how to improve it.
 
 ## Histogram
 
-```r
-ggplot(df, aes(x = income)) +
-  geom_histogram(bins = 20)
+A histogram represents the distribution of a **single continuous variable**.
+
+- **Horizontal axis**: the values of the variable, divided into intervals of equal width (**bins**).
+- **Vertical axis**: the **number of observations** (frequency) whose value falls in each bin.
+- The **height** of each bar is the count.
+
+::: {.callout-note icon=false}
+## Prompt
+*I am working on R using the `ggplot2` graphs package. I have a continuous variable `df_flights$arr_delay`, representing the arrival delay of flights that departed from NYC airports. The dataset is based on the "flights" dataset from the `nycflights13` R package. Write an R script using ggplot2 that shows a histogram of this variable.*
+:::
+
+```{r}
+library(ggplot2)
+
+ggplot(df_flights, aes(x = arr_delay)) +
+  geom_histogram(binwidth = 10,
+                 fill = "steelblue",
+                 color = "white",
+                 na.rm = TRUE) +
+  labs(title = "Distribution of Arrival Delays",
+       x = "Arrival delay (minutes)",
+       y = "Number of flights") +
+  theme_minimal()
 ```
 
-```r
-ggplot(df, aes(x = income)) +
-  geom_histogram(bins = 20) +
-  facet_wrap(~ gender, ncol = 1)
+How would you improve this histogram?
+
+### Refining the Histogram
+
+::: {.callout-note icon=false}
+## Prompt
+*I want to improve the histogram of arrival delays. I want to reduce the horizontal axis range to a maximum of 300 minutes. Add a footnote that explains this axis range limitation.*
+:::
+
+```{r}
+n_above <- sum(df_flights$arr_delay > 300,
+               na.rm = TRUE)
+
+ggplot(df_flights, aes(x = arr_delay)) +
+  geom_histogram(binwidth = 10,
+                 fill = "steelblue",
+                 color = "white",
+                 na.rm = TRUE) +
+  coord_cartesian(xlim = c(NA, 300)) +
+  labs(title = "Distribution of Arrival Delays",
+       x = "Arrival delay (minutes)",
+       y = "Number of flights",
+       caption = paste0(
+         "Note: horizontal axis limited to 300 ",
+         "minutes. ", n_above, " flights with ",
+         "longer delays are not shown.")) +
+  theme_minimal()
 ```
 
 ## Bar Chart
 
-```r
-ggplot(df, aes(x = education)) +
-  geom_bar()
+A bar chart represents the frequency of a **single categorical variable**.
+
+- **Horizontal axis**: the categories of the variable (months of the year), one bar per category.
+- **Vertical axis**: the **number of observations**.
+- The bar **height** is the observation count.
+
+::: {.callout-note icon=false}
+## Prompt
+*I am working on R using the `ggplot2` graphs package. I have a categorical variable `df_flights$month`, representing the months of the year for each flight. Write an R script using ggplot2 that shows a bar chart of this variable.*
+:::
+
+```{r}
+ggplot(df_flights,
+       aes(x = factor(month,
+                      levels = 1:12,
+                      labels = month.abb))) +
+  geom_bar(fill = "steelblue") +
+  labs(title = "Number of Flights per Month",
+       x = "Month",
+       y = "Number of flights") +
+  theme_minimal()
 ```
 
-```r
-ggplot(df, aes(x = education, fill = gender)) +
-  geom_bar(position = "dodge") +
+### Stacked Colours
+
+A **second categorical variable** can be shown with the **colour** of the bars.
+
+- One colour per airport, shown in the **legend**.
+- Each colour counts the flights in a month **and** from one airport.
+- **Stacked** (default): the total bar height is still the monthly total.
+
+::: {.callout-note icon=false}
+## Prompt
+*Can you improve the previous bar chart by classifying the flights by their origin airport? Each airport should be represented by a different colour, with the bars stacked on top of each other. Please add a legend to the graph.*
+:::
+
+```{r}
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = factor(month,
+                      levels = 1:12,
+                      labels = month.abb),
+           fill = origin)) +
+  geom_bar() +  # stacked by default
+  labs(title = "Flights per Month by Origin",
+       x = "Month",
+       y = "Number of flights",
+       fill = "Origin") +
+  theme_minimal() +
   theme(legend.position = "bottom")
 ```
+
+### Side-by-Side Colours
+
+Alternatively, the coloured bars can be placed **side by side**.
+
+- One colour per airport, shown in the **legend**.
+- Each colour counts the flights in a month **and** from one airport.
+- One bar per airport within each month.
+- Set with `position = "dodge"`.
+
+::: {.callout-note icon=false}
+## Prompt
+*Can you change the previous bar chart so that the bars of each airport are placed side by side instead of stacked?*
+:::
+
+```{r}
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = factor(month,
+                      levels = 1:12,
+                      labels = month.abb),
+           fill = origin)) +
+  geom_bar(position = "dodge") +  # side by side
+  labs(title = "Flights per Month by Origin",
+       x = "Month",
+       y = "Number of flights",
+       fill = "Origin") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+Stacked or side by side: which do you prefer? Why?
 
 ## Box Plot
 
-```r
-ggplot(df, aes(x = education, y = income)) +
-  geom_boxplot()
+A box plot shows summary statistics of a **continuous variable** (arrival delay) within each **category** (airport of origin).
+
+- **Horizontal axis**: the categories of the variable.
+- **Vertical axis**: the continuous variable.
+- The **line** inside the box is the median.
+- The **box** ranges from the 25th to the 75th percentile.
+- The **whiskers** extend to the most extreme values that lie within 1.5 box heights.
+
+```{r}
+#| warning: false
+# Box plot without outliers
+ggplot(df_flights, aes(x = origin, y = arr_delay)) +
+  geom_boxplot(outliers = FALSE) +
+  labs(x = "Airport of origin", y = "Arrival delay (minutes)")
 ```
 
-```r
-ggplot(df, aes(x = education, y = income,
-               fill = gender)) +
+By default, the **points** outside the whiskers (outliers) are also shown:
+
+```{r}
+#| warning: false
+# Box plot with outliers (default)
+ggplot(df_flights, aes(x = origin, y = arr_delay)) +
   geom_boxplot() +
+  labs(x = "Airport of origin", y = "Arrival delay (minutes)")
+```
+
+Decision: should we include outliers?
+
+### Adding Categories with Colours
+
+A **second categorical variable** (month of the year) can be shown with the **colour** of the boxes.
+
+- One colour per month of the year, shown in the **legend**.
+- Within each airport, the boxes of each month are placed **side by side**.
+- Each box summarises the delays of the flights from one airport **and** in one month.
+- With 12 categories, that is 36 boxes: hard to read and to compare.
+
+```{r}
+#| warning: false
+ggplot(df_flights, aes(x = origin, y = arr_delay, fill = factor(month))) +
+  geom_boxplot(outliers = FALSE) +
+  labs(x = "Airport of origin", y = "Arrival delay (minutes)", fill = "Month") +
   theme(legend.position = "bottom")
 ```
 
+What does the graph show? How can we improve it?
+
 ## Scatter Plot
 
-```r
-ggplot(df, aes(x = age, y = income)) +
-  geom_point()
+A scatter plot represents the correlation between **two continuous variables** (distance and arrival delay).
+
+- **Horizontal axis**: the first continuous variable (distance in miles).
+- **Vertical axis**: the second continuous variable (arrival delay in minutes).
+- Each **point** is one observation (one flight), placed at its distance and its delay.
+- With many observations, points overlap: transparency (`alpha = 0.2`) shows where they concentrate.
+
+::: {.callout-note icon=false}
+## Prompt
+*I am working on R using the `ggplot2` graphs package. I have two continuous variables, `df_flights$distance` and `df_flights$arr_delay`, representing the distance (in miles) and the arrival delay (in minutes) of each flight. Write an R script using ggplot2 that shows a scatter plot of arrival delay against distance.*
+:::
+
+```{r}
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = distance,
+           y = arr_delay)) +
+  geom_point(alpha = 0.2,  # many points
+             color = "steelblue",
+             na.rm = TRUE) +
+  labs(title = "Arrival Delay vs. Distance",
+       x = "Distance (miles)",
+       y = "Arrival delay (minutes)") +
+  theme_minimal()
 ```
 
-```r
-ggplot(df, aes(x = age, y = income,
-               colour = gender)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
+What does the plot show?
+
+### Binscatter Plot
+
+When scatter plots are too crowded, they can be summarized with a binscatter plot: each point is the average of x and y within one bin of x.
+
+- **Horizontal axis**: the first variable (distance), divided into 20 **bins** with the same number of flights each.
+- **Vertical axis**: the **mean** of the second variable (arrival delay) within each bin.
+- Each **point** is one bin, not one flight.
+
+::: {.callout-note icon=false}
+## Prompt
+*I have this scatterplot that is too crowded [paste the previous code here]. I want to turn it into a binscatter plot with 20 bins. Please reflect any other arbitrary decisions in the graph footnote.*
+:::
+
+```{r}
+# 20 bins of distance, equal number of flights
+df_bins <- df_flights |>
+  filter(!is.na(arr_delay)) |>
+  mutate(bin = ntile(distance, 20)) |>
+  group_by(bin) |>
+  summarise(distance  = mean(distance),
+            arr_delay = mean(arr_delay))
+
+ggplot(df_bins, aes(x = distance,
+                    y = arr_delay)) +
+  geom_point(size = 2) +
+  labs(x = "Distance (miles)",
+       y = "Mean arrival delay (minutes)",
+       caption = paste(
+         "Note: 20 distance bins with equal",
+         "numbers of flights. Points are bin",
+         "means. Cancelled flights excluded.",
+         sep = "\n"))
+```
+
+The hidden pattern **emerges**: longer flights arrive, on average, with shorter delays.
+
+### Binscatter: Adding Categories with Colours
+
+::: {.callout-note icon=false}
+## Prompt
+*Can you improve the previous binscatter by classifying the flights by their origin airport? Each airport should be represented by a different colour. Please add a legend to the graph.*
+:::
+
+```{r}
+# Same 20 bins, means by bin and airport
+df_bins <- df_flights |>
+  filter(!is.na(arr_delay)) |>
+  mutate(bin = ntile(distance, 20)) |>
+  group_by(bin, origin) |>
+  summarise(distance  = mean(distance),
+            arr_delay = mean(arr_delay))
+
+ggplot(df_bins, aes(x = distance,
+                    y = arr_delay,
+                    colour = origin)) +
+  geom_point(size = 2) +
+  labs(x = "Distance (miles)",
+       y = "Mean arrival delay (minutes)",
+       colour = "Origin",
+       caption = paste(
+         "Note: same 20 distance bins for all airports.",
+         "Points are bin means for each airport.",
+         "Cancelled flights (no delay) excluded.",
+         sep = "\n"))
 ```
 
 ## Line Graph
 
-```r
-ggplot(df_ts[df_ts$country == "A", ],
-       aes(x = year, y = unemp)) +
-  geom_line()
+A line graph shows how **one continuous variable evolves over time**.
+
+- **Horizontal axis**: time (here, each day of 2013).
+- **Vertical axis**: the value of the variable at each date (here, the number of flights that day).
+- Points are **connected in time order**.
+
+::: {.callout-note icon=false}
+## Prompt
+*I am working on R using the `ggplot2` graphs package. Each row of `df_flights` is a flight that departed from NYC in 2013, with its date in the variables `year`, `month` and `day`. Write an R script using ggplot2 that shows a line graph of the number of flights per day.*
+:::
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+# Count the flights of each day
+daily <- df_flights |>
+  mutate(date = as.Date(
+    paste(year, month, day, sep = "-"))) |>
+  count(date)
+
+ggplot(daily, aes(x = date, y = n)) +
+  geom_line(color = "steelblue") +
+  labs(title = "Number of Flights per Day",
+       x = "Date",
+       y = "Number of flights") +
+  theme_minimal()
 ```
 
-```r
-ggplot(df_ts, aes(x = year, y = unemp,
-                  colour = country)) +
-  geom_line()
+What does the graph show? How can we improve it?
+
+### Aggregating to Months
+
+The **time unit** we choose changes what the graph shows.
+
+- Daily counts are **noisy**: weekdays and weekends alternate.
+- Aggregating to **months** smooths the noise and shows the seasonal pattern.
+- Decision: the time unit (day, week, month) is the author's choice.
+
+::: {.callout-note icon=false}
+## Prompt
+*Can you change the previous line graph so that it shows the number of flights per month instead of per day? Label each month on the horizontal axis.*
+:::
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+# Count the flights of each month
+monthly <- df_flights |>
+  mutate(ym = as.Date(
+    paste(year, month, 1, sep = "-"))) |>
+  count(ym)
+
+ggplot(monthly, aes(x = ym, y = n)) +
+  geom_line(color = "steelblue") +
+  geom_point(color = "steelblue") +
+  scale_x_date(date_breaks = "1 month",
+               date_labels = "%b") +
+  labs(title = "Number of Flights per Month",
+       x = "Month",
+       y = "Number of flights") +
+  theme_minimal()
 ```
 
+What is happening in February?
 
-## Maps
+### Starting the Vertical Axis at Zero
+
+Where the vertical axis starts changes how **large** the changes look.
+
+- By default, `ggplot2` **zooms** the vertical axis on the range of the data.
+- Small changes then look **dramatic**.
+- Starting at **zero** shows their true size: every month has roughly 25,000 to 29,500 flights.
+
+::: {.callout-note icon=false}
+## Prompt
+*Can you make the vertical axis of the previous graph start at zero?*
+:::
+
+```{r}
+# Same monthly data as before
+ggplot(monthly, aes(x = ym, y = n)) +
+  geom_line(color = "steelblue") +
+  geom_point(color = "steelblue") +
+  expand_limits(y = 0) +  # axis from zero
+  scale_x_date(date_breaks = "1 month",
+               date_labels = "%b") +
+  labs(title = "Number of Flights per Month",
+       x = "Month",
+       y = "Number of flights") +
+  theme_minimal()
+```
+
+### Adding Categories with Colours
+
+A **categorical variable** can be shown with one line per category.
+
+- One colour per airport, shown in the **legend**.
+- Each point counts the flights in a month **and** from one airport.
+- Lines make it easy to **compare trends** across airports.
+
+::: {.callout-note icon=false}
+## Prompt
+*Can you improve the previous graph by showing one line per origin airport? Each airport should be represented by a different colour. Please add a legend to the graph.*
+:::
+
+```{r}
+# Count the flights of each month and airport
+monthly_origin <- df_flights |>
+  mutate(ym = as.Date(
+    paste(year, month, 1, sep = "-"))) |>
+  count(ym, origin)
+
+ggplot(monthly_origin, aes(x = ym, y = n,
+                           colour = origin)) +
+  geom_line() +
+  geom_point() +
+  expand_limits(y = 0) +
+  scale_x_date(date_breaks = "1 month",
+               date_labels = "%b") +
+  labs(title = "Flights per Month by Origin",
+       x = "Month", y = "Number of flights",
+       colour = "Origin") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+### Comparisons in Percentages
+
+Airports of different sizes can be compared with an **index**.
+
+- Raw counts differ in **size** across airports: their changes are hard to compare.
+- Each airport's first full week is set to **100**; the graph shows the **% change** from it.
+- All lines start at 0%: they show **relative** changes.
+- Decisions: the baseline period and the time unit (weeks).
+
+::: {.callout-note icon=false}
+## Prompt
+*I want to represent how the number of flights in each airport has changed over the months. For that, I want to aggregate the data to weekly level, then determine the first period as level 100 for each airport, and finally plot the percentage change of flights with respect to the baseline.*
+:::
+
+```{r}
+weekly <- df_flights |>
+  # week = Monday that starts each week
+  mutate(date = as.Date(paste(year, month, day,
+                              sep = "-")),
+         week = as.Date(cut(date, "week"))) |>
+  group_by(origin, week) |>
+  summarise(n = n(), days = n_distinct(date),
+            .groups = "drop") |>
+  # drop incomplete weeks (start/end of year)
+  filter(days == 7) |>
+  group_by(origin) |>
+  mutate(index = 100 * n / first(n),
+         pct_change = index - 100) |>
+  ungroup()
+
+ggplot(weekly, aes(x = week, y = pct_change,
+                   colour = origin)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_line() + geom_point(size = 1) +
+  scale_x_date(date_breaks = "1 month",
+               date_labels = "%b") +
+  labs(x = "Week", y = "Change in flights (%)",
+       colour = "Origin",
+       caption = paste("Note: first full week of 2013 = 100.",
+                       "Incomplete weeks excluded."))
+```
+
+## Summary
+
+**Graphs and econometric models**
+
+- \+ Easy to read, show whole distributions, no functional form.
+- \- Only 2--3 variables at once, no causal effect, no significance test.
+
+**Graphs for preliminary analysis**
+
+- Plot before you estimate: distributions, outliers, missing values, patterns.
+- Choose the graph type wisely: what is the purpose of the visualization?
+
+**Vibecoding graphs with the `ggplot2` package in R**
+
+- A precise prompt: language and package, dataset and variable names, graph type.
+- **Read** the code, check the graph, and **iterate** with follow-up prompts.
