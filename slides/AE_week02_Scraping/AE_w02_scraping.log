@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  11 NOV 2026 13:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  11 NOV 2026 18:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -635,8 +635,8 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count371
 \@lastruleclass=\count372
 \@thisrulewidth=\dimen328
-) (c:/texlive/2025/texmf-dist/tex/latex/makecell/makecell.sty
-Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+) (c:/texlive/2025/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
  (c:/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \col@sep=\dimen329
@@ -647,38 +647,43 @@ Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \backup@length=\skip68
 \ar@cellbox=\box84
 )
+\everycr=\toks51
+\minrowclearance=\skip69
+\rownum=\count373
+) (c:/texlive/2025/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen331
-\c@nlinenum=\count373
-\TeXr@lab=\toks51
+\c@nlinenum=\count374
+\TeXr@lab=\toks52
 ) (c:/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip69
-\multirow@cntb=\count374
-\multirow@dima=\skip70
+\multirow@colwidth=\skip70
+\multirow@cntb=\count375
+\multirow@dima=\skip71
 \bigstrutjot=\dimen332
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 49.
+Package hyperref Info: Option `colorlinks' set `true' on input line 50.
  (c:/texlive/2025/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write5
  Excluding comment 'comment') (c:/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count375
+\lst@mode=\count376
 \lst@gtempboxa=\box85
-\lst@token=\toks52
-\lst@length=\count376
+\lst@token=\toks53
+\lst@length=\count377
 \lst@currlwidth=\dimen333
-\lst@column=\count377
-\lst@pos=\count378
+\lst@column=\count378
+\lst@pos=\count379
 \lst@lostspace=\dimen334
 \lst@width=\dimen335
-\lst@newlines=\count379
-\lst@lineno=\count380
+\lst@newlines=\count380
+\lst@lineno=\count381
 \lst@maxwidth=\dimen336
  (c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count381
-\lst@skipnumbers=\count382
+\c@lstnumber=\count382
+\lst@skipnumbers=\count383
 \lst@framebox=\box86
 ) (c:/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
@@ -692,28 +697,28 @@ File: lstlang2.sty 2024/09/23 1.10c listings language file
 File: lstlang3.sty 2024/09/23 1.10c listings language file
 ) (c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count383
+\l__color_backend_stack_int=\count384
 ) (./AE_w02_scraping.aux)
 \openout1 = `AE_w02_scraping.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -751,81 +756,81 @@ LaTeX Font Info:    ... okay on input line 86.
 
 (c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count384
+\scratchcounter=\count385
 \scratchdimen=\dimen337
 \scratchbox=\box87
-\nofMPsegments=\count385
-\nofMParguments=\count386
-\everyMPshowfont=\toks53
-\MPscratchCnt=\count387
+\nofMPsegments=\count386
+\nofMParguments=\count387
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count388
 \MPscratchDim=\dimen338
-\MPnumerator=\count388
-\makeMPintoPDFobject=\count389
-\everyMPtoPDFconversion=\toks54
+\MPnumerator=\count389
+\makeMPintoPDFobject=\count390
+\everyMPtoPDFconversion=\toks55
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 86.
+Package hyperref Info: Link coloring ON on input line 87.
  (./AE_w02_scraping.out) (./AE_w02_scraping.out)
 \@outlinefile=\write6
 \openout6 = `AE_w02_scraping.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 86.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 87.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 86.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 87.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 86.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 86.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 87.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 86.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 86.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 86.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 87.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 86.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 86.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 86.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 87.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 86.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 86.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 86.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 87.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 86.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 86.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 87.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 86.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 87.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 86.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> T1/cmr/b/n on input line 86.
+(Font)                  OT1/cmss/b/n --> T1/cmr/b/n on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/cmss/b/n --> T1/cmss/b/n on input line 86.
+(Font)                  T1/cmss/b/n --> T1/cmss/b/n on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 86.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 86.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 87.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 86.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 86.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 87.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 87.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 86.
+(Font)              `pureletters' in the math version `normal' on input line 87.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 86.
+(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 87.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 86.
+(Font)              `pureletters' in the math version `bold' on input line 87.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 86.
+(Font)                  T1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 87.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 86.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 87.
  (c:/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (c:/texlive/2025/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -839,21 +844,21 @@ Dictionary: translator-numbers-dictionary, Language: English
 ) (c:/texlive/2025/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-\c@lstlisting=\count390
+\c@lstlisting=\count391
  (./AE_w02_scraping.nav)
 
 [1
 
 {c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 123.
  (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 123.
  (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 122.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 123.
  (c:/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -963,39 +968,39 @@ File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 [22
 
 ]
-<../../pics/airport_dulles_1.png, id=1380, 160.09813pt x 420.06938pt>
+<../../pics/airport_dulles_1.png, id=1459, 160.09813pt x 420.06938pt>
 File: ../../pics/airport_dulles_1.png Graphic file (type png)
 <use ../../pics/airport_dulles_1.png>
-Package pdftex.def Info: ../../pics/airport_dulles_1.png  used on input line 446.
+Package pdftex.def Info: ../../pics/airport_dulles_1.png  used on input line 447.
 (pdftex.def)             Requested size: 57.44472pt x 150.7245pt.
-<../../pics/airport_dulles_2.png, id=1382, 160.09813pt x 324.21124pt>
+<../../pics/airport_dulles_2.png, id=1461, 160.09813pt x 324.21124pt>
 File: ../../pics/airport_dulles_2.png Graphic file (type png)
 <use ../../pics/airport_dulles_2.png>
-Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 446.
+Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 447.
 (pdftex.def)             Requested size: 74.43019pt x 150.7245pt.
 File: ../../pics/airport_dulles_2.png Graphic file (type png)
 <use ../../pics/airport_dulles_2.png>
-Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 446.
+Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 447.
 (pdftex.def)             Requested size: 159.333pt x 98.89737pt.
 
 
 [23
 
  <../../pics/airport_dulles_1.png> <../../pics/airport_dulles_2.png>]
-<../../pics/airport_dulles_3.png, id=1454, 616.704pt x 346.896pt>
+<../../pics/airport_dulles_3.png, id=1537, 616.704pt x 346.896pt>
 File: ../../pics/airport_dulles_3.png Graphic file (type png)
 <use ../../pics/airport_dulles_3.png>
-Package pdftex.def Info: ../../pics/airport_dulles_3.png  used on input line 452.
+Package pdftex.def Info: ../../pics/airport_dulles_3.png  used on input line 453.
 (pdftex.def)             Requested size: 358.50229pt x 201.66032pt.
 
 
 [24
 
  <../../pics/airport_dulles_3.png>]
-<../../pics/airport_dulles_4.png, id=1523, 616.704pt x 346.896pt>
+<../../pics/airport_dulles_4.png, id=1609, 616.704pt x 346.896pt>
 File: ../../pics/airport_dulles_4.png Graphic file (type png)
 <use ../../pics/airport_dulles_4.png>
-Package pdftex.def Info: ../../pics/airport_dulles_4.png  used on input line 458.
+Package pdftex.def Info: ../../pics/airport_dulles_4.png  used on input line 459.
 (pdftex.def)             Requested size: 358.50229pt x 201.66032pt.
 
 
@@ -1133,13 +1138,10 @@ Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
 [48
 
 ]
-\openout4 = `AE_w02_scraping.vrb'.
-
- (./AE_w02_scraping.vrb)
 
 [49
 
-] (./AE_w02_scraping.vrb)
+]
 
 [50
 
@@ -1150,7 +1152,7 @@ Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
 
 [51
 
-]
+] (./AE_w02_scraping.vrb)
 
 [52
 
@@ -1161,6 +1163,25 @@ Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
 ]
 
 [54
+
+]
+\openout4 = `AE_w02_scraping.vrb'.
+
+ (./AE_w02_scraping.vrb)
+
+[55
+
+]
+
+[56
+
+]
+
+[57
+
+]
+
+[58
 
 ]
 \tf@nav=\write7
@@ -1181,18 +1202,18 @@ Package rerunfilecheck Info: File `AE_w02_scraping.out' has not changed.
 (rerunfilecheck)             Checksum: 79CAC23990982E0662DBAEC1EA5E332B;552.
  ) 
 Here is how much of TeX's memory you used:
- 29380 strings out of 467797
- 555853 string characters out of 5435982
- 1210530 words of memory out of 5000000
- 57278 multiletter control sequences out of 15000+600000
+ 29526 strings out of 467797
+ 557994 string characters out of 5435982
+ 1212711 words of memory out of 5000000
+ 57412 multiletter control sequences out of 15000+600000
  645797 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,17n,123p,617b,1923s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on AE_w02_scraping.pdf (54 pages, 1587196 bytes).
+Output written on AE_w02_scraping.pdf (58 pages, 1604252 bytes).
 PDF statistics:
- 3435 PDF objects out of 3580 (max. 8388607)
- 1998 compressed objects within 20 object streams
- 115 named destinations out of 1000 (max. 500000)
+ 3848 PDF objects out of 4296 (max. 8388607)
+ 2254 compressed objects within 23 object streams
+ 123 named destinations out of 1000 (max. 500000)
  165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

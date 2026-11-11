@@ -42,6 +42,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{booktabs}
+\usepackage{colortbl} % coloured table columns (left join diagram)
 \usepackage{makecell} % for jumping lines within cells in tables.
 \usepackage{multirow}
 \usepackage{amsmath}
@@ -742,6 +743,59 @@ df_flights <- flights |>
 \end{columns}
 \end{frame}
 
+
+
+\begin{frame}{What the Left Join Does}
+% grey column = merge key (origin); yellow columns = new columns brought by the join
+\begin{center}
+\begin{tikzpicture}[font=\tiny\ttfamily]
+  % base dataset
+  \node[anchor=north west, inner sep=0pt] (A) at (0,0) {%
+    \begin{tabular}{ll>{\columncolor{PelloGrayLight}}lll}
+      carrier & flight & origin & dest & \dots \\
+      \midrule
+      UA & 1545 & EWR & IAH & \dots \\
+      UA & 1714 & LGA & IAH & \dots \\
+      AA & 1141 & JFK & MIA & \dots \\
+      B6 & 725  & JFK & BQN & \dots \\
+      \vdots & & & & \\
+    \end{tabular}};
+  \node[anchor=south west, font=\scriptsize] at ([yshift=1mm]A.north west)
+    {\texttt{flights}: 336,776 rows, \textbf{19} columns};
+  % complementary dataset
+  \node[anchor=north west, inner sep=0pt] (B) at (7.2,0) {%
+    \begin{tabular}{>{\columncolor{PelloGrayLight}}l>{\columncolor{yellow!40}}r>{\columncolor{yellow!40}}l}
+      origin & origin\_n\_runways & origin\_runway\_length\_m \\
+      \midrule
+      EWR & 3 & 3,353; 3,048; 2,050 \\
+      JFK & 4 & 3,682; 2,560; 3,048; 4,423 \\
+      LGA & 2 & 2,134; 2,134 \\
+      \vdots & & \\
+    \end{tabular}};
+  \node[anchor=south west, font=\scriptsize] at ([yshift=1mm]B.north west)
+    {\texttt{df\_origin}: 103 rows, 3 columns};
+  \pause
+  % merged dataset
+  \node[anchor=north, inner sep=0pt] (C) at (6.4,-2.7) {%
+    \begin{tabular}{ll>{\columncolor{PelloGrayLight}}lll>{\columncolor{yellow!40}}r>{\columncolor{yellow!40}}l}
+      carrier & flight & origin & dest & \dots & origin\_n\_runways & origin\_runway\_length\_m \\
+      \midrule
+      UA & 1545 & EWR & IAH & \dots & 3 & 3,353; 3,048; 2,050 \\
+      UA & 1714 & LGA & IAH & \dots & 2 & 2,134; 2,134 \\
+      AA & 1141 & JFK & MIA & \dots & 4 & 3,682; 2,560; 3,048; 4,423 \\
+      B6 & 725  & JFK & BQN & \dots & 4 & 3,682; 2,560; 3,048; 4,423 \\
+    \end{tabular}};
+  \node[anchor=north west, font=\scriptsize] at ([yshift=-1mm]C.south west)
+    {\texttt{df\_flights}: 336,776 rows, \textbf{21} columns};
+  % arrows and join label
+  \draw[->, thick, PelloGray] (A.south) -- ([xshift=-2cm]C.north);
+  \draw[->, thick, PelloGray] (B.south) -- ([xshift=2cm]C.north);
+  \node[font=\scriptsize\ttfamily, fill=white, inner sep=2pt] at (6.4,-2.15)
+    {left\_join(df\_origin, by = "origin")};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
 \begin{frame}[fragile]{Merging Twice: Airport of Destination}
 
 Same steps, with the prefix \texttt{dest\_}:
@@ -767,6 +821,57 @@ Coverage of the runway variables (rows: destination missing; columns: origin mis
 \end{lstlisting}
 \alert{7,602 flights have no information on the airport of destination.}
 \end{frame}
+
+\begin{frame}{What the Second Left Join Does}
+% grey column = merge key (dest); yellow columns = new columns brought by the join
+\begin{center}
+\begin{tikzpicture}[font=\tiny\ttfamily]
+  % dataset after the first merge
+  \node[anchor=north west, inner sep=0pt] (A) at (0,0) {%
+    \begin{tabular}{ll>{\columncolor{PelloGrayLight}}lll}
+      flight & origin & dest & \dots & origin\_n\_runways \\
+      \midrule
+      1545 & EWR & IAH & \dots & 3 \\
+      1714 & LGA & IAH & \dots & 2 \\
+      1141 & JFK & MIA & \dots & 4 \\
+      725  & JFK & BQN & \dots & 4 \\
+      \vdots & & & & \\
+    \end{tabular}};
+  \node[anchor=south west, font=\scriptsize] at ([yshift=1mm]A.north west)
+    {\texttt{df\_flights}: 336,776 rows, \textbf{21} columns};
+  % complementary dataset, renamed for the destination
+  \node[anchor=north west, inner sep=0pt] (B) at (6.6,0) {%
+    \begin{tabular}{>{\columncolor{PelloGrayLight}}l>{\columncolor{yellow!40}}r>{\columncolor{yellow!40}}l}
+      dest & dest\_n\_runways & dest\_runway\_length\_m \\
+      \midrule
+      IAH & 5 & 3,658; 3,048; 3,048; 2,743; 2,866 \\
+      MIA & 4 & 2,621; 3,202; 3,967; 2,853 \\
+      \vdots & & \\
+    \end{tabular}};
+  \node[anchor=south west, font=\scriptsize] at ([yshift=1mm]B.north west)
+    {\texttt{df\_dest}: 103 rows, 3 columns (no BQN)};
+  \pause
+  % merged dataset
+  \node[anchor=north, inner sep=0pt] (C) at (6.2,-2.7) {%
+    \begin{tabular}{ll>{\columncolor{PelloGrayLight}}lll>{\columncolor{yellow!40}}r>{\columncolor{yellow!40}}l}
+      flight & origin & dest & \dots & origin\_n\_runways & dest\_n\_runways & dest\_runway\_length\_m \\
+      \midrule
+      1545 & EWR & IAH & \dots & 3 & 5 & 3,658; 3,048; 3,048; 2,743; 2,866 \\
+      1714 & LGA & IAH & \dots & 2 & 5 & 3,658; 3,048; 3,048; 2,743; 2,866 \\
+      1141 & JFK & MIA & \dots & 4 & 4 & 2,621; 3,202; 3,967; 2,853 \\
+      725  & JFK & BQN & \dots & 4 & \alert{NA} & \alert{NA} \\
+    \end{tabular}};
+  \node[anchor=north west, font=\scriptsize] at ([yshift=-1mm]C.south west)
+    {\texttt{df\_flights}: 336,776 rows, \textbf{23} columns. BQN has no match: kept, with \texttt{NA}.};
+  % arrows and join label
+  \draw[->, thick, PelloGray] (A.south) -- ([xshift=-2cm]C.north);
+  \draw[->, thick, PelloGray] (B.south) -- ([xshift=2cm]C.north);
+  \node[font=\scriptsize\ttfamily, fill=white, inner sep=2pt] at (6.2,-2.15)
+    {left\_join(df\_dest, by = "dest")};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
 
 \begin{frame}[fragile]{Saving the Dataset}
 
