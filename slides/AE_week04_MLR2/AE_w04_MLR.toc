@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{MLR Assumptions}{4}{0}{1}
+\beamer@sectionintoc {2}{OLS Properties}{32}{0}{2}
+\beamer@sectionintoc {3}{Nonlinear Functional Forms}{59}{0}{3}

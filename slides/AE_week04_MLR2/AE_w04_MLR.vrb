@@ -1,0 +1,27 @@
+\frametitle{(iv) Logarithmic Transformations}
+
+\color{teal}\textbf{Level-Log Model:}\color{black} $Y_i=\beta_0+\beta_1ln(X_i) + u_i$
+\begin{lstlisting}[language=R]
+    ols_lev_log = lm(price ~ log_nox + rooms, data = df)
+\end{lstlisting}
+		\begin{itemize}
+		\item A 1\% increase in $X_i$ is associated with a $\frac{\beta_1}{100}$ unit increase in $Y_i$
+	\end{itemize}
+\pause
+\color{teal}\textbf{Log-Linear Model:} \color{black} $ln(Y_i)=\beta_0+\beta_1 X_i + u_i$
+\begin{lstlisting}[language=R]
+    ols_log_lev = lm(log_price ~ nox + rooms, data = df)
+\end{lstlisting}
+\begin{itemize}
+		\item A 1 unit increase in $X_i$ is associated with a $100\beta_1$ \% increase in $Y_i$.
+  		%\item This is the semi-elasticity of $Y$ with respect to $X$!
+	\end{itemize}
+\pause
+\color{teal}\textbf{Log-Log Model:} \color{black}$ln(Y_i)=\beta_0+\beta_1ln(X_i) + u_i$
+\begin{lstlisting}[language=R]
+    ols_log_log = lm(log_price ~ log_nox + rooms, data = df)
+\end{lstlisting}
+		\begin{itemize}
+		\item A 1\% increase in $X_i$ is associated with a $\beta_1$ \% increase in $Y_i$.
+		\item This is the elasticity of $Y$ with respect to $X$!
+	\end{itemize}

@@ -223,10 +223,6 @@ Line graph   & time                & continuous         & evolution of a variabl
 \end{frame}
 
 \begin{frame}[fragile]{Manually Coding graphs}
-\begin{itemize}
-  \item Coding ggplot2 graphs manually is tedious and iterative.
-  \item Any minor mistake leads to an error message.
-\end{itemize}
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
 Example: coding a histogram of arrival delays.
@@ -237,6 +233,13 @@ ggplot(df_flights, aes(x = arr_delay)) +
   labs(x = "Arrival delay (minutes)",
        y = "Frequency")
 \end{lstlisting}
+\pause
+\begin{block}{}
+  \begin{itemize}
+  \item Coding \texttt{ggplot2} graphs manually is tedious.
+  \item Minor mistake $\rightarrow$ error message.
+  \end{itemize}
+\end{block}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
@@ -251,8 +254,7 @@ ggplot(df_flights, aes(x = arr_delay)) +
   LLM Prompt $\rightarrow$ LLM translates prompt into an R script $\rightarrow$ New graph.
   \end{center}
   \medskip
-
-  Avoid graph \textbf{congestion}: what is the purpose of the graph?
+  Plotting becomes easy $\rightarrow$ Graph \textbf{congestion}: what is the purpose of the graph?
   \medskip
   \pause
   \begin{itemize}
@@ -268,23 +270,21 @@ ggplot(df_flights, aes(x = arr_delay)) +
 % Transition: from vibecoding principles to the graph types
 \begin{frame}{Where We Are}
 \linespread{1.2}\selectfont
-\begin{block}{So far}
+\textbf{So far}
   \begin{itemize}
     \item Graphs and econometric analysis are \textbf{complements}, and the author has \textbf{discretion}.
     \item The \textbf{type of variable} (continuous, categorical, time) determines the type of graph.
     \item \texttt{ggplot2} builds graphs in \textbf{layers}: data, graph type, appearance.
     \item Manual coding is tedious $\rightarrow$ \textbf{vibecoding}: a precise prompt gets an LLM to write the script.
   \end{itemize}
-\end{block}
 \pause
 \vspace{0.3cm}
-\begin{block}{Next: vibecode the five basic graphs}
+\textbf{Next: vibecode the five basic graphs}
   \begin{itemize}
     \item \textbf{Histogram}, bar chart, box plot, scatter plot, line graph.
     \item For each: what it shows $\rightarrow$ prompt $\rightarrow$ code $\rightarrow$ graph.
     \item Then \textbf{discuss and improve} the first attempt with follow-up prompts.
   \end{itemize}
-\end{block}
 \end{frame}
 
 \section{Histogram}
@@ -345,7 +345,7 @@ ggplot(df_flights, aes(x = arr_delay)) +
   \vspace{0,2cm}
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize]
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, escapeinside={(*@}{@*)}]
 n_above <- sum(df_flights$arr_delay > 300,
                na.rm = TRUE)
 
@@ -354,7 +354,7 @@ ggplot(df_flights, aes(x = arr_delay)) +
                  fill = "steelblue",
                  color = "white",
                  na.rm = TRUE) +
-  coord_cartesian(xlim = c(NA, 300)) +
+  (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{coord\_cartesian(xlim = c(NA, 300)) +}}@*)
   labs(title = "Distribution of Arrival Delays",
        x = "Arrival delay (minutes)",
        y = "Number of flights",
@@ -434,14 +434,14 @@ ggplot(df_flights,
 \end{block}
 \end{onlyenv}
 \begin{onlyenv}<2>
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single, escapeinside={(*@}{@*)}]
 library(ggplot2)
 
 ggplot(df_flights,
        aes(x = factor(month,
                       levels = 1:12,
                       labels = month.abb),
-           fill = origin)) +
+           (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{fill = origin}}@*))) +
   geom_bar() +  # stacked by default
   labs(title = "Flights per Month by Origin",
        x = "Month",
@@ -480,7 +480,7 @@ ggplot(df_flights,
 \end{block}
 \end{onlyenv}
 \begin{onlyenv}<2>
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single, escapeinside={(*@}{@*)}]
 library(ggplot2)
 
 ggplot(df_flights,
@@ -488,7 +488,7 @@ ggplot(df_flights,
                       levels = 1:12,
                       labels = month.abb),
            fill = origin)) +
-  geom_bar(position = "dodge") +  # side by side
+  geom_bar((*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{position = "dodge"}}@*)) +  # side by side
   labs(title = "Flights per Month by Origin",
        x = "Month",
        y = "Number of flights",
@@ -527,57 +527,132 @@ Which do you prefer? Why?
 
 \section{Box Plot}
 
-\begin{frame}{Box Plot}
+\begin{frame}[fragile]{Box Plot}
 \linespread{1.15}\selectfont
 \begin{center}
   Summary statistics of a \textbf{continuous variable} (delay time) within each \textbf{category} (airport of origin).
 \end{center}
 \vspace{0.3cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
 \begin{itemize}
   \item \textbf{Horizontal axis}: the categories of the variable.
   \item \textbf{Vertical axis}: continuous variable.
   \item The \textbf{line} inside the box is the median.
   \item The \textbf{box} ranges from the 25th to the 75th percentile.
-  \item The \textbf{whiskers} extend to the most extreme values that lie within 1.5 box heights. \pause
-  \item \textbf{Points} outside the whiskers.
+  \item The \textbf{whiskers} extend to the most extreme values that lie within 1.5 box heights.
+  \item<3-> \textbf{Points} outside the whiskers.
 \end{itemize}
+\vspace{0.5cm}
+\uncover<3->{Decision: should we include outliers?}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.54\textwidth}
+% 1) prompt
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{Can you create a box plot of arrival delays by airport of origin? Put the airports on the horizontal axis and the arrival delay in minutes on the vertical axis.}
+\end{block}
+\end{onlyenv}
+% 2) resulting code
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = origin, y = arr_delay)) +
+  geom_boxplot(na.rm = TRUE) +
+  labs(title = "Arrival Delays by Origin",
+       x = "Airport of origin",
+       y = "Arrival delay (minutes)") +
+  theme_minimal()
+\end{lstlisting}
+\end{onlyenv}
+% 3) graph with outliers (default)
+\begin{onlyenv}<3>
 \centering
-\only<1>{\includegraphics[width=0.8\linewidth]{w3_box_origin_nooutliers.pdf}}%
-\only<2->{\includegraphics[width=0.8\linewidth]{w3_box_origin.pdf}}
+\includegraphics[width=0.9\linewidth]{w3_vibe_box_origin.pdf}
+\end{onlyenv}
+% 4) follow-up prompt
+\begin{onlyenv}<4>
+\begin{block}{}
+\textit{Can you remove the outlier dots from the previous box plot?}
+\end{block}
+\end{onlyenv}
+% 5) modified code
+\begin{onlyenv}<5>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single, escapeinside={(*@}{@*)}]
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = origin, y = arr_delay)) +
+  geom_boxplot((*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{outliers = FALSE}}@*),
+               na.rm = TRUE) +
+  labs(title = "Arrival Delays by Origin",
+       x = "Airport of origin",
+       y = "Arrival delay (minutes)") +
+  theme_minimal()
+\end{lstlisting}
+\end{onlyenv}
+% 6) graph without outliers
+\begin{onlyenv}<6>
+\centering
+\includegraphics[width=0.9\linewidth]{w3_vibe_box_origin_nooutliers.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
-\pause
-\vspace{0.5cm}
-Decision: should we include outliers?
 \end{frame}
 
-\begin{frame}{Box Plot: Adding Categories with Colours}
+\begin{frame}[fragile]{Box Plot: Adding Categories with Colours}
 \linespread{1.2}\selectfont
 \begin{center}
   A \textbf{second categorical variable} (month of the year) can be shown with the \textbf{colour} of the boxes.
 \end{center}
 \vspace{0.3cm}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
 \begin{itemize}
   \item One colour per month of the year, shown in the \textbf{legend}.
   \item Within each airport, the boxes of each month are placed \textbf{side by side}.
   \item Each box summarises the delays of the flights from one airport \textbf{and} in one month.
   \item With 12 categories, that is 36 boxes: hard to read and to compare.
 \end{itemize}
+\vspace{0.5cm}
+\uncover<3->{What does the graph show?}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.54\textwidth}
+% 1) prompt
+\begin{onlyenv}<1>
+\begin{block}{}
+\textit{Can you improve the previous box plot by also classifying the flights by month of the year? Each month should be represented by a different colour, with the boxes of each airport side by side. Please add a legend to the graph.}
+\end{block}
+\end{onlyenv}
+% 2) resulting code
+\begin{onlyenv}<2>
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single, escapeinside={(*@}{@*)}]
+library(ggplot2)
+
+ggplot(df_flights,
+       aes(x = origin, y = arr_delay,
+           (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{fill = factor(month,}}@*)
+                         (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{levels = 1:12,}}@*)
+                         (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{labels = month.abb)}}@*))) +
+  geom_boxplot(outliers = FALSE,
+               na.rm = TRUE) +
+  labs(title = "Arrival Delays by Origin and Month",
+       x = "Airport of origin",
+       y = "Arrival delay (minutes)",
+       fill = "Month") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+\end{lstlisting}
+\end{onlyenv}
+% 3) resulting graph
+\begin{onlyenv}<3>
 \centering
-\includegraphics[width=0.8\linewidth]{w3_box_origin_month.pdf}
+\includegraphics[width=0.9\linewidth]{w3_vibe_box_origin_month.pdf}
+\end{onlyenv}
 \end{column}
 \end{columns}
-\vspace{0.5cm}
-\pause
-What does the graph show? How can we improve it?
 \end{frame}
 
 \section{Scatter Plot}
@@ -670,7 +745,8 @@ ggplot(df_bins, aes(x = distance,
          "Note: 20 distance bins with equal",
          "numbers of flights. Points are bin",
          "means. Cancelled flights excluded.",
-         sep = "\n"))
+         sep = "\n")) +
+  theme_minimal()
 \end{lstlisting}
 \end{onlyenv}
 \begin{onlyenv}<3>
@@ -692,27 +768,28 @@ ggplot(df_bins, aes(x = distance,
   \pause
 \begin{columns}[c]
 \begin{column}{0.55\textwidth}
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single, escapeinside={(*@}{@*)}]
 # Same 20 bins, means by bin and airport
 df_bins <- df_flights |>
   filter(!is.na(arr_delay)) |>
   mutate(bin = ntile(distance, 20)) |>
-  group_by(bin, origin) |>
+  (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{group\_by(bin, origin)}}@*) |>
   summarise(distance  = mean(distance),
             arr_delay = mean(arr_delay))
 
 ggplot(df_bins, aes(x = distance,
                     y = arr_delay,
-                    colour = origin)) +
+                    (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{colour = origin}}@*))) +
   geom_point(size = 2) +
   labs(x = "Distance (miles)",
        y = "Mean arrival delay (minutes)",
-       colour = "Origin",
+       (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{colour = "Origin",}}@*)
        caption = paste(
          "Note: same 20 distance bins for all airports.",
          "Points are bin means for each airport.",
          "Cancelled flights (no delay) excluded.",
-         sep = "\n"))
+         sep = "\n")) +
+  theme_minimal()
 \end{lstlisting}
 \end{column}
 \begin{column}{0.45\textwidth}
@@ -826,7 +903,7 @@ ggplot(monthly, aes(x = ym, y = n)) +
 \only<3>{\begin{center}What is happening in February?\end{center}}
 \end{frame}
 
-\begin{frame}[fragile]{Line Graph: Starting the Vertical Axis at Zero}
+\begin{frame}[fragile]{Line Graph: Adjusting the Vertical Axis}
 \linespread{1.2}\selectfont
 \begin{center}
   Where the vertical axis starts changes how \textbf{large} the changes look.
@@ -846,12 +923,12 @@ ggplot(monthly, aes(x = ym, y = n)) +
 \end{block}
 \end{onlyenv}
 \begin{onlyenv}<2>
-\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single]
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\scriptsize, frame=single, escapeinside={(*@}{@*)}]
 # Same monthly data as before
 ggplot(monthly, aes(x = ym, y = n)) +
   geom_line(color = "steelblue") +
   geom_point(color = "steelblue") +
-  expand_limits(y = 0) +  # axis from zero
+  (*@{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{expand\_limits(y = 0)}}@*) +  # axis from zero
   scale_x_date(date_breaks = "1 month",
                date_labels = "%b") +
   labs(title = "Number of Flights per Month",
@@ -965,7 +1042,8 @@ ggplot(weekly, aes(x = week, y = pct_change,
   labs(x = "Week", y = "Change in flights (%)",
        colour = "Origin",
        caption = paste("Note: first full week of 2013 = 100.",
-                       "Incomplete weeks excluded."))
+                       "Incomplete weeks excluded.")) +
+  theme_minimal()
 \end{lstlisting}
 \end{onlyenv}
 \begin{onlyenv}<3>

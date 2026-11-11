@@ -84,7 +84,8 @@ p_vibe_bin <- ggplot(df_bins, aes(x = distance, y = arr_delay)) +
   labs(x = "Distance (miles)", y = "Mean arrival delay (minutes)",
        caption = paste("Note: 20 distance bins with equal",
                        "numbers of flights. Points are bin",
-                       "means. Cancelled flights excluded.", sep = "\n"))
+                       "means. Cancelled flights excluded.", sep = "\n")) +
+  theme_minimal()
 ggsave(file.path(out_dir, "w3_vibe_binscatter.pdf"), p_vibe_bin, width = 5, height = 3.5)
 
 # "Vibecoding" binscatter by airport of origin: same bins, means by bin and airport
@@ -101,7 +102,8 @@ p_vibe_bin_origin <- ggplot(bins_origin, aes(x = distance, y = arr_delay,
        colour = "Origin",
        caption = paste("Note: same 20 distance bins for all airports.",
                        "Points are bin means for each airport.",
-                       "Cancelled flights (no delay) excluded.", sep = "\n"))
+                       "Cancelled flights (no delay) excluded.", sep = "\n")) +
+  theme_minimal()
 ggsave(file.path(out_dir, "w3_vibe_binscatter_origin.pdf"), p_vibe_bin_origin,
        width = 5, height = 3.5)
 
@@ -195,7 +197,8 @@ p_vibe_line <- ggplot(weekly, aes(x = week, y = pct_change, colour = origin)) +
   geom_line() + geom_point(size = 1) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b") +
   labs(x = "Week", y = "Change in flights (%)", colour = "Origin",
-       caption = "Note: first full week of 2013 = 100. Incomplete weeks excluded.")
+       caption = "Note: first full week of 2013 = 100. Incomplete weeks excluded.") +
+  theme_minimal()
 ggsave(file.path(out_dir, "w3_vibe_line_weekly.pdf"), p_vibe_line, width = 5, height = 3.5)
 
 # Bar chart: number of flights per month
@@ -262,6 +265,35 @@ p_box_noout <- ggplot(df_flights, aes(x = origin, y = arr_delay)) +
   geom_boxplot(outliers = FALSE) +
   labs(x = "Airport of origin", y = "Arrival delay (minutes)")
 ggsave(file.path(out_dir, "w3_box_origin_nooutliers.pdf"), p_box_noout, width = 5, height = 3.5)
+
+# "Vibecoding" box plot by airport of origin (with outliers, the default)
+p_vibe_box <- ggplot(df_flights, aes(x = origin, y = arr_delay)) +
+  geom_boxplot(na.rm = TRUE) +
+  labs(title = "Arrival Delays by Origin",
+       x = "Airport of origin", y = "Arrival delay (minutes)") +
+  theme_minimal()
+ggsave(file.path(out_dir, "w3_vibe_box_origin.pdf"), p_vibe_box, width = 5, height = 3.5)
+
+# "Vibecoding" box plot after the follow-up prompt: outlier dots removed
+p_vibe_box_noout <- ggplot(df_flights, aes(x = origin, y = arr_delay)) +
+  geom_boxplot(outliers = FALSE, na.rm = TRUE) +
+  labs(title = "Arrival Delays by Origin",
+       x = "Airport of origin", y = "Arrival delay (minutes)") +
+  theme_minimal()
+ggsave(file.path(out_dir, "w3_vibe_box_origin_nooutliers.pdf"), p_vibe_box_noout,
+       width = 5, height = 3.5)
+
+# "Vibecoding" box plot by airport of origin and month (deliberately cluttered: 36 boxes)
+p_vibe_box_month <- ggplot(df_flights,
+                           aes(x = origin, y = arr_delay,
+                               fill = factor(month, levels = 1:12, labels = month.abb))) +
+  geom_boxplot(outliers = FALSE, na.rm = TRUE) +
+  labs(title = "Arrival Delays by Origin and Month",
+       x = "Airport of origin", y = "Arrival delay (minutes)", fill = "Month") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+ggsave(file.path(out_dir, "w3_vibe_box_origin_month.pdf"), p_vibe_box_month,
+       width = 5, height = 3.5)
 
 # Box plot: arrival delay by airport of origin and time of day
 df_flights$time_of_day <- ifelse(df_flights$hour < 12, "Morning", "Afternoon/evening")

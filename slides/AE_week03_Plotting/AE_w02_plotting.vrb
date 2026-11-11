@@ -44,7 +44,8 @@ ggplot(weekly, aes(x = week, y = pct_change,
   labs(x = "Week", y = "Change in flights (%)",
        colour = "Origin",
        caption = paste("Note: first full week of 2013 = 100.",
-                       "Incomplete weeks excluded."))
+                       "Incomplete weeks excluded.")) +
+  theme_minimal()
 \end{lstlisting}
 \end{onlyenv}
 \begin{onlyenv}<3>

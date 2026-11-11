@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  10 NOV 2026 19:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  11 NOV 2026 14:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -901,13 +901,18 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 <w3_hist_arr_delay.pdf, id=731, 361.35pt x 252.945pt>
 File: w3_hist_arr_delay.pdf Graphic file (type pdf)
 <use w3_hist_arr_delay.pdf>
-Package pdftex.def Info: w3_hist_arr_delay.pdf  used on input line 19.
+Package pdftex.def Info: w3_hist_arr_delay.pdf  used on input line 22.
 (pdftex.def)             Requested size: 179.25114pt x 125.4764pt.
 )
 
 [10
 
- <./w3_hist_arr_delay.pdf>]
+ <./w3_hist_arr_delay.pdf>] (./AE_w02_plotting.vrb
+File: w3_hist_arr_delay.pdf Graphic file (type pdf)
+<use w3_hist_arr_delay.pdf>
+Package pdftex.def Info: w3_hist_arr_delay.pdf  used on input line 22.
+(pdftex.def)             Requested size: 179.25114pt x 125.4764pt.
+)
 
 [11
 
@@ -924,19 +929,14 @@ Package pdftex.def Info: w3_hist_arr_delay.pdf  used on input line 19.
 [14
 
 ]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb
-<w3_vibe_hist_1.pdf, id=1061, 361.35pt x 252.945pt>
-File: w3_vibe_hist_1.pdf Graphic file (type pdf)
-<use w3_vibe_hist_1.pdf>
-Package pdftex.def Info: w3_vibe_hist_1.pdf  used on input line 39.
-(pdftex.def)             Requested size: 176.06834pt x 123.24939pt.
-)
 
 [15
 
-] (./AE_w02_plotting.vrb
+]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_hist_1.pdf, id=1099, 361.35pt x 252.945pt>
 File: w3_vibe_hist_1.pdf Graphic file (type pdf)
 <use w3_vibe_hist_1.pdf>
 Package pdftex.def Info: w3_vibe_hist_1.pdf  used on input line 39.
@@ -954,33 +954,33 @@ Package pdftex.def Info: w3_vibe_hist_1.pdf  used on input line 39.
 
 [17
 
+] (./AE_w02_plotting.vrb
+File: w3_vibe_hist_1.pdf Graphic file (type pdf)
+<use w3_vibe_hist_1.pdf>
+Package pdftex.def Info: w3_vibe_hist_1.pdf  used on input line 39.
+(pdftex.def)             Requested size: 176.06834pt x 123.24939pt.
+)
+
+[18
+
  <./w3_vibe_hist_1.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w3_vibe_hist_2.pdf, id=1249, 361.35pt x 252.945pt>
+<w3_vibe_hist_2.pdf, id=1287, 361.35pt x 252.945pt>
 File: w3_vibe_hist_2.pdf Graphic file (type pdf)
 <use w3_vibe_hist_2.pdf>
 Package pdftex.def Info: w3_vibe_hist_2.pdf  used on input line 31.
 (pdftex.def)             Requested size: 199.1693pt x 139.41736pt.
 )
 
-[18
+[19
 
  <./w3_vibe_hist_2.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w3_vibe_bar_month.pdf, id=1358, 361.35pt x 252.945pt>
-File: w3_vibe_bar_month.pdf Graphic file (type pdf)
-<use w3_vibe_bar_month.pdf>
-Package pdftex.def Info: w3_vibe_bar_month.pdf  used on input line 35.
-(pdftex.def)             Requested size: 165.71083pt x 115.99716pt.
-)
-
-[19
-
-] (./AE_w02_plotting.vrb
+<w3_vibe_bar_month.pdf, id=1398, 361.35pt x 252.945pt>
 File: w3_vibe_bar_month.pdf Graphic file (type pdf)
 <use w3_vibe_bar_month.pdf>
 Package pdftex.def Info: w3_vibe_bar_month.pdf  used on input line 35.
@@ -998,20 +998,20 @@ Package pdftex.def Info: w3_vibe_bar_month.pdf  used on input line 35.
 
 [21
 
- <./w3_vibe_bar_month.pdf>]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb
-<w3_vibe_bar_month_origin_stack.pdf, id=1545, 361.35pt x 252.945pt>
-File: w3_vibe_bar_month_origin_stack.pdf Graphic file (type pdf)
-<use w3_vibe_bar_month_origin_stack.pdf>
-Package pdftex.def Info: w3_vibe_bar_month_origin_stack.pdf  used on input line 40.
-(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+] (./AE_w02_plotting.vrb
+File: w3_vibe_bar_month.pdf Graphic file (type pdf)
+<use w3_vibe_bar_month.pdf>
+Package pdftex.def Info: w3_vibe_bar_month.pdf  used on input line 35.
+(pdftex.def)             Requested size: 165.71083pt x 115.99716pt.
 )
 
 [22
 
-] (./AE_w02_plotting.vrb
+ <./w3_vibe_bar_month.pdf>]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_bar_month_origin_stack.pdf, id=1584, 361.35pt x 252.945pt>
 File: w3_vibe_bar_month_origin_stack.pdf Graphic file (type pdf)
 <use w3_vibe_bar_month_origin_stack.pdf>
 Package pdftex.def Info: w3_vibe_bar_month_origin_stack.pdf  used on input line 40.
@@ -1029,20 +1029,20 @@ Package pdftex.def Info: w3_vibe_bar_month_origin_stack.pdf  used on input line 
 
 [24
 
- <./w3_vibe_bar_month_origin_stack.pdf>]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb
-<w3_vibe_bar_month_origin_dodge.pdf, id=1732, 361.35pt x 252.945pt>
-File: w3_vibe_bar_month_origin_dodge.pdf Graphic file (type pdf)
-<use w3_vibe_bar_month_origin_dodge.pdf>
-Package pdftex.def Info: w3_vibe_bar_month_origin_dodge.pdf  used on input line 41.
+] (./AE_w02_plotting.vrb
+File: w3_vibe_bar_month_origin_stack.pdf Graphic file (type pdf)
+<use w3_vibe_bar_month_origin_stack.pdf>
+Package pdftex.def Info: w3_vibe_bar_month_origin_stack.pdf  used on input line 40.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [25
 
-] (./AE_w02_plotting.vrb
+ <./w3_vibe_bar_month_origin_stack.pdf>]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_bar_month_origin_dodge.pdf, id=1771, 361.35pt x 252.945pt>
 File: w3_vibe_bar_month_origin_dodge.pdf Graphic file (type pdf)
 <use w3_vibe_bar_month_origin_dodge.pdf>
 Package pdftex.def Info: w3_vibe_bar_month_origin_dodge.pdf  used on input line 41.
@@ -1060,6 +1060,15 @@ Package pdftex.def Info: w3_vibe_bar_month_origin_dodge.pdf  used on input line 
 
 [27
 
+] (./AE_w02_plotting.vrb
+File: w3_vibe_bar_month_origin_dodge.pdf Graphic file (type pdf)
+<use w3_vibe_bar_month_origin_dodge.pdf>
+Package pdftex.def Info: w3_vibe_bar_month_origin_dodge.pdf  used on input line 41.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[28
+
  <./w3_vibe_bar_month_origin_dodge.pdf>]
 File: w3_vibe_bar_month_origin_stack.pdf Graphic file (type pdf)
 <use w3_vibe_bar_month_origin_stack.pdf>
@@ -1071,259 +1080,328 @@ Package pdftex.def Info: w3_vibe_bar_month_origin_dodge.pdf  used on input line 
 (pdftex.def)             Requested size: 169.2951pt x 118.50592pt.
 
 
-[28
-
-]
-<w3_box_origin_nooutliers.pdf, id=1956, 361.35pt x 252.945pt>
-File: w3_box_origin_nooutliers.pdf Graphic file (type pdf)
-<use w3_box_origin_nooutliers.pdf>
-Package pdftex.def Info: w3_box_origin_nooutliers.pdf  used on input line 556.
-(pdftex.def)             Requested size: 159.33604pt x 111.53543pt.
-
-
 [29
-
- <./w3_box_origin_nooutliers.pdf>]
-<w3_box_origin.pdf, id=2000, 361.35pt x 252.945pt>
-File: w3_box_origin.pdf Graphic file (type pdf)
-<use w3_box_origin.pdf>
-Package pdftex.def Info: w3_box_origin.pdf  used on input line 556.
-(pdftex.def)             Requested size: 159.33604pt x 111.53543pt.
-
-
-[30
-
- <./w3_box_origin.pdf>]
-File: w3_box_origin.pdf Graphic file (type pdf)
-<use w3_box_origin.pdf>
-Package pdftex.def Info: w3_box_origin.pdf  used on input line 556.
-(pdftex.def)             Requested size: 159.33604pt x 111.53543pt.
-
-
-[31
-
-]
-<w3_box_origin_month.pdf, id=2116, 361.35pt x 252.945pt>
-File: w3_box_origin_month.pdf Graphic file (type pdf)
-<use w3_box_origin_month.pdf>
-Package pdftex.def Info: w3_box_origin_month.pdf  used on input line 581.
-(pdftex.def)             Requested size: 159.33604pt x 111.53543pt.
-
-
-[32
-
- <./w3_box_origin_month.pdf>]
-File: w3_box_origin_month.pdf Graphic file (type pdf)
-<use w3_box_origin_month.pdf>
-Package pdftex.def Info: w3_box_origin_month.pdf  used on input line 581.
-(pdftex.def)             Requested size: 159.33604pt x 111.53543pt.
-
-
-[33
 
 ]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w3_vibe_scatter_distance_delay.png, id=2264, 361.35pt x 252.945pt>
-File: w3_vibe_scatter_distance_delay.png Graphic file (type png)
-<use w3_vibe_scatter_distance_delay.png>
-Package pdftex.def Info: w3_vibe_scatter_distance_delay.png  used on input line 39.
+<w3_vibe_box_origin.pdf, id=2027, 361.35pt x 252.945pt>
+File: w3_vibe_box_origin.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin.pdf>
+Package pdftex.def Info: w3_vibe_box_origin.pdf  used on input line 44.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+<w3_vibe_box_origin_nooutliers.pdf, id=2028, 361.35pt x 252.945pt>
+File: w3_vibe_box_origin_nooutliers.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_nooutliers.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_nooutliers.pdf  used on input line 70.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[30
+
+] (./AE_w02_plotting.vrb
+File: w3_vibe_box_origin.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin.pdf>
+Package pdftex.def Info: w3_vibe_box_origin.pdf  used on input line 44.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+File: w3_vibe_box_origin_nooutliers.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_nooutliers.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_nooutliers.pdf  used on input line 70.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[31
+
+] (./AE_w02_plotting.vrb
+File: w3_vibe_box_origin.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin.pdf>
+Package pdftex.def Info: w3_vibe_box_origin.pdf  used on input line 44.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+File: w3_vibe_box_origin_nooutliers.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_nooutliers.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_nooutliers.pdf  used on input line 70.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[32
+
+ <./w3_vibe_box_origin.pdf>] (./AE_w02_plotting.vrb
+File: w3_vibe_box_origin.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin.pdf>
+Package pdftex.def Info: w3_vibe_box_origin.pdf  used on input line 44.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+File: w3_vibe_box_origin_nooutliers.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_nooutliers.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_nooutliers.pdf  used on input line 70.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[33
+
+] (./AE_w02_plotting.vrb
+File: w3_vibe_box_origin.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin.pdf>
+Package pdftex.def Info: w3_vibe_box_origin.pdf  used on input line 44.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+File: w3_vibe_box_origin_nooutliers.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_nooutliers.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_nooutliers.pdf  used on input line 70.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [34
 
 ] (./AE_w02_plotting.vrb
-File: w3_vibe_scatter_distance_delay.png Graphic file (type png)
-<use w3_vibe_scatter_distance_delay.png>
-Package pdftex.def Info: w3_vibe_scatter_distance_delay.png  used on input line 39.
+File: w3_vibe_box_origin.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin.pdf>
+Package pdftex.def Info: w3_vibe_box_origin.pdf  used on input line 44.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+File: w3_vibe_box_origin_nooutliers.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_nooutliers.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_nooutliers.pdf  used on input line 70.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [35
 
-] (./AE_w02_plotting.vrb
-File: w3_vibe_scatter_distance_delay.png Graphic file (type png)
-<use w3_vibe_scatter_distance_delay.png>
-Package pdftex.def Info: w3_vibe_scatter_distance_delay.png  used on input line 39.
+ <./w3_vibe_box_origin_nooutliers.pdf>]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_box_origin_month.pdf, id=2336, 361.35pt x 252.945pt>
+File: w3_vibe_box_origin_month.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_month.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_month.pdf  used on input line 48.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [36
 
- <./w3_vibe_scatter_distance_delay.png>]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb
-<w3_vibe_binscatter.pdf, id=2445, 361.35pt x 252.945pt>
-File: w3_vibe_binscatter.pdf Graphic file (type pdf)
-<use w3_vibe_binscatter.pdf>
-Package pdftex.def Info: w3_vibe_binscatter.pdf  used on input line 46.
+] (./AE_w02_plotting.vrb
+File: w3_vibe_box_origin_month.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_month.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_month.pdf  used on input line 48.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [37
 
 ] (./AE_w02_plotting.vrb
-File: w3_vibe_binscatter.pdf Graphic file (type pdf)
-<use w3_vibe_binscatter.pdf>
-Package pdftex.def Info: w3_vibe_binscatter.pdf  used on input line 46.
+File: w3_vibe_box_origin_month.pdf Graphic file (type pdf)
+<use w3_vibe_box_origin_month.pdf>
+Package pdftex.def Info: w3_vibe_box_origin_month.pdf  used on input line 48.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [38
 
-] (./AE_w02_plotting.vrb
-File: w3_vibe_binscatter.pdf Graphic file (type pdf)
-<use w3_vibe_binscatter.pdf>
-Package pdftex.def Info: w3_vibe_binscatter.pdf  used on input line 46.
-(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
-)
-Overfull \vbox (7.59149pt too high) detected at line 684
- []
-
-
-
-[39
-
- <./w3_vibe_binscatter.pdf>]
+ <./w3_vibe_box_origin_month.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w3_vibe_binscatter_origin.pdf, id=2632, 361.35pt x 252.945pt>
-File: w3_vibe_binscatter_origin.pdf Graphic file (type pdf)
-<use w3_vibe_binscatter_origin.pdf>
-Package pdftex.def Info: w3_vibe_binscatter_origin.pdf  used on input line 35.
-(pdftex.def)             Requested size: 161.32492pt x 112.92876pt.
+<w3_vibe_scatter_distance_delay.png, id=2523, 361.35pt x 252.945pt>
+File: w3_vibe_scatter_distance_delay.png Graphic file (type png)
+<use w3_vibe_scatter_distance_delay.png>
+Package pdftex.def Info: w3_vibe_scatter_distance_delay.png  used on input line 39.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[39
+
+] (./AE_w02_plotting.vrb
+File: w3_vibe_scatter_distance_delay.png Graphic file (type png)
+<use w3_vibe_scatter_distance_delay.png>
+Package pdftex.def Info: w3_vibe_scatter_distance_delay.png  used on input line 39.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [40
 
- <./w3_vibe_binscatter_origin.pdf>] (./AE_w02_plotting.vrb
-File: w3_vibe_binscatter_origin.pdf Graphic file (type pdf)
-<use w3_vibe_binscatter_origin.pdf>
-Package pdftex.def Info: w3_vibe_binscatter_origin.pdf  used on input line 35.
-(pdftex.def)             Requested size: 161.32492pt x 112.92876pt.
+] (./AE_w02_plotting.vrb
+File: w3_vibe_scatter_distance_delay.png Graphic file (type png)
+<use w3_vibe_scatter_distance_delay.png>
+Package pdftex.def Info: w3_vibe_scatter_distance_delay.png  used on input line 39.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [41
 
-]
+ <./w3_vibe_scatter_distance_delay.png>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w3_vibe_line_daily.pdf, id=2780, 361.35pt x 252.945pt>
-File: w3_vibe_line_daily.pdf Graphic file (type pdf)
-<use w3_vibe_line_daily.pdf>
-Package pdftex.def Info: w3_vibe_line_daily.pdf  used on input line 41.
+<w3_vibe_binscatter.pdf, id=2704, 361.35pt x 252.945pt>
+File: w3_vibe_binscatter.pdf Graphic file (type pdf)
+<use w3_vibe_binscatter.pdf>
+Package pdftex.def Info: w3_vibe_binscatter.pdf  used on input line 47.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [42
 
 ] (./AE_w02_plotting.vrb
-File: w3_vibe_line_daily.pdf Graphic file (type pdf)
-<use w3_vibe_line_daily.pdf>
-Package pdftex.def Info: w3_vibe_line_daily.pdf  used on input line 41.
+File: w3_vibe_binscatter.pdf Graphic file (type pdf)
+<use w3_vibe_binscatter.pdf>
+Package pdftex.def Info: w3_vibe_binscatter.pdf  used on input line 47.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
+Overfull \vbox (0.20427pt too high) detected at line 760
+ []
+
+
 
 [43
 
 ] (./AE_w02_plotting.vrb
-File: w3_vibe_line_daily.pdf Graphic file (type pdf)
-<use w3_vibe_line_daily.pdf>
-Package pdftex.def Info: w3_vibe_line_daily.pdf  used on input line 41.
+File: w3_vibe_binscatter.pdf Graphic file (type pdf)
+<use w3_vibe_binscatter.pdf>
+Package pdftex.def Info: w3_vibe_binscatter.pdf  used on input line 47.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
+Overfull \vbox (7.59149pt too high) detected at line 760
+ []
+
+
 
 [44
 
- <./w3_vibe_line_daily.pdf>]
+ <./w3_vibe_binscatter.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w3_vibe_line_monthly.pdf, id=2967, 361.35pt x 252.945pt>
-File: w3_vibe_line_monthly.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly.pdf  used on input line 44.
-(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+<w3_vibe_binscatter_origin.pdf, id=2891, 361.35pt x 252.945pt>
+File: w3_vibe_binscatter_origin.pdf Graphic file (type pdf)
+<use w3_vibe_binscatter_origin.pdf>
+Package pdftex.def Info: w3_vibe_binscatter_origin.pdf  used on input line 36.
+(pdftex.def)             Requested size: 161.32492pt x 112.92876pt.
 )
+Overfull \vbox (5.16127pt too high) detected at line 800
+ []
+
+
 
 [45
 
-] (./AE_w02_plotting.vrb
-File: w3_vibe_line_monthly.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly.pdf  used on input line 44.
-(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+ <./w3_vibe_binscatter_origin.pdf>] (./AE_w02_plotting.vrb
+File: w3_vibe_binscatter_origin.pdf Graphic file (type pdf)
+<use w3_vibe_binscatter_origin.pdf>
+Package pdftex.def Info: w3_vibe_binscatter_origin.pdf  used on input line 36.
+(pdftex.def)             Requested size: 161.32492pt x 112.92876pt.
 )
+Overfull \vbox (5.16127pt too high) detected at line 800
+ []
+
+
 
 [46
 
-] (./AE_w02_plotting.vrb
-File: w3_vibe_line_monthly.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly.pdf  used on input line 44.
+]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_line_daily.pdf, id=3039, 361.35pt x 252.945pt>
+File: w3_vibe_line_daily.pdf Graphic file (type pdf)
+<use w3_vibe_line_daily.pdf>
+Package pdftex.def Info: w3_vibe_line_daily.pdf  used on input line 41.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [47
 
- <./w3_vibe_line_monthly.pdf>]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb
-<w3_vibe_line_monthly_zero.pdf, id=3153, 361.35pt x 252.945pt>
-File: w3_vibe_line_monthly_zero.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly_zero.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly_zero.pdf  used on input line 37.
+] (./AE_w02_plotting.vrb
+File: w3_vibe_line_daily.pdf Graphic file (type pdf)
+<use w3_vibe_line_daily.pdf>
+Package pdftex.def Info: w3_vibe_line_daily.pdf  used on input line 41.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [48
 
 ] (./AE_w02_plotting.vrb
-File: w3_vibe_line_monthly_zero.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly_zero.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly_zero.pdf  used on input line 37.
+File: w3_vibe_line_daily.pdf Graphic file (type pdf)
+<use w3_vibe_line_daily.pdf>
+Package pdftex.def Info: w3_vibe_line_daily.pdf  used on input line 41.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [49
 
-] (./AE_w02_plotting.vrb
-File: w3_vibe_line_monthly_zero.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly_zero.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly_zero.pdf  used on input line 37.
+ <./w3_vibe_line_daily.pdf>]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_line_monthly.pdf, id=3226, 361.35pt x 252.945pt>
+File: w3_vibe_line_monthly.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly.pdf  used on input line 44.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [50
 
- <./w3_vibe_line_monthly_zero.pdf>]
-\openout4 = `AE_w02_plotting.vrb'.
-
- (./AE_w02_plotting.vrb
-<w3_vibe_line_monthly_origin.pdf, id=3341, 361.35pt x 252.945pt>
-File: w3_vibe_line_monthly_origin.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly_origin.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly_origin.pdf  used on input line 46.
+] (./AE_w02_plotting.vrb
+File: w3_vibe_line_monthly.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly.pdf  used on input line 44.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [51
 
 ] (./AE_w02_plotting.vrb
-File: w3_vibe_line_monthly_origin.pdf Graphic file (type pdf)
-<use w3_vibe_line_monthly_origin.pdf>
-Package pdftex.def Info: w3_vibe_line_monthly_origin.pdf  used on input line 46.
+File: w3_vibe_line_monthly.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly.pdf  used on input line 44.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
 [52
 
+ <./w3_vibe_line_monthly.pdf>]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_line_monthly_zero.pdf, id=3412, 361.35pt x 252.945pt>
+File: w3_vibe_line_monthly_zero.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly_zero.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly_zero.pdf  used on input line 37.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[53
+
+] (./AE_w02_plotting.vrb
+File: w3_vibe_line_monthly_zero.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly_zero.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly_zero.pdf  used on input line 37.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[54
+
+] (./AE_w02_plotting.vrb
+File: w3_vibe_line_monthly_zero.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly_zero.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly_zero.pdf  used on input line 37.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[55
+
+ <./w3_vibe_line_monthly_zero.pdf>]
+\openout4 = `AE_w02_plotting.vrb'.
+
+ (./AE_w02_plotting.vrb
+<w3_vibe_line_monthly_origin.pdf, id=3599, 361.35pt x 252.945pt>
+File: w3_vibe_line_monthly_origin.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly_origin.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly_origin.pdf  used on input line 46.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[56
+
 ] (./AE_w02_plotting.vrb
 File: w3_vibe_line_monthly_origin.pdf Graphic file (type pdf)
 <use w3_vibe_line_monthly_origin.pdf>
@@ -1331,50 +1409,63 @@ Package pdftex.def Info: w3_vibe_line_monthly_origin.pdf  used on input line 46.
 (pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
 )
 
-[53
+[57
+
+] (./AE_w02_plotting.vrb
+File: w3_vibe_line_monthly_origin.pdf Graphic file (type pdf)
+<use w3_vibe_line_monthly_origin.pdf>
+Package pdftex.def Info: w3_vibe_line_monthly_origin.pdf  used on input line 46.
+(pdftex.def)             Requested size: 193.58882pt x 135.51143pt.
+)
+
+[58
 
  <./w3_vibe_line_monthly_origin.pdf>]
 \openout4 = `AE_w02_plotting.vrb'.
 
  (./AE_w02_plotting.vrb
-<w3_vibe_line_weekly.pdf, id=3527, 361.35pt x 252.945pt>
+<w3_vibe_line_weekly.pdf, id=3786, 361.35pt x 252.945pt>
 File: w3_vibe_line_weekly.pdf Graphic file (type pdf)
 <use w3_vibe_line_weekly.pdf>
-Package pdftex.def Info: w3_vibe_line_weekly.pdf  used on input line 52.
+Package pdftex.def Info: w3_vibe_line_weekly.pdf  used on input line 53.
 (pdftex.def)             Requested size: 200.7604pt x 140.53279pt.
 )
 
-[54
+[59
 
 ] (./AE_w02_plotting.vrb
 File: w3_vibe_line_weekly.pdf Graphic file (type pdf)
 <use w3_vibe_line_weekly.pdf>
-Package pdftex.def Info: w3_vibe_line_weekly.pdf  used on input line 52.
+Package pdftex.def Info: w3_vibe_line_weekly.pdf  used on input line 53.
 (pdftex.def)             Requested size: 200.7604pt x 140.53279pt.
 )
+Overfull \vbox (0.43932pt too high) detected at line 1055
+ []
 
-[55
+
+
+[60
 
 ] (./AE_w02_plotting.vrb
 File: w3_vibe_line_weekly.pdf Graphic file (type pdf)
 <use w3_vibe_line_weekly.pdf>
-Package pdftex.def Info: w3_vibe_line_weekly.pdf  used on input line 52.
+Package pdftex.def Info: w3_vibe_line_weekly.pdf  used on input line 53.
 (pdftex.def)             Requested size: 200.7604pt x 140.53279pt.
 )
 
-[56
+[61
 
  <./w3_vibe_line_weekly.pdf>] Excluding 'comment' comment.
 
-[57
+[62
 
 ]
 
-[58
+[63
 
 ]
 
-[59
+[64
 
 ]
 \tf@nav=\write7
@@ -1395,18 +1486,18 @@ Package rerunfilecheck Info: File `AE_w02_plotting.out' has not changed.
 (rerunfilecheck)             Checksum: C35E527F4221F7AFB8343106E9007FBD;691.
  ) 
 Here is how much of TeX's memory you used:
- 29309 strings out of 467797
- 556722 string characters out of 5435982
- 1167125 words of memory out of 5000000
- 57186 multiletter control sequences out of 15000+600000
+ 29341 strings out of 467797
+ 557361 string characters out of 5435982
+ 1169125 words of memory out of 5000000
+ 57188 multiletter control sequences out of 15000+600000
  647966 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,17n,123p,494b,1993s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on AE_w02_plotting.pdf (59 pages, 1168476 bytes).
+Output written on AE_w02_plotting.pdf (64 pages, 1177438 bytes).
 PDF statistics:
- 3895 PDF objects out of 4296 (max. 8388607)
- 2348 compressed objects within 24 object streams
- 127 named destinations out of 1000 (max. 500000)
+ 4155 PDF objects out of 4296 (max. 8388607)
+ 2535 compressed objects within 26 object streams
+ 137 named destinations out of 1000 (max. 500000)
  222 words of extra memory for PDF output out of 10000 (max. 10000000)
 

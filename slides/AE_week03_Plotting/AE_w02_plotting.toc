@@ -1,9 +1,9 @@
 \babel@toc {english}{}\relax 
 \beamer@sectionintoc {1}{Intro}{2}{0}{1}
 \beamer@sectionintoc {2}{ggplot2}{9}{0}{2}
-\beamer@sectionintoc {3}{Histogram}{15}{0}{3}
-\beamer@sectionintoc {4}{Bar Chart}{19}{0}{4}
-\beamer@sectionintoc {5}{Box Plot}{29}{0}{5}
-\beamer@sectionintoc {6}{Scatter Plot}{34}{0}{6}
-\beamer@sectionintoc {7}{Line Graph}{42}{0}{7}
-\beamer@sectionintoc {8}{Summary}{57}{0}{8}
+\beamer@sectionintoc {3}{Histogram}{16}{0}{3}
+\beamer@sectionintoc {4}{Bar Chart}{20}{0}{4}
+\beamer@sectionintoc {5}{Box Plot}{30}{0}{5}
+\beamer@sectionintoc {6}{Scatter Plot}{39}{0}{6}
+\beamer@sectionintoc {7}{Line Graph}{47}{0}{7}
+\beamer@sectionintoc {8}{Summary}{62}{0}{8}
