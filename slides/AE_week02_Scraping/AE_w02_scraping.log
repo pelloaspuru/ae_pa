@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  20 OCT 2026 23:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.24)  11 NOV 2026 13:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -892,109 +892,151 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 [9
 
 ]
+\openout4 = `AE_w02_scraping.vrb'.
+
+ (./AE_w02_scraping.vrb (c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+) (c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+))
 
 [10
 
 ]
+\openout4 = `AE_w02_scraping.vrb'.
+
+ (./AE_w02_scraping.vrb)
 
 [11
+
+] (./AE_w02_scraping.vrb)
+
+[12
+
+] (./AE_w02_scraping.vrb)
+
+[13
+
+] (./AE_w02_scraping.vrb)
+
+[14
 
 ]
 \openout4 = `AE_w02_scraping.vrb'.
 
  (./AE_w02_scraping.vrb Excluding 'comment' comment.)
 
-[12
-
-] (./AE_w02_scraping.vrb Excluding 'comment' comment.)
-
-[13
-
-]
-
-[14
-
-]
-
 [15
 
-]
+] (./AE_w02_scraping.vrb Excluding 'comment' comment.)
 
 [16
 
 ]
-\openout4 = `AE_w02_scraping.vrb'.
-
- (./AE_w02_scraping.vrb)
 
 [17
 
 ]
-\openout4 = `AE_w02_scraping.vrb'.
-
- (./AE_w02_scraping.vrb)
 
 [18
 
-] (./AE_w02_scraping.vrb)
+]
 
 [19
 
 ]
-<../../pics/airport_dulles_1.png, id=1078, 160.09813pt x 420.06938pt>
-File: ../../pics/airport_dulles_1.png Graphic file (type png)
-<use ../../pics/airport_dulles_1.png>
-Package pdftex.def Info: ../../pics/airport_dulles_1.png  used on input line 334.
-(pdftex.def)             Requested size: 57.44472pt x 150.7245pt.
-<../../pics/airport_dulles_2.png, id=1080, 160.09813pt x 324.21124pt>
-File: ../../pics/airport_dulles_2.png Graphic file (type png)
-<use ../../pics/airport_dulles_2.png>
-Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 334.
-(pdftex.def)             Requested size: 74.43019pt x 150.7245pt.
-File: ../../pics/airport_dulles_2.png Graphic file (type png)
-<use ../../pics/airport_dulles_2.png>
-Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 334.
-(pdftex.def)             Requested size: 159.333pt x 98.89737pt.
+\openout4 = `AE_w02_scraping.vrb'.
 
+ (./AE_w02_scraping.vrb)
 
 [20
 
- <../../pics/airport_dulles_1.png> <../../pics/airport_dulles_2.png>]
+]
 \openout4 = `AE_w02_scraping.vrb'.
 
  (./AE_w02_scraping.vrb)
 
 [21
 
-]
+] (./AE_w02_scraping.vrb)
 
 [22
 
 ]
+<../../pics/airport_dulles_1.png, id=1380, 160.09813pt x 420.06938pt>
+File: ../../pics/airport_dulles_1.png Graphic file (type png)
+<use ../../pics/airport_dulles_1.png>
+Package pdftex.def Info: ../../pics/airport_dulles_1.png  used on input line 446.
+(pdftex.def)             Requested size: 57.44472pt x 150.7245pt.
+<../../pics/airport_dulles_2.png, id=1382, 160.09813pt x 324.21124pt>
+File: ../../pics/airport_dulles_2.png Graphic file (type png)
+<use ../../pics/airport_dulles_2.png>
+Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 446.
+(pdftex.def)             Requested size: 74.43019pt x 150.7245pt.
+File: ../../pics/airport_dulles_2.png Graphic file (type png)
+<use ../../pics/airport_dulles_2.png>
+Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 446.
+(pdftex.def)             Requested size: 159.333pt x 98.89737pt.
+
 
 [23
 
-]
-\openout4 = `AE_w02_scraping.vrb'.
+ <../../pics/airport_dulles_1.png> <../../pics/airport_dulles_2.png>]
+<../../pics/airport_dulles_3.png, id=1454, 616.704pt x 346.896pt>
+File: ../../pics/airport_dulles_3.png Graphic file (type png)
+<use ../../pics/airport_dulles_3.png>
+Package pdftex.def Info: ../../pics/airport_dulles_3.png  used on input line 452.
+(pdftex.def)             Requested size: 358.50229pt x 201.66032pt.
 
- (./AE_w02_scraping.vrb)
 
 [24
 
+ <../../pics/airport_dulles_3.png>]
+<../../pics/airport_dulles_4.png, id=1523, 616.704pt x 346.896pt>
+File: ../../pics/airport_dulles_4.png Graphic file (type png)
+<use ../../pics/airport_dulles_4.png>
+Package pdftex.def Info: ../../pics/airport_dulles_4.png  used on input line 458.
+(pdftex.def)             Requested size: 358.50229pt x 201.66032pt.
+
+
+[25
+
+ <../../pics/airport_dulles_4.png>]
+\openout4 = `AE_w02_scraping.vrb'.
+
+ (./AE_w02_scraping.vrb)
+
+[26
+
+]
+
+[27
+
+]
+
+[28
+
 ]
 \openout4 = `AE_w02_scraping.vrb'.
 
  (./AE_w02_scraping.vrb)
 
-[25
+[29
+
+]
+\openout4 = `AE_w02_scraping.vrb'.
+
+ (./AE_w02_scraping.vrb)
+
+[30
 
 ] (./AE_w02_scraping.vrb)
 
-[26
+[31
 
 ] (./AE_w02_scraping.vrb)
 
-[27
+[32
 
 ]
 \openout4 = `AE_w02_scraping.vrb'.
@@ -1006,61 +1048,35 @@ Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
 (pdftex.def)             Requested size: 179.25114pt x 111.26106pt.
 )
 
-[28
-
-] (./AE_w02_scraping.vrb
-File: ../../pics/airport_dulles_2.png Graphic file (type png)
-<use ../../pics/airport_dulles_2.png>
-Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
-(pdftex.def)             Requested size: 179.25114pt x 111.26106pt.
-)
-
-[29
-
-] (./AE_w02_scraping.vrb
-File: ../../pics/airport_dulles_2.png Graphic file (type png)
-<use ../../pics/airport_dulles_2.png>
-Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
-(pdftex.def)             Requested size: 179.25114pt x 111.26106pt.
-)
-
-[30
-
-]
-
-[31
-
-]
-
-[32
-
-]
-
 [33
 
-]
-\openout4 = `AE_w02_scraping.vrb'.
-
- (./AE_w02_scraping.vrb)
+] (./AE_w02_scraping.vrb
+File: ../../pics/airport_dulles_2.png Graphic file (type png)
+<use ../../pics/airport_dulles_2.png>
+Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
+(pdftex.def)             Requested size: 179.25114pt x 111.26106pt.
+)
 
 [34
 
-] (./AE_w02_scraping.vrb)
+] (./AE_w02_scraping.vrb
+File: ../../pics/airport_dulles_2.png Graphic file (type png)
+<use ../../pics/airport_dulles_2.png>
+Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
+(pdftex.def)             Requested size: 179.25114pt x 111.26106pt.
+)
 
 [35
 
 ]
-\openout4 = `AE_w02_scraping.vrb'.
-
- (./AE_w02_scraping.vrb)
 
 [36
 
-] (./AE_w02_scraping.vrb)
+]
 
 [37
 
-] (./AE_w02_scraping.vrb)
+]
 
 [38
 
@@ -1075,14 +1091,14 @@ Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
 
 [40
 
-] (./AE_w02_scraping.vrb)
-
-[41
-
 ]
 \openout4 = `AE_w02_scraping.vrb'.
 
  (./AE_w02_scraping.vrb)
+
+[41
+
+] (./AE_w02_scraping.vrb)
 
 [42
 
@@ -1101,24 +1117,50 @@ Package pdftex.def Info: ../../pics/airport_dulles_2.png  used on input line 16.
 
 [45
 
+] (./AE_w02_scraping.vrb)
+
+[46
+
 ]
 \openout4 = `AE_w02_scraping.vrb'.
 
  (./AE_w02_scraping.vrb)
 
-[46
-
-]
-
 [47
 
-]
+] (./AE_w02_scraping.vrb)
 
 [48
 
 ]
+\openout4 = `AE_w02_scraping.vrb'.
+
+ (./AE_w02_scraping.vrb)
 
 [49
+
+] (./AE_w02_scraping.vrb)
+
+[50
+
+]
+\openout4 = `AE_w02_scraping.vrb'.
+
+ (./AE_w02_scraping.vrb)
+
+[51
+
+]
+
+[52
+
+]
+
+[53
+
+]
+
+[54
 
 ]
 \tf@nav=\write7
@@ -1139,18 +1181,18 @@ Package rerunfilecheck Info: File `AE_w02_scraping.out' has not changed.
 (rerunfilecheck)             Checksum: 79CAC23990982E0662DBAEC1EA5E332B;552.
  ) 
 Here is how much of TeX's memory you used:
- 29090 strings out of 467797
- 551814 string characters out of 5435982
- 1183125 words of memory out of 5000000
- 57014 multiletter control sequences out of 15000+600000
- 643937 words of font info for 83 fonts, out of 8000000 for 9000
+ 29380 strings out of 467797
+ 555853 string characters out of 5435982
+ 1210530 words of memory out of 5000000
+ 57278 multiletter control sequences out of 15000+600000
+ 645797 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,17n,123p,617b,1923s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on AE_w02_scraping.pdf (49 pages, 566466 bytes).
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0600.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on AE_w02_scraping.pdf (54 pages, 1587196 bytes).
 PDF statistics:
- 2825 PDF objects out of 2984 (max. 8388607)
- 1670 compressed objects within 17 object streams
- 105 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3435 PDF objects out of 3580 (max. 8388607)
+ 1998 compressed objects within 20 object streams
+ 115 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -167,22 +167,134 @@ https://api.openweathermap.org/data/2.5/weather?q=New%20York&units=metric&appid=
 \end{block}
 \end{frame}
 
-\begin{frame}{Unstructured Data}
+\begin{frame}[fragile]{Unstructured Data}
 
-Websites often display a lot of economically relevant information...
-\begin{itemize}
-  \item For \textbf{people to read}, not as a dataframe.
-  \item Written in \textbf{HTML} programming language: tags every part of the page (a title, a table...).
-\end{itemize}
+Websites often \textbf{display} a lot of economically relevant information...
+\begin{columns}[T]
+  \begin{column}{0.5\textwidth}
+  \centering
+  \textbf{What you see (browser)}\\[2mm]
+  % mock browser window
+  \begin{tikzpicture}[font=\scriptsize\sffamily]
+    % window and top bar
+    \draw[PelloGray, fill=white, rounded corners=3pt] (0,0) rectangle (6.2,4.4);
+    \fill[PelloGrayLight, rounded corners=3pt] (0,3.8) rectangle (6.2,4.4);
+    \fill[PelloGrayLight] (0,3.8) rectangle (6.2,4.0);
+    \draw[PelloGray, rounded corners=3pt] (0,0) rectangle (6.2,4.4);
+    \draw[PelloGray] (0,3.8) -- (6.2,3.8);
+    \foreach \x/\c in {0.25/red!60, 0.5/orange!70, 0.75/green!60}
+      \fill[\c] (\x,4.1) circle (0.07);
+    % address bar
+    \draw[PelloGray, fill=white, rounded corners=2pt] (1.0,3.95) rectangle (6.0,4.25);
+    \node[anchor=west, PelloGray, font=\tiny\ttfamily] at (1.1,4.1) {www.example-books.com/wealth-of-nations};
+    % page content
+    \node[anchor=north west, font=\normalsize\bfseries\sffamily] at (0.3,3.6) {The Wealth of Nations};
+    \node[anchor=north west] at (0.3,3.0) {Adam Smith. Paperback edition.};
+    \node[anchor=north west] at (0.3,2.4) {%
+      \begin{tabular}{ll}
+        \toprule
+        \textbf{Item} & \textbf{Price (EUR)} \\
+        \midrule
+        Book & 14.99 \\
+        Shipping & 3.50 \\
+        \bottomrule
+      \end{tabular}};
+  \end{tikzpicture}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \centering
+  \textbf{Underlying Code (HTML)}\\[2mm]
+\begin{lstlisting}[language=HTML, basicstyle=\ttfamily\scriptsize]
+<html>
+  <body>
+    <h1>The Wealth of Nations</h1>
+    <p>Adam Smith. Paperback edition.</p>
+    <table>
+      <tr><th>Item</th><th>Price (EUR)</th></tr>
+      <tr><td>Book</td><td>14.99</td></tr>
+      <tr><td>Shipping</td><td>3.50</td></tr>
+    </table>
+  </body>
+</html>
+\end{lstlisting}
+\footnotesize
+Every element sits inside a \textbf{tag}: \texttt{<h1>} title, \texttt{<p>} paragraph, \texttt{<table>} table, \texttt{<tr>} row, \texttt{<td>} cell.
+  \end{column}
+\end{columns}
 
-\pause
-A \textbf{Webscraper} is a code script that\dots
-\begin{enumerate}
-  \item Visits web pages automatically.
-  \item Reads the underlying HTML code.
-  \item Extracts the relevant information.
-  \item Stores information in a dataframe.
-\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Webscraping}
+\begin{columns}[T]
+  \begin{column}{0.45\textwidth}
+  A \textbf{Webscraper} is a code script that\dots
+  \begin{enumerate}
+    \item<1-> Visits web pages automatically.
+    \item<2-> Reads the underlying HTML code.
+    \item<3-> Extracts the relevant information.
+    \item<4-> Stores information in a dataframe.
+  \end{enumerate}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  \centering
+  % step 1: the website as the browser shows it
+  \begin{onlyenv}<1>
+  \begin{tikzpicture}[font=\scriptsize\sffamily]
+    \draw[PelloGray, fill=white, rounded corners=3pt] (0,0) rectangle (6.2,4.4);
+    \fill[PelloGrayLight, rounded corners=3pt] (0,3.8) rectangle (6.2,4.4);
+    \fill[PelloGrayLight] (0,3.8) rectangle (6.2,4.0);
+    \draw[PelloGray, rounded corners=3pt] (0,0) rectangle (6.2,4.4);
+    \draw[PelloGray] (0,3.8) -- (6.2,3.8);
+    \foreach \x/\c in {0.25/red!60, 0.5/orange!70, 0.75/green!60}
+      \fill[\c] (\x,4.1) circle (0.07);
+    \draw[PelloGray, fill=white, rounded corners=2pt] (1.0,3.95) rectangle (6.0,4.25);
+    \node[anchor=west, PelloGray, font=\tiny\ttfamily] at (1.1,4.1) {www.example-books.com/wealth-of-nations};
+    \node[anchor=north west, font=\normalsize\bfseries\sffamily] at (0.3,3.6) {The Wealth of Nations};
+    \node[anchor=north west] at (0.3,3.0) {Adam Smith. Paperback edition.};
+    \node[anchor=north west] at (0.3,2.4) {%
+      \begin{tabular}{ll}
+        \toprule
+        \textbf{Item} & \textbf{Price (EUR)} \\
+        \midrule
+        Book & 14.99 \\
+        Shipping & 3.50 \\
+        \bottomrule
+      \end{tabular}};
+  \end{tikzpicture}
+  \end{onlyenv}
+  % steps 2-4: the HTML code; from step 3 the runway lengths are highlighted
+  \begin{onlyenv}<2->
+\begin{lstlisting}[language=HTML, basicstyle=\ttfamily\scriptsize, escapeinside={(*@}{@*)}]
+<html>
+  <body>
+    <h1>The Wealth of Nations</h1>
+    <p>Adam Smith. Paperback edition.</p>
+    <table>
+      <tr><th>Item</th><th>Price (EUR)</th></tr>
+      <tr><td>Book</td><td>(*@\alt<3->{{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{14.99}}}{14.99}@*)</td></tr>
+      <tr><td>Shipping</td><td>(*@\alt<3->{{\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{3.50}}}{3.50}@*)</td></tr>
+    </table>
+  </body>
+</html>
+\end{lstlisting}
+  \end{onlyenv}
+  % step 4: the resulting dataset
+  \begin{onlyenv}<4>
+  \vspace{1mm}
+  $\Downarrow$\\[1mm]
+  \resizebox{\linewidth}{!}{%
+    \begin{tabular}{llrr}
+      \toprule
+      \texttt{product} & \texttt{shop} & \texttt{price\_eur} & \texttt{shipping\_eur} \\
+      \midrule
+      The Wealth of Nations & example-books.com &
+      {\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{14.99}} &
+      {\setlength{\fboxsep}{1pt}\colorbox{yellow!60}{3.50}} \\
+      \bottomrule
+    \end{tabular}}
+  \end{onlyenv}
+  \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Programming Languages for Web Scraping}
@@ -330,6 +442,18 @@ Missing information:
 \vspace{5mm}
 \begin{center}
 \scriptsize \url{https://en.wikipedia.org/wiki/Dulles_International_Airport}
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{../../pics/airport_dulles_3.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{../../pics/airport_dulles_4.png}
 \end{center}
 \end{frame}
 
