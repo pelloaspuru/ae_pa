@@ -532,6 +532,15 @@ OUTPUT AE_w02_scraping.vrb
 INPUT ./AE_w02_scraping.vrb
 INPUT ./AE_w02_scraping.vrb
 INPUT AE_w02_scraping.vrb
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/sansmathaccent/mathkerncmssi8.tfm
+OUTPUT AE_w02_scraping.vrb
+INPUT ./AE_w02_scraping.vrb
+INPUT ./AE_w02_scraping.vrb
+INPUT AE_w02_scraping.vrb
 INPUT ./AE_w02_scraping.vrb
 INPUT ./AE_w02_scraping.vrb
 INPUT AE_w02_scraping.vrb

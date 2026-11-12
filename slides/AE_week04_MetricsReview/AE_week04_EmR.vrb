@@ -1,0 +1,19 @@
+\frametitle{Clustered Standard Errors: How}
+\linespread{1.2}\selectfont
+  Allow arbitrary correlation \emph{within} clusters $g=1,\dots,G$, independence \emph{across} them:
+  \[
+    \widehat{\Var}_{CL}(\hat{\bm\beta})=(\bm X'\bm X)^{-1}\Big(\sum_{g=1}^{G}\bm X_g'\,\hat{\bm u}_g\hat{\bm u}_g'\,\bm X_g\Big)(\bm X'\bm X)^{-1}
+  \]
+  (in practice multiplied by a small-sample correction $\frac{G}{G-1}\frac{n-1}{n-k-1}$)
+  \medskip
+
+  \textbf{Practical rules}
+  \begin{itemize}
+    \item Cluster at the level at which treatment is assigned (Abadie et al., 2023).
+    \item Panel/DiD: cluster by unit to allow serial correlation (Bertrand, Duflo \& Mullainathan, 2004).
+    \item Asymptotics are in $G$, not $n$: with few clusters ($G\lesssim 30$--$50$) use the wild cluster bootstrap.
+  \end{itemize}
+  \begin{lstlisting}
+library(fixest)
+feols(y ~ x | unit + year, data = df, cluster = ~unit)
+  \end{lstlisting}

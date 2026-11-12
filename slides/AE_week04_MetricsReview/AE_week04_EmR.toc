@@ -1,0 +1,6 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{The Causal Question}{3}{0}{1}
+\beamer@sectionintoc {2}{Regression as a Tool}{12}{0}{2}
+\beamer@sectionintoc {3}{Why OLS Fails}{16}{0}{3}
+\beamer@sectionintoc {4}{Inference}{20}{0}{4}
+\beamer@sectionintoc {5}{Bridge to Research Designs}{25}{0}{5}

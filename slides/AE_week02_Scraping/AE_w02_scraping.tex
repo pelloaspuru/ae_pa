@@ -502,7 +502,9 @@ library(rvest)
 
 # Empty dataframe to store the results, one row per airport
 df_airports_wiki <- data.frame()
+\end{lstlisting}
 
+\begin{lstlisting}[language=R, basicstyle=\ttfamily\tiny]
 for (code in airports$faa) {
 
   # Read the Wikipedia page of the airport code; skip the code if the page does not exist
@@ -529,6 +531,24 @@ for (code in airports$faa) {
   Sys.sleep(0.5) # wait half a second between pages, to be polite to Wikipedia
 }
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{The Objects the Scraper Creates, Step by Step}
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\lstset{language=R, basicstyle=\ttfamily\tiny}
+\begin{tabular}{@{}p{0.15\textwidth}p{0.35\textwidth}p{0.44\textwidth}@{}}
+\textbf{Object} & \textbf{Created by} & \textbf{What it holds} \\
+\hline
+\texttt{df\_airports\_wiki} & \lstinline!data.frame()! & An empty dataframe, to be filled. \\
+\texttt{code} & \lstinline!for (code in airports$faa)! & The airport code of the current iteration, e.g.\ \texttt{"IAD"}. \\
+\texttt{page} & \lstinline!read_html(paste0(".../wiki/", code))! & The HTML of the airport's Wikipedia page. \\
+\texttt{rows} & \lstinline!html_text2(html_elements(page, ...))! & The text of each row of the tables inside the infobox. \\
+\texttt{runways} & \lstinline!strsplit(rows[grepl(...)], "\t")! & A list with one element per runway row (starting with e.g.\ \texttt{4L/22R}), split into cells. \\
+\texttt{m\_col} & \lstinline!if ("ft\tm" %in% rows) 3 else 2! & The cell with the length in metres: 3rd if the table lists feet first, else 2nd. \\
+\texttt{lengths\_m} & \lstinline!sapply(runways, function(r) r[m_col])! & The length in metres of each runway, e.g.\ \texttt{"3,353"}. \\
+\texttt{df\_airports\_wiki} & \lstinline!rbind(df_airports_wiki, data.frame(...))! & Grows by one row.\\
+\end{tabular}
 \end{frame}
 
 \begin{frame}[fragile]{Checking \texttt{df\_airports\_wiki}}
@@ -890,14 +910,14 @@ write.csv(df_flights, "data/df_flights_enriched.csv", row.names = FALSE)
 
 \begin{frame}{Summary}
 
-\begin{block}{Today}
+Today  
 \begin{enumerate}
   \item Data from the web: direct download, APIs, web scraping.
-  \item Vibecoding a scraper with an LLM, and \textbf{checking} its output: coverage tables, and a known case (Dulles).
+  \item Vibecoding a scraper with an LLM. 
+  \item \textbf{checking} scraper output.
   \item Refining the prompt until the output is reliable.
   \item Merging the scraped data with the base dataset, twice: origin and destination.
 \end{enumerate}
-\end{block}
 
 \pause
 \begin{center}
