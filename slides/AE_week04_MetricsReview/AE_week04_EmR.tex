@@ -80,7 +80,7 @@
 
 % --- Meta ---
 \title{Applied Economics}
-\subtitle{Econometrics Review: Causality, Regression, and Inference}
+\subtitle{Multiple Linear Regression, Causality, and Inference}
 \author{Pello Aspuru}
 %\institute{University of Vienna}
 \date{Winter 2026/2027}
@@ -203,34 +203,40 @@
    Average Treatment Effect (ATE): compares the mean outcomes between the two groups:
   \[
     ATE = 
-    \underbrace{\E[Y_i\mid X_{1i}=1]}_{\text{mean outcome, treated}} - \underbrace{\E[Y_i\mid X_{1i}=0]}_{\text{mean outcome, control}}
-    = \E[Y_i(1)\mid X_{1i}=1] - \E[Y_i(0)\mid X_{1i}=0]
+    \underbrace{\E[Y_i(1)\mid X_{1i}=1]}_{\text{Treated}} - \underbrace{\E[Y_i(0)\mid X_{1i}=0]}_{\text{Control}}
   \]
-  Adding and subtracting the treated group's missing counterfactual $\E[Y_i(0)\mid X_{1i}=1]$...
+  Adding and subtracting the treated group's missing counterfactual...
   \begin{align*}
-    &= \E[Y_i(1)\mid X_{1i}=1] {\underbrace{{}- \E[Y_i(0)\mid X_{1i}=1] + \E[Y_i(0)\mid X_{1i}=1]{}}_{=\,0}} - \E[Y_i(0)\mid X_{1i}=0]\\
+    ATE&= \E[Y_i(1)\mid X_{1i}=1] \textcolor{red}{{}- \E[Y_i(0)\mid X_{1i}=1] + \E[Y_i(0)\mid X_{1i}=1]{}} - \E[Y_i(0)\mid X_{1i}=0]\\
     &= {\underbrace{\E[Y_i(1)-Y_i(0)\mid X_{1i}=1]}_{\text{causal effect (on the treated)}}} +\underbrace{\E[Y_i(0)\mid X_{1i}=1]-\E[Y_i(0)\mid X_{1i}=0]}_{\text{selection bias}}
   \end{align*}
+  Comparing units with the same observed controls, $\boldsymbol{X}_i = (X_{2i},\dots,X_{ki})$:
+  \[
+    ATE = \underbrace{\E[Y_i(1)-Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]}_{\text{causal effect (on the treated)}} + \underbrace{\E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]-\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
+  \]
 \end{frame}
 
 \begin{frame}{Causal Effect and Selection Bias in the Regression Model}
-\linespread{1.2}\selectfont
-  Plugging in the potential outcomes of the regression model:
-  \begin{itemize}
-    \item The causal effect simplifies to $\beta_1$:
-    \[
-      \E[Y_i(1)-Y_i(0)\mid X_{1i}=1] = \beta_1
-    \]
-    \item The selection bias splits into differences in controls and in unobservables:
-    \begin{align*}
-      \E[Y_i(0)\mid X_{1i}=1]-\E[Y_i(0)\mid X_{1i}=0]
-      &= {\underbrace{\textstyle\sum_{j=2}^{k} \beta_j \big(\E[X_{ji}\mid X_{1i}=1]-\E[X_{ji}\mid X_{1i}=0]\big)}_{=\,0 \text{ when comparing units with the same controls}}}\\
-      &\quad+ \E[u_i\mid X_{1i}=1]-\E[u_i\mid X_{1i}=0]
-    \end{align*}
-  \end{itemize}
+  Plugging in the regression model:
+  $Y_i(X_{1i}) = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i \qquad X_{1i} \in \{0,1\} $
+  \vspace{-0.1cm}
+
+  
+  \begin{enumerate}
+    \item The causal effect simplifies:
+      $\E[Y_i(1)-Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i] = \beta_1$
+    \item The selection bias $\E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]-\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]$ splits into:
+    \begin{itemize}
+      \item differences in controls: $\sum_{j=2}^{k} \beta_j \big(\E[X_{ji}\mid X_{1i}=1, \boldsymbol{X}_i]-\E[X_{ji}\mid X_{1i}=0, \boldsymbol{X}_i]\big) 
+      =
+      \sum_{j=2}^{k} \beta_j \big(X_{ji} - X_{ji}\big)
+      = 0$
+      \item differences in unobservables: $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$
+    \end{itemize}
+  \end{enumerate}
   \begin{block}{}
     $$
-    ATE = \beta_1 + \underbrace{\E[u_i\mid X_{1i}=1]-\E[u_i\mid X_{1i}=0]}_{\text{selection bias}}
+    ATE = \beta_1 + \underbrace{\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
     $$
   \end{block}
 \end{frame}
@@ -260,40 +266,62 @@
 \end{frame}
 \end{comment}
 
+% one small causal diagram per selection-bias scenario; #1 = what links X_1i and u_i
+\newcommand{\sbdag}[1]{%
+  \begin{tikzpicture}[font=\scriptsize, state/.append style={minimum size=6mm}]
+    % controls are held fixed in every scenario, so they are left out here
+    \node[state] (x) at (0,0) {$X_{1i}$};
+    \node[state] (y) at (2,0) {$Y_i$};
+    \node[state] (u) at (1,0.75) {$u_i$};
+    \path (x) edge (y);
+    \path (u) edge (y);
+    #1
+  \end{tikzpicture}}
+
 \begin{frame}{Average Treatment Effect and Selection Bias}
-  Average Treatment Effect (ATE): $\qquad \E[\tau_i] = \beta_1 + \E[u_{i(1)}]-\E[u_{i(0)}]$
-\begin{itemize}
-  \item $\E[u_{i(1)}]$ unobserved features of treated units.
-  \item $\E[u_{i(0)}]$ unobserved features of untreated units.
-\end{itemize}
+  \begin{block}{}
+    $$
+    ATE = \beta_1 + \underbrace{\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
+    $$
+  \end{block}
+  \linespread{1}\selectfont % dense slide: normal line spacing so it fits
+  Three possible scenarios:
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
-  Three possible scenarios:
   \begin{itemize}
-    \item $\E[u_{i(1)}]=\E[u_{i(0)}]$: no selection bias $\Rightarrow$ the comparison recovers $\beta_1$.
-    \item $\E[u_{i(1)}]>\E[u_{i(0)}]$: positive selection bias $\Rightarrow$ it \textbf{overstates} $\beta_1$.
-    \item $\E[u_{i(1)}]<\E[u_{i(0)}]$: negative selection bias $\Rightarrow$ it \textbf{understates} $\beta_1$.
+    \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]=\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
+      no selection bias $\Rightarrow$ $ATE=\beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
   \centering
-  \begin{tikzpicture}[node distance=0.45cm and 0.9cm]
-    \node[state] (x) at (0,0) {$X_{1i}$};
-    \node[state] (y) [right =of x] {$Y_i$};
-    \node[state] (u) [above right =of x] {$u_i$};
-    \node[control] (c) [below right =of x] {$X_{2i},\dots,X_{ki}$};
-    \path (x) edge (y);
-    \path (u) edge (y);
-    \path (c) edge (y);
-    \path[bidirected] (x) edge[bend right=10] (c);
-    \path[bidirected] (x) edge[bend left=10] (u);
-  \end{tikzpicture}
+  \sbdag{}
   \end{column}
   \end{columns}
-  \medskip
-  \begin{block}{}
-    Selection bias: $X_{1i}$ is related to $u_i$ (dashed arrow), i.e.\ $\E[u_i\mid X_{1i},\dots,X_{ki}]\neq 0$.
-  \end{block}
+  \begin{columns}[c]
+  \begin{column}{0.7\textwidth}
+  \begin{itemize}
+    \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]>\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
+      positive selection bias $\Rightarrow$ $ATE>\beta_1$, it \textbf{overstates} $\beta_1$.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.26\textwidth}
+  \centering
+  \sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$+$} (u);}
+  \end{column}
+  \end{columns}
+  \begin{columns}[c]
+  \begin{column}{0.7\textwidth}
+  \begin{itemize}
+    \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]<\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
+      negative selection bias $\Rightarrow$ $ATE<\beta_1$, it \textbf{understates} $\beta_1$.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.26\textwidth}
+  \centering
+  \sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$-$} (u);}
+  \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Why RCTs Work}
