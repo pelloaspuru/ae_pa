@@ -45,6 +45,7 @@
 \usepackage{makecell} % for jumping lines within cells in tables.
 \usepackage{multirow}
 \usepackage{amsmath,amssymb,bm}
+\usepackage{pifont} % \ding{55} cross mark
 \usepackage{hyperref}
 \hypersetup{colorlinks,linkcolor=,urlcolor=blue}
 \usepackage{comment}
@@ -190,7 +191,7 @@
       \midrule
       %Potential outcomes & $Y_i(1)$, $Y_i(0)$ & $Y_i(1)$, $Y_i(0)$ \\
       Observed outcome  & $Y_i=Y_i(1)$ & $Y_i=Y_i(0)$ \\
-      Missing (counterfactual) & $Y_i(0)$ & $Y_i(1)$ \\
+      \textcolor{red!70!black}{Missing counterfactual} & \textcolor{red!70!black}{$Y_i(0)$} & \textcolor{red!70!black}{$Y_i(1)$} \\
       \bottomrule
     \end{tabular}
   \end{center}
@@ -209,9 +210,9 @@
     \underbrace{\E[Y_i(1)\mid X_{1i}=1, \boldsymbol{X}_i]}_{\text{Treated}} - \underbrace{\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{Control}}
   \]
   \end{block}
-  Adding and subtracting the treated group's missing counterfactual...
+  Adding and subtracting the treated group's \textcolor{red!70!black}{missing counterfactual}...
   \begin{align*}
-    ATE&= \E[Y_i(1)\mid X_{1i}=1, \boldsymbol{X}_i] \textcolor{red}{{}- \E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i] + \E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]{}}
+    ATE&= \E[Y_i(1)\mid X_{1i}=1, \boldsymbol{X}_i] \textcolor{red!70!black}{{}- \E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i] + \E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]{}}
     - \E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]\\
     &= {\underbrace{\E[Y_i(1)-Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]}_{\text{causal effect (on the treated)}}} +\underbrace{\E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]-\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
   \end{align*}
@@ -242,11 +243,17 @@
       \item differences in unobservables: $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$
     \end{itemize}
   \end{enumerate}
-  \begin{block}{ATE in a Multiple Linear Regression Model}
-    $$
-    ATE = \beta_1 + \underbrace{\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
-    $$
-  \end{block}
+  \pause
+  ATE in a Multiple Linear Regression Model with Binary Treatment becomes:
+    \[
+    \textcolor{green!50!black}{ATE} = \textcolor{red!70!black}{\beta_1} + \textcolor{red!70!black}{\underbrace{\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}}
+    \]
+  \vspace{-0.5cm}
+  \begin{center}
+    When does \textcolor{green!50!black}{observed ATE} represent true \textcolor{red!70!black}{unobserved causal effect $\beta_1$}? 
+    \\ 
+    When does \textcolor{green!50!black}{observed ATE} also include \textcolor{red!70!black}{unobserved selection bias}?
+  \end{center}
 \end{frame}
 
 \begin{comment}
@@ -287,21 +294,26 @@
   \end{tikzpicture}}
 
 \begin{frame}{Average Treatment Effect and Selection Bias}
-  \begin{block}{Selection Bias in a Multiple Linear Regression Model with Binary Treatment}
+  \begin{block}{Selection Bias in MLR with Binary Treatment}
     \[
     \E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]
     =
     \frac{\Cov(X_{1i},u_i\mid\boldsymbol{X}_i)}{\Var(X_{1i}\mid\boldsymbol{X}_i)}
     \]
   \end{block}
-  \vspace{-0.15cm}
+  \vspace{-0.45cm}
   \linespread{1}\selectfont % dense slide: normal line spacing so it fits
-  With binary $X_{1i}$, the selection bias has the sign of $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)$. Three possible scenarios:
+  \[
+    \underbrace{ATE}_{\text{observed, potentially biased}}
+    = \underbrace{\beta_1}_{\text{true effect, unobserved}}
+    + \text{selection bias}
+  \]
+  \vspace{-0.4cm}
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
   \begin{itemize}
-    \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]=\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
-      $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)=0$: no selection bias $\Rightarrow$ $ATE=\beta_1$.
+    \item \textbf{No selection bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)=0$\\
+      $\Rightarrow ATE=\beta_1$: the observed effect \textbf{recovers} the true effect.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
@@ -312,8 +324,8 @@
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
   \begin{itemize}
-    \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]>\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
-      $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)>0$: positive selection bias $\Rightarrow$ $ATE>\beta_1$, it \textbf{overstates} $\beta_1$.
+    \item \textbf{Positive selection bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)>0$\\
+      $\Rightarrow ATE>\beta_1$: the observed effect \textbf{overstates} the true effect.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
@@ -324,8 +336,8 @@
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
   \begin{itemize}
-    \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]<\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
-      $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)<0$: negative selection bias $\Rightarrow$ $ATE<\beta_1$, it \textbf{understates} $\beta_1$.
+    \item \textbf{Negative selection bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)<0$\\
+      $\Rightarrow ATE<\beta_1$: the observed effect \textbf{understates} the true effect.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
