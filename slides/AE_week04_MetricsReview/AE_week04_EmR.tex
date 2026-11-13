@@ -122,7 +122,7 @@
   \end{enumerate}
 \end{frame}
 
-\section{The Causal Question}
+\section{MLR}
 
 \begin{frame}{The Multiple Linear Regression Model}
 \linespread{1.2}\selectfont
@@ -168,6 +168,8 @@
   \end{block}
 \end{frame}
 
+\section{Causality}
+
 \begin{frame}{Potential Outcomes}
   $
     Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i, 
@@ -180,7 +182,7 @@
   \end{itemize}
   \pause
   \vspace{0.3cm}
-  Each unit belongs to either the treated or control group and has two \textbf{potential outcomes}:
+  Each observation belongs to either the treated or control group and has two \textbf{potential outcomes}:
   \begin{center}
     \begin{tabular}{@{}lcc@{}}
       \toprule
@@ -200,30 +202,36 @@
 
 \begin{frame}{From Individual Effects to Group Comparisons}
 \linespread{1.2}\selectfont
-   Average Treatment Effect (ATE): compares the mean outcomes between the two groups:
+  \begin{block}{Average Treatment Effect, ATE}
+    Compares mean outcomes of treated and controled units with same controls $\boldsymbol{X}_i = (X_{2i},\dots,X_{ki})$:
   \[
-    ATE = 
-    \underbrace{\E[Y_i(1)\mid X_{1i}=1]}_{\text{Treated}} - \underbrace{\E[Y_i(0)\mid X_{1i}=0]}_{\text{Control}}
+    ATE =
+    \underbrace{\E[Y_i(1)\mid X_{1i}=1, \boldsymbol{X}_i]}_{\text{Treated}} - \underbrace{\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{Control}}
   \]
+  \end{block}
   Adding and subtracting the treated group's missing counterfactual...
   \begin{align*}
-    ATE&= \E[Y_i(1)\mid X_{1i}=1] \textcolor{red}{{}- \E[Y_i(0)\mid X_{1i}=1] + \E[Y_i(0)\mid X_{1i}=1]{}} - \E[Y_i(0)\mid X_{1i}=0]\\
-    &= {\underbrace{\E[Y_i(1)-Y_i(0)\mid X_{1i}=1]}_{\text{causal effect (on the treated)}}} +\underbrace{\E[Y_i(0)\mid X_{1i}=1]-\E[Y_i(0)\mid X_{1i}=0]}_{\text{selection bias}}
+    ATE&= \E[Y_i(1)\mid X_{1i}=1, \boldsymbol{X}_i] \textcolor{red}{{}- \E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i] + \E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]{}}
+    - \E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]\\
+    &= {\underbrace{\E[Y_i(1)-Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]}_{\text{causal effect (on the treated)}}} +\underbrace{\E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]-\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
   \end{align*}
-  Comparing units with the same observed controls, $\boldsymbol{X}_i = (X_{2i},\dots,X_{ki})$:
-  \[
-    ATE = \underbrace{\E[Y_i(1)-Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]}_{\text{causal effect (on the treated)}} + \underbrace{\E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]-\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
-  \]
+  \vspace{-0.2cm}
+  \begin{block}{Selection Bias}
+    \begin{itemize}
+      \item How the treated and control group outcomes would differ \emph{even without treatment}.
+      \item[$\rightarrow$] Main purpose of causal inference: get rid of selection bias. 
+    \end{itemize}
+  \end{block}
 \end{frame}
 
-\begin{frame}{Causal Effect and Selection Bias in the Regression Model}
+\begin{frame}{Bringing MLR and ATE Together}
   Plugging in the regression model:
   $Y_i(X_{1i}) = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i \qquad X_{1i} \in \{0,1\} $
   \vspace{-0.1cm}
 
   
   \begin{enumerate}
-    \item The causal effect simplifies:
+    \item The causal effect simplifies to:
       $\E[Y_i(1)-Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i] = \beta_1$
     \item The selection bias $\E[Y_i(0)\mid X_{1i}=1, \boldsymbol{X}_i]-\E[Y_i(0)\mid X_{1i}=0, \boldsymbol{X}_i]$ splits into:
     \begin{itemize}
@@ -234,7 +242,7 @@
       \item differences in unobservables: $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$
     \end{itemize}
   \end{enumerate}
-  \begin{block}{}
+  \begin{block}{ATE in a Multiple Linear Regression Model}
     $$
     ATE = \beta_1 + \underbrace{\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
     $$
@@ -274,23 +282,26 @@
     \node[state] (y) at (2,0) {$Y_i$};
     \node[state] (u) at (1,0.75) {$u_i$};
     \path (x) edge (y);
-    \path (u) edge (y);
+    \path (u) edge node[red] {$+$} (y); % u_i enters Y_i with coefficient 1
     #1
   \end{tikzpicture}}
 
 \begin{frame}{Average Treatment Effect and Selection Bias}
-  \begin{block}{}
-    $$
-    ATE = \beta_1 + \underbrace{\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]}_{\text{selection bias}}
-    $$
+  \begin{block}{Selection Bias in a Multiple Linear Regression Model with Binary Treatment}
+    \[
+    \E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]
+    =
+    \frac{\Cov(X_{1i},u_i\mid\boldsymbol{X}_i)}{\Var(X_{1i}\mid\boldsymbol{X}_i)}
+    \]
   \end{block}
+  \vspace{-0.15cm}
   \linespread{1}\selectfont % dense slide: normal line spacing so it fits
-  Three possible scenarios:
+  With binary $X_{1i}$, the selection bias has the sign of $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)$. Three possible scenarios:
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
   \begin{itemize}
     \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]=\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
-      no selection bias $\Rightarrow$ $ATE=\beta_1$.
+      $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)=0$: no selection bias $\Rightarrow$ $ATE=\beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
@@ -302,7 +313,7 @@
   \begin{column}{0.7\textwidth}
   \begin{itemize}
     \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]>\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
-      positive selection bias $\Rightarrow$ $ATE>\beta_1$, it \textbf{overstates} $\beta_1$.
+      $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)>0$: positive selection bias $\Rightarrow$ $ATE>\beta_1$, it \textbf{overstates} $\beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
@@ -314,7 +325,7 @@
   \begin{column}{0.7\textwidth}
   \begin{itemize}
     \item $\E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]<\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]$:\\
-      negative selection bias $\Rightarrow$ $ATE<\beta_1$, it \textbf{understates} $\beta_1$.
+      $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)<0$: negative selection bias $\Rightarrow$ $ATE<\beta_1$, it \textbf{understates} $\beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
