@@ -301,48 +301,37 @@
     \frac{\Cov(X_{1i},u_i\mid\boldsymbol{X}_i)}{\Var(X_{1i}\mid\boldsymbol{X}_i)}
     \]
   \end{block}
-  \vspace{-0.45cm}
-  \linespread{1}\selectfont % dense slide: normal line spacing so it fits
-  \[
-    \underbrace{ATE}_{\text{observed, potentially biased}}
-    = \underbrace{\beta_1}_{\text{true effect, unobserved}}
-    + \text{selection bias}
-  \]
-  \vspace{-0.4cm}
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
   \begin{itemize}
-    \item \textbf{No selection bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)=0$\\
-      $\Rightarrow ATE=\beta_1$: the observed effect \textbf{recovers} the true effect.
+    \item<1-> \textbf{No bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)=0 \rightarrow \text{observed } ATE= \text{unobserved } \beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
   \centering
-  \sbdag{}
+  \uncover<1->{\sbdag{}}
   \end{column}
   \end{columns}
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
   \begin{itemize}
-    \item \textbf{Positive selection bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)>0$\\
-      $\Rightarrow ATE>\beta_1$: the observed effect \textbf{overstates} the true effect.
+    \item<2-> \textbf{$+$ bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)>0 \rightarrow \text{observed } ATE> \text{unobserved } \beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
   \centering
-  \sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$+$} (u);}
+  \uncover<2->{\sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$+$} (u);}}
   \end{column}
   \end{columns}
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
   \begin{itemize}
-    \item \textbf{Negative selection bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)<0$\\
-      $\Rightarrow ATE<\beta_1$: the observed effect \textbf{understates} the true effect.
+    \item<3-> \textbf{$-$ bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)<0 \rightarrow \text{observed } ATE< \text{unobserved } \beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
   \centering
-  \sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$-$} (u);}
+  \uncover<3->{\sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$-$} (u);}}
   \end{column}
   \end{columns}
 \end{frame}

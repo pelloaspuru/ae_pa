@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1794610694 "/Users/pelloaspuru/Desktop/ae_pa/slides/AE_week04_MetricsReview/AE_week04_EmR.tex" "AE_week04_EmR.pdf" "AE_week04_EmR" 1794610696 0
-  "/Users/pelloaspuru/Desktop/ae_pa/slides/AE_week04_MetricsReview/AE_week04_EmR.tex" 1794610694 34479 21a6f865902cd780962704a806547533 ""
+["pdflatex"] 1794676522 "AE_week04_EmR.tex" "AE_week04_EmR.pdf" "AE_week04_EmR" 1794676524 0
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -312,11 +311,11 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1690542912 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1690542816 7883453 d5383b04dc809964c8f6bd67bb6e21b2 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "AE_week04_EmR.aux" 1794610696 6471 46640869338ea996a6ce9ce7ebba21da "pdflatex"
-  "AE_week04_EmR.nav" 1794610696 3934 19b8da802860fed5084d3cb0d59f8f84 "pdflatex"
-  "AE_week04_EmR.out" 1794610696 682 f0f6b2061848cc7ca3462ed395946bf4 "pdflatex"
-  "AE_week04_EmR.tex" 1794610694 34479 21a6f865902cd780962704a806547533 ""
-  "AE_week04_EmR.vrb" 1794610696 910 292006f92f8875bb1b74ff241836ea0d "pdflatex"
+  "AE_week04_EmR.aux" 1794676524 6471 14538d250bd9f672324743c959c9c4f3 "pdflatex"
+  "AE_week04_EmR.nav" 1794676524 3934 97326a185e837c7d7e0dbd5cff4f275a "pdflatex"
+  "AE_week04_EmR.out" 1794676524 682 f0f6b2061848cc7ca3462ed395946bf4 "pdflatex"
+  "AE_week04_EmR.tex" 1794676519 34136 a8139df01cae6ec5e01b30a26da65f78 ""
+  "AE_week04_EmR.vrb" 1794676524 910 292006f92f8875bb1b74ff241836ea0d "pdflatex"
   (generated)
   "AE_week04_EmR.aux"
   "AE_week04_EmR.log"
