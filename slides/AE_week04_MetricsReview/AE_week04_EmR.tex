@@ -182,7 +182,7 @@
     \item $Y_i(1) = \beta_0 + \beta_1 \cdot 1 + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i$: outcome of $i$ with treatment.
   \end{itemize}
   \pause
-  \vspace{0.3cm}
+  \vspace{0.1cm}
   Each observation belongs to either the treated or control group and has two \textbf{potential outcomes}:
   \begin{center}
     \begin{tabular}{@{}lcc@{}}
@@ -195,7 +195,7 @@
       \bottomrule
     \end{tabular}
   \end{center}
-  \vspace{0.3cm}
+  \vspace{0.4cm}
   Causal effect of $X_{1i}$ on \textbf{individual} unit $i$: \quad $Y_i(1) - Y_i(0)$
    $\quad \rightarrow \quad$
     Cannot be computed.
@@ -218,10 +218,7 @@
   \end{align*}
   \vspace{-0.2cm}
   \begin{block}{Selection Bias}
-    \begin{itemize}
-      \item How the treated and control group outcomes would differ \emph{even without treatment}.
-      \item[$\rightarrow$] Main purpose of causal inference: get rid of selection bias. 
-    \end{itemize}
+    How the treated and control group outcomes would differ \emph{even without treatment}.
   \end{block}
 \end{frame}
 
@@ -301,56 +298,44 @@
     \frac{\Cov(X_{1i},u_i\mid\boldsymbol{X}_i)}{\Var(X_{1i}\mid\boldsymbol{X}_i)}
     \]
   \end{block}
+  \vspace{0.7cm}
   \begin{columns}[c]
   \begin{column}{0.7\textwidth}
-  \begin{itemize}
-    \item<1-> \textbf{No bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)=0 \rightarrow \text{observed } ATE= \text{unobserved } \beta_1$.
+  \begin{itemize}\setlength{\itemsep}{0.8em}
+    \item<1-> \textbf{No bias}: $\mathrm{\Cov}(X_{1i},u_i\mid\boldsymbol{X}_i)=0 \rightarrow \text{observed } ATE= \text{unobserved } \beta_1$.
+    \item<2-> \textbf{$+$ bias}: $\mathrm{\Cov}(X_{1i},u_i\mid\boldsymbol{X}_i)>0 \rightarrow \text{observed } ATE> \text{unobserved } \beta_1$.
+    \item<3-> \textbf{$-$ bias}: $\mathrm{\Cov}(X_{1i},u_i\mid\boldsymbol{X}_i)<0 \rightarrow \text{observed } ATE< \text{unobserved } \beta_1$.
   \end{itemize}
   \end{column}
   \begin{column}{0.26\textwidth}
   \centering
-  \uncover<1->{\sbdag{}}
+  \only<1>{\sbdag{}}%
+  \only<2>{\sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$+$} (u);}}%
+  \only<3->{\sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$-$} (u);}}
   \end{column}
   \end{columns}
-  \begin{columns}[c]
-  \begin{column}{0.7\textwidth}
-  \begin{itemize}
-    \item<2-> \textbf{$+$ bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)>0 \rightarrow \text{observed } ATE> \text{unobserved } \beta_1$.
-  \end{itemize}
-  \end{column}
-  \begin{column}{0.26\textwidth}
-  \centering
-  \uncover<2->{\sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$+$} (u);}}
-  \end{column}
-  \end{columns}
-  \begin{columns}[c]
-  \begin{column}{0.7\textwidth}
-  \begin{itemize}
-    \item<3-> \textbf{$-$ bias}: $\mathrm{Corr}(X_{1i},u_i\mid\boldsymbol{X}_i)<0 \rightarrow \text{observed } ATE< \text{unobserved } \beta_1$.
-  \end{itemize}
-  \end{column}
-  \begin{column}{0.26\textwidth}
-  \centering
-  \uncover<3->{\sbdag{\path[bidirected] (x) edge[bend left=10] node[red] {$-$} (u);}}
-  \end{column}
-  \end{columns}
+  \vspace{0.5cm}
+  \uncover<4->{
+    \begin{center}
+      Causal inference's purpose: \textbf{get rid of} selection bias.
+    \end{center}
+  }
 \end{frame}
 
-\begin{frame}{Why RCTs Work}
-\linespread{1.2}\selectfont
-  \textbf{Randomized control trial (RCT):} treatment is assigned by lottery (e.g.\ a coin flip decides which schools get extra funding). Nothing about school $i$, observed (controls) or unobserved ($u_i$), affects whether it is treated.
+\begin{frame}{Randomized Control Trials (RTCs)}
   \begin{columns}[c]
-  \begin{column}{0.62\textwidth}
-  \begin{block}{Random Assignment}
-  \[
-    \big(Y_i(1),Y_i(0)\big) \indep X_{1i}
-    \;\Rightarrow\; \E[Y_i(0)\mid X_{1i}=1]=\E[Y_i(0)\mid X_{1i}=0]
-  \]
-  \end{block}
-  Selection bias $=0$, so the naive comparison is causal:
-  $\E[Y_i\mid X_{1i}=1]-\E[Y_i\mid X_{1i}=0] = \text{ATT} = \text{ATE}$.
+  \begin{column}{0.7\textwidth}
+  Treatment $X_i$ is randomly assigned through a lottery.
+  \begin{itemize}
+    \item Mean outcomes of treated and control groups are compared.
+    \item[$\rightarrow$] Unobserved ($u_i$) does not determine $X_{1i}$ assignment.
+    \[
+    Cov(X_{1i},u_i\mid\boldsymbol{X}_i) = 0 \quad\rightarrow\quad \text{observed } ATE = \text{unobserved } \beta_1
+    \]
+    \item RCT-s are the benchmark ``gold standard'' for causal inference.
+  \end{itemize}
   \end{column}
-  \begin{column}{0.36\textwidth}
+  \begin{column}{0.25\textwidth}
   \centering
   \begin{tikzpicture}[node distance=0.45cm and 0.9cm]
     \node[state] (x) at (0,0) {$X_{1i}$};
@@ -361,61 +346,69 @@
     \path (u) edge (y);
     \path (c) edge (y);
   \end{tikzpicture}\\[0.3em]
-  {\footnotesize No dashed arrows: $X_{1i}$ is unrelated to controls and $u_i$.}
   \end{column}
   \end{columns}
-  \medskip
-  Regression $Y_i = \beta_0 + \beta_1 X_{1i} + u_i$ gives $\hat\beta_1 = \bar Y_{X_1=1} - \bar Y_{X_1=0}$; controls are optional (precision only).\\
-  \textbf{Benchmark:} each quasi-experimental design seeks a comparison where selection bias is (credibly) zero.
-\end{frame}
-
-\section{Regression as a Tool}
-
-\begin{frame}{MLR and Conditional Mean Independence}
-\linespread{1.2}\selectfont
-  \[
-    Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i
-  \]
-  \begin{block}{Exogeneity (MLR.4) $\leftrightarrow$ Selection on Observables}
-  \[
-    \E[u_i\mid X_{1i},\dots,X_{ki}]=0
-    \qquad\leftrightarrow\qquad
-    \big(Y_i(1),Y_i(0)\big)\indep X_{1i} \mid X_{2i},\dots,X_{ki}
-  \]
-  \end{block}
-  ``Once we compare units with the same controls, treatment is as good as random.''
-  \medskip
-
-  \begin{itemize}
-    \item $\hat\beta_j$ \emph{always} estimates a partial correlation.
-    \item It is a causal effect \emph{only if} this assumption holds, and the assumption can never be tested directly: we cannot check that no relevant variable is missing.
+  \pause
+  \vspace{0.5cm}
+  Examples of RCT-s in economics:
+  \begin{itemize}\setlength{\itemsep}{0pt}
+    \item Free malaria \textbf{bednets} does not cause a drop in usage.
+    \item School-based \textbf{deworming} treatment in Kenya caused a raise in attendance.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Controls Can Change Everything: School Budget Example}
-\linespread{1.2}\selectfont
-  \centering
-  \begin{tabular}{lcc}
-    \toprule
-    & \multicolumn{2}{c}{Dependent variable: \texttt{math4}} \\
-    & (1) & (2) \\
-    \midrule
-    Expenditure per student (\$1000) & $-0.570$ & $2.083^{***}$ \\
-    & $(0.428)$ & $(0.350)$ \\
-    Share eligible for free lunch & & $-0.471^{***}$ \\
-    & & $(0.014)$ \\
-    \midrule
-    Observations & 1,823 & 1,823 \\
-    $R^2$ & 0.001 & 0.368 \\
-    \bottomrule
-  \end{tabular}
-  \medskip
-
-  \raggedright
-  Adding one control flips the sign. Is column (2) causal? Only if nothing else in $u_i$ correlates with spending, \emph{conditional on lunch}. Can we be sure?
+\begin{frame}{Limitations of RCTs}
+  \begin{itemize}
+    \item \textbf{Cost:} experiments are expensive and slow to run.
+    \item \textbf{Feasibility:} many treatments cannot be randomized (e.g.\ taxes, minimum wages).
+    \item \textbf{External validity:} results from one specific context may not generalize.
+    \item \textbf{Equilibrium Effects:} treatment of one unit may affect aggregate outcomes.
+    \item \textbf{Ethics:} withholding a beneficial treatment (e.g.\ bednets) from the control group.
+  \end{itemize}
+  \pause
+  \textbf{Observational data:} Economic ``treatments'' are \textbf{not} purposefully randomized.
+  \begin{itemize}
+    \item[$\rightarrow$] \textbf{Next:} Minimize selection bias adding control variables.
+    %\item[$\rightarrow$] The \textbf{credibility} of the causal claim dependes on \textbf{untestable} assumptions. 
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{What Variation Identifies $\hat\beta_1$? Frisch--Waugh}
+\begin{frame}{The Conditional Mean Independence Assumption}
+\linespread{1.1}\selectfont
+  \[
+    Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i
+    \qquad
+    ATE = \beta_1 + \E[u_i\mid X_{1i}=1, \boldsymbol{X}_i]-\E[u_i\mid X_{1i}=0, \boldsymbol{X}_i]
+  \]
+  \textbf{Selection on observables assumption:} Treatment depends on observed controls.
+  \begin{itemize}
+    \item Treatment is not randomly assigned\dots
+    \item \dots but assigned only depends on observables.
+  \end{itemize}
+  \begin{block}{Selection on Observables}
+    \vspace{-0.2cm}
+  \begin{center}
+  \resizebox{\linewidth}{!}{$
+    \big(Y_i(1),Y_i(0)\big)\indep X_{1i} \mid \boldsymbol{X}_i
+    \quad\rightarrow\quad
+    \E[u_i \mid X_{1i}, \boldsymbol{X}_i] = \E[u_i \mid \boldsymbol{X}_i]
+    \quad\rightarrow\quad
+    \Cov(X_{1i},u_i\mid\boldsymbol{X}_i)=0
+    \quad\rightarrow\quad
+    ATE = \beta_1
+  $}
+  \end{center}
+  \end{block}
+
+  \begin{itemize}
+    \item ATE representes the causal effect \emph{only if} this assumption holds, 
+    \item It is impossible to test the assumption.
+    \item Next: how to estimate $ATE$ using data?
+  \end{itemize}
+\end{frame}
+
+\begin{comment}
+  \begin{frame}{What Variation Identifies $\hat\beta_1$? Frisch--Waugh}
 \linespread{1.2}\selectfont
   \[
     Y_i = \beta_0 + \beta_1 X_{1i} + \bm{X}_{2i}'\bm\beta_2 + u_i
@@ -467,81 +460,120 @@
     \end{column}
   \end{columns}
 \end{frame}
+\end{comment}
 
-\section{Why OLS Fails}
+\section{The OLS Estimator}
 
-\begin{frame}{The Master Formula}
-\linespread{1.2}\selectfont
-  Simple regression $Y_i=\beta_0+\beta_1X_i+u_i$. Under MLR.1--MLR.3:
-  \begin{block}{Probability Limit of OLS}
-  \[
-    \hat\beta_1 \xrightarrow{p} \beta_1 + \frac{\Cov(X_i,u_i)}{\Var(X_i)}
-  \]
-  \end{block}
-  \begin{itemize}
-    \item Exogeneity $\Rightarrow\Cov(X_i,u_i)=0\Rightarrow$ OLS is consistent for the causal $\beta_1$.
-    \item Endogeneity $\Rightarrow$ OLS is inconsistent: more data does \emph{not} help.
-    \item The sign of $\Cov(X_i,u_i)$ gives the direction of the bias.
-  \end{itemize}
-  \medskip
-  Three common reasons why $\Cov(X_i,u_i)\neq 0$:
-  \textbf{omitted variables}, \textbf{measurement error}, \textbf{reverse causality}.
+\begin{frame}{Parameters, Estimates, and Estimators}
+
+So far, MLR featured on \textbf{population} parameters $\beta$.
+We only observe a $n<N$ iid sample of the population.
+\pause
+\[
+\underbrace{
+\underset{\text{\textcolor{red!70!black}{Parameter}}}{\textcolor{red!70!black}{\beta}} 
+  \xrightarrow{\text{determines}} \substack{\text{Population}}}_{\text{Unobserved}}
+  %
+  \xrightarrow{\text{iid draws}} 
+  %
+  \underbrace{\substack{\text{Dataset}}
+  \xrightarrow{\text{\textcolor{red!70!black}{estimator (OLS)}}} 
+  \underset{\text{\textcolor{red!70!black}{Estimate}}}{\textcolor{red!70!black}{\hat{\beta}}}}_{\text{Observed}}
+\]
+\pause
+\begin{itemize}
+    \item \textcolor{red!70!black}{Parameter ($\beta$)} is an unknown, \textbf{deterministic number} that describes relationships between two variables in the population.
+    \item \textcolor{red!70!black}{Estimate ($b, \hat{\beta}$)} is a \textbf{random variable} that approximates the true parameter.
+    \item \textcolor{red!70!black}{Estimator (OLS)} is a \textbf{function} that takes the data and returns an estimate.
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Omitted Variable Bias}
-\linespread{1.2}\selectfont
-  True model: $\log(wage_i) = \beta_0 + \beta_1 educ_i + \beta_2 ability_i + u_i$\\
-  Estimated:  $\log(wage_i) = \beta_0 + \beta_1 educ_i + v_i$, \quad $v_i=\beta_2\,ability_i+u_i$
-  \[
-    \hat\beta_1 \xrightarrow{p} \beta_1 + \beta_2\cdot\frac{\Cov(educ_i,ability_i)}{\Var(educ_i)}
-  \]
-  \centering
-  \begin{tabular}{lcc}
-    \toprule
-    & $\Cov(X_1,X_2)>0$ & $\Cov(X_1,X_2)<0$ \\
-    \midrule
-    $\beta_2>0$ & upward bias & downward bias \\
-    $\beta_2<0$ & downward bias & upward bias \\
-    \bottomrule
-  \end{tabular}
-  \medskip
+\begin{frame}{From Population to Data}
+Statistical model for the unobserved \textcolor{red!70!black}{population}:
+\begin{itemize}
+    \item Outcome, regressors are \textbf{random variables} with joint distribution $(Y, X_1, …, X_k)$. 
+    \item There is a population of size \textcolor{red!70!black}{$N$} we (almost) never get to fully observe.
+    \item Error term $u_i$
+    \begin{align*}
+    Y_i = \textcolor{green!50!black}{\beta_0} + \textcolor{green!50!black}{\beta_1} X_{1i} + \textcolor{green!50!black}{\beta_2} X_{2i} + \cdots + \textcolor{green!50!black}{\beta_k} X_{ki} + u_i \quad i = 1, ..., \textcolor{red!70!black}{N}
+    \end{align*}
+\end{itemize}
+\pause
+Statistical model for the observed \textcolor{red!70!black}{data}:
+\begin{itemize}
+    \item We observe $\textcolor{red!70!black}{n} < N$ iid draws from the joint distribution.
+    \item \textcolor{red!70!black}{Dataset} with $n$ observations (rows) and $k+1$ variables (columns):
+    \item Residual $\hat{u}_i$
+    %$$\{Y_i, X_{1i}, …,X_{ki}\}_{i = 1}^n$$
+    \begin{align*}
+    Y_i = \textcolor{green!50!black}{b_0} + \textcolor{green!50!black}{b_1 }X_{1i} + \textcolor{green!50!black}{b_2} X_{2i} + \cdots + \textcolor{green!50!black}{b_k} X_{ki} + \hat{u}_i \quad i = 1, ..., \textcolor{red!70!black}{n}
+    \end{align*}
+\end{itemize}
 
-  \raggedright
-  Ability raises wages and correlates with schooling $\Rightarrow$ OLS overstates the return to education.\\
-  \textbf{Bridge:} if the omitted variable is fixed over time (ability), panel FE and DiD remove it.
 \end{frame}
 
-\begin{frame}{Measurement Error and Reverse Causality}
-\linespread{1.2}\selectfont
-  \textbf{Classical measurement error in $X$:} observe $\widetilde{educ}_i = educ_i + w_i$, with $w_i$ pure noise.
-  \[
-    \hat\beta_1 \xrightarrow{p} \beta_1\cdot\underbrace{\frac{\Var(educ_i)}{\Var(educ_i)+\Var(w_i)}}_{\in(0,1]}
-    \qquad\Rightarrow\text{ attenuation bias towards zero}
-  \]
-  \textbf{Reverse causality (simultaneity):}
-  \begin{align*}
-    grades_i  &= \beta_0 + \beta_1\,funding_i + u_i\\
-    funding_i &= \delta_0 + \delta_1\,grades_i + v_i
-  \end{align*}
-  $funding_i$ depends on $grades_i$, which depends on $u_i$ $\Rightarrow \Cov(funding_i,u_i)\neq0$, even if $\Cov(u_i,v_i)=0$.
-  \medskip
 
-  \textbf{Bridge:} adding controls fixes neither problem. Both are classic motivations for IV.
+\begin{frame}[fragile]{Writing the MLR model with vector and matrix notation}
+    \begin{enumerate}
+        \item A dataset with $n$ observations and $k$ covariates can be divided into:
+        \begin{enumerate}
+            \item $\underset{(n \times 1)}{\textbf{Y}}$ vector for grouping the outcome variable of all observations.  
+            \item $\underset{(n \times k\textcolor{green!50!black}{+1})}{\textbf{X}}$ matrix grouping all the covariates and \textcolor{green!50!black}{constant term}, for all observations.
+        \end{enumerate}
+        \pause
+        \item $\underset{(k\textcolor{green!50!black}{+1} \times 1)}{\textbf{b}}$ vector of parameter \textbf{estimates}, \textcolor{green!50!black}{including constant term $b_0$}.
+        \pause
+        \item $\underset{(n \times 1)}{\hat{\mathbf{u}}}$ vector stacking the residuals for all observations.
+    \end{enumerate}
+    \pause
+    As a result, our MLR model for observed data is equivalent to a \textbf{sample} model:
+    \begin{align*}
+    Y_i = b_0 + b_1 X_{1i} + b_2 X_{2i} + \cdots + b_k X_{ki} + \hat{u}_i \quad \rightarrow \quad
+    \textbf{Y} = \textbf{X} \times \textbf{b} + \hat{\mathbf{u}}
+    \end{align*}
 \end{frame}
 
-\begin{frame}{The Limits of ``Just Add Controls''}
-\linespread{1.2}\selectfont
-  \begin{itemize}
-    \item Adding every relevant covariate would remove the bias, but we can never verify that we have them all.
-    \item Some confounders are unobservable by nature (ability, motivation, local politics).
-    \item Controls do not solve measurement error or reverse causality.
-    \item ``Bad controls'': controlling for a variable that is itself an outcome of treatment introduces bias.
-  \end{itemize}
-  \medskip
-  \textbf{Modern approach:} instead of trying to observe every confounder, find a \emph{source of variation} in $X$ that is plausibly unrelated to the confounders.
-  \medskip
+\begin{frame}{The OLS Estimator}
+\textbf{How can we estimate $\boldsymbol{\beta}$?}
+\\
+\pause
+\begin{enumerate}
+    \item Start with vector of candidate parameter estimates $\underset{(k \times 1)}{\textbf{b}}$
+    \pause
+    \item Compute the vector of \textbf{residuals}: 
+    $$
+    \underset{(n \times 1)}{\hat{\mathbf{u}}} = \underset{(n \times 1)}{\textbf{Y}} - \underset{(n \times k)}{\textbf{X}} ' \times \underset{(k \times 1)}{\textbf{b}}
+    $$ \pause
+    \item \textbf{Sum of Squared Residuals (SSR):} measures the overall discrepancy between the observed and predicted outcome variable:
+    $$
+    \underset{(1 \times 1)}{SSR(b)} = \underset{(1 \times n)}{\hat{\mathbf{u}}} ' \times \underset{(n \times 1)}{\hat{\mathbf{u}}}
+    $$ \pause
+    \item The Ordinary Least Squares (OLS) estimator Finds the vector of parameters $b$ that minimize $SSR(b)$. How?
+\end{enumerate}
+\end{frame}
 
-  That source of variation is the \emph{research design}.
+
+\begin{frame}{OLS Estimator Formula}
+Rewrite the SSR(b) objective function:
+\begin{align*}
+SSR(b) &= \hat{\mathbf{u}}'\hat{\mathbf{u}} \\
+&=(\mathbf{Y}-\mathbf{X}\boldsymbol{b})'(\mathbf{Y}-\mathbf{X}\boldsymbol{b})\\
+        &= \mathbf{Y}'\mathbf{Y}-\boldsymbol{b}'\mathbf{X}'\mathbf{Y}-\mathbf{Y}'\mathbf{X}\boldsymbol{b}+\boldsymbol{b}'\mathbf{X}'\mathbf{X}\boldsymbol{b}\\
+        &=
+        \mathbf{Y}'\mathbf{Y}-2\boldsymbol{b}'\mathbf{X}'\mathbf{Y}+\boldsymbol{b}'\mathbf{X}'\mathbf{X}\boldsymbol{b}
+\end{align*}
+\pause
+To find the minimum, first-order condition with respect to vector $\boldsymbol{b}$:
+\begin{align*}
+\frac{\partial(\hat{\mathbf{u}}'\hat{\mathbf{u}})}{\partial\boldsymbol{b}}=-2\mathbf{X}'\mathbf{Y}+2(\mathbf{X}'\mathbf{X})\boldsymbol{b}=0
+\end{align*}
+
+
+Solving the first-order condition for $\mathbf{b}$ yields the OLS estimator: 
+\begin{align*}
+    \hat{\boldsymbol{\beta}} =
+    (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y}
+\end{align*}
 \end{frame}
 
 \section{Inference}
@@ -557,32 +589,104 @@
     \item \textbf{Asymptotically normal:} $\hat\beta \overset{a}{\sim} N\!\left(\beta,\ \Var(\hat\beta\mid\bm X)\right)$
   \end{itemize}
   \medskip
-  OLS under MLR.1--MLR.4 has all three.\\
-  \textbf{Bridge:} the IV estimator is consistent but \emph{biased} in finite samples (towards OLS), and the bias is severe when the instrument is weak.
+  OLS has all three under MLR.1--MLR.4:
+  \begin{itemize}
+    \item \textbf{MLR.1 (Linearity):} $Y_i=\beta_0+\beta_1X_{1i}+\dots+\beta_kX_{ki}+u_i$
+    \item \textbf{MLR.2 (No perfect collinearity):} no regressor is an exact linear combination of the others
+    \item \textbf{MLR.3 (Random sampling):} $\{Y_i,X_{1i},\dots,X_{ki}\}_{i=1}^n$ are iid draws from the population
+    \item \textbf{MLR.4 (Exogeneity):} $\E[u_i\mid X_{1i},\dots,X_{ki}]=0$
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{The Sandwich and Robust Standard Errors}
-\linespread{1.2}\selectfont
+  \vspace{-0.2cm}
   \[
     \Var(\hat{\bm\beta}\mid\bm X) = (\bm X'\bm X)^{-1}\;\bm X'\,\E[\bm u\bm u'\mid\bm X]\,\bm X\;(\bm X'\bm X)^{-1}
   \]
+  \begin{columns}[c]
+  \begin{column}{0.75\textwidth}
   Everything depends on the middle term, $\bm\Omega=\E[\bm u\bm u'\mid\bm X]$:
   \medskip
+  \begin{itemize}\setlength{\itemsep}{0.3em}
+    \item<1-> \textbf{Homoskedastic:} same variance $\sigma^2_u$ for all errors; no correlation across observations.
+    \item<2-> \textbf{Heteroskedastic robust:} each error has its own variance $\sigma^2_i$; still no correlation.
+    \item<3-> \textbf{Clustered:} errors correlated within a cluster (e.g.\ school), uncorrelated across clusters.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.25\textwidth}
+  \centering
+  \begin{tikzpicture}[x=0.4cm,y=0.4cm,-]
+    % Homoskedastic: same variance on the diagonal, zeros elsewhere
+    \only<1>{\begin{scope}
+      \foreach \i in {1,...,6} \fill[red!70!black!55] (\i-1,-\i) rectangle (\i,-\i+1);
+      \draw[step=1,PelloGray!40,very thin] (0,-6) grid (6,0);
+      \draw[PelloGrayDark] (0,-6) rectangle (6,0);
+      \node[below,font=\footnotesize,align=center,inner sep=3pt] at (3,-6) {Homoskedastic};
+    \end{scope}}
+    % Heteroskedastic: different variances on the diagonal, zeros elsewhere
+    \only<2>{\begin{scope}
+      \foreach \i/\s in {1/25,2/80,3/45,4/95,5/35,6/65}
+        \fill[red!70!black!\s] (\i-1,-\i) rectangle (\i,-\i+1);
+      \draw[step=1,PelloGray!40,very thin] (0,-6) grid (6,0);
+      \draw[PelloGrayDark] (0,-6) rectangle (6,0);
+      \node[below,font=\footnotesize,align=center,inner sep=3pt] at (3,-6) {Heteroskedastic robust};
+    \end{scope}}
+    % Clustered: nonzero covariances within clusters, zeros across clusters
+    \only<3->{\begin{scope}
+      \foreach \b in {0,2,4} \fill[red!70!black!20] (\b,-\b-2) rectangle (\b+2,-\b);
+      \foreach \i/\s in {1/25,2/80,3/45,4/95,5/35,6/65}
+        \fill[red!70!black!\s] (\i-1,-\i) rectangle (\i,-\i+1);
+      \draw[step=1,PelloGray!40,very thin] (0,-6) grid (6,0);
+      \foreach \b in {0,2,4} \draw[PelloGrayDark,thick] (\b,-\b-2) rectangle (\b+2,-\b);
+      \draw[PelloGrayDark] (0,-6) rectangle (6,0);
+      \node[below,font=\footnotesize,align=center,inner sep=3pt] at (3,-6) {Clustered};
+    \end{scope}}
+  \end{tikzpicture}\\[0.2em]
+  {\tiny White $=0$; darker $=$ larger (co)variance.}
+  \end{column}
+  \end{columns}
+\end{frame}
 
-  \begin{tabular}{@{}lll@{}}
-    \toprule
-    Assumption on $\bm\Omega$ & Estimator & Status \\
-    \midrule
-    $\sigma^2_u\bm I_n$ (homoskedastic) & default \texttt{lm()} SEs & rarely credible \\
-    $\mathrm{diag}(\sigma^2_1,\dots,\sigma^2_n)$ & HC robust: $\hat\sigma^2_i=\hat u_i^2$ & cross-section default \\
-    block-diagonal by cluster & cluster-robust & panel / DiD default \\
-    \bottomrule
-  \end{tabular}
+\begin{frame}[fragile]{Homoskedastic Standard Errors}
+\linespread{1.2}\selectfont
+  Assume all errors have the same variance and are uncorrelated: $\bm\Omega=\sigma^2_u\bm I_n$. The sandwich collapses to
+  \[
+    \Var(\hat{\bm\beta}\mid\bm X)=\sigma^2_u(\bm X'\bm X)^{-1},
+    \qquad
+    \hat\sigma^2_u=\frac{1}{n-k-1}\sum_{i=1}^n\hat u_i^2
+  \]
+  \textbf{Variance drivers} for a single coefficient:
+  \[
+    \Var(\hat\beta_j\mid\bm X)=\frac{1}{n}\cdot\frac{\sigma_u^2}{\sigma^2_{X_j}}\cdot\frac{1}{1-R_j^2}
+  \]
+  More data, less noise, more variation in $X_j$ and less collinearity ($R_j^2$) $\rightarrow$ smaller SEs.
+  \begin{itemize}
+    \item Default in most software, but rarely credible: the variance of $u_i$ usually depends on $X_i$.
+  \end{itemize}
+  \begin{lstlisting}
+feols(y ~ x, data = df, vcov = "iid")
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Heteroskedasticity-Robust Standard Errors}
+\linespread{1.2}\selectfont
+  Allow each error its own variance, still uncorrelated: $\bm\Omega=\mathrm{diag}(\sigma^2_1,\dots,\sigma^2_n)$.
+  \[
+    \widehat{\Var}_{HC}(\hat{\bm\beta})=(\bm X'\bm X)^{-1}\Big(\sum_{i=1}^{n}\hat u_i^2\,\bm x_i\bm x_i'\Big)(\bm X'\bm X)^{-1}
+  \]
+  Each unknown $\sigma^2_i$ is replaced by the squared residual $\hat u_i^2$ (White, 1980).\\
+  (in practice multiplied by a small-sample correction $\frac{n}{n-k-1}$, ``HC1'')
   \medskip
 
-  Variance drivers (homoskedastic case):
-  $\Var(\hat\beta_j\mid\bm X)=\dfrac{1}{n}\cdot\dfrac{\sigma_u^2}{\sigma^2_{X_j}}\cdot\dfrac{1}{1-R_j^2}$\\
-  \textbf{Bridge:} FE and IV use less variation in $X_j$, so their standard errors are larger.
+  \textbf{Practical rules}
+  \begin{itemize}
+    \item Default for cross-sectional data: valid whether or not errors are homoskedastic.
+    \item Robust SEs can be larger or smaller than homoskedastic ones.
+    \item They do \emph{not} fix correlation across observations $\rightarrow$ clustering.
+  \end{itemize}
+  \begin{lstlisting}
+feols(y ~ x, data = df, vcov = "hetero")
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}{Clustered Standard Errors: Why}
@@ -636,7 +740,23 @@ feols(y ~ x | unit + year, data = df, cluster = ~unit)
   The SEs (robust or clustered) determine everything on this slide, so choosing them is a substantive decision.
 \end{frame}
 
-\section{Bridge to Research Designs}
+\section{Conclusion}
+
+\begin{frame}{The Limits of ``Just Add Controls''}
+\linespread{1.2}\selectfont
+  \begin{itemize}
+    \item Adding every relevant covariate would remove the bias, but we can never verify that we have them all.
+    \item Some confounders are unobservable by nature (ability, motivation, local politics).
+    \item Controls do not solve measurement error or reverse causality.
+    \item ``Bad controls'': controlling for a variable that is itself an outcome of treatment introduces bias.
+  \end{itemize}
+  \medskip
+  \textbf{Modern approach:} instead of trying to observe every confounder, find a \emph{source of variation} in $X$ that is plausibly unrelated to the confounders.
+  \medskip
+
+  That source of variation is the \emph{research design}.
+\end{frame}
+
 
 \begin{frame}{One Map: What Each Design Assumes Instead}
 \linespread{1.2}\selectfont
@@ -658,141 +778,6 @@ feols(y ~ x | unit + year, data = df, cluster = ~unit)
   Each design is still a regression. What differs is \emph{which variation} identifies $\beta$, and \emph{why} that variation is credibly unrelated to $u_i$.
 \end{frame}
 
-\begin{frame}{Instrumental Variables}
-\linespread{1.2}\selectfont
-  \begin{block}{Instrument Conditions (endogenous $X_i$, instrument $Z_i$)}
-  \begin{enumerate}
-    \item \textbf{Relevance:} $\Cov(Z_i,X_i)\neq0$ (testable: first stage)
-    \item \textbf{Exogeneity / exclusion:} $\Cov(Z_i,u_i)=0$; $Z$ affects $Y$ only through $X$ (not testable)
-  \end{enumerate}
-  \end{block}
-  \[
-    \hat\beta_1^{IV}=\frac{\widehat\Cov(Z_i,Y_i)}{\widehat\Cov(Z_i,X_i)}
-    =\frac{\text{reduced form}}{\text{first stage}}
-    \qquad\text{(matrix: }\hat{\bm\beta}^{IV}=(\bm Z'\bm X)^{-1}\bm Z'\bm Y\text{)}
-  \]
-  \begin{itemize}
-    \item Compare with OLS $(\bm X'\bm X)^{-1}\bm X'\bm Y$: same structure, with $\bm Z$ supplying the exogenous variation.
-    \item 2SLS: regress $X$ on $Z$ (and controls), then $Y$ on $\hat X$. Use the IV routine; SEs from a manual second stage are wrong.
-    \item Weak instruments: report first-stage $F$. The rule of thumb $F>10$ is now considered too lenient for $t$-based inference (Lee et al., 2022).
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{IV with Heterogeneous Effects: LATE}
-\linespread{1.2}\selectfont
-  Binary $Z_i$ and $X_i$. Potential treatments $X_i(1),X_i(0)$ define four types:
-  \medskip
-
-  \centering
-  \begin{tabular}{lcc}
-    \toprule
-    & $X_i(0)=0$ & $X_i(0)=1$ \\
-    \midrule
-    $X_i(1)=1$ & complier & always-taker \\
-    $X_i(1)=0$ & defier & never-taker \\
-    \bottomrule
-  \end{tabular}
-  \medskip
-
-  \raggedright
-  With independence, exclusion, relevance and \textbf{monotonicity} (no defiers):
-  \[
-    \frac{\E[Y_i\mid Z_i=1]-\E[Y_i\mid Z_i=0]}{\E[X_i\mid Z_i=1]-\E[X_i\mid Z_i=0]}
-    =\E[Y_i(1)-Y_i(0)\mid\text{complier}] = \text{LATE}
-  \]
-  IV recovers the effect only for units whose behavior the instrument changes. Different instruments $\Rightarrow$ different complier populations $\Rightarrow$ different LATEs.
-\end{frame}
-
-\begin{frame}{Panel Data and Fixed Effects}
-\linespread{1.2}\selectfont
-  \[
-    Y_{it}=\beta_1X_{it}+\alpha_i+\lambda_t+u_{it}
-  \]
-  \begin{itemize}
-    \item $\alpha_i$: everything about unit $i$ that is fixed over time (ability, geography, institutions), observed or not.
-    \item $\lambda_t$: common shocks in period $t$. Estimate via dummies or demeaning $\ddot Y_{it}=Y_{it}-\bar Y_i$ (Frisch--Waugh).
-  \end{itemize}
-  \medskip
-  \textbf{What carries over from the review}
-  \begin{itemize}
-    \item OVB: time-invariant confounders are eliminated; time-varying ones are not.
-    \item Perfect multicollinearity: effects of time-invariant regressors (e.g.\ gender) cannot be estimated.
-    \item Variance: only within-unit variation is used $\Rightarrow$ larger SEs; attenuation from measurement error is often worse.
-    \item Inference: $u_{it}$ is serially correlated $\Rightarrow$ cluster by unit.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Difference-in-Differences}
-\linespread{1.2}\selectfont
-  \[
-    Y_{it}=\gamma_0+\gamma_1\text{Treat}_i+\gamma_2\text{Post}_t+\delta\,(\text{Treat}_i\times\text{Post}_t)+u_{it}
-  \]
-  \begin{columns}[T]
-    \begin{column}{0.42\textwidth}
-      \centering
-      \begin{tabular}{lcc}
-        \toprule
-        & Pre & Post \\
-        \midrule
-        Treated & $\gamma_0+\gamma_1$ & $\gamma_0+\gamma_1+\gamma_2+\delta$ \\
-        Control & $\gamma_0$ & $\gamma_0+\gamma_2$ \\
-        \bottomrule
-      \end{tabular}
-    \end{column}
-    \begin{column}{0.56\textwidth}
-      \[
-        \delta=(\bar Y_{T,post}-\bar Y_{T,pre})-(\bar Y_{C,post}-\bar Y_{C,pre})
-      \]
-      $\delta$: the interaction coefficient from the building-blocks slide.
-    \end{column}
-  \end{columns}
-  \medskip
-
-  \begin{block}{Parallel Trends}
-  Absent treatment, treated and control units would have followed the same path:
-  \[
-    \E[Y_{it}(0)-Y_{i,t-1}(0)\mid\text{Treat}_i=1]=\E[Y_{it}(0)-Y_{i,t-1}(0)\mid\text{Treat}_i=0]
-  \]
-  \end{block}
-  \begin{itemize}
-    \item Identifies the \textbf{ATT}. Level differences between groups are allowed; differences in trends are not.
-    \item Cluster at the level at which treatment is assigned.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Event Studies and Staggered Adoption}
-\linespread{1.2}\selectfont
-  \[
-    Y_{it}=\alpha_i+\lambda_t+\sum_{k\neq-1}\delta_k\,\mathbf 1[t-E_i=k]+u_{it}
-  \]
-  \begin{itemize}
-    \item One dummy per period relative to treatment date $E_i$; $k=-1$ is omitted (perfect multicollinearity, otherwise).
-    \item Plot $\hat\delta_k$ with 95\% CIs (the coefficient plot from the inference lecture).
-    \item Leads ($k<-1$) near zero: consistent with parallel pre-trends. This supports the assumption but does not prove it.
-  \end{itemize}
-  \medskip
-  \textbf{Caveat:} when units adopt treatment at different times and effects vary over time, two-way FE compares later-treated units with already-treated ones and can even flip signs (Goodman-Bacon, 2021). Use heterogeneity-robust estimators: Callaway \& Sant'Anna (2021), Sun \& Abraham (2021), de Chaisemartin \& D'Haultf{\oe}uille (2020).
-\end{frame}
-
-\begin{frame}{Regression Discontinuity Design}
-\linespread{1.2}\selectfont
-  Treatment switches at a cutoff $c$ of a running variable $R_i$: $X_i=\mathbf 1[R_i\geq c]$.
-  \[
-    Y_i=\beta_0+\tau X_i+\beta_1(R_i-c)+\beta_2 X_i\times(R_i-c)+u_i,\qquad |R_i-c|\leq h
-  \]
-  \begin{itemize}
-    \item $\tau$: jump in $\E[Y\mid R]$ at the cutoff. Separate slopes on each side via the interaction.
-    \item \textbf{Continuity:} $\E[Y_i(0)\mid R_i=r]$ and $\E[Y_i(1)\mid R_i=r]$ are continuous at $c$. Units just above and just below are comparable.
-    \item Estimand: effect \emph{at the cutoff}. External validity away from $c$ is limited.
-  \end{itemize}
-  \medskip
-  \textbf{Practice}
-  \begin{itemize}
-    \item Local linear fits with data-driven bandwidth $h$ and bias-corrected robust CIs (\texttt{rdrobust}). Avoid high-order global polynomials (Gelman \& Imbens, 2019).
-    \item Check for manipulation of $R$ (density test) and balance of covariates at $c$.
-  \end{itemize}
-\end{frame}
-
 \begin{frame}{Recap}
 \linespread{1.2}\selectfont
   \begin{itemize}
@@ -802,19 +787,6 @@ feols(y ~ x | unit + year, data = df, cluster = ~unit)
     \item Inference depends on $\bm\Omega$: robust SEs for cross-sections, clustered SEs whenever errors are correlated within groups.
     \item IV, FE, DiD and RDD reuse the same tools (dummies, interactions, Frisch--Waugh, the sandwich) with a different identifying assumption. The quality of a design is the credibility of that assumption.
   \end{itemize}
-\end{frame}
-
-\begin{frame}{Recommended Literature}
-\linespread{1.2}\selectfont
-  \begin{itemize}
-    \item Angrist \& Pischke (2015), \emph{Mastering 'Metrics}: Ch.\ 1 (RCT, selection bias), 3 (IV), 4 (RDD), 5 (DiD)
-    \item Angrist \& Pischke (2009), \emph{Mostly Harmless Econometrics}: Ch.\ 8 (clustering)
-    \item Cunningham (2021), \emph{Causal Inference: The Mixtape}: Ch.\ 4 (potential outcomes)
-    \item Huntington-Klein (2021), \emph{The Effect}
-    \item Heiß, \emph{Using R for Introductory Econometrics}: implementation
-  \end{itemize}
-  \medskip
-  Abadie, Athey, Imbens \& Wooldridge (2023, QJE); Bertrand, Duflo \& Mullainathan (2004, QJE); Goodman-Bacon (2021, JoE); Callaway \& Sant'Anna (2021, JoE); Sun \& Abraham (2021, JoE); de Chaisemartin \& D'Haultf{\oe}uille (2020, AER); Gelman \& Imbens (2019, JBES); Lee, McCrary, Moreira \& Porter (2022, AER).
 \end{frame}
 
 \end{document}

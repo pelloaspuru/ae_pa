@@ -1,7 +1,6 @@
 \babel@toc {english}{}\relax 
 \beamer@sectionintoc {1}{MLR}{3}{0}{1}
 \beamer@sectionintoc {2}{Causality}{6}{0}{2}
-\beamer@sectionintoc {3}{Regression as a Tool}{15}{0}{3}
-\beamer@sectionintoc {4}{Why OLS Fails}{19}{0}{4}
-\beamer@sectionintoc {5}{Inference}{23}{0}{5}
-\beamer@sectionintoc {6}{Bridge to Research Designs}{28}{0}{6}
+\beamer@sectionintoc {3}{The OLS Estimator}{20}{0}{3}
+\beamer@sectionintoc {4}{Inference}{36}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{45}{0}{5}
