@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+
+% Encoding & fonts (safer defaults)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Packages for formatting
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{booktabs} % nicer tables
+\usepackage{amsmath}  % for math symbols like \rightarrow
+
+% Section formatting
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+% Header info
+\newcommand{\university}{University of Vienna}
+\newcommand{\coursename}{Applied Economics}
+\newcommand{\coursecode}{040178-1 and 040178-2}
+\newcommand{\semester}{Winter Term 2026/2027}
+\newcommand{\instructor}{Pello Aspuru}
+\newcommand{\email}{pello.aspuru@univie.ac.at}
+
+\begin{document}
+
+% Title
+\begin{center}
+    {\Large \textbf{\coursename: Project Instructions}} \\
+    \coursecode \\
+    \semester \\
+    \vspace{0.3cm}
+    {\university} \\
+    \vspace{0.3cm}
+    Instructor: \instructor \quad Email: \email
+\end{center}
+
+\section{Overview}
+The project gives you the opportunity to put into practice the skills learnt in class. Working in a team, you will formulate a causal research question in applied economics, collect and explore the data needed to answer it, and estimate a causal effect using one of the methods studied in the course. You will present your work in two short presentations.
+
+\begin{center}
+\begin{tabular}{llr}
+    \toprule
+    \textbf{Item} & \textbf{Date} & \textbf{Grade Weight} \\
+    \midrule
+    Project Presentation I & December 16th/17th 2026 & 10\% \\
+    Project Presentation II & January 20th/21st 2027 & 15\% \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+\section{Teams}
+\begin{itemize}
+    \item The project is done in \textbf{teams of three students}.
+    \item You have the \textbf{first month of the course} to form your team and register it in the Google Sheet provided on Moodle.
+    \item Students who are not registered in a team by then will be assigned to teams \textbf{at random} by the instructor.
+    \item If the number of students is not divisible by three, the instructor will create one or two teams of two students.
+\end{itemize}
+
+\section{The Four Steps of the Project}
+
+\subsection{Step 1: Research Question}
+\begin{itemize}
+    \item Come up with a question in applied economics, of the form \textbf{``Does $X$ cause $Y$?''} 
+    \begin{itemize}
+        \item Do data centers \textbf{cause} an increase in electricity prices? 
+        \item Do evangelical curches \textbf{cause} an increase in far-right vote?
+    \end{itemize}
+    \item Argue why the question is relevant: who cares about the answer, and why?
+\end{itemize}
+
+\subsection{Step 2: Data}
+\begin{itemize}
+    \item Identify several datasets that could be used to answer your question. If neccessary, vibecode a web scraper to create a new dataset or enrich an existing one with new variables.
+    \item Understand your data: what is the unit of observation, which period and population are covered, how are the key variables measured?
+\end{itemize}
+
+\subsection{Step 3: Graphs}
+\begin{itemize}
+    \item Provide a preliminary analysis of the data using ggplot2 graphs.
+\end{itemize}
+
+\subsection{Step 4: Causal Inference}
+\begin{itemize}
+    \item Use one of the causal inference methods learnt in class to answer your research question.
+\end{itemize}
+
+\section{Presentations}
+Each presentation consists of \textbf{2--3 slides (one per team member)} and must last \textbf{no more than 5 minutes in total}.
+
+\subsection{Presentation I (Steps 1--2)}
+\begin{enumerate}
+    \item Propose your research question and argue about its relevance.
+    \item Present the data you plan to use, and how you plan to obtain it.
+    \item Argue the reasons why it is the best data to answer your question.
+\end{enumerate}
+
+\subsection{Presentation II (Steps 3--4)}
+\begin{enumerate}
+    \item Pick the most interesting graph you generated with your data, explain why you picked it, and explain the graph to the audience.
+    \item Present your empirical specification and the assumptions for a causal interpretation.
+    \item Present your parameter estimates and explain them.
+\end{enumerate}
+
+\section{Submission}
+\begin{itemize}
+    \item Upload your presentation to Moodle by \textbf{midnight (23:59) on the day before} your presentation.
+    \item \textcolor{red}{Failure to upload on time results in a loss of 5\% of the final course grade for all team members.}
+\end{itemize}
+
+\section{Who Presents and Grading}
+\begin{itemize}
+    \item Every team member must be able to present and answer questions about \textbf{all} slides of the presentation, not only their own.
+    \item The instructor will decide on the spot who presents which slide and who answers which question.
+    \item Grades are \textbf{individual}, based on each student's performance during the presentation.
+\end{itemize}
+
+\section{Academic Integrity}
+Students are expected to uphold the highest standards of academic honesty. Plagiarism or cheating will result in disciplinary action in accordance with university policy.
+
+\end{document}

@@ -35,6 +35,5 @@ By appointment, at <pello.aspuru@univie.ac.at>
 
 # References
 
-
-
-
+- [Course project instructions (PDF)](00_syllabus/project_instructions.pdf)
+- [Midterm exam example (PDF)](00_syllabus/mock_exam.pdf)

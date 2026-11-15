@@ -1,0 +1,400 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  language=R,
+  backgroundcolor=\color{gray!5},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{black},
+  commentstyle=\color{black},
+  stringstyle=\color{black},
+  showstringspaces=false,
+  frame=single
+}
+
+% ---------- HEADER INFO ----------
+\newcommand{\examtitle}{Midterm Exam}
+\newcommand{\coursename}{040178-1: Applied Economics}
+\newcommand{\semester}{Fall 2025}
+\newcommand{\examdate}{Wednesday November 12th, 2025}
+\newcommand{\duration}{60 minutes}
+
+\begin{document}
+
+
+\begin{center}
+    {\Large \textbf{\examtitle}} \\[6pt]
+    \coursename \\[4pt]
+    \semester \\[4pt]
+    \textbf{Date:} \examdate \quad | \quad \textbf{Duration:} \duration
+\end{center}
+
+\vspace{1em}
+\noindent
+\textbf{Instructions:}
+\begin{itemize}
+    \item This midterm exam is comprised of 25 multiple-choice questions.
+    \item Each question features four possible answers. \textbf{Only one} answer is correct.
+    \item Each question refers to the code chunk printed inmediately above it, unless otherwise stated.
+    \item Assume that the code chunks are sequentially run, unless otherwise stated.
+    \item The use of any external materials, including electronic devices, is sctrictly prohibited.
+    \item In case you have a question, raise your hand and wait until the supervisor's permission to make it out loud.
+    \item At the end of the exam, you should hand in:
+    \begin{itemize}
+      \item This question sheet.
+      \item The ``Answers Form'' completed with your student ID number and your selected answers.
+    \end{itemize}
+\end{itemize}
+\textbf{Grading Policy:}
+\begin{itemize}
+    \item This midterm exam represents 25\% of your final grade.
+    \item Each correct answer adds +1 point.
+    \item Each incorrect answer substracts 0.25 points.
+    \item Each blank answer nor adds neither substracts points.
+    \item Grading only depends on the ``Answers Form'' replies. You are allowed to sketch notes in this question sheets but these notes will not be taken into account for the final grade
+    \item The use of any external materials, including electronic devices, is strictly prohibited.
+\end{itemize}
+\textbf{Good Luck!}
+\newpage
+
+%\section{R Objects}
+\begin{lstlisting}
+        n <- 1000 
+        id <- 1:n 
+        class(id)
+        id[43]
+        n[2]
+\end{lstlisting}
+
+\begin{enumerate}
+  \item How many objects will there be in the ``Environment'' panel?
+  \begin{enumerate}[label=\Alph*)]
+    \item At least 1
+    \item 2
+    \item 1000
+    \item At least 2
+  \end{enumerate}
+  \item What will the code line \texttt{id[43]} print in the ``Console'' panel?
+  \begin{enumerate}[label=\Alph*)]
+    \item \texttt{[1] 43}
+    \item \texttt{[1] 42}
+    \item \texttt{[1] 1 2 3 4 5 6}
+    \item \texttt{NA}
+  \end{enumerate}
+  \item What will the code line \texttt{n[2]} print in the ``Console'' panel?
+  \begin{enumerate}[label=\Alph*)]
+    \item \texttt{[1] 1000}
+    \item \texttt{[1] 1}
+    \item \texttt{[1] 1 2 3 4 5 6}
+    \item \texttt{NA}
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+        rm(list = ls())
+        n <- 100
+        x <- rnorm(n, mean = -3, sd = 5)
+        str(x)
+        class(x)
+        ls()
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item How many objects will there be in the ``Environment'' panel?
+  \begin{enumerate}[label=\Alph*)]
+    \item 3
+    \item At least 3
+    \item 2
+    \item At least 2
+  \end{enumerate}
+  \item What will the code line \texttt{str(x)} print in the ``Console'' panel?
+  \begin{enumerate}[label=\Alph*)]
+    \item \texttt{num [1:100]} \dots
+    \item \texttt{num 100}
+    \item \texttt{NA}
+    \item \texttt{Error: object 'x' not found}
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+  rm(list = ls())
+  n <- 1000 
+  brand   <- sample(c("BMW", "VW", "Toyota", "Renault", 
+                      "Skoda", "Tesla"), n, replace = TRUE)
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item How many arguments does function \texttt{sample()} take in this case?
+  \begin{enumerate}[label=\Alph*)]
+    \item Three
+    \item Four
+    \item Eight
+    \item One 
+  \end{enumerate}
+  \item What is the role of argument \texttt{n} in function \texttt{sample()}?
+  \begin{enumerate}[label=\Alph*)]
+    \item Determine the number of observations that are drawn.
+    \item Determine the population from which to sample.
+    \item Determine the probability of selecting each element, at each draw.
+    \item Determine whether sampling is with or without replacement.
+  \end{enumerate}
+  \item What is object \texttt{brand}?
+  \begin{enumerate}[label=\Alph*)]
+    \item A vector of with 1 element.
+    \item A vector of 6 elements.
+    \item A vector of 1000 elements.
+    \item None of the above.
+  \end{enumerate}
+  \item What is the role of argument \texttt{replace = TRUE}?
+  \begin{enumerate}[label=\Alph*)]
+    \item Ensures each car brand (``BMW'', ``VW'', ``Toyota'' etc.) appears only once in object \texttt{brand}
+    \item Enables for car brands to appear multiple times in object \texttt{brand}
+    \item Ensures that object \texttt{brand} includes all car brands.
+    \item None of the above statements are correct.
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+  engine<- sample(c("Gasoline", "Diesel", "Hybrid", 
+                    "Full Electric"), n, replace = TRUE,
+                    prob = c(0.4, 0.35, 0.2, 0.05))
+  table(engine)
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item Which of the following statements is correct:
+  \begin{enumerate}[label=\Alph*)]
+    \item ``Gasoline'' is most likely the most frequent category in object \texttt{engine}
+    \item ``Diesel'' is most likely the most frequent category in object \texttt{engine}
+    \item ``Hybrid'' is most likely the least frequent category in object \texttt{engine}
+    \item None of the above is correct.
+  \end{enumerate}
+  \item What is the most likely outcome of code line \texttt{table(engine)}?
+    \begin{enumerate}[label=\Alph*)]
+      \item 
+      \begin{verbatim}
+          Diesel Full Electric      Gasoline        Hybrid 
+            84           125           718            73 
+      \end{verbatim}
+
+      \item 
+      \begin{verbatim}
+        Diesel Full Electric      Gasoline        Hybrid 
+          346            48           413           193
+      \end{verbatim}
+
+      \item 
+      \begin{verbatim}
+          Diesel Full Electric      Gasoline        Hybrid 
+            184           425           318            73 
+      \end{verbatim}
+
+      \item 
+      \begin{verbatim}
+          Diesel Full Electric      Gasoline        Hybrid 
+            184           225            18           573 
+      \end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+  index <- brand == "Tesla"
+  engine[index] <- "Full Electric"
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item What is object \texttt{index}?
+  \begin{enumerate}[label=\Alph*)]
+    \item A 6 element vector of logical \texttt{TRUE/FALSE} variables.
+    \item A 1000 element vector of logical \texttt{TRUE/FALSE} variables.
+    \item A 6 element vector of integer numbers.
+    \item A 1000 element vector of integer numbers.
+  \end{enumerate}
+  \item What do the two code lines above do?
+  \begin{enumerate}[label=\Alph*)]
+    \item Change all the elements of vector \texttt{engine}
+    \item Change some the elements of vector \texttt{engine}
+    \item Change all the elements of vector \texttt{brand}
+    \item Change some the elements of vector \texttt{brand}
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+  age <- sample(0:15, n, replace = TRUE) 
+  is_EV <- 1*(engine %in% c("Hybrid", "Full Electric"))
+  price <- round(rnorm(n, mean = 40000 - 1500*age/10 + 10000*is_EV, sd = 8000), 0)
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item Which of the following statements on \texttt{is\_EV} is correct?
+  \begin{enumerate}[label=\Alph*)]
+    \item Is a vector of logical \texttt{TRUE/FALSE} variables. The vector has around 250 elements.
+    \item Is a vector of integer numbers. The vector has around 250 elements.
+    \item It is a vector of logical \texttt{TRUE/FALSE} variables. The vector has 1000 elements.
+    \item It is a vector of integer numbers. The vector has 1000 elements.
+  \end{enumerate}
+  \item How many arguments does \texttt{rnorm()} function take, in this case?
+  \begin{enumerate}[label=\Alph*)]
+    \item 4
+    \item 5
+    \item 9
+    \item 3
+  \end{enumerate}
+  \item The object \texttt{price} will be comprised of\dots
+  \begin{enumerate}[label=\Alph*)]
+    \item logical \texttt{TRUE/FALSE} variables.
+    \item String variables (words).
+    \item Numbers with 2 decimals.
+    \item Numbers with 0 decimals.
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+We next group the previous objects into a dataframe \texttt{df}. Assume variable price is in euros, and variable age is in years.
+
+\begin{lstlisting}
+  df <- data.frame(id, brand, engine, price, age, is_EV)
+\end{lstlisting}
+
+Let us start with the following two regression models \texttt{mlr\_0} and \texttt{mlr\_1}:
+\begin{lstlisting}
+  mlr_0 = lm( price ~ age , data = df )
+  summary(mlr_0)
+  #
+  mlr_1 = lm( price ~ age + is_EV , data = df )
+  summary(mlr_1)
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item Based on the construction process of dataframe \texttt{df}, It is expected that the \texttt{mlr\_1} model\dots
+  \begin{enumerate}[label=\Alph*)]
+    \item ``age'' parameter estimate to be positive, ``is\_EV'' parameter estimate to be negative.
+    \item ``age'' parameter estimate to be positive, ``is\_EV'' parameter estimate to be positive.
+    \item ``age'' parameter estimate to be negative, ``is\_EV'' parameter estimate to be negative.
+    \item ``age'' parameter estimate to be negative, ``is\_EV'' parameter estimate to be positive.
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+\begin{lstlisting}
+  mlr_2 = lm( price ~ age*is_EV , data = df )
+  summary(mlr_2)
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item How many parameter estimates $\hat{\beta}_0$, $\hat{\beta}_1$, \dots, $\hat{\beta}_k$ will the multiple linear regression model \texttt{mlr\_2} have?
+  \begin{enumerate}[label=\Alph*)]
+    \item 7
+    \item 6
+    \item 2
+    \item 4
+  \end{enumerate}
+  \item For a linear regression model $m$, $R^2_{\texttt{m}}$ assume denotes its R squared. How do you expect the R squares of models \texttt{mlr\_0}, \texttt{mlr\_1}, and \texttt{mlr\_2} to compare?
+  \begin{enumerate}[label=\Alph*)]
+    \item $R^2_{\texttt{mlr\_0}} \quad > \quad R^2_{\texttt{mlr\_1}} \quad = \quad R^2_{\texttt{mlr\_2}}$
+    \item $R^2_{\texttt{mlr\_0}} \quad > \quad R^2_{\texttt{mlr\_1}} \quad \geq \quad R^2_{\texttt{mlr\_2}}$
+    \item $R^2_{\texttt{mlr\_0}} \quad \leq \quad R^2_{\texttt{mlr\_1}} \quad \leq \quad R^2_{\texttt{mlr\_2}}$
+    \item $R^2_{\texttt{mlr\_0}} \quad < \quad R^2_{\texttt{mlr\_1}} \quad = \quad R^2_{\texttt{mlr\_2}}$
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+  for (i in c("BMW", "VW", "Toyota", "Renault", "Skoda", "Tesla")) {
+        mlr_3 <- lm(price ~ age + is_EV, data = df[df$brand == i,])
+        print(i)
+        print(summary(mlr_3))
+      }
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item Which of the following statements is TRUE about this code?
+  \begin{enumerate}[label=\Alph*)]
+    \item The same dataset is used for each loop iteration.
+    \item Each regression model is estimated using only observations of a specific brand.
+    \item The \texttt{print(i)} statement is necessary for the code to work.
+    \item The loop will generate 6 new objects, one for each car brand.
+  \end{enumerate}
+    \item What is the role of \texttt{print(summary(mlr\_3))}?
+
+  \begin{enumerate}[label=\Alph*)]
+    \item It prints only the regression coefficients.
+    \item It provides detailed regression output.
+    \item It provides detailed regression output, including R-squared and robust standard errors.
+    \item It plots the residuals of the model.
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+  df$log_price <- log(df$price)
+  mlr_4 = lm(log_price ~ age , data = df )
+  summary(mlr_4)
+\end{lstlisting}
+... prints the following parameter estimate in the RStudio Console:
+\begin{verbatim}
+  Coefficients:
+                 Estimate   Std. Error    t value Pr(>|t|)    
+  age           -0.003919     0.001313     -2.984  0.00292 ** 
+\end{verbatim}
+
+\begin{enumerate}[resume]
+  \item Which of the following statements is correct?
+  \begin{enumerate}[label=\Alph*)]
+    \item An additional age unit is related to an expected price decrease of 0.39\%.
+    \item An additional age unit is related to an expected price decrease of 0.39\%, holding other factors constant.
+    \item An additional age unit is related to an expected price decrease of 39\%.
+    \item An additional age unit is related to an expected price decrease of 39\%, holding other factors constant.
+  \end{enumerate}
+  \item The standard error \texttt{0.001313} estimation assumes homoskedasticity, this is \dots
+  \begin{enumerate}[label=\Alph*)]
+    \item All error terms $u_i$ must have the same conditional variance.
+    \item All error terms $u_i$ may have the same conditional variance.
+    \item All error terms $u_i$ must have different conditional variances.
+    \item All error terms $u_i$ may have different conditional variances.
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{lstlisting}
+  library(sandwich)  
+  library(lmtest)   
+  object <- vcovHC(mlr_2, type = "HC0")
+  print(object)
+\end{lstlisting}
+
+\begin{enumerate}[resume]
+  \item What do you expect the previous code to print in the Console?
+  \begin{enumerate}[label=\Alph*)]
+    \item The robust variances of the parameter estimates of model \texttt{mlr\_2}
+    \item The robust standard errors of the parameter estimates of model \texttt{mlr\_2}
+    \item The robust variance covariance matrix of the parameter estimates of model \texttt{mlr\_2}
+    \item The robust variance covariance matrix of the parameter estimates of model \texttt{mlr\_2}, excluding intercept parameter.
+  \end{enumerate}
+  \item What are the dimensions of \texttt{object} ?
+  \begin{enumerate}[label=\Alph*)]
+    \item A $4 \times 4$ matrix.
+    \item A $3 \times 3$ matrix.
+    \item A four-element vector.
+    \item A three-element vector.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

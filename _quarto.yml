@@ -5,6 +5,8 @@ project:
     - "slides/*.pdf"
     - "code/*.R"
     - "data/*.csv"
+    - "00_syllabus/project_instructions.pdf"
+    - "00_syllabus/mock_exam.pdf"
 
 book:
   title: "Applied Economics"
