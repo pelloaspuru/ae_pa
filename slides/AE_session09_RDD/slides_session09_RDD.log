@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 15:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 16:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -166,8 +166,8 @@ erarithmetics.code.tex)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count285
-))) (/usr/local/texlive/2023/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+))) (/usr/local/texlive/2023/texmf-dist/tex/latex/extsizes/size9.clo
+File: size9.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -708,31 +708,41 @@ y
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamerouterthemedefault.st
 y)))
-(/usr/local/texlive/2023/texmf-dist/tex/latex/beamertheme-metropolis/beamerthem
-emetropolis.sty
-Package: beamerthememetropolis 2017/01/23 v1.2 Metropolis Beamer theme
+(/usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamerthemeSingapore.sty
+(/usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamerouterthememiniframes
+.sty))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/beamer/beamercolorthemestructure.
+sty) (/usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2023/02/13 3.86 The Babel package
+\babel@savecnt=\count334
+\U@D=\dimen294
+\l@unhyphenated=\language87
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/pgfopts/pgfopts.sty
-Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks45
-\pgfopts@list@add@b@toks=\toks46
+(/usr/local/texlive/2023/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read3
+LaTeX Info: Redefining \textlatin on input line 4088.
+\bbl@dirlevel=\count335
+
+(/usr/local/texlive/2023/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 108.
+))
+(/usr/local/texlive/2023/texmf-dist/tex/generic/babel/locale/en/babel-english.t
+ex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/beamertheme-metropolis/beamerinne
-rthememetropolis.sty
-Package: beamerinnerthememetropolis 2017/01/23 Metropolis inner theme
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count334
-\calc@Bcount=\count335
-\calc@Adimen=\dimen294
-\calc@Bdimen=\dimen295
-\calc@Askip=\skip65
-\calc@Bskip=\skip66
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count336
-\calc@Cskip=\skip67
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks45
+\inpenc@posthook=\toks46
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
@@ -750,8 +760,8 @@ File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen296
-\pgf@nodesepend=\dimen297
+\pgf@nodesepstart=\dimen295
+\pgf@nodesepend=\dimen296
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
@@ -760,8 +770,8 @@ Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen298
-\pgffor@skip=\dimen299
+\pgffor@iter=\dimen297
+\pgffor@skip=\dimen298
 \pgffor@stack=\toks47
 \pgffor@toks=\toks48
 ))
@@ -772,250 +782,122 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count337
-\pgfplotmarksize=\dimen300
+\pgf@plot@mark@count=\count336
+\pgfplotmarksize=\dimen299
 )
-\tikz@lastx=\dimen301
-\tikz@lasty=\dimen302
-\tikz@lastxsaved=\dimen303
-\tikz@lastysaved=\dimen304
-\tikz@lastmovetox=\dimen305
-\tikz@lastmovetoy=\dimen306
-\tikzleveldistance=\dimen307
-\tikzsiblingdistance=\dimen308
+\tikz@lastx=\dimen300
+\tikz@lasty=\dimen301
+\tikz@lastxsaved=\dimen302
+\tikz@lastysaved=\dimen303
+\tikz@lastmovetox=\dimen304
+\tikz@lastmovetoy=\dimen305
+\tikzleveldistance=\dimen306
+\tikzsiblingdistance=\dimen307
 \tikz@figbox=\box77
 \tikz@figbox@bg=\box78
 \tikz@tempbox=\box79
 \tikz@tempbox@bg=\box80
-\tikztreelevel=\count338
-\tikznumberofchildren=\count339
-\tikznumberofcurrentchild=\count340
-\tikz@fig@count=\count341
+\tikztreelevel=\count337
+\tikznumberofchildren=\count338
+\tikznumberofcurrentchild=\count339
+\tikz@fig@count=\count340
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count342
-\pgfmatrixcurrentcolumn=\count343
-\pgf@matrix@numberofcolumns=\count344
+\pgfmatrixcurrentrow=\count341
+\pgfmatrixcurrentcolumn=\count342
+\pgf@matrix@numberofcolumns=\count343
 )
-\tikz@expandcount=\count345
+\tikz@expandcount=\count344
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
-\metropolis@titleseparator@linewidth=\skip68
-\metropolis@progressonsectionpage=\skip69
-\metropolis@progressonsectionpage@linewidth=\skip70
-\metropolis@blocksep=\skip71
-\metropolis@blockadjust=\skip72
-\metropolis@parskip=\skip73
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/beamertheme-metropolis/beameroute
-rthememetropolis.sty
-Package: beamerouterthememetropolis 2017/01/23 Metropolis outer theme
-\metropolis@frametitle@padding=\skip74
-\metropolis@progressinheadfoot=\skip75
-\metropolis@progressinheadfoot@linewidth=\skip76
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/beamertheme-metropolis/beamercolo
-rthememetropolis.sty
-Package: beamercolorthememetropolis 2017/01/23 Metropolis color theme
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/beamertheme-metropolis/beamerfont
-thememetropolis.sty
-Package: beamerfontthememetropolis 2017/01/23 Metropolis font theme
-
-(/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
-Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
-Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-)
-
-Package beamerthememetropolis Warning: You need to compile with XeLaTeX or LuaL
-aTeX to use the Fira fonts on input line 95.
-
-))
-(/usr/local/texlive/2023/texmf-dist/tex/latex/appendixnumberbeamer/appendixnumb
-erbeamer.sty)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen309
-\lightrulewidth=\dimen310
-\cmidrulewidth=\dimen311
-\belowrulesep=\dimen312
-\belowbottomsep=\dimen313
-\aboverulesep=\dimen314
-\abovetopsep=\dimen315
-\cmidrulesep=\dimen316
-\cmidrulekern=\dimen317
-\defaultaddspace=\dimen318
-\@cmidla=\count346
-\@cmidlb=\count347
-\@aboverulesep=\dimen319
-\@belowrulesep=\dimen320
-\@thisruleclass=\count348
-\@lastruleclass=\count349
-\@thisrulewidth=\dimen321
+\heavyrulewidth=\dimen308
+\lightrulewidth=\dimen309
+\cmidrulewidth=\dimen310
+\belowrulesep=\dimen311
+\belowbottomsep=\dimen312
+\aboverulesep=\dimen313
+\abovetopsep=\dimen314
+\cmidrulesep=\dimen315
+\cmidrulekern=\dimen316
+\defaultaddspace=\dimen317
+\@cmidla=\count345
+\@cmidlb=\count346
+\@aboverulesep=\dimen318
+\@belowrulesep=\dimen319
+\@thisruleclass=\count347
+\@lastruleclass=\count348
+\@thisrulewidth=\dimen320
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/ccicons/ccicons.sty
-Package: ccicons 2017/10/30 v1.6 LaTeX support for Creative Commons icons
+(/usr/local/texlive/2023/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen321
+\ar@mcellbox=\box81
+\extrarowheight=\dimen322
+\NC@list=\toks49
+\extratabsurround=\skip65
+\backup@length=\skip66
+\ar@cellbox=\box82
+)
+\rotheadsize=\dimen323
+\c@nlinenum=\count349
+\TeXr@lab=\toks50
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip67
+\multirow@cntb=\count350
+\multirow@dima=\skip68
+\bigstrutjot=\dimen324
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 49.
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks49
-\XKV@tempa@toks=\toks50
-)
-\XKV@depth=\count350
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)))
-(/usr/local/texlive/2023/texmf-dist/tex/latex/pgfplots/pgfplots.sty
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
-Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks51
-\t@pgfplots@tokb=\toks52
-\t@pgfplots@tokc=\toks53
-\pgfplots@tmpa=\dimen322
-\c@pgfplots@coordindex=\count351
-\c@pgfplots@scanlineindex=\count352
+(/usr/local/texlive/2023/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write5
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric
-.code.tex))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.c
-ode.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
-soldpgfsupp_loader.code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
-e.tex)
-Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks54
-\t@pgf@tokb=\toks55
-\t@pgf@tokc=\toks56
+Excluding comment 'comment')
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count351
+\lst@gtempboxa=\box83
+\lst@token=\toks51
+\lst@length=\count352
+\lst@currlwidth=\dimen325
+\lst@column=\count353
+\lst@pos=\count354
+\lst@lostspace=\dimen326
+\lst@width=\dimen327
+\lst@newlines=\count355
+\lst@lineno=\count356
+\lst@maxwidth=\dimen328
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
-soldpgfsupp_pgfutil-common-lists.tex))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code
-.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
-liststructure.code.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
-liststructureext.code.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
-array.code.tex
-\c@pgfplotsarray@tmp=\count353
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count357
+\lst@skipnumbers=\count358
+\lst@framebox=\box84
 )
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
-matrix.code.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
-shared.code.tex
-\c@pgfplotstable@counta=\count354
-\t@pgfplotstable@a=\toks57
-)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
-deque.code.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.co
-de.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.da
-ta.code.tex))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb
-.code.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplot
-s.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count355
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
-.surfshading.pgfsys-pdftex.def)))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.
-code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.cod
-e.tex))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.c
-ode.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.c
-ode.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandle
-r.code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.
-code.tex)))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.
-tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessin
-g.code.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.cod
-e.tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.
-tex)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.te
-x)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibrarydecorations.code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
-s.code.tex
-\pgfdecoratedcompleteddistance=\dimen323
-\pgfdecoratedremainingdistance=\dimen324
-\pgfdecoratedinputsegmentcompleteddistance=\dimen325
-\pgfdecoratedinputsegmentremainingdistance=\dimen326
-\pgf@decorate@distancetomove=\dimen327
-\pgf@decorate@repeatstate=\count356
-\pgfdecorationsegmentamplitude=\dimen328
-\pgfdecorationsegmentlength=\dimen329
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2023/02/27 1.9 listings language file
 )
-\tikz@lib@dec@box=\box81
-)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibrarydecorations.pathmorphing.code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
-brarydecorations.pathmorphing.code.tex))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibrarydecorations.pathreplacing.code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
-brarydecorations.pathreplacing.code.tex))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
-ts.contourlua.code.tex)
-\pgfplots@numplots=\count357
-\pgfplots@xmin@reg=\dimen330
-\pgfplots@xmax@reg=\dimen331
-\pgfplots@ymin@reg=\dimen332
-\pgfplots@ymax@reg=\dimen333
-\pgfplots@zmin@reg=\dimen334
-\pgfplots@zmax@reg=\dimen335
-)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
-s/tikzlibraryplotmarks.code.tex
-File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmar
-ks.code.tex
-File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
-ts.dateplot.code.tex
-(/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.
-tex
-File: pgfcalendar.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfcalendarcurrentjulian=\count358
-\pgf@cal@easter@Y=\count359
-\pgf@cal@easter@G=\count360
-\pgf@cal@easter@C=\count361
-\pgf@cal@easter@X=\count362
-\pgf@cal@easter@Z=\count363
-\pgf@cal@easter@D=\count364
-\pgf@cal@easter@E=\count365
-\pgf@cal@easter@N=\count366
-\pgf@cal@easter@M=\count367
-\pgf@cal@easter@julianday=\count368
-))) (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2023/02/27 1.9 listings language file
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/bbm-macros/bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
@@ -1032,103 +914,64 @@ Package: caption 2023/03/12 v3.6j Customizing captions (AR)
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
-\caption@tempdima=\dimen336
-\captionmargin=\dimen337
-\caption@leftmargin=\dimen338
-\caption@rightmargin=\dimen339
-\caption@width=\dimen340
-\caption@indent=\dimen341
-\caption@parindent=\dimen342
-\caption@hangindent=\dimen343
+\caption@tempdima=\dimen329
+\captionmargin=\dimen330
+\caption@leftmargin=\dimen331
+\caption@rightmargin=\dimen332
+\caption@width=\dimen333
+\caption@indent=\dimen334
+\caption@parindent=\dimen335
+\caption@hangindent=\dimen336
 Package caption Info: beamer document class detected.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/caption/caption-beamer.sto
 File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to th
 e beamer document classes (AR)
 ))
-\c@caption@flags=\count369
-\c@continuedfloat=\count370
+\c@caption@flags=\count359
+\c@continuedfloat=\count360
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
+Package caption Info: listings package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 239.
-\c@subfigure=\count371
+\c@subfigure=\count361
 Package caption Info: New subtype `subtable' on input line 239.
-\c@subtable=\count372
+\c@subtable=\count362
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks58
-\verbatim@line=\toks59
-\verbatim@in@stream=\read3
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count373
-\lst@gtempboxa=\box82
-\lst@token=\toks60
-\lst@length=\count374
-\lst@currlwidth=\dimen344
-\lst@column=\count375
-\lst@pos=\count376
-\lst@lostspace=\dimen345
-\lst@width=\dimen346
-\lst@newlines=\count377
-\lst@lineno=\count378
-\lst@maxwidth=\dimen347
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count379
-\lst@skipnumbers=\count380
-\lst@framebox=\box83
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2023/02/27 1.9 listings configuration
-))
-Package: listings 2023/02/27 1.9 (Carsten Heinz)
-Package hyperref Info: Option `colorlinks' set `true' on input line 20.
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2023/02/27 1.9 listings language file
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2023/02/27 1.9 listings language file
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/beamertheme-metropolis/pgfplotsth
-emetol.sty
-Package: pgfplotsthemetol 2017/01/23 PGFplots colors based on Paul Tol's SRON t
-echnical note
+\every@verbatim=\toks52
+\verbatim@line=\toks53
+\verbatim@in@stream=\read4
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count381
-\l__pdf_internal_box=\box84
+\l__color_backend_stack_int=\count363
+\l__pdf_internal_box=\box85
 )
 (./slides_session09_RDD.aux)
 \openout1 = `slides_session09_RDD.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1149,12 +992,12 @@ LaTeX Font Info:    ... okay on input line 57.
 * \topmargin=-72.26999pt
 * \headheight=14.22636pt
 * \headsep=0.0pt
-* \topskip=11.0pt
+* \topskip=9.0pt
 * \footskip=14.22636pt
 * \marginparwidth=4.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=8.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1166,17 +1009,17 @@ LaTeX Font Info:    ... okay on input line 57.
 
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count382
-\scratchdimen=\dimen348
-\scratchbox=\box85
-\nofMPsegments=\count383
-\nofMParguments=\count384
-\everyMPshowfont=\toks61
-\MPscratchCnt=\count385
-\MPscratchDim=\dimen349
-\MPnumerator=\count386
-\makeMPintoPDFobject=\count387
-\everyMPtoPDFconversion=\toks62
+\scratchcounter=\count364
+\scratchdimen=\dimen337
+\scratchbox=\box86
+\nofMPsegments=\count365
+\nofMParguments=\count366
+\everyMPshowfont=\toks54
+\MPscratchCnt=\count367
+\MPscratchDim=\dimen338
+\MPnumerator=\count368
+\makeMPintoPDFobject=\count369
+\everyMPtoPDFconversion=\toks55
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1186,64 +1029,70 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 57.
+Package hyperref Info: Link coloring ON on input line 101.
 
 (./slides_session09_RDD.out) (./slides_session09_RDD.out)
-\@outlinefile=\write5
-\openout5 = `slides_session09_RDD.out'.
+\@outlinefile=\write6
+\openout6 = `slides_session09_RDD.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 57.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 101.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 57.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 101.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 57.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 101.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 57.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 57.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 57.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/b/n on input line 101.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 57.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 57.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 57.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 101.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 57.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 57.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 57.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 101.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 57.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 57.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 101.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 57.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 101.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 57.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 57.
+(Font)                  OT1/cmss/b/n --> T1/cmr/b/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 57.
+(Font)                  T1/cmss/b/n --> T1/cmss/b/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 57.
+(Font)                  T1/cmss/m/n --> T1/cmss/b/n on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 57.
+(Font)                  T1/cmss/m/it --> T1/cmss/b/it on input line 101.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 57.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 57.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/b/n on input line 101.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 101.
+LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
+(Font)              `pureletters' in the math version `normal' on input line 10
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 5
-7.
+(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 10
+1.
+LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
+(Font)              `pureletters' in the math version `bold' on input line 101.
+
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 5
-7.
+(Font)                  T1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 10
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 57.
+ut line 101.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -1269,34 +1118,27 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-Package pgfplots notification 'compat/show suggested version=true': you might b
-enefit from \pgfplotsset{compat=1.18} (current compat level: 1.9).
-
+\c@lstlisting=\count370
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count388
-(./slides_session09_RDD.nav)
-Overfull \vbox (15.63992pt too high) detected at line 60
- []
+ (./slides_session09_RDD.nav) [1
 
-[1
-
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 80.
-
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
+al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 131
+.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 80.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 131
+.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 80.
+ut line 131.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1308,25 +1150,19 @@ thkerncmss.
 ] [4
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-110.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmss.fd
-File: ts1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-)
-Overfull \vbox (13.78789pt too high) detected at line 110
+Overfull \vbox (5.69948pt too high) detected at line 161
  []
 
 [5
 
-{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-Overfull \vbox (13.78789pt too high) detected at line 110
+]
+Overfull \vbox (5.69948pt too high) detected at line 161
  []
 
 [6
 
 ]
-Overfull \vbox (13.78789pt too high) detected at line 110
+Overfull \vbox (5.69948pt too high) detected at line 161
  []
 
 [7
@@ -1337,317 +1173,313 @@ Overfull \vbox (13.78789pt too high) detected at line 110
 
 ] [10
 
-] [11
-
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb)
-Overfull \vbox (9.1149pt too high) detected at line 156
+ (./slides_session09_RDD.vrb
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
+3.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+))
+Overfull \vbox (12.59195pt too high) detected at line 207
+ []
+
+[11
+
+] (./slides_session09_RDD.vrb)
+Overfull \vbox (12.59195pt too high) detected at line 207
  []
 
 [12
 
 ] (./slides_session09_RDD.vrb)
-Overfull \vbox (9.1149pt too high) detected at line 156
+Overfull \vbox (12.59195pt too high) detected at line 207
  []
 
 [13
 
 ] (./slides_session09_RDD.vrb)
-Overfull \vbox (9.1149pt too high) detected at line 156
+Overfull \vbox (12.59195pt too high) detected at line 207
  []
 
 [14
 
 ] (./slides_session09_RDD.vrb)
-Overfull \vbox (9.1149pt too high) detected at line 156
+Overfull \vbox (12.59195pt too high) detected at line 207
  []
 
 [15
 
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (9.1149pt too high) detected at line 156
- []
-
-[16
-
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb) [17
+ (./slides_session09_RDD.vrb) [16
 
-] (./slides_session09_RDD.vrb) [18
+] (./slides_session09_RDD.vrb) [17
 
 ]
-<RDD_graph_1.pdf, id=140, 505.89pt x 289.08pt>
+<RDD_graph_1.pdf, id=608, 505.89pt x 289.08pt>
 File: RDD_graph_1.pdf Graphic file (type pdf)
 <use RDD_graph_1.pdf>
-Package pdftex.def Info: RDD_graph_1.pdf  used on input line 185.
+Package pdftex.def Info: RDD_graph_1.pdf  used on input line 236.
 (pdftex.def)             Requested size: 330.62175pt x 188.92752pt.
 
-Overfull \vbox (2.65343pt too high) detected at line 185
+Overfull \vbox (1.004pt too high) detected at line 236
  []
 
-[19
+[18
 
  <./RDD_graph_1.pdf>]
 \openout4 = `slides_session09_RDD.vrb'.
 
  (./slides_session09_RDD.vrb
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-7.
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmtt.fd
-File: ts1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-)
 LaTeX Font Info:    Trying to load font information for U+bbm on input line 21.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ))
-Overfull \vbox (25.94083pt too high) detected at line 208
+Overfull \vbox (24.05542pt too high) detected at line 259
+ []
+
+[19
+
+] (./slides_session09_RDD.vrb)
+Overfull \vbox (24.05542pt too high) detected at line 259
  []
 
 [20
 
 ] (./slides_session09_RDD.vrb)
-Overfull \vbox (25.94083pt too high) detected at line 208
+Overfull \vbox (24.05542pt too high) detected at line 259
  []
 
 [21
 
 ] (./slides_session09_RDD.vrb)
-Overfull \vbox (25.94083pt too high) detected at line 208
+Overfull \vbox (24.05542pt too high) detected at line 259
  []
 
 [22
 
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (25.94083pt too high) detected at line 208
- []
-
-[23
-
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb)
-Overfull \vbox (8.82983pt too high) detected at line 229
- []
+ (./slides_session09_RDD.vrb) [23
 
-[24
-
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (8.82983pt too high) detected at line 229
- []
-
-[25
+] (./slides_session09_RDD.vrb) [24
 
 ]
 File: RDD_graph_1.pdf Graphic file (type pdf)
 <use RDD_graph_1.pdf>
-Package pdftex.def Info: RDD_graph_1.pdf  used on input line 242.
+Package pdftex.def Info: RDD_graph_1.pdf  used on input line 293.
+(pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
+
+[25
+
+]
+<RDD_graph_2.pdf, id=872, 505.89pt x 289.08pt>
+File: RDD_graph_2.pdf Graphic file (type pdf)
+<use RDD_graph_2.pdf>
+Package pdftex.def Info: RDD_graph_2.pdf  used on input line 293.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
  [26
 
-]
-<RDD_graph_2.pdf, id=197, 505.89pt x 289.08pt>
-File: RDD_graph_2.pdf Graphic file (type pdf)
-<use RDD_graph_2.pdf>
-Package pdftex.def Info: RDD_graph_2.pdf  used on input line 242.
-(pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
- [27
+ <./RDD_graph_2.pdf>] [27
 
- <./RDD_graph_2.pdf>] [28
+] [28
 
 ] [29
 
 ] [30
 
-] [31
+]
+Overfull \vbox (18.23616pt too high) detected at line 353
+ []
 
-] [32
+[31
 
 ]
-Overfull \vbox (20.67957pt too high) detected at line 302
+Overfull \vbox (18.23616pt too high) detected at line 353
+ []
+
+[32
+
+]
+<foodlabel_2.png, id=1100, 569.62813pt x 224.33812pt>
+File: foodlabel_2.png Graphic file (type png)
+<use foodlabel_2.png>
+Package pdftex.def Info: foodlabel_2.png  used on input line 353.
+(pdftex.def)             Requested size: 278.83578pt x 109.81367pt.
+
+Overfull \vbox (18.23616pt too high) detected at line 353
  []
 
 [33
 
-]
-Overfull \vbox (20.67957pt too high) detected at line 302
+ <./foodlabel_2.png>]
+<bunching_food_labelling_0.png, id=1136, 423.5825pt x 336.25626pt>
+File: bunching_food_labelling_0.png Graphic file (type png)
+<use bunching_food_labelling_0.png>
+Package pdftex.def Info: bunching_food_labelling_0.png  used on input line 353.
+
+(pdftex.def)             Requested size: 143.4006pt x 94.56879pt.
+<bunching_food_labelling_1.png, id=1138, 447.6725pt x 343.78438pt>
+File: bunching_food_labelling_1.png Graphic file (type png)
+<use bunching_food_labelling_1.png>
+Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 353.
+
+(pdftex.def)             Requested size: 143.4006pt x 91.89503pt.
+
+Overfull \vbox (10.02608pt too high) detected at line 353
+ []
+
+
+Overfull \vbox (18.23616pt too high) detected at line 353
  []
 
 [34
 
-]
-<foodlabel_2.png, id=249, 569.62813pt x 224.33812pt>
-File: foodlabel_2.png Graphic file (type png)
-<use foodlabel_2.png>
-Package pdftex.def Info: foodlabel_2.png  used on input line 302.
-(pdftex.def)             Requested size: 278.83578pt x 109.81367pt.
-
-Overfull \vbox (20.67957pt too high) detected at line 302
- []
-
-[35
-
- <./foodlabel_2.png>]
-<bunching_food_labelling_0.png, id=259, 423.5825pt x 336.25626pt>
-File: bunching_food_labelling_0.png Graphic file (type png)
-<use bunching_food_labelling_0.png>
-Package pdftex.def Info: bunching_food_labelling_0.png  used on input line 302.
-
-(pdftex.def)             Requested size: 143.4006pt x 94.56879pt.
-<bunching_food_labelling_1.png, id=261, 447.6725pt x 343.78438pt>
-File: bunching_food_labelling_1.png Graphic file (type png)
-<use bunching_food_labelling_1.png>
-Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 302.
-
-(pdftex.def)             Requested size: 143.4006pt x 91.89503pt.
-
-Overfull \vbox (5.67892pt too high) detected at line 302
- []
-
-
-Overfull \vbox (20.67957pt too high) detected at line 302
- []
-
-[36
-
  <./bunching_food_labelling_0.png> <./bunching_food_labelling_1.png>]
 File: bunching_food_labelling_1.png Graphic file (type png)
 <use bunching_food_labelling_1.png>
-Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 312.
+Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 363.
 
 (pdftex.def)             Requested size: 219.08743pt x 140.39677pt.
 
-[37
+[35
 
-] [38
+] [36
 
-] [39
+] [37
 
-] [40
+]
+Overfull \vbox (2.97565pt too high) detected at line 407
+ []
 
-] [41
+[38
 
-] [42
+]
+Overfull \vbox (2.97565pt too high) detected at line 407
+ []
 
-] [43
+[39
 
-] [44
+]
+Overfull \vbox (2.97565pt too high) detected at line 407
+ []
+
+[40
+
+]
+Overfull \vbox (2.97565pt too high) detected at line 407
+ []
+
+[41
 
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb) [45
+ (./slides_session09_RDD.vrb) [42
 
-]
-(./slides_session09_RDD.vrb) [46
+] (./slides_session09_RDD.vrb) [43
 
 ]
 File: RDD_graph_2.pdf Graphic file (type pdf)
 <use RDD_graph_2.pdf>
-Package pdftex.def Info: RDD_graph_2.pdf  used on input line 381.
+Package pdftex.def Info: RDD_graph_2.pdf  used on input line 432.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
- [47
+
+[44
 
 ]
-<RDD_graph_3.pdf, id=333, 505.89pt x 289.08pt>
+<RDD_graph_3.pdf, id=1487, 505.89pt x 289.08pt>
 File: RDD_graph_3.pdf Graphic file (type pdf)
 <use RDD_graph_3.pdf>
-Package pdftex.def Info: RDD_graph_3.pdf  used on input line 381.
+Package pdftex.def Info: RDD_graph_3.pdf  used on input line 432.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
- [48
+ [45
 
  <./RDD_graph_3.pdf>]
 \openout4 = `slides_session09_RDD.vrb'.
 
+ (./slides_session09_RDD.vrb) [46
 
-(./slides_session09_RDD.vrb) [49
-
-] (./slides_session09_RDD.vrb) [50
+]
+(./slides_session09_RDD.vrb) [47
 
 ]
 File: RDD_graph_3.pdf Graphic file (type pdf)
 <use RDD_graph_3.pdf>
-Package pdftex.def Info: RDD_graph_3.pdf  used on input line 410.
+Package pdftex.def Info: RDD_graph_3.pdf  used on input line 461.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
- [51
+ [48
 
 ]
-<RDD_graph_4.pdf, id=364, 505.89pt x 289.08pt>
+<RDD_graph_4.pdf, id=1620, 505.89pt x 289.08pt>
 File: RDD_graph_4.pdf Graphic file (type pdf)
 <use RDD_graph_4.pdf>
-Package pdftex.def Info: RDD_graph_4.pdf  used on input line 410.
+Package pdftex.def Info: RDD_graph_4.pdf  used on input line 461.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
+ [49
 
-[52
-
- <./RDD_graph_4.pdf>] [53
-
-] [54
+ <./RDD_graph_4.pdf>] [50
 
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb
-Overfull \hbox (26.91013pt too wide) in paragraph at lines 11--12
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][] 
- []
 
-) [55
+(./slides_session09_RDD.vrb) [51
 
 ]
 File: RDD_graph_4.pdf Graphic file (type pdf)
 <use RDD_graph_4.pdf>
-Package pdftex.def Info: RDD_graph_4.pdf  used on input line 455.
+Package pdftex.def Info: RDD_graph_4.pdf  used on input line 506.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
- [56
+ [52
 
 ]
-<RDD_graph_5.pdf, id=401, 505.89pt x 289.08pt>
+<RDD_graph_5.pdf, id=1753, 505.89pt x 289.08pt>
 File: RDD_graph_5.pdf Graphic file (type pdf)
 <use RDD_graph_5.pdf>
-Package pdftex.def Info: RDD_graph_5.pdf  used on input line 455.
+Package pdftex.def Info: RDD_graph_5.pdf  used on input line 506.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
- [57
+ [53
 
- <./RDD_graph_5.pdf>] [58
+ <./RDD_graph_5.pdf>] [54
 
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb
-<kernels.png, id=421, 1135.99406pt x 620.3175pt>
+
+(./slides_session09_RDD.vrb
+<kernels.png, id=1824, 1135.99406pt x 620.3175pt>
 File: kernels.png Graphic file (type png)
 <use kernels.png>
 Package pdftex.def Info: kernels.png  used on input line 4.
 (pdftex.def)             Requested size: 338.59023pt x 184.88513pt.
 )
-Overfull \vbox (19.72597pt too high) detected at line 478
+Overfull \vbox (15.57657pt too high) detected at line 529
  []
 
-[59
+[55
 
  <./kernels.png>]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb) [60
+ (./slides_session09_RDD.vrb) [56
 
 ]
-\tf@nav=\write6
-\openout6 = `slides_session09_RDD.nav'.
+\tf@nav=\write7
+\openout7 = `slides_session09_RDD.nav'.
 
-\tf@toc=\write7
-\openout7 = `slides_session09_RDD.toc'.
+\tf@toc=\write8
+\openout8 = `slides_session09_RDD.toc'.
 
-\tf@snm=\write8
-\openout8 = `slides_session09_RDD.snm'.
+\tf@snm=\write9
+\openout9 = `slides_session09_RDD.snm'.
 
 
 (./slides_session09_RDD.aux)
@@ -1655,36 +1487,41 @@ Package rerunfilecheck Info: File `slides_session09_RDD.out' has not changed.
 (rerunfilecheck)             Checksum: 0C7F570B811238ABA210D629D0A4AB81;793.
  ) 
 Here is how much of TeX's memory you used:
- 40344 strings out of 476025
- 941782 string characters out of 5790017
- 1882388 words of memory out of 5000000
- 59869 multiletter control sequences out of 15000+600000
- 526189 words of font info for 83 fonts, out of 8000000 for 9000
+ 30794 strings out of 476025
+ 596669 string characters out of 5790017
+ 1886388 words of memory out of 5000000
+ 50479 multiletter control sequences out of 15000+600000
+ 528714 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,131p,1911b,2081s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,17n,122p,396b,2039s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/pelloaspuru/Library/texlive/2023/texmf-var/fonts/pk/ljfour/public/bb
-m/bbm10.657pk></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
-10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss1
-2.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.
-pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pf
-b></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.p
-fb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.p
-fb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pf
-b></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
-/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
-sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr
-/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/l
-ocal/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/loc
-al/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on slides_session09_RDD.pdf (60 pages, 1295078 bytes).
+m/bbm9.600pk></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm
+extra/cmex9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
+9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8
+.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.
+pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pf
+b></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
+usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></us
+r/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb></usr/
+local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/lo
+cal/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/loca
+l/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/
+texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/te
+xlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texl
+ive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/local/texliv
+e/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/
+2023/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb></usr/local/texlive/20
+23/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2023
+/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
+Output written on slides_session09_RDD.pdf (56 pages, 1444319 bytes).
 PDF statistics:
- 548 PDF objects out of 1000 (max. 8388607)
- 415 compressed objects within 5 object streams
- 126 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2020 PDF objects out of 2073 (max. 8388607)
+ 1839 compressed objects within 19 object streams
+ 118 named destinations out of 1000 (max. 500000)
+ 162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

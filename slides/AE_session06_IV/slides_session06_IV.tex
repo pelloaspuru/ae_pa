@@ -1,40 +1,53 @@
-\documentclass[11pt, aspectratio = 169, xcolor=dvipsnames]{beamer}
+\documentclass[9pt,aspectratio=169, xcolor=dvipsnames]{beamer}
 
-\usetheme[progressbar=frametitle]{metropolis}
-\usepackage{appendixnumberbeamer}
-\usepackage{booktabs}
-\usepackage[scale=2]{ccicons}
-\usepackage{pgfplots}
-\usepgfplotslibrary{dateplot}
-\usepackage{xspace}
-\usepackage{comment}
-\usepackage{cancel}
-\usepackage{hyperref}  
-% xcolor is loaded by beamer; dvipsnames passed as class option above
-    \definecolor{myteal}{HTML}{008080}
-    \definecolor{myorange}{HTML}{E67E22}
-    \definecolor{mypetrol}{HTML}{005F6A}
-    \definecolor{mycyan}{HTML}{2AA8A1}
-    \definecolor{mygold}{HTML}{D4A017}
-    \definecolor{myrust}{HTML}{C65D32}
-    \definecolor{mygrey}{HTML}{4D4D4D}
-    \definecolor{mylightgrey}{HTML}{D9D9D9}
-\usepackage{tikz}  
-\usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
-\tikzset{
-    -Latex,auto,node distance =1 cm and 1 cm,semithick,
-    state/.style ={ellipse, draw, minimum width = 0.7 cm},
-    point/.style = {circle, draw, inner sep=0.04cm,fill,node contents={}},
-    bidirected/.style={Latex-Latex,dashed},
-    el/.style = {inner sep=2pt, align=left, sloped}
+% --- Theme ---
+\usetheme{Singapore}
+\setbeamertemplate{navigation symbols}{}   % no icons
+\setbeamertemplate{mini frames}{}          % no dots in headline
+\setbeamercovered{transparent}
+
+% --- Grayscale colors ---
+\definecolor{PelloGrayDark}{RGB}{60,60,60}
+\definecolor{PelloGray}{RGB}{120,120,120}
+\definecolor{PelloGrayLight}{RGB}{235,235,235}
+\definecolor{PelloGrayUltraLight}{RGB}{248,248,248}
+
+\usecolortheme[named=PelloGrayDark]{structure}
+
+% --- Blocks ---
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor{block title}{fg=white,bg=PelloGrayDark}
+\setbeamercolor{block body}{fg=black,bg=PelloGrayLight}
+\setbeamercolor{block title example}{fg=white,bg=PelloGrayDark}
+\setbeamercolor{block body example}{fg=black,bg=PelloGrayLight}
+\setbeamercolor{section in head/foot}{fg=PelloGray,bg=PelloGrayLight}
+\setbeamercolor{subsection in head/foot}{fg=PelloGray,bg=PelloGrayLight}
+\setbeamercolor{frametitle}{fg=black}
+
+% --- Itemize bullets (optional; keep if you like the style) ---
+\setbeamertemplate{itemize item}{\raisebox{0.2em}{\scalebox{.6}{$\bullet$}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.2em}{\scalebox{1}{$-$}}}
+
+% --- Footer: frame numbers ---
+\makeatletter
+\setbeamertemplate{footline}{%
+  \hfill\usebeamerfont{footline}\insertframenumber/\inserttotalframenumber\hspace{1em}\vspace{2pt}
 }
-\usepackage{verbatim} 
-\usepackage{listings}
-\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
-\definecolor{links}{HTML}{1B1B81}
-\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+\makeatother
 
-% listings: To highlight code:
+% --- Minimal packages (add more only when needed) ---
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{makecell} % for jumping lines within cells in tables.
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue}
+\usepackage{comment}
 \usepackage{listings}
 \lstset{
   language=R,
@@ -45,18 +58,28 @@
   frame=single,
   showstringspaces=false
 }
-\lstset{basicstyle=\ttfamily\footnotesize, frame=single}
+\linespread{1.7}   % 1.0 = normal, 1.2-1.5 common
+\AtBeginEnvironment{lstlisting}{\linespread{1}\selectfont} % keep code listings single-spaced
 
-\title{Applied Economics}
-\subtitle{Instrumental Variables}
-\author{Pello Aspuru}
-\date{}
-\institute{Winter 2025/26}
-% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
-\setbeamercolor{normal text}{fg=black}
-\setbeamercolor{block title}{fg=teal}
-\setbeamercovered{transparent} % default faintness (~15%)
-
+% --- Deck-specific extras ---
+\usetikzlibrary{shapes,decorations,arrows,calc,arrows.meta,fit,positioning}
+\tikzset{
+    -Latex,auto,node distance =1 cm and 1 cm,semithick,
+    state/.style ={ellipse, draw, minimum width = 0.7 cm},
+    point/.style = {circle, draw, inner sep=0.04cm,fill,node contents={}},
+    bidirected/.style={Latex-Latex,dashed},
+    el/.style = {inner sep=2pt, align=left, sloped}
+}
+\definecolor{myteal}{HTML}{008080}
+\definecolor{myorange}{HTML}{E67E22}
+\definecolor{mypetrol}{HTML}{005F6A}
+\definecolor{mycyan}{HTML}{2AA8A1}
+\definecolor{mygold}{HTML}{D4A017}
+\definecolor{myrust}{HTML}{C65D32}
+\definecolor{mygrey}{HTML}{4D4D4D}
+\definecolor{mylightgrey}{HTML}{D9D9D9}
+\usepackage{cancel}
+\usepackage{verbatim}
 \let\svdescription\description
 \let\svenddescription\enddescription
 \renewenvironment{description}{%
@@ -68,12 +91,39 @@
   }
 \newcommand\descriptioncolor{teal}
 
-%\usepackage{Sweave}
+% --- Meta ---
+\title{Applied Economics}
+\subtitle{Instrumental Variables}
+\author{Pello Aspuru}
+%%\institute{University of Vienna}
+\date{Winter 2026/2027}
+
+% --- Title page spacing + bottom-left author/date ---
+\setbeamertemplate{title page}{
+  \vspace{8em}
+  \begin{center}
+	{\usebeamerfont{title}\inserttitle\par}
+  	\vspace{1.5em} % <-- increase title-subtitle gap
+  {\usebeamerfont{subtitle}\insertsubtitle\par}
+  \end{center}
+  \vspace{4em}
+  \begin{flushleft}
+    {\usebeamerfont{author}\insertauthor\par}
+    {\usebeamerfont{date}\insertdate}
+  \end{flushleft}
+}
+
 \begin{document}
 %\input{AE_w8_IV-concordance}
 
-\maketitle
-\sffamily
+% Title slide without headline/footer
+{
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{footline}{}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+}
 
 \begin{comment}
 \begin{frame}{Plan for this Lecture}
