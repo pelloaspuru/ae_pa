@@ -20,11 +20,7 @@ book:
     - 02_datasets.qmd
     - 03_data_construction.qmd
     - 04_plotting.qmd
-    - 05_mlr1.qmd
-    - 06_mlr2.qmd
-    - 07_ols-variance.qmd
-    - 08_inference.qmd
-    - 09_causality.qmd
+    - 05_EconometricsReview.qmd
     - 10_iv.qmd
     - 11_panel.qmd
     - 12_did.qmd
