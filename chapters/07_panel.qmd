@@ -1,11 +1,3 @@
 # Panel Data Methods {#sec-panel}
 
-## Slides
-
-Find the slides of the session [here](../slides/AE_session07_Panel/slides_session07_Panel.pdf).
-
-## R code
-
-Find the R script of the session [here](../code/session_07_code_panel.R).
-
-## Data
+Find the slides [here](../slides/AE_session07_Panel/slides_session07_Panel.pdf) and the R script of the session [here](../code/session_07_code_panel.R). The dataset used in this session is [seatbelts.csv](../data/seatbelts.csv).

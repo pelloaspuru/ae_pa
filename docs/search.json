@@ -254,27 +254,7 @@
     "href": "chapters/06_iv.html",
     "title": "6  Instrumental Variables",
     "section": "",
-    "text": "6.1 Slides\nFind the slides of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Instrumental Variables</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/06_iv.html#r-code",
-    "href": "chapters/06_iv.html#r-code",
-    "title": "6  Instrumental Variables",
-    "section": "6.2 R code",
-    "text": "6.2 R code\nFind the R script of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Instrumental Variables</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/06_iv.html#data",
-    "href": "chapters/06_iv.html#data",
-    "title": "6  Instrumental Variables",
-    "section": "6.3 Data",
-    "text": "6.3 Data",
+    "text": "Find the slides here and the R script of the session here.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Instrumental Variables</span>"
     ]
@@ -284,27 +264,7 @@
     "href": "chapters/07_panel.html",
     "title": "7  Panel Data Methods",
     "section": "",
-    "text": "7.1 Slides\nFind the slides of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Panel Data Methods</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/07_panel.html#r-code",
-    "href": "chapters/07_panel.html#r-code",
-    "title": "7  Panel Data Methods",
-    "section": "7.2 R code",
-    "text": "7.2 R code\nFind the R script of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Panel Data Methods</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/07_panel.html#data",
-    "href": "chapters/07_panel.html#data",
-    "title": "7  Panel Data Methods",
-    "section": "7.3 Data",
-    "text": "7.3 Data",
+    "text": "Find the slides here and the R script of the session here. The dataset used in this session is seatbelts.csv.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Panel Data Methods</span>"
     ]
@@ -314,27 +274,7 @@
     "href": "chapters/08_did.html",
     "title": "8  Difference-in-Differences",
     "section": "",
-    "text": "8.1 Slides\nFind the slides of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Difference-in-Differences</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/08_did.html#r-code",
-    "href": "chapters/08_did.html#r-code",
-    "title": "8  Difference-in-Differences",
-    "section": "8.2 R code",
-    "text": "8.2 R code\nFind the R script of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Difference-in-Differences</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/08_did.html#data",
-    "href": "chapters/08_did.html#data",
-    "title": "8  Difference-in-Differences",
-    "section": "8.3 Data",
-    "text": "8.3 Data",
+    "text": "Find the slides here and the R script of the session here. The dataset used in this session is df_min_wage.csv.",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Difference-in-Differences</span>"
     ]
@@ -344,27 +284,7 @@
     "href": "chapters/09_rdd.html",
     "title": "9  Regression Discontinuity Design",
     "section": "",
-    "text": "9.1 Slides\nFind the slides of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/09_rdd.html#r-code",
-    "href": "chapters/09_rdd.html#r-code",
-    "title": "9  Regression Discontinuity Design",
-    "section": "9.2 R code",
-    "text": "9.2 R code\nFind the R script of the session here.",
-    "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/09_rdd.html#data",
-    "href": "chapters/09_rdd.html#data",
-    "title": "9  Regression Discontinuity Design",
-    "section": "9.3 Data",
-    "text": "9.3 Data",
+    "text": "Find the slides here and the R script of the session here. The dataset used in this session is dataRDD.csv.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Regression Discontinuity Design</span>"
     ]
