@@ -1,5 +1,0 @@
-# Econometrics Review {#sec-econometrics-review}
-
-Find the slides [here](slides/AE_session05_MetricsReview/AE_week04_EmR.pdf)
-
-This session reviews the econometric toolkit of the course: the multiple linear regression model, causality, and statistical inference.

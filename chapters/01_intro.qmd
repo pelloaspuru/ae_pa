@@ -1,0 +1,184 @@
+# Introduction to R {#sec-intro}
+
+Find the slides here: [course introduction](../slides/AE_session01_intro/slides_session01_intro.pdf) and [R basics](../slides/AE_session02_Rbasics/slides_session02_Rbasics.pdf)
+
+## Setting an .R script
+
+### Comments
+
+```{r}
+# This is a comment
+```
+
+### Header
+
+```r
+# Check current working directory
+getwd()
+
+# Set a new working directory.
+setwd("C:/Users/YourName/Desktop/AE_2026")
+
+# Verify the change
+getwd()
+
+# List files in the working directory
+dir()
+```
+
+### Clean the environment
+
+```{r}
+# List all objects in the environment
+ls()
+
+# Remove all objects from the environment
+rm(list = ls())
+
+# Verify the change
+ls()
+```
+
+## R Objects
+
+### Scalar objects
+
+```{r}
+# Create object "n"
+n <- 100
+
+# Print the object in the console:
+n
+```
+
+### Functions
+
+A **function** takes one or more objects as input, performs a task, and returns an output. We have already used several, such as `sample()`, `length()` and `data.frame()`. We can also write our own:
+
+```{r}
+ls()
+```
+
+```{r}
+# Define the function "square()"
+square <- function(x) { return(x^2) }
+
+# Run function on object, store as "result"
+result <- square(n)
+
+# Print the result in the console
+print(result)
+```
+
+```{r}
+ls()
+```
+
+
+### Vectors
+
+```{r}
+# generate vector "age":
+age <- sample(18:65, n, replace = TRUE)
+```
+
+```{r}
+# Visualize
+age # Print object in console
+str(age) # Object type, size
+class(age) # Object type
+dim(age)
+ls() # List all objects
+```
+
+`AirPassengers` is a dataset that comes built into R: the monthly totals of international airline passengers, in thousands, from January 1949 to December 1960. Stores information in three vectors:
+
+```{r}
+# Three vectors with one value per month
+passengers <- as.numeric(AirPassengers)
+year       <- as.numeric(floor(time(AirPassengers)))
+month      <- as.numeric(cycle(AirPassengers))
+
+length(passengers)     # 144
+```
+
+```{r}
+# Access elements of a vector
+passengers[1]          # first element: 112
+passengers[1:3]        # elements 1 to 3: 112 118 132
+passengers[c(1, 144)]  # first and last: 112 432
+```
+
+### Dataframes
+
+A **dataframe** is a two-dimensional object that stores data as a table, with rows and columns:
+
+- Each **row** is one observation (an individual, a month, a country, ...).
+- Each **column** is one variable (income, education, number of passengers, ...).
+
+```{tikz}
+%| echo: false
+%| fig-ext: svg
+%| fig-align: center
+%| out-width: 65%
+%| engine.opts:
+%|   dvisvgm.opts: "--no-fonts"
+\definecolor{PelloGrayDark}{RGB}{60,60,60}
+\definecolor{PelloGray}{RGB}{120,120,120}
+\definecolor{PelloGrayLight}{RGB}{235,235,235}
+\begin{tikzpicture}[x=1.7cm, y=0.52cm, font=\footnotesize,
+    cell/.style={draw=white, line width=1pt, fill=PelloGrayLight, minimum width=1.7cm, minimum height=0.52cm, inner sep=0pt},
+    head/.style={cell, fill=PelloGrayDark, text=white, font=\footnotesize\ttfamily}]
+    % header
+    \node[head] at (0,0) {year};
+    \node[head] at (1,0) {month};
+    \node[head] at (2,0) {passengers};
+    % rows
+    \foreach \r/\v in {1/112, 2/118, 3/132, 4/129, 5/121, 6/135} {
+      \node[text=PelloGray] at (-0.75,-\r) {\r};
+      \node[cell] at (0,-\r) {1949};
+      \node[cell] at (1,-\r) {\r};
+      \node[cell] at (2,-\r) {\v};
+    }
+    % one column = one vector
+    \draw[teal, line width=1.2pt, rounded corners=2pt] (1.5,0.5) rectangle (2.5,-6.5);
+    \node[teal, align=center] at (2,1.5) {a column is a \textbf{variable}:\\ the vector \texttt{passengers}};
+    % one row = one observation
+    \draw[red, line width=1.2pt, rounded corners=2pt] (-0.5,-2.5) rectangle (2.5,-3.5);
+    \node[red, align=left, anchor=west] at (2.65,-3) {a row is an\\ \textbf{observation}:\\ March 1949};
+\end{tikzpicture}
+```
+
+
+Every column of a dataframe is a vector, and all columns have the same length. So if we have several vectors of the same length, where position 1 in each vector refers to the same observation, position 2 to the next one, and so on, we can put them side by side as the columns of a dataframe with `data.frame()`. The three vectors `year`, `month` and `passengers` each have 144 elements, one per month, so together they form a dataframe with 144 rows and 3 columns:
+
+```{r}
+# Create a dataset from the three vectors
+df_air <- data.frame(year, month, passengers)
+dim(df_air)            # 144 rows, 3 columns
+```
+
+
+
+```{r}
+head(df_air)
+```
+
+
+## R Packages
+
+A **package** is a collection of functions, data and documentation written by other R users, which extends what R can do. R comes with a basic set of functions (such as `mean()` or `data.frame()`), and packages add new ones for specific tasks. For example, `dplyr` adds functions to manipulate dataframes and `ggplot2` adds functions to draw graphs. Thousands of packages are freely available on [CRAN](https://cran.r-project.org/), the official R package repository.
+
+Using a package takes two steps. First, **install** it, which downloads it to your computer. This is done only once per computer:
+
+```r
+# Install once (downloads from CRAN)
+install.packages("dplyr")
+```
+
+Second, **load** it with `library()`, which makes its functions available in your current R session. This has to be done every time you start R, so the `library()` lines usually go at the top of the script:
+
+```{r}
+# Load every time you start R
+library(dplyr)
+```

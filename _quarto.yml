@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: docs
+  execute-dir: project
   resources:
     - "slides/*.pdf"
     - "code/*.R"
@@ -16,15 +17,15 @@ book:
   search: true
   chapters:
     - index.qmd
-    - 01_intro.qmd
-    - 02_datasets.qmd
-    - 03_data_construction.qmd
-    - 04_plotting.qmd
-    - 05_EconometricsReview.qmd
-    - 10_iv.qmd
-    - 11_panel.qmd
-    - 12_did.qmd
-    - 13_rdd.qmd
+    - chapters/01_intro.qmd
+    - chapters/02_datasets.qmd
+    - chapters/03_data_construction.qmd
+    - chapters/04_plotting.qmd
+    - chapters/05_EconometricsReview.qmd
+    - chapters/06_iv.qmd
+    - chapters/07_panel.qmd
+    - chapters/08_did.qmd
+    - chapters/09_rdd.qmd
   page-footer:
     left: "Applied Economics, University of Vienna"
     right: "Built with [Quarto](https://quarto.org/)"

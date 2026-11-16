@@ -6,13 +6,13 @@ Source of the course website, built as a [Quarto](https://quarto.org/) book and 
 
 - `_quarto.yml`: site configuration and chapter order
 - `index.qmd`: landing page
-- `*.qmd`: one page per topic
+- `chapters/`: one `.qmd` page per session (numbered 01–09, matching the slide folders)
 - `slides/`, `code/`, `data/`: files the pages link to
 - `docs/`: the rendered site (generated, do not edit by hand)
 
 ## Update the site
 
-1. Edit the `.qmd` files, or add files to `slides/`, `code/` or `data/`.
+1. Edit the `.qmd` files in `chapters/`, or add files to `slides/`, `code/` or `data/`.
 2. Render: `quarto render` (or `quarto preview` to check it in the browser first).
 3. Commit everything, including `docs/`, and push.
 
