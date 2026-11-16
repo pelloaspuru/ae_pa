@@ -1,9 +1,0 @@
-# Multiple Linear Regression II {#sec-mlr2}
-
-*Content coming soon.*
-
-## Slides
-
-## R code
-
-## Data

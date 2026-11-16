@@ -1,9 +1,0 @@
-# Statistical Inference {#sec-inference}
-
-*Content coming soon.*
-
-## Slides
-
-## R code
-
-## Data
