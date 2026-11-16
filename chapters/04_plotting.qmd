@@ -10,7 +10,7 @@ knitr:
 
 # Plotting Data {#sec-plotting}
 
-Find the slides [here](../slides/AE_session04_Plotting/slides_session04_Plotting.pdf)
+Find the slides [here](../slides/AE_session04_Plotting/slides_session04_Plotting.pdf) and the R script of the session [here](../code/session_04_code_Plotting.R).
 
 ## Introduction
 

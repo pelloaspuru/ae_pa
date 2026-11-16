@@ -1,13 +1,13 @@
 # Applied Economics Course
-# 2025 Winter
+# Winter 2026/2027
 # Lecturer: Pello Aspuru
 
 # R script for the Differences in Differences (DD) Session 
 
 # Acknowledgement: https://rpubs.com/phle/r_tutorial_difference_in_differences
 
-# Set a new working directory.
-setwd("C:/Users/Aspuru Pello/Desktop/2025_AE_PA")
+# Set a new working directory (adjust the path to your own folder)
+# setwd("C:/Users/YourName/Desktop/AE_2026")
 
 # Verify the change
 getwd()
@@ -20,12 +20,12 @@ library(dplyr)
 library(sandwich)
 library(lmtest)
 library(fixest)
-library(plm)
+# library(plm)
 library(ggplot2)
 
 # Open dataset:
 
-df <- read.csv("./AE_week10_DD/df_min_wage.csv")
+df <- read.csv("data/df_min_wage.csv")
 
 # Generate auxiliary variables
 df <- df %>%
@@ -126,7 +126,7 @@ ggplot(df_plot, aes(x = observation, y = mean_emptot, group = state, color = sta
     legend.position = "none"
   )
 
-ggsave("./AE_week10_DD/DD_graph_4.pdf", plot = dd_plot, width = 7, height = 4)
+ggsave("DD_graph_4.pdf", plot = dd_plot, width = 7, height = 4)
 
 # ---------------------- Run diff in diff manually:----------------------------- ----
 

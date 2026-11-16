@@ -1,11 +1,11 @@
 # Applied Economics Course
-# 2025 Winter
+# Winter 2026/2027
 # Lecturer: Pello Aspuru
 
 # R script for the Panel Data Session 
 
-# Set a new working directory.
-setwd("C:/Users/Aspuru Pello/Desktop/2025_AE_PA")
+# Set a new working directory (adjust the path to your own folder)
+# setwd("C:/Users/YourName/Desktop/AE_2026")
 
 # Verify the change
 getwd()
@@ -24,7 +24,7 @@ library(fixest)
 
 # Open dataset seatbelts.csv:
 
-df <- read.csv("./AE_week9_panel/seatbelts.csv")
+df <- read.csv("data/seatbelts.csv")
 head(df)
 table(df$year)
 
@@ -48,7 +48,7 @@ ggplot(df, aes(x = seatbelt_usage, y = fatality_rate, color = state)) +
   theme_minimal() +
   theme(legend.position = "bottom")
 
-ggsave("./AE_week9_panel/scatterplot_1.pdf", plot = scatter_1, width = 7, height = 5)
+ggsave("scatterplot_1.pdf", plot = scatter_1, width = 7, height = 5)
 
 # Adding some controls:
 pooled_mlr <- lm(fatality_rate ~ seatbelt_usage + income + age, data = df) 
@@ -65,11 +65,12 @@ coeftest(panel_dummy, vcov. = vcovHC(panel_dummy, "HC0"))
 # scatter_2: A more careful look at data, state by state
 
 # Intermediate step: Generate dataset pred_df
+# (reframe() replaces summarize() here: since dplyr 1.1, summarize() no longer
+# allows returning several rows per group)
 pred_df <- df %>%
   group_by(state) %>%
-  summarize(
-    seatbelt_usage = seq(min(seatbelt_usage), max(seatbelt_usage), length.out = 100),
-    .groups = "drop"
+  reframe(
+    seatbelt_usage = seq(min(seatbelt_usage), max(seatbelt_usage), length.out = 100)
   )
 pred_df$pred <- predict(panel_dummy, newdata = pred_df)
 
@@ -83,7 +84,7 @@ ggplot(df, aes(x = seatbelt_usage, y = fatality_rate, color = state)) +
   theme_minimal() +
   theme(legend.position = "bottom")
 
-ggsave("./AE_week9_panel/scatterplot_2.pdf", plot = scatter_2, width = 7, height = 5)
+ggsave("scatterplot_2.pdf", plot = scatter_2, width = 7, height = 5)
 
 # -------- Panel methods: Within Transformation estimator -------- ----
 

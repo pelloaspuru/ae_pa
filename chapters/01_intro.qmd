@@ -1,6 +1,6 @@
 # Introduction to R {#sec-intro}
 
-Find the slides here: [course introduction](../slides/AE_session01_intro/slides_session01_intro.pdf) and [R basics](../slides/AE_session02_Rbasics/slides_session02_Rbasics.pdf)
+Find the slides here: [course introduction](../slides/AE_session01_intro/slides_session01_intro.pdf) and [R basics](../slides/AE_session02_Rbasics/slides_session02_Rbasics.pdf). The R script of the session is [here](../code/session_02_code_Rbasics.R).
 
 ## Setting an .R script
 

@@ -1,11 +1,11 @@
 # Applied Economics Course
-# 2025 Winter
+# Winter 2026/2027
 # Lecturer: Pello Aspuru
 
 # R script for the Regression Discontinuity Design (RDD) Session 
 
-# Set a new working directory.
-setwd("C:/Users/Aspuru Pello/Desktop/2025_AE_PA")
+# Set a new working directory (adjust the path to your own folder)
+# setwd("C:/Users/YourName/Desktop/AE_2026")
 
 # Verify the change
 getwd()
@@ -23,7 +23,7 @@ library(ggplot2)
 
 # Open dataset:
 
-df <- read.csv("./AE_week11_RDD/dataRDD.csv")
+df <- read.csv("data/dataRDD.csv")
 
 # ---------------------- Start with a scatterplot: ----------------------------- ----
 
@@ -37,7 +37,7 @@ ggplot(df, aes(x = age_cell, y = death_rate_per_100T,
   coord_cartesian(xlim = c(18, 24), ylim = c(87, 103)) +
   theme_minimal()+theme(legend.position = "none")
 
-ggsave("./AE_week11_RDD/RDD_graph_1.pdf", plot = rdd_plot, width = 7, height = 4)
+ggsave("RDD_graph_1.pdf", plot = rdd_plot, width = 7, height = 4)
 
 # ---------------------- Run RDD as a linear model manually:-------------------- ----
 
@@ -73,7 +73,7 @@ rdd_plot_2 <-
   theme(legend.position = "none")
 
 
-ggsave("./AE_week11_RDD/RDD_graph_2.pdf", plot = rdd_plot_2, width = 7, height = 4)
+ggsave("RDD_graph_2.pdf", plot = rdd_plot_2, width = 7, height = 4)
 
 # --------------------- RDD with varying slopes -------------------------------- ----
 
@@ -101,7 +101,7 @@ rdd_plot_3 <-
   theme_minimal() +
   theme(legend.position = "none")
 
-ggsave("./AE_week11_RDD/RDD_graph_3.pdf", plot = rdd_plot_3, width = 7, height = 4)
+ggsave("RDD_graph_3.pdf", plot = rdd_plot_3, width = 7, height = 4)
 
 # --------------------- RDD with quadratic polynomials ------------------------- ----
 
@@ -132,7 +132,7 @@ rdd_plot_4 <-
   theme_minimal() +
   theme(legend.position = "none")
 
-ggsave("./AE_week11_RDD/RDD_graph_4.pdf", plot = rdd_plot_4, width = 7, height = 4)
+ggsave("RDD_graph_4.pdf", plot = rdd_plot_4, width = 7, height = 4)
 
 # --------- RDD with quadratic polynomials - narrow bandwidth ------------------ ----
 
@@ -163,4 +163,4 @@ rdd_plot_5 <-
   theme_minimal() +
   theme(legend.position = "none")
 
-ggsave("./AE_week11_RDD/RDD_graph_5.pdf", plot = rdd_plot_5, width = 7, height = 4)
+ggsave("RDD_graph_5.pdf", plot = rdd_plot_5, width = 7, height = 4)
