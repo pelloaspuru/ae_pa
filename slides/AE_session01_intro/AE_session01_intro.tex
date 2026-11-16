@@ -1,0 +1,360 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+% --- Theme ---
+\usetheme{Singapore}
+\setbeamertemplate{navigation symbols}{}   % no icons
+\setbeamertemplate{mini frames}{}          % no dots in headline
+\setbeamercovered{transparent}
+
+% --- Grayscale colors ---
+\definecolor{PelloGrayDark}{RGB}{60,60,60}
+\definecolor{PelloGray}{RGB}{120,120,120}
+\definecolor{PelloGrayLight}{RGB}{235,235,235}
+\definecolor{PelloGrayUltraLight}{RGB}{248,248,248}
+
+\usecolortheme[named=PelloGrayDark]{structure}
+
+% --- Blocks ---
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor{block title}{fg=white,bg=PelloGrayDark}
+\setbeamercolor{block body}{fg=black,bg=PelloGrayLight}
+\setbeamercolor{block title example}{fg=white,bg=PelloGrayDark}
+\setbeamercolor{block body example}{fg=black,bg=PelloGrayLight}
+\setbeamercolor{section in head/foot}{fg=PelloGray,bg=PelloGrayLight}
+\setbeamercolor{subsection in head/foot}{fg=PelloGray,bg=PelloGrayLight}
+\setbeamercolor{frametitle}{fg=black}
+
+% --- Itemize bullets (optional; keep if you like the style) ---
+\setbeamertemplate{itemize item}{\raisebox{0.2em}{\scalebox{.6}{$\bullet$}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.2em}{\scalebox{1}{$-$}}}
+
+% --- Footer: frame numbers ---
+\makeatletter
+\setbeamertemplate{footline}{%
+  \hfill\usebeamerfont{footline}\insertframenumber/\inserttotalframenumber\hspace{1em}\vspace{2pt}
+}
+\makeatother
+
+% --- Minimal packages (add more only when needed) ---
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{makecell} % for jumping lines within cells in tables.
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue}
+\usepackage{comment}
+\usepackage{listings}
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red},
+  frame=single,
+  showstringspaces=false
+}
+\linespread{1.7}   % 1.0 = normal, 1.2–1.5 common
+\AtBeginEnvironment{lstlisting}{\linespread{1}\selectfont} % keep code listings single-spaced
+
+% --- Meta ---
+\title{Applied Economics}
+\subtitle{Introduction}
+\author{Pello Aspuru}
+%\institute{University of Vienna}
+\date{Winter 2026/2027}
+
+% --- Title page spacing + bottom-left author/date ---
+\setbeamertemplate{title page}{
+  \vspace{8em}
+  \begin{center}
+	{\usebeamerfont{title}\inserttitle\par}
+  	\vspace{1.5em} % <-- increase title–subtitle gap
+  {\usebeamerfont{subtitle}\insertsubtitle\par}
+  \end{center}
+  \vspace{4em}
+  \begin{flushleft}
+    {\usebeamerfont{author}\insertauthor\par}
+    {\usebeamerfont{date}\insertdate}
+  \end{flushleft}
+}
+
+\begin{document}
+
+% Title slide without headline/footer
+{
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{footline}{}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+}
+
+
+\section[Course Logistics]{Introduction}
+
+\begin{frame}[fragile]{Welcome to Applied Economics}
+
+%Lectures
+%\begin{itemize}
+%    \item Wednesday (040178-1) 16:45-18:15, PC-Seminarraum 5
+%    \item Thursday (040178-2)  16:45-18:15, PC-Seminarraum 3 
+%\end{itemize}
+
+
+All course material (including these slides) will be distributed via \textbf{moodle}.
+
+\alert{Prior knowledge at the level of Introductory Econometrics (BA) will be assumed throughout the course.}
+
+%For course structure and deadlines, see the \href{syllabus}{syllabus}
+
+Class participation is highly encouraged, determines 10\% of final grade.
+
+Office hours: by email appointment via pello.aspuru@univie.ac.at
+
+\onslide<2>{
+People who signed up online for this class and signed the list today
+are considered \textbf{enrolled}.
+
+If you are registered, you will receive a grade!
+}
+\end{frame}
+
+\begin{frame}{Course Overview}
+ \begin{block}{In this Course You Will Learn to...}
+\begin{itemize} 
+\item Use econometric tools to produce empirical analyses.
+\item Learn to interpret, and critically evaluate existing empirical studies.
+\item Understand possibilities and limitations of empirical analyses.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Course Tools}
+\onslide<1->{
+\begin{block}{Statistical Software: R and RStudio}
+\begin{itemize} 
+\item Freely available open source software
+\item Active user community providing up-to-date functions \& support
+\item Extensive statistical modeling capabilities
+\item Relevant for industry jobs
+\end{itemize}
+\end{block}}
+
+\onslide<2->{
+\begin{block}{Auxiliary Software}
+\begin{itemize} 
+\item Large Language Models (ChatGPT, Claude etc.) to support learning \& coding.
+\item Latex for drafting academic-style documents, problem set.
+\end{itemize}
+\end{block}}
+
+\end{frame}
+
+\begin{frame}{Course Assessment}
+
+\begin{block}{Class Participation (10\%)}
+\begin{itemize} 
+\item[] Classroom engagement through questions \& comments is encouraged!
+\end{itemize}
+\end{block}
+
+\begin{block}{Midterm Exam (25\%)}
+\begin{itemize}
+%\item based on classes, slides, and problem sets
+\item[] Preliminary date: November 25th/26th 2026.\\
+%\item Preliminary location: TBD.
+%\item there will be no resit
+\end{itemize}
+\end{block}
+
+\onslide<2->{
+\begin{block}{Project Presentations (25\%)}
+\begin{itemize}
+\item Work on the project in groups of up to 3 students, fill in names using the link provided by Moodle.
+\item Presentation I (10\%): December 16th/17th 2026.
+\item Presentation II (15\%): January 20th/21st 2027.
+\end{itemize}
+\end{block}
+
+\begin{block}{Final exam (40\%)}
+\begin{itemize} 
+%\item based on classes, slides, and problem sets
+\item[] Date: Wednesday, 27th January 2027. \\
+%\item Preliminary location: lecture hall 9, 01.314 Oskar-Morgenstern-Platz 1, OG 1st floor
+%\item there will be no resit
+\end{itemize}
+\end{block}}
+
+%All tasks are compulsory. Missing \textit{any} of them implies failing the course.
+\end{frame}
+
+\begin{frame}{Useful Textbooks}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
+  \begin{enumerate}
+    \item \textbf{Heiss, F. (2020).} Using R for Introductory Econometrics (2nd edition)\\
+    available online: \href{http://urfie.net/readOnline.html}{http://urfie.net/readOnline.html}
+
+    \item \textbf{Hanck, C., Arnold, M., Gerber, A., \& Schmelzer, M. (2023).} Introduction to Econometrics with R\\
+    available online: \href{https://www.econometrics-with-r.org/index.html}{https://www.econometrics-with-r.org/index.html}
+
+    \item \textbf{Oswald, F., Viers, V., Villedieu, P., \& Kennedy, G. (2020).}
+    Introduction to Econometrics with R. Sciences Po, Department of Economics, Paris, France.\\
+    available online: \href{https://scpoecon.github.io/ScPoEconometrics/}{https://scpoecon.github.io/ScPoEconometrics/}.
+  \end{enumerate}
+
+  \vspace{0.3cm}
+  If you need to read up on theoretical concepts:
+  \begin{itemize}
+    \item Angrist, J. D., \& Pischke, J.-S. (2008). Mostly Harmless Econometrics. % Princeton University Press.
+    \item Wooldridge, J. (2015). Introductory Econometrics: A Modern Approach. % (Sixth edition, student ed.)
+    % \item Hill, R. C., Griffiths, W. E., \& Lim, G. C. (2018). Principles of Econometrics (5th ed.)
+  \end{itemize}
+\end{frame}
+
+\section{Motivation}
+
+\begin{frame}{What is Applied Economics?}
+\linespread{1.5}\selectfont % dense slide: tighter line spacing so it fits
+
+\begin{center}
+  The use of economic theory and \textbf{data} to answer real-world \textbf{economic} questions.
+\end{center}
+
+\begin{itemize}
+\onslide<2->{
+\item \textcolor{teal}{Test} what economic theory predicts.
+\begin{itemize}
+\item Theory: a higher minimum wage reduces employment. Do we see this in the data?
+\end{itemize}}
+\onslide<3->{
+\item \textcolor{teal}{Discover} (causal) relationships between economic variables and \alert{quantify} them.
+\begin{itemize}
+%\item Does more education \textcolor{teal}{increase earnings}? \alert{If so, by how much?}
+\item Does immigration \textcolor{teal}{increase unemployment} for locals? \alert{By how much?}
+\end{itemize}}
+\onslide<4->{
+\item \textcolor{teal}{Evaluate and design} policies that achieve the intended objective at the \textbf{lowest possible cost.}
+\begin{itemize}
+%\item Do job training programmes for the unemployed affect the chance to find a new job?
+\item How much money do we need to subsidize public transport to save 1 ton of carbon emissions?
+\end{itemize}}
+\end{itemize}
+
+\onslide<5->{
+\begin{block}{}
+  \begin{enumerate}
+    \item Gather, clean and combine multiple sources of data $\rightarrow$ Tidy dataset.
+    \item Find patterns in the data $\rightarrow$ Data Visualization and Descriptive Statistics.
+    \item Apply econometric tools $\rightarrow$ Establish causality and estimate magnitude.
+  \end{enumerate}
+\end{block}
+
+}
+
+\end{frame}
+
+
+
+
+%\begin{frame}{What We Will Focus on in This Course}
+%How to estimate coefficients of the MLR using R?
+
+%When do the coefficients of the MLR reflect actual causal effects of interest?
+
+%How to do statistical inference?
+
+%What are frequently used modern \textit{quasi-experimental methods} and how can we apply them in R? 
+
+%\end{frame}
+
+\begin{comment}
+\section{Course Outline}
+
+\begin{frame}[fragile]{Course Outline}
+1. Introduction \textit{(Heiss, Sections 1 - 1.4, 1.6)}
+ \begin{itemize}
+   \item Motivation
+    \item Introduction to R
+\end{itemize}
+
+2. Revisiting the Multiple Linear Regression Model \\
+\textit{(Heiss, 3.1 and 3.3; Wooldridge 3.1--3.2)}
+\begin{columns}
+    \begin{column}{0.38\linewidth}
+    \begin{itemize}
+     \item Structure and terminology 
+    \item Use for causal analysis  
+    \end{itemize} 
+    \end{column}
+        \begin{column}{0.46\linewidth}
+\begin{itemize}
+   
+    \item Matrix Notation
+    \item Deriving the OLS estimator
+\end{itemize} 
+    \end{column}
+\end{columns}
+
+3. Revisiting the Multiple Linear Regression Model II \\
+\textit{(Heiss, 6.1 and 7; Wooldridge 3.3 and 5.1-5.2)}
+\begin{columns}
+    \begin{column}{0.38\linewidth}
+    \begin{itemize}
+    \item MLR Assumptions 
+    \item Properties of the OLS estimator
+     \end{itemize} 
+    \end{column}
+        \begin{column}{0.46\linewidth}
+\begin{itemize}
+    \item Accommodating nonlinear relationships
+\end{itemize}
+    \end{column}
+\end{columns}
+%12 lectures
+%PSET due dates
+\end{frame}
+
+\begin{frame}[fragile]{Course Outline}
+4. - OLS Variance \textit{(Heiss, 3.4, 8.1; Hanck et al. 5.4)} \\ \hspace*{+.27cm} - more R topics: \texttt{ggplot2}, \texttt{for-loops} \textit{(Heiss, 1.9)}
+
+5. Inference I \textit{(Heiss, 4.1-4.2; Wooldridge, Ch. 4.1-4.3)}
+    \begin{itemize}
+     \item t-Tests, p-values, confidence intervals
+    \end{itemize} 
+    
+6. - Inference II: \textit{(Heiss, 4.3-4.4, 8.1; Wooldridge, Ch. 4.4-4.5)}
+\vspace{-0.05cm}
+ \begin{itemize}
+     \item Multiple Hypothesis Testing
+    \end{itemize} 
+    \vspace{+0.15cm}
+
+\\ \hspace*{+.275cm} - More R topics: writing own functions    \textit{(Heiss, 1.9.3)}
+   
+%12 lectures
+%PSET due dates
+\end{frame}
+
+\begin{frame}[fragile]{Course Outline}
+7. Endogeneity  \textit{(Hanck et al. 9-9.2, 9.4)}
+
+8. Instrumental Variable Estimation \textit{(Oswald et al. Ch. 11)}
+
+9. Panel Data methods \textit{(Oswald et al. Ch. 12)}
+
+10. Diff-in-Diff Estimator \textit{(Hanck et al. Ch. 13.4)}
+
+11. Regression Discontinuity Design \textit{(Hanck et al. Ch. 13.4)}
+%12 lectures
+%PSET due dates
+\end{frame}
+\end{comment}
+
+
+
+\end{document}

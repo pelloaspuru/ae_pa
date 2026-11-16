@@ -1,0 +1,7 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Introduction to R}{2}{0}{1}
+\beamer@sectionintoc {2}{Data Frames}{16}{0}{2}
+\beamer@sectionintoc {3}{Inspecting Dataframes}{20}{0}{3}
+\beamer@sectionintoc {4}{Selecting Data}{22}{0}{4}
+\beamer@sectionintoc {5}{Creating Variables}{24}{0}{5}
+\beamer@sectionintoc {6}{Working with Several Datasets}{30}{0}{6}
