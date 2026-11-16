@@ -154,7 +154,7 @@
     "href": "chapters/04_plotting.html",
     "title": "4  Plotting Data",
     "section": "",
-    "text": "4.1 Introduction\nFind the slides here and the R script of the session here.\nPrevious sessions: we set up R, and downloaded, scraped and merged datasets. Today we visualize data with graphs:",
+    "text": "4.1 Introduction\nFind the slides here and the R script of the session here. The dataset used in this session is df_flights_enriched.csv.\nPrevious sessions: we set up R, and downloaded, scraped and merged datasets. Today we visualize data with graphs:",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Plotting Data</span>"
     ]
