@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 19:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1203,48 +1203,34 @@ LaTeX Warning: Command \textellipsis invalid in math mode on input line 14.
 
 (./slides_session07_Panel.vrb
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 3.
-)
-Overfull \vbox (7.7347pt too high) detected at line 268
- []
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 4.
+) [13
 
-[13
+] (./slides_session07_Panel.vrb) [14
 
-] (./slides_session07_Panel.vrb)
-Overfull \vbox (7.7347pt too high) detected at line 268
- []
+]
+(./slides_session07_Panel.vrb) [15
 
-[14
-
-] (./slides_session07_Panel.vrb)
-Overfull \vbox (7.7347pt too high) detected at line 268
- []
-
-[15
-
-] (./slides_session07_Panel.vrb)
-Overfull \vbox (7.7347pt too high) detected at line 268
- []
-
-[16
+] (./slides_session07_Panel.vrb) [16
 
 ]
 \openout4 = `slides_session07_Panel.vrb'.
 
- (./slides_session07_Panel.vrb) [17
 
-] (./slides_session07_Panel.vrb)
-[18
+(./slides_session07_Panel.vrb) [17
 
-] (./slides_session07_Panel.vrb) [19
+] (./slides_session07_Panel.vrb) [18
+
+]
+(./slides_session07_Panel.vrb) [19
 
 ]
 \openout4 = `slides_session07_Panel.vrb'.
 
- (./slides_session07_Panel.vrb)
-[20
+ (./slides_session07_Panel.vrb) [20
 
-] (./slides_session07_Panel.vrb) [21
+]
+(./slides_session07_Panel.vrb) [21
 
 ]
 \openout4 = `slides_session07_Panel.vrb'.
@@ -1254,45 +1240,27 @@ Overfull \vbox (7.7347pt too high) detected at line 268
 File: scatterplot_0.pdf Graphic file (type pdf)
 <use scatterplot_0.pdf>
 Package pdftex.def Info: scatterplot_0.pdf  used on input line 5.
-(pdftex.def)             Requested size: 284.46979pt x 203.18982pt.
-)
-Overfull \vbox (15.2663pt too high) detected at line 324
- []
-
-[22
+(pdftex.def)             Requested size: 252.85945pt x 180.61508pt.
+) [22
 
  <./scatterplot_0.pdf>] (./slides_session07_Panel.vrb
 <scatterplot_1.pdf, id=784, 505.89pt x 361.35pt>
 File: scatterplot_1.pdf Graphic file (type pdf)
 <use scatterplot_1.pdf>
 Package pdftex.def Info: scatterplot_1.pdf  used on input line 9.
-(pdftex.def)             Requested size: 284.46979pt x 203.18982pt.
-)
-Overfull \vbox (15.2663pt too high) detected at line 324
- []
-
-[23
+(pdftex.def)             Requested size: 252.85945pt x 180.61508pt.
+) [23
 
  <./scatterplot_1.pdf>]
 \openout4 = `slides_session07_Panel.vrb'.
 
- (./slides_session07_Panel.vrb)
-Overfull \vbox (8.63025pt too high) detected at line 349
- []
 
-[24
+(./slides_session07_Panel.vrb) [24
 
-] (./slides_session07_Panel.vrb)
-Overfull \vbox (8.63025pt too high) detected at line 349
- []
+] (./slides_session07_Panel.vrb) [25
 
-[25
-
-] (./slides_session07_Panel.vrb)
-Overfull \vbox (8.63025pt too high) detected at line 349
- []
-
-[26
+]
+(./slides_session07_Panel.vrb) [26
 
 ] [27
 
@@ -1310,15 +1278,15 @@ Overfull \vbox (8.63025pt too high) detected at line 349
 
 ] [34
 
-] [35
+]
+[35
 
 ] [36
 
 ]
 \openout4 = `slides_session07_Panel.vrb'.
 
-
-(./slides_session07_Panel.vrb
+ (./slides_session07_Panel.vrb
 LaTeX Font Info:    Trying to load font information for U+bbm on input line 7.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/bbm-macros/ubbm.fd
@@ -1356,134 +1324,106 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ]
 File: scatterplot_0.pdf Graphic file (type pdf)
 <use scatterplot_0.pdf>
-Package pdftex.def Info: scatterplot_0.pdf  used on input line 502.
-(pdftex.def)             Requested size: 284.46979pt x 203.18982pt.
-
-Overfull \vbox (15.2663pt too high) detected at line 502
- []
-
-[47
+Package pdftex.def Info: scatterplot_0.pdf  used on input line 504.
+(pdftex.def)             Requested size: 252.85945pt x 180.61508pt.
+ [47
 
 ]
 File: scatterplot_1.pdf Graphic file (type pdf)
 <use scatterplot_1.pdf>
-Package pdftex.def Info: scatterplot_1.pdf  used on input line 502.
-(pdftex.def)             Requested size: 284.46979pt x 203.18982pt.
-
-Overfull \vbox (15.2663pt too high) detected at line 502
- []
-
-[48
+Package pdftex.def Info: scatterplot_1.pdf  used on input line 504.
+(pdftex.def)             Requested size: 252.85945pt x 180.61508pt.
+ [48
 
 ]
 <scatterplot_2.pdf, id=1631, 505.89pt x 361.35pt>
 File: scatterplot_2.pdf Graphic file (type pdf)
 <use scatterplot_2.pdf>
-Package pdftex.def Info: scatterplot_2.pdf  used on input line 508.
-(pdftex.def)             Requested size: 284.46979pt x 203.18982pt.
-
-Overfull \vbox (15.2663pt too high) detected at line 508
- []
-
-[49
+Package pdftex.def Info: scatterplot_2.pdf  used on input line 510.
+(pdftex.def)             Requested size: 252.85945pt x 180.61508pt.
+ [49
 
  <./scatterplot_2.pdf>]
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
-
-
-Overfull \vbox (34.09103pt too high) detected at line 571
- []
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 [50
 
 ]
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
-
-
-Overfull \vbox (34.09103pt too high) detected at line 571
- []
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 [51
 
 ]
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
-
-
-Overfull \vbox (34.09103pt too high) detected at line 571
- []
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 [52
 
 ]
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 571.
-
-
-Overfull \vbox (34.09103pt too high) detected at line 571
- []
+LaTeX Warning: Command \textendash invalid in math mode on input line 574.
 
 [53
 
@@ -1522,14 +1462,14 @@ Overfull \vbox (34.09103pt too high) detected at line 571
 ]
 File: scatterplot_1.pdf Graphic file (type pdf)
 <use scatterplot_1.pdf>
-Package pdftex.def Info: scatterplot_1.pdf  used on input line 683.
+Package pdftex.def Info: scatterplot_1.pdf  used on input line 686.
 (pdftex.def)             Requested size: 221.24913pt x 158.03691pt.
  [64
 
 ]
 File: scatterplot_2.pdf Graphic file (type pdf)
 <use scatterplot_2.pdf>
-Package pdftex.def Info: scatterplot_2.pdf  used on input line 683.
+Package pdftex.def Info: scatterplot_2.pdf  used on input line 686.
 (pdftex.def)             Requested size: 221.24913pt x 158.03691pt.
  [65
 
@@ -1537,7 +1477,7 @@ Package pdftex.def Info: scatterplot_2.pdf  used on input line 683.
 <scatterplot_3.pdf, id=2185, 505.89pt x 361.35pt>
 File: scatterplot_3.pdf Graphic file (type pdf)
 <use scatterplot_3.pdf>
-Package pdftex.def Info: scatterplot_3.pdf  used on input line 683.
+Package pdftex.def Info: scatterplot_3.pdf  used on input line 686.
 (pdftex.def)             Requested size: 221.24913pt x 158.03691pt.
  [66
 
@@ -1595,7 +1535,7 @@ exlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/local/texli
 ve/2023/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive
 /2023/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on slides_session07_Panel.pdf (66 pages, 517481 bytes).
+Output written on slides_session07_Panel.pdf (66 pages, 517542 bytes).
 PDF statistics:
  2371 PDF objects out of 2487 (max. 8388607)
  2184 compressed objects within 22 object streams

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 19:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1249,47 +1249,28 @@ File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 
 ] [13
 
-]
-Overfull \vbox (31.91556pt too high) detected at line 374
- []
+] [14
 
-[14
+] [15
 
-]
-Overfull \vbox (31.91556pt too high) detected at line 374
- []
+] [16
 
-[15
+] [17
 
-]
-Overfull \vbox (31.91556pt too high) detected at line 374
- []
-
-[16
-
-]
-Overfull \vbox (31.91556pt too high) detected at line 374
- []
-
-[17
-
-]
-Overfull \vbox (31.91556pt too high) detected at line 374
- []
-
-[18
+] [18
 
 ]
 \openout4 = `slides_session06_IV.vrb'.
 
  (./slides_session06_IV.vrb) [19
 
-] (./slides_session06_IV.vrb) [20
+]
+(./slides_session06_IV.vrb) [20
+
+] (./slides_session06_IV.vrb) [21
 
 ]
-(./slides_session06_IV.vrb) [21
-
-] (./slides_session06_IV.vrb) [22
+(./slides_session06_IV.vrb) [22
 
 ] [23
 
@@ -1298,46 +1279,27 @@ Overfull \vbox (31.91556pt too high) detected at line 374
 ]
 \openout4 = `slides_session06_IV.vrb'.
 
-
-(./slides_session06_IV.vrb) [25
-
-] (./slides_session06_IV.vrb) [26
+ (./slides_session06_IV.vrb) [25
 
 ]
-(./slides_session06_IV.vrb) [27
+(./slides_session06_IV.vrb) [26
+
+] (./slides_session06_IV.vrb) [27
 
 ]
 \openout4 = `slides_session06_IV.vrb'.
 
- (./slides_session06_IV.vrb)
-Overfull \vbox (0.90356pt too high) detected at line 480
- []
 
-[28
+(./slides_session06_IV.vrb) [28
 
-] (./slides_session06_IV.vrb)
-Overfull \vbox (0.90356pt too high) detected at line 480
- []
-
-[29
-
-] (./slides_session06_IV.vrb)
-Overfull \vbox (0.90356pt too high) detected at line 480
- []
-
-[30
+] (./slides_session06_IV.vrb) [29
 
 ]
-Overfull \vbox (11.97565pt too high) detected at line 506
- []
+(./slides_session06_IV.vrb) [30
 
-[31
+] [31
 
-]
-Overfull \vbox (11.97565pt too high) detected at line 506
- []
-
-[32
+] [32
 
 ] [33
 
@@ -1347,22 +1309,18 @@ Overfull \vbox (11.97565pt too high) detected at line 506
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 653.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 657.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 653.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 657.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 653.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 657.
 
 
 
 LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/m/n' instead on input line 653.
-
-
-Overfull \vbox (34.04237pt too high) detected at line 653
- []
+(Font)              using `T1/cmss/m/n' instead on input line 657.
 
 [36
 
@@ -1443,7 +1401,7 @@ al/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local
 exlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texli
 ve/2023/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on slides_session06_IV.pdf (44 pages, 369773 bytes).
+Output written on slides_session06_IV.pdf (44 pages, 369262 bytes).
 PDF statistics:
  665 PDF objects out of 1000 (max. 8388607)
  551 compressed objects within 6 object streams

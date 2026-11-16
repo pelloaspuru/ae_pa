@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 19:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1152,15 +1152,11 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 
  (./slides_session08_DD.vrb
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-0.
+1.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 ))
-Overfull \vbox (2.00204pt too high) detected at line 173
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1168,10 +1164,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [8
 
 ] (./slides_session08_DD.vrb)
-Overfull \vbox (2.00204pt too high) detected at line 173
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1179,10 +1171,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [9
 
 ] (./slides_session08_DD.vrb)
-Overfull \vbox (2.00204pt too high) detected at line 173
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1190,10 +1178,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [10
 
 ] (./slides_session08_DD.vrb)
-Overfull \vbox (2.00204pt too high) detected at line 173
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1204,10 +1188,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 \openout4 = `slides_session08_DD.vrb'.
 
  (./slides_session08_DD.vrb)
-Overfull \vbox (2.72519pt too high) detected at line 197
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1215,10 +1195,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [12
 
 ] (./slides_session08_DD.vrb)
-Overfull \vbox (2.72519pt too high) detected at line 197
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1226,10 +1202,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [13
 
 ]
-Overfull \vbox (19.3784pt too high) detected at line 221
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1237,10 +1209,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [14
 
 ]
-Overfull \vbox (19.3784pt too high) detected at line 221
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1248,10 +1216,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [15
 
 ]
-Overfull \vbox (19.3784pt too high) detected at line 221
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1259,10 +1223,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [16
 
 ]
-Overfull \vbox (19.3784pt too high) detected at line 221
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1270,10 +1230,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [17
 
 ]
-Overfull \vbox (19.3784pt too high) detected at line 221
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1325,12 +1281,8 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 <DD_graph_1.pdf, id=701, 505.89pt x 289.08pt>
 File: DD_graph_1.pdf Graphic file (type pdf)
 <use DD_graph_1.pdf>
-Package pdftex.def Info: DD_graph_1.pdf  used on input line 277.
-(pdftex.def)             Requested size: 358.50229pt x 204.86006pt.
-
-Overfull \vbox (16.93654pt too high) detected at line 277
- []
-
+Package pdftex.def Info: DD_graph_1.pdf  used on input line 280.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
 
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
@@ -1342,12 +1294,8 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 <DD_graph_2.pdf, id=736, 505.89pt x 289.08pt>
 File: DD_graph_2.pdf Graphic file (type pdf)
 <use DD_graph_2.pdf>
-Package pdftex.def Info: DD_graph_2.pdf  used on input line 277.
-(pdftex.def)             Requested size: 358.50229pt x 204.86006pt.
-
-Overfull \vbox (16.93654pt too high) detected at line 277
- []
-
+Package pdftex.def Info: DD_graph_2.pdf  used on input line 280.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
 
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
@@ -1382,12 +1330,8 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 ]
 File: DD_graph_1.pdf Graphic file (type pdf)
 <use DD_graph_1.pdf>
-Package pdftex.def Info: DD_graph_1.pdf  used on input line 316.
-(pdftex.def)             Requested size: 358.50229pt x 204.86006pt.
-
-Overfull \vbox (16.93654pt too high) detected at line 316
- []
-
+Package pdftex.def Info: DD_graph_1.pdf  used on input line 319.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
 
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
@@ -1398,12 +1342,8 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 ]
 File: DD_graph_2.pdf Graphic file (type pdf)
 <use DD_graph_2.pdf>
-Package pdftex.def Info: DD_graph_2.pdf  used on input line 316.
-(pdftex.def)             Requested size: 358.50229pt x 204.86006pt.
-
-Overfull \vbox (16.93654pt too high) detected at line 316
- []
-
+Package pdftex.def Info: DD_graph_2.pdf  used on input line 319.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
 
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
@@ -1415,12 +1355,8 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 <DD_graph_3.pdf, id=906, 505.89pt x 289.08pt>
 File: DD_graph_3.pdf Graphic file (type pdf)
 <use DD_graph_3.pdf>
-Package pdftex.def Info: DD_graph_3.pdf  used on input line 316.
-(pdftex.def)             Requested size: 358.50229pt x 204.86006pt.
-
-Overfull \vbox (16.93654pt too high) detected at line 316
- []
-
+Package pdftex.def Info: DD_graph_3.pdf  used on input line 319.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
 
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
@@ -1459,12 +1395,8 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 ]
 File: DD_graph_3.pdf Graphic file (type pdf)
 <use DD_graph_3.pdf>
-Package pdftex.def Info: DD_graph_3.pdf  used on input line 366.
-(pdftex.def)             Requested size: 358.50229pt x 204.86006pt.
-
-Overfull \vbox (16.93654pt too high) detected at line 366
- []
-
+Package pdftex.def Info: DD_graph_3.pdf  used on input line 369.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
 
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
@@ -1476,12 +1408,8 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 <DD_graph_4.pdf, id=1076, 505.89pt x 289.08pt>
 File: DD_graph_4.pdf Graphic file (type pdf)
 <use DD_graph_4.pdf>
-Package pdftex.def Info: DD_graph_4.pdf  used on input line 366.
-(pdftex.def)             Requested size: 358.50229pt x 204.86006pt.
-
-Overfull \vbox (16.93654pt too high) detected at line 366
- []
-
+Package pdftex.def Info: DD_graph_4.pdf  used on input line 369.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
 
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
@@ -1507,10 +1435,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [39
 
 ]
-Overfull \vbox (19.77222pt too high) detected at line 422
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1518,10 +1442,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [40
 
 ]
-Overfull \vbox (19.77222pt too high) detected at line 422
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1529,10 +1449,6 @@ Overfull \hbox (70.07014pt too wide) has occurred while \output is active
 [41
 
 ]
-Overfull \vbox (19.77222pt too high) detected at line 422
- []
-
-
 Overfull \hbox (70.07014pt too wide) has occurred while \output is active
   [] [][][] [][][][] [][][][][][] [][][][] [][][][][]  
  []
@@ -1591,7 +1507,7 @@ Here is how much of TeX's memory you used:
  48911 multiletter control sequences out of 15000+600000
  527683 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,122p,395b,2043s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,17n,122p,395b,2061s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{https://davidcard.berkeley.edu/papers/njmin-aer.pdf
 } has been referenced but does not exist, replaced by a fixed one
@@ -1615,7 +1531,7 @@ ve/2023/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive
 texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2023/te
 xmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2023/texm
 f-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on slides_session08_DD.pdf (46 pages, 374324 bytes).
+Output written on slides_session08_DD.pdf (46 pages, 374353 bytes).
 PDF statistics:
  1459 PDF objects out of 1728 (max. 8388607)
  1320 compressed objects within 14 object streams

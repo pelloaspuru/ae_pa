@@ -288,6 +288,7 @@ $X_{1i}$ is exogenous if it is not correlated with the error term $u_i$, \onslid
 
 
 \begin{frame}{Regression with one Endogenous Regressor and one Instrument}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 Instrument $Z_i$ is an indicator variable that turns on if the first two kids are same sex.
 \pause
 \begin{align*}
@@ -448,6 +449,7 @@ The effect of the instrument $Z_i$ on outcome $Y_i$ is only through regressor $X
 \end{frame}
 
 \begin{frame}[fragile]{Variance of the IV Estimator - Intuition}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 Why do variances of $\hat\beta_1^{2SLS}$ and $\hat\beta_1^{IV}$ differ?
 \begin{lstlisting}[language=R]
     coeftest(second_stage, vcov. = vcovHC(second_stage, "HC0")) 
@@ -480,6 +482,7 @@ $\operatorname{Var}(\hat\beta_1^{OLS})$.
 \end{frame}
 
 \begin{frame}{Instrument Relevance and Weak Instruments}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
     If the correlation betw. $Z_i$ and $X_i$ is small, we have a \alert{weak instrument} problem, that yields very imprecise IV estimates
 
 
@@ -624,6 +627,7 @@ educ & 0.039 & 0.039 & 0.982 & 0.327 & -0.039 & 0.116 & 426 \\
 \section{General Case: Multiple regression model with one or more endogenous regressors}
 
 \begin{frame}{General Case}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 
 General linear model with endogeneity:
 $Y_i = \boldsymbol{X}_i'\boldsymbol{\beta} + u_i,\; \text{ with } E[\boldsymbol{X}_i u_i] \neq \boldsymbol{0}$

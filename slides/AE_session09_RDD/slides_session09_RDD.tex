@@ -131,6 +131,7 @@ Four \color{teal}\textbf{quasi-experimental methods} \color{black}to \textit{mim
 \end{frame}
 	
 \begin{frame}{RDD - Basic idea}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 
 When continuous variable $a_i$ passes cutoff $c$, probability of treatment $D_{i}$ jumps to 1.
 		\begin{itemize}
@@ -176,6 +177,7 @@ When continuous variable $a_i$ passes cutoff $c$, probability of treatment $D_{i
 \section{Example: Mortality Effect of Alcohol Consumption}
 
 \begin{frame}[fragile]{RDD Framework - Example}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 	\begin{center}
 		Does alcohol consumption \alert{cause} higher mortality among young adults?
 	\end{center} \pause
@@ -229,13 +231,14 @@ When continuous variable $a_i$ passes cutoff $c$, probability of treatment $D_{i
 		
 		\begin{figure}
 			\centering
-			\includegraphics[width=0.83\linewidth]{RDD_graph_1.pdf}
+			\includegraphics[width=0.83\linewidth,height=0.8\textheight,keepaspectratio]{RDD_graph_1.pdf}
 			%\caption{Discontinuity in Treatment Status at the Cutoff}
 			%\label{fig:rdd1}
 		\end{figure}
 	\end{frame}
 
 \begin{frame}[fragile]{Estimation of the size of the gap}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 We can write the following simple regression model: 
 \begin{align*}
 	Deathrate_a = \alpha + \beta (a-cutoff) + \alert{\delta}  D_a + u_a 
@@ -314,6 +317,7 @@ RDD exploits a discontinuity at  $a = 21$ in the conditional expectation functio
 \end{frame}
 
 \begin{frame}{Running Covariate Manipulation}
+\linespread{1.0}\selectfont % dense slide: tighter line spacing so it fits
 	\vspace{-0.5cm}
 	\[\text{Running Covariate } (age_i) \; + \; \text{Threshold } (age_i=21) \; \rightarrow \; \text{Treatment allocation } (D_i)\]
 	\vspace{-0.5cm}
@@ -385,6 +389,7 @@ Manipulation of the running variable around the cutoff often generates a big clu
 \section{Functional Form}
 
 \begin{frame}{Fitting the Running Covariate}
+\linespread{1.3}\selectfont % dense slide: tighter line spacing so it fits
 	We assumed a \alert{linear} relationship between the running covariate and outcome:
 	\begin{align*}
 			Deathrate_a = \alert{\alpha + \beta a} + \delta  D_a + u_a 
@@ -523,7 +528,7 @@ coeftest(rdd_quadratic_narrow, vcov. = vcovHC(rdd_quadratic_narrow, "HC0"))
 \begin{frame}[fragile]{Different Kernels}
 \begin{figure}
     \centering
-    \includegraphics[width=0.85\linewidth]{kernels.png}
+    \includegraphics[width=0.85\linewidth,height=0.72\textheight,keepaspectratio]{kernels.png}
      \label{fig:enter-label}\end{figure}
 \footnotesize Source: Andrew Heiss 
 \end{frame}

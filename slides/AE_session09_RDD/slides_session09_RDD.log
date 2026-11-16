@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  16 NOV 2026 19:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1149,23 +1149,11 @@ thkerncmss.
 
 ] [4
 
-]
-Overfull \vbox (5.69948pt too high) detected at line 161
- []
+] [5
 
-[5
+] [6
 
-]
-Overfull \vbox (5.69948pt too high) detected at line 161
- []
-
-[6
-
-]
-Overfull \vbox (5.69948pt too high) detected at line 161
- []
-
-[7
+] [7
 
 ] [8
 
@@ -1178,44 +1166,27 @@ Overfull \vbox (5.69948pt too high) detected at line 161
 
  (./slides_session09_RDD.vrb
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-3.
+4.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-))
-Overfull \vbox (12.59195pt too high) detected at line 207
- []
+)) [11
 
-[11
+]
+(./slides_session09_RDD.vrb) [12
 
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (12.59195pt too high) detected at line 207
- []
+] (./slides_session09_RDD.vrb) [13
 
-[12
+]
+(./slides_session09_RDD.vrb) [14
 
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (12.59195pt too high) detected at line 207
- []
-
-[13
-
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (12.59195pt too high) detected at line 207
- []
-
-[14
-
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (12.59195pt too high) detected at line 207
- []
-
-[15
+] (./slides_session09_RDD.vrb) [15
 
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb) [16
+
+(./slides_session09_RDD.vrb) [16
 
 ] (./slides_session09_RDD.vrb) [17
 
@@ -1223,67 +1194,49 @@ Overfull \vbox (12.59195pt too high) detected at line 207
 <RDD_graph_1.pdf, id=608, 505.89pt x 289.08pt>
 File: RDD_graph_1.pdf Graphic file (type pdf)
 <use RDD_graph_1.pdf>
-Package pdftex.def Info: RDD_graph_1.pdf  used on input line 236.
-(pdftex.def)             Requested size: 330.62175pt x 188.92752pt.
-
-Overfull \vbox (1.004pt too high) detected at line 236
- []
-
-[18
+Package pdftex.def Info: RDD_graph_1.pdf  used on input line 238.
+(pdftex.def)             Requested size: 316.07239pt x 180.6128pt.
+ [18
 
  <./RDD_graph_1.pdf>]
 \openout4 = `slides_session09_RDD.vrb'.
 
  (./slides_session09_RDD.vrb
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 21.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 22.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-))
-Overfull \vbox (24.05542pt too high) detected at line 259
- []
+)) [19
 
-[19
+]
+(./slides_session09_RDD.vrb) [20
 
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (24.05542pt too high) detected at line 259
- []
+] (./slides_session09_RDD.vrb) [21
 
-[20
-
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (24.05542pt too high) detected at line 259
- []
-
-[21
-
-] (./slides_session09_RDD.vrb)
-Overfull \vbox (24.05542pt too high) detected at line 259
- []
-
-[22
+]
+(./slides_session09_RDD.vrb) [22
 
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
  (./slides_session09_RDD.vrb) [23
 
-] (./slides_session09_RDD.vrb) [24
+]
+(./slides_session09_RDD.vrb) [24
 
 ]
 File: RDD_graph_1.pdf Graphic file (type pdf)
 <use RDD_graph_1.pdf>
-Package pdftex.def Info: RDD_graph_1.pdf  used on input line 293.
+Package pdftex.def Info: RDD_graph_1.pdf  used on input line 296.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
-
-[25
+ [25
 
 ]
 <RDD_graph_2.pdf, id=872, 505.89pt x 289.08pt>
 File: RDD_graph_2.pdf Graphic file (type pdf)
 <use RDD_graph_2.pdf>
-Package pdftex.def Info: RDD_graph_2.pdf  used on input line 293.
+Package pdftex.def Info: RDD_graph_2.pdf  used on input line 296.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
  [26
 
@@ -1291,116 +1244,81 @@ Package pdftex.def Info: RDD_graph_2.pdf  used on input line 293.
 
 ] [28
 
-] [29
+]
+[29
 
 ] [30
 
-]
-Overfull \vbox (18.23616pt too high) detected at line 353
- []
+] [31
 
-[31
-
-]
-Overfull \vbox (18.23616pt too high) detected at line 353
- []
-
-[32
+] [32
 
 ]
 <foodlabel_2.png, id=1100, 569.62813pt x 224.33812pt>
 File: foodlabel_2.png Graphic file (type png)
 <use foodlabel_2.png>
-Package pdftex.def Info: foodlabel_2.png  used on input line 353.
+Package pdftex.def Info: foodlabel_2.png  used on input line 357.
 (pdftex.def)             Requested size: 278.83578pt x 109.81367pt.
-
-Overfull \vbox (18.23616pt too high) detected at line 353
- []
-
-[33
+ [33
 
  <./foodlabel_2.png>]
 <bunching_food_labelling_0.png, id=1136, 423.5825pt x 336.25626pt>
 File: bunching_food_labelling_0.png Graphic file (type png)
 <use bunching_food_labelling_0.png>
-Package pdftex.def Info: bunching_food_labelling_0.png  used on input line 353.
+Package pdftex.def Info: bunching_food_labelling_0.png  used on input line 357.
 
 (pdftex.def)             Requested size: 143.4006pt x 94.56879pt.
 <bunching_food_labelling_1.png, id=1138, 447.6725pt x 343.78438pt>
 File: bunching_food_labelling_1.png Graphic file (type png)
 <use bunching_food_labelling_1.png>
-Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 353.
+Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 357.
 
 (pdftex.def)             Requested size: 143.4006pt x 91.89503pt.
-
-Overfull \vbox (10.02608pt too high) detected at line 353
- []
-
-
-Overfull \vbox (18.23616pt too high) detected at line 353
- []
-
-[34
+ [34
 
  <./bunching_food_labelling_0.png> <./bunching_food_labelling_1.png>]
 File: bunching_food_labelling_1.png Graphic file (type png)
 <use bunching_food_labelling_1.png>
-Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 363.
+Package pdftex.def Info: bunching_food_labelling_1.png  used on input line 367.
 
 (pdftex.def)             Requested size: 219.08743pt x 140.39677pt.
-
-[35
+ [35
 
 ] [36
 
 ] [37
 
-]
-Overfull \vbox (2.97565pt too high) detected at line 407
- []
+] [38
 
-[38
+] [39
 
-]
-Overfull \vbox (2.97565pt too high) detected at line 407
- []
+] [40
 
-[39
-
-]
-Overfull \vbox (2.97565pt too high) detected at line 407
- []
-
-[40
-
-]
-Overfull \vbox (2.97565pt too high) detected at line 407
- []
-
-[41
+] [41
 
 ]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb) [42
+
+(./slides_session09_RDD.vrb) [42
 
 ] (./slides_session09_RDD.vrb) [43
 
 ]
 File: RDD_graph_2.pdf Graphic file (type pdf)
 <use RDD_graph_2.pdf>
-Package pdftex.def Info: RDD_graph_2.pdf  used on input line 432.
+Package pdftex.def Info: RDD_graph_2.pdf  used on input line 437.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
-
-[44
+ [44
 
 ]
 <RDD_graph_3.pdf, id=1487, 505.89pt x 289.08pt>
 File: RDD_graph_3.pdf Graphic file (type pdf)
 <use RDD_graph_3.pdf>
-Package pdftex.def Info: RDD_graph_3.pdf  used on input line 432.
+Package pdftex.def Info: RDD_graph_3.pdf  used on input line 437.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
- [45
+
+[45
 
  <./RDD_graph_3.pdf>]
 \openout4 = `slides_session09_RDD.vrb'.
@@ -1413,7 +1331,7 @@ Package pdftex.def Info: RDD_graph_3.pdf  used on input line 432.
 ]
 File: RDD_graph_3.pdf Graphic file (type pdf)
 <use RDD_graph_3.pdf>
-Package pdftex.def Info: RDD_graph_3.pdf  used on input line 461.
+Package pdftex.def Info: RDD_graph_3.pdf  used on input line 466.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
  [48
 
@@ -1421,7 +1339,7 @@ Package pdftex.def Info: RDD_graph_3.pdf  used on input line 461.
 <RDD_graph_4.pdf, id=1620, 505.89pt x 289.08pt>
 File: RDD_graph_4.pdf Graphic file (type pdf)
 <use RDD_graph_4.pdf>
-Package pdftex.def Info: RDD_graph_4.pdf  used on input line 461.
+Package pdftex.def Info: RDD_graph_4.pdf  used on input line 466.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
  [49
 
@@ -1436,7 +1354,7 @@ Package pdftex.def Info: RDD_graph_4.pdf  used on input line 461.
 ]
 File: RDD_graph_4.pdf Graphic file (type pdf)
 <use RDD_graph_4.pdf>
-Package pdftex.def Info: RDD_graph_4.pdf  used on input line 506.
+Package pdftex.def Info: RDD_graph_4.pdf  used on input line 511.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
  [52
 
@@ -1444,7 +1362,7 @@ Package pdftex.def Info: RDD_graph_4.pdf  used on input line 506.
 <RDD_graph_5.pdf, id=1753, 505.89pt x 289.08pt>
 File: RDD_graph_5.pdf Graphic file (type pdf)
 <use RDD_graph_5.pdf>
-Package pdftex.def Info: RDD_graph_5.pdf  used on input line 506.
+Package pdftex.def Info: RDD_graph_5.pdf  used on input line 511.
 (pdftex.def)             Requested size: 318.67209pt x 182.0993pt.
  [53
 
@@ -1459,17 +1377,14 @@ Package pdftex.def Info: RDD_graph_5.pdf  used on input line 506.
 File: kernels.png Graphic file (type png)
 <use kernels.png>
 Package pdftex.def Info: kernels.png  used on input line 4.
-(pdftex.def)             Requested size: 338.59023pt x 184.88513pt.
-)
-Overfull \vbox (15.57657pt too high) detected at line 529
- []
-
-[55
+(pdftex.def)             Requested size: 297.67422pt x 162.54709pt.
+) [55
 
  <./kernels.png>]
 \openout4 = `slides_session09_RDD.vrb'.
 
- (./slides_session09_RDD.vrb) [56
+ (./slides_session09_RDD.vrb)
+[56
 
 ]
 \tf@nav=\write7
@@ -1481,8 +1396,7 @@ Overfull \vbox (15.57657pt too high) detected at line 529
 \tf@snm=\write9
 \openout9 = `slides_session09_RDD.snm'.
 
-
-(./slides_session09_RDD.aux)
+ (./slides_session09_RDD.aux)
 Package rerunfilecheck Info: File `slides_session09_RDD.out' has not changed.
 (rerunfilecheck)             Checksum: 0C7F570B811238ABA210D629D0A4AB81;793.
  ) 
@@ -1493,7 +1407,7 @@ Here is how much of TeX's memory you used:
  50479 multiletter control sequences out of 15000+600000
  528714 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,122p,396b,2039s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,17n,122p,396b,2057s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/pelloaspuru/Library/texlive/2023/texmf-var/fonts/pk/ljfour/public/bb
 m/bbm9.600pk></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm
 extra/cmex9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts
@@ -1518,7 +1432,7 @@ e/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/
 2023/texmf-dist/fonts/type1/public/cm-super/sfsx0700.pfb></usr/local/texlive/20
 23/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2023
 /texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on slides_session09_RDD.pdf (56 pages, 1444319 bytes).
+Output written on slides_session09_RDD.pdf (56 pages, 1444147 bytes).
 PDF statistics:
  2020 PDF objects out of 2073 (max. 8388607)
  1839 compressed objects within 19 object streams
